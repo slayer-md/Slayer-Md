@@ -93,8 +93,8 @@ pkg install nodejs -y
 pkg install ffmpeg -y 
 pkg install wget
 pkg install imagemagick -y
-git clone https://github.com/DGXeon/CheemsBot-MD
-cd CheemsBot-MD
+git clone https://github.com/Legend830/Slayer-Bot-V2
+cd Slayer-Bot-V2
 npm start
 ```
 ## `For VPS`
