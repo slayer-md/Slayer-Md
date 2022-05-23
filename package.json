@@ -1,7 +1,7 @@
 {
-  "name": "CheemsBot-MD",
+  "name": "Slayer-Md",
   "version": "1.0.0",
-  "description": "Multi device wa bot created by Xeon Bot Inc.",
+  "description": "Multi device wa bot created by Turbo.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -18,7 +18,7 @@
     "bot-md",
     "multi-device"
   ],
-  "author": "Xeon",
+  "author": "TURBOHYPER",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys": "^4.0.1",
@@ -61,10 +61,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Legend830/Slayer-Bot-V2.git"
+    "url": "git+https://github.com/TURBOHYPER/Slayer-Md.git"
   },
   "bugs": {
-    "url": "https://github.com/Legend830/Slayer-Bot-V2/issues"
+    "url": "https://github.com/TURBOHYPER/Slayer-Md/issues"
   },
-  "homepage": "https://github.com/Legend830/Slayer-Bot-V2#readme"
+  "homepage": "https://github.com/TURBOHYPER/Slayer-Md#readme"
 }
