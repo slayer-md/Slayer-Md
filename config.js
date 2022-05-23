@@ -1,4 +1,4 @@
-//═══════[© 2022 Xeon Bot Inc.]════════\\
+//═══════[© 2022 Turbo Bot Inc.]════════\\
 
 //~you can re-upload but tag my channel
 //or put my channel link in the description.
@@ -48,7 +48,7 @@ global.limitawal = {
     premium: "Infinity", //premium user limit
     free: 100 //free user limit
 }
-global.thumb = fs.readFileSync('./XeonMedia/cheemspic.jpg')
+global.thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
