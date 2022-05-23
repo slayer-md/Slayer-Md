@@ -2425,17 +2425,10 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 }
 break
 
-            case 'list': case 'menu': case 'help': case '?': {
-            	timestampe = speed();
+case 'list': case 'menu': case 'help': case '?': {
+timestampe = speed();
 latensie = speed() - timestampe
-                anu = ``
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Hi 🤚 ${pushname}
+let contentText = `Hi 🤚 ${pushname}
 How Are You? 😊
 
 
@@ -2451,38 +2444,41 @@ How Are You? 😊
 
 
 Please Select Button Below
-`,
-                            hydratedButtons: [{
-                                urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Script🔖',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: '🍇All Menu🍇',
-                                    id: `${prefix}allmenu`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '🍒List Menu🍒',
-                                    id: `${prefix}command`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner👤',
-                                    id: `${prefix}owner`
-                                }
-                            }]
-                        }
-                    }
-                }), { userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-                }
+`
+
+let buttons = [{
+urlButton: {
+displayText: 'YouTube📍',
+url: 'https://youtu.be/W725IHjXFHY'
+}
+}, {
+urlButton: {
+displayText: 'Script🔖',
+url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
+}
+}, {
+quickReplyButton: {
+displayText: '🍇All Menu🍇',
+id: `${prefix}allmenu`
+}
+}, {
+quickReplyButton: {
+displayText: '🍒List Menu🍒',
+id: `${prefix}command`
+}
+}, {
+quickReplyButton: {
+displayText: '👤Owner👤',
+id: `${prefix}owner`
+}
+}]
+
+let footer = ``
+let video = fs.readFileSync('./menuvideo.mp4')
+let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
+
+function _0x432e(){const _0x541717=['1334607cJfJlQ','248112TgZqMe','1187652obYEPi','159101Cwyttb','chat','559006WvuIJj','1566525dWBIjE','1717478ocrVMm'];_0x432e=function(){return _0x541717;};return _0x432e();}function _0x2482(_0x5ce414,_0x534ac7){const _0x432eb6=_0x432e();return _0x2482=function(_0x24821d,_0x3ca1c7){_0x24821d=_0x24821d-0x103;let _0x49675f=_0x432eb6[_0x24821d];return _0x49675f;},_0x2482(_0x5ce414,_0x534ac7);}const _0x5bd63e=_0x2482;(function(_0x3f5cd2,_0x1c89b4){const _0xcbf6e=_0x2482,_0x3c6416=_0x3f5cd2();while(!![]){try{const _0x46d8d9=-parseInt(_0xcbf6e(0x106))/0x1+-parseInt(_0xcbf6e(0x108))/0x2+parseInt(_0xcbf6e(0x103))/0x3+parseInt(_0xcbf6e(0x105))/0x4+-parseInt(_0xcbf6e(0x109))/0x5+parseInt(_0xcbf6e(0x104))/0x6+parseInt(_0xcbf6e(0x10a))/0x7;if(_0x46d8d9===_0x1c89b4)break;else _0x3c6416['push'](_0x3c6416['shift']());}catch(_0x1b3a75){_0x3c6416['push'](_0x3c6416['shift']());}}}(_0x432e,0x43863));const message={'video':video,'jpegThumbnail':thumb,'caption':contentText,'footer':footer,'templateButtons':buttons};Turbo['sendMessage'](m[_0x5bd63e(0x107)],message);
+}
 break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
