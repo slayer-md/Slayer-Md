@@ -1,4 +1,4 @@
-//[© 2022 Xeon Bot Inc.]\\
+//[© 2022 Turbo Bot Inc.]\\
 
 //~you can re-upload but tag my channel
 //or put my channel link in the description.
@@ -28,7 +28,7 @@ let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLeveling
 const speedofbot = require("performance-now")
 
 //[thumb]\\
-let xeon = fs.readFileSync('./TurboMedia/thumb.jpg')
+let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -56,7 +56,7 @@ let tebaklirik = db.game.lirik = []
 let tebaktebakan = db.game.tebakan = []
 let vote = db.others.vote = []
 	
-module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
+module.exports = Turbo = async (Turbo, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
@@ -65,7 +65,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "No Name"
-        const botNumber = await XeonBotInc.decodeJid(XeonBotInc.user.id)
+        const botNumber = await Turbo.decodeJid(Turbo.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
         const text = q = args.join(" ")
@@ -74,7 +74,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
 	    const isMedia = /image|video|sticker|audio/.test(mime)
 	
 //[gc]\\
-        const groupMetadata = m.isGroup ? await XeonBotInc.groupMetadata(m.chat).catch(e => {}) : ''
+        const groupMetadata = m.isGroup ? await Turbo.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
         const isAntiLink = m.isGroup ? antilink.includes(m.chat) : false
         const participants = m.isGroup ? await groupMetadata.participants : ''
@@ -100,11 +100,11 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 	
 //[target]\\
 	const reply = (teks) => {
-            XeonBotInc.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` Join Bot's Official GC`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://chat.whatsapp.com/LWjJ4tu2qe9BWQZ1JzRZgp"}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` ī.am/ꪶ⇾🪀☻᳡₉ͭ₁ͦ₆ͯ₃ͥ₈ͨ₀ͭ₂ͧ₆ͬ₀ᷨ₆ͦ₇₂🇮🇳⃟ꫂ⁩⁩⁩ `, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            XeonBotInc.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` Subscribe Bot's Official YT Channel`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://youtu.be/W725IHjXFHY"}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` ī.am/ꪶ⇾🪀☻᳡₉ͭ₁ͦ₆ͯ₃ͥ₈ͨ₀ͭ₂ͧ₆ͬ₀ᷨ₆ͦ₇₂🇮🇳⃟ꫂ⁩⁩⁩ `, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
         }
 try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -135,13 +135,13 @@ try {
 	    
 
 //[public/self]\\
-        if (!XeonBotInc.public) {
+        if (!Turbo.public) {
             if (!m.key.fromMe) return
         }
 
 //[push msg to console & autoread]\\
         if (m.message) {
-            XeonBotInc.sendReadReceipt(m.chat, m.sender, [m.key.id])
+            Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id])
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
         }
 	
@@ -182,7 +182,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
                if (!m.key.fromMe) {
                reply('*LINK DETECTED*\nWow, how naughty, this group has been installed with Antilink, OK?..,\nGood Bye To You..👋🏻')
                let sianj = m.sender
-               await XeonBotInc.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+               await Turbo.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                }
 	  }
 	if (db.chats[m.chat].wame) {
@@ -195,7 +195,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
         if (isgclink) return m.reply(`Eh sorry it didn't happen, because you sent this wa.me link`)
         if (isAdmins) return m.reply(`Ehh sorry you admin`)
         if (isCreator) return m.reply(`Ehh sorry you are the owner of me`)
-        XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+        Turbo.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
 //[mute chat]\\
@@ -224,10 +224,10 @@ if (budy.includes('https://chat.whatsapp.com/')) {
         let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
         let { text, mentionedJid } = hash
         let messages = await generateWAMessage(m.chat, { text: text, mentions: mentionedJid }, {
-            userJid: XeonBotInc.user.id,
+            userJid: Turbo.user.id,
             quoted: m.quoted && m.quoted.fakeObj
         })
-        messages.key.fromMe = areJidsSameUser(m.sender, XeonBotInc.user.id)
+        messages.key.fromMe = areJidsSameUser(m.sender, Turbo.user.id)
         messages.key.id = m.key.id
         messages.pushName = m.pushName
         if (m.isGroup) messages.participant = m.sender
@@ -236,7 +236,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             messages: [proto.WebMessageInfo.fromObject(messages)],
             type: 'append'
         }
-        XeonBotInc.ev.emit('messages.upsert', msg)
+        Turbo.ev.emit('messages.upsert', msg)
         }
 	    
 	if (('family100'+m.chat in _family100) && isCmd) {
@@ -257,7 +257,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
         return isSurender || room.terjawab[index] ? `(${index + 1}) ${jawaban} ${room.terjawab[index] ? '@' + room.terjawab[index].split('@')[0] : ''}`.trim() : false
     }).filter(v => v).join('\n')}
     ${isSurender ? '' : `Perfect Player`}`.trim()
-            XeonBotInc.sendText(m.chat, caption, m, { contextInfo: { mentionedJid: parseMention(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
+            Turbo.sendText(m.chat, caption, m, { contextInfo: { mentionedJid: parseMention(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
             if (isWin || isSurender) delete _family100['family100'+m.chat]
         }
 
@@ -265,7 +265,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklagu[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Guess The Music' }, type: 1 }], `🎮 Guess The Song 🎮\n\nCorrect Answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Guess The Music' }, type: 1 }], `🎮 Guess The Song 🎮\n\nCorrect Answer 🎉\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete tebaklagu[m.sender.split('@')[0]]
             } else reply('*Wrong answer!*')
         }
@@ -283,7 +283,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakgambar[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Guess The Picture' }, type: 1 }], `🎮 Guess The Picture 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Guess The Picture' }, type: 1 }], `🎮 Guess The Picture 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete tebakgambar[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -292,7 +292,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakkata[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Guess The Word' }, type: 1 }], `🎮 Guess The Word 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Guess The Word' }, type: 1 }], `🎮 Guess The Word 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete tebakkata[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -302,7 +302,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             jawaban = caklontong[m.sender.split('@')[0]]
 	    deskripsi = caklontong_desk[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Guess Lontong' }, type: 1 }], `🎮 Guess Lontong 🎮\n\nCorrect answer 🎉\n*${deskripsi}*\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Guess Lontong' }, type: 1 }], `🎮 Guess Lontong 🎮\n\nCorrect answer 🎉\n*${deskripsi}*\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete caklontong[m.sender.split('@')[0]]
 		delete caklontong_desk[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
@@ -312,7 +312,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakkalimat[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Guess The Sentence' }, type: 1 }], `🎮 Guess The Sentence 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Guess The Sentence' }, type: 1 }], `🎮 Guess The Sentence 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete tebakkalimat[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -321,7 +321,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklirik[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Guess The Lyrics' }, type: 1 }], `🎮 Guess The Lyrics 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Guess The Lyrics' }, type: 1 }], `🎮 Guess The Lyrics 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete tebaklirik[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -330,7 +330,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaktebakan[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Riddles' }, type: 1 }], `🎮 Riddles 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, XeonBotInc.user.name, m)
+                await Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Riddles' }, type: 1 }], `🎮 Riddles 🎮\n\nCorrect answer 🎉\n\nWant to play again? press the button below`, Turbo.user.name, m)
                 delete tebaktebakan[m.sender.split('@')[0]]
             } else reply('*Wrong Answer!*')
         }
@@ -393,8 +393,8 @@ ${isWin ? `@${winner.split('@')[0]} Win!` : isTie ? `Game over` : `Turn ${['❌'
 Type *give up* to surrender and admit defeat`
 	    if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
 	    room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-	    if (room.x !== room.o) await XeonBotInc.sendText(room.x, str, m, { mentions: parseMention(str) } )
-	    await XeonBotInc.sendText(room.o, str, m, { mentions: parseMention(str) } )
+	    if (room.x !== room.o) await Turbo.sendText(room.x, str, m, { mentions: parseMention(str) } )
+	    await Turbo.sendText(room.o, str, m, { mentions: parseMention(str) } )
 	    if (isTie || isWin) {
 	    delete this.game[room.id]
 	    }
@@ -408,7 +408,7 @@ Type *give up* to surrender and admit defeat`
 	    let tie = false
 	    if (m.sender == roof.p2 && /^(acc(ept)?|accept|sure|oke?|reject|dont|later|yes|can|y)/i.test(m.text) && m.isGroup && roof.status == 'wait') {
 	    if (/^(reject|dont|later|n|no|can)/i.test(m.text)) {
-	    XeonBotInc.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} reject the suit, the suit is canceled`, m)
+	    Turbo.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} reject the suit, the suit is canceled`, m)
 	    delete this.suit[roof.id]
 	    return !0
 	    }
@@ -416,20 +416,20 @@ Type *give up* to surrender and admit defeat`
 	    roof.asal = m.chat
 	    clearTimeout(roof.waktu)
 	    //delete roof[roof.id].waktu
-	    XeonBotInc.sendText(m.chat, `Suit has been sent to chat
+	    Turbo.sendText(m.chat, `Suit has been sent to chat
 
 @${roof.p.split`@`[0]} and 
 @${roof.p2.split`@`[0]}
 
 Please choose a suit in the respective chat"
 click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
-	    if (!roof.pilih) XeonBotInc.sendText(roof.p, `Please select \n\nRock🗿\nPaper📄\nScissors✂️`, m)
-	    if (!roof.pilih2) XeonBotInc.sendText(roof.p2, `Please select \n\nRock🗿\nPaper📄\nScissor✂️`, m)
+	    if (!roof.pilih) Turbo.sendText(roof.p, `Please select \n\nRock🗿\nPaper📄\nScissors✂️`, m)
+	    if (!roof.pilih2) Turbo.sendText(roof.p2, `Please select \n\nRock🗿\nPaper📄\nScissor✂️`, m)
 	    roof.waktu_milih = setTimeout(() => {
-	    if (!roof.pilih && !roof.pilih2) XeonBotInc.sendText(m.chat, `Both players don't want to play,\nSuit canceled`)
+	    if (!roof.pilih && !roof.pilih2) Turbo.sendText(m.chat, `Both players don't want to play,\nSuit canceled`)
 	    else if (!roof.pilih || !roof.pilih2) {
 	    win = !roof.pilih ? roof.p2 : roof.p
-	    XeonBotInc.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} didn't choose suit, game over`, m)
+	    Turbo.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} didn't choose suit, game over`, m)
 	    }
 	    delete this.suit[roof.id]
 	    return !0
@@ -445,13 +445,13 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
 	    roof.pilih = reg.exec(m.text.toLowerCase())[0]
 	    roof.text = m.text
 	    reply(`You have chosen ${m.text} ${!roof.pilih2 ? `\n\nWaiting for the opponent to choose` : ''}`)
-	    if (!roof.pilih2) XeonBotInc.sendText(roof.p2, '_The opponent has chosen_\nNow it is your turn', 0)
+	    if (!roof.pilih2) Turbo.sendText(roof.p2, '_The opponent has chosen_\nNow it is your turn', 0)
 	    }
 	    if (jwb2 && reg.test(m.text) && !roof.pilih2 && !m.isGroup) {
 	    roof.pilih2 = reg.exec(m.text.toLowerCase())[0]
 	    roof.text2 = m.text
 	    reply(`You have chosen ${m.text} ${!roof.pilih ? `\n\nWaiting for the opponent to choose` : ''}`)
-	    if (!roof.pilih) XeonBotInc.sendText(roof.p, '_The opponent has chosen_\nNow it is your turn', 0)
+	    if (!roof.pilih) Turbo.sendText(roof.p, '_The opponent has chosen_\nNow it is your turn', 0)
 	    }
 	    let stage = roof.pilih
 	    let stage2 = roof.pilih2
@@ -464,7 +464,7 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
 	    else if (k.test(stage) && b.test(stage2)) win = roof.p
 	    else if (k.test(stage) && g.test(stage2)) win = roof.p2
 	    else if (stage == stage2) tie = true
-	    XeonBotInc.sendText(roof.asal, `_*Suit Results*_${tie ? '\nSERIES' : ''}
+	    Turbo.sendText(roof.asal, `_*Suit Results*_${tie ? '\nSERIES' : ''}
 
 @${roof.p.split`@`[0]} (${roof.text}) ${tie ? '' : roof.p == win ? ` Win \n` : ` Lost \n`}
 @${roof.p2.split`@`[0]} (${roof.text2}) ${tie ? '' : roof.p2 == win ? ` Win \n` : ` Lost \n`}
@@ -539,8 +539,8 @@ ${arr.slice(6).join('')}
 Waiting @${room.game.currentTurn.split('@')[0]}
 
 Type *give up* to surrender and admit defeat`
-            if (room.x !== room.o) await XeonBotInc.sendText(room.x, str, m, { mentions: parseMention(str) } )
-            await XeonBotInc.sendText(room.o, str, m, { mentions: parseMention(str) } )
+            if (room.x !== room.o) await Turbo.sendText(room.x, str, m, { mentions: parseMention(str) } )
+            await Turbo.sendText(room.o, str, m, { mentions: parseMention(str) } )
             } else {
             room = {
             id: 'tictactoe-' + (+new Date),
@@ -560,7 +560,7 @@ Type *give up* to surrender and admit defeat`
             try {
             if (this.game) {
             delete this.game
-            XeonBotInc.sendText(m.chat, `Successfully delete the TicTacToe session`, m)
+            Turbo.sendText(m.chat, `Successfully delete the TicTacToe session`, m)
             } else if (!this.game) {
             reply(`TicTacToe Session🎮 there is not any`)
             } else throw '?'
@@ -585,20 +585,20 @@ Type *give up* to surrender and admit defeat`
 
 Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             this.suit[id] = {
-            chat: await XeonBotInc.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
+            chat: await Turbo.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
             id: id,
             p: m.sender,
             p2: m.mentionedJid[0],
             status: 'wait',
             waktu: setTimeout(() => {
-            if (this.suit[id]) XeonBotInc.sendText(m.chat, `_Suit time out_`, m)
+            if (this.suit[id]) Turbo.sendText(m.chat, `_Suit time out_`, m)
             delete this.suit[id]
             }, 60000), poin, poin_lose, timeout
             }
             }
             break
 	    case 'donasi': case 'donate': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                XeonBotInc.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/08691a735d7317735af6a.jpg' }, caption: `*Hi bro ${m.pushName}*\n\n Bot Rental Price\n⭔ 250INR Per Group via Gpay/paytm/phonepe 1 Month\n\nFor more details, you can chat with the owner\nhttps://wa.me/916380260672 (Owner)\n\nDonate Me : \n\n⭔ Fampay : https://telegra.ph/file/08691a735d7317735af6a.jpg\n⭔ Paytm : https://telegra.ph/file/08691a735d7317735af6a.jpg` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/08691a735d7317735af6a.jpg' }, caption: `*Hi bro ${m.pushName}*\n\n Bot Rental Price\n⭔ 250INR Per Group via Gpay/paytm/phonepe 1 Month\n\nFor more details, you can chat with the owner\nhttps://wa.me/916380260672 (Owner)\n\nDonate Me : \n\n⭔ Fampay : https://telegra.ph/file/08691a735d7317735af6a.jpg\n⭔ Paytm : https://telegra.ph/file/08691a735d7317735af6a.jpg` }, { quoted: m })
             }
             break
             case 'sc': case 'script': {
@@ -609,19 +609,19 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                 if (!isCreator) throw mess.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
                 if (args[0] === 'mute') {
-                    XeonBotInc.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'unmute') {
-                    XeonBotInc.chatModify({ mute: null }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({ mute: null }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'archive') {
-                    XeonBotInc.chatModify({  archive: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({  archive: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'unarchive') {
-                    XeonBotInc.chatModify({ archive: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({ archive: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'read') {
-                    XeonBotInc.chatModify({ markRead: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({ markRead: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'unread') {
-                    XeonBotInc.chatModify({ markRead: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({ markRead: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'delete') {
-                    XeonBotInc.chatModify({ clear: { message: { id: m.quoted.id, fromMe: true }} }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    Turbo.chatModify({ clear: { message: { id: m.quoted.id, fromMe: true }} }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 }
             }
             break
@@ -635,7 +635,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                 let hasil = `*Answer the following questions :*\n${random.soal}\n\nThere is *${random.jawaban.length}* Answer ${random.jawaban.find(v => v.includes(' ')) ? `(some answers have spaces)` : ''}`.trim()
                 _family100['family100'+m.chat] = {
                     id: 'family100'+m.chat,
-                    pesan: await XeonBotInc.sendText(m.chat, hasil, m),
+                    pesan: await Turbo.sendText(m.chat, hasil, m),
                     ...random,
                     terjawab: Array.from(random.jawaban, () => false),
                     hadiah: 6,
@@ -654,14 +654,14 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                     if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) throw "There are still unfinished sessions!"
                     let anu = await fetchJson('https://fatiharridho.github.io/tebaklagu.json')
                     let result = anu[Math.floor(Math.random() * anu.length)]
-                    let msg = await XeonBotInc.sendMessage(m.chat, { audio: { url: result.link_song }, mimetype: 'audio/mpeg' }, { quoted: m })
-                    XeonBotInc.sendText(m.chat, `The song is a song from?\n\nArtist : ${result.artist}\nTime : 60s`, msg).then(() => {
+                    let msg = await Turbo.sendMessage(m.chat, { audio: { url: result.link_song }, mimetype: 'audio/mpeg' }, { quoted: m })
+                    Turbo.sendText(m.chat, `The song is a song from?\n\nArtist : ${result.artist}\nTime : 60s`, msg).then(() => {
                     tebaklagu[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
                     })
                     await sleep(60000)
                     if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Answer: " + result.jawaban)
-                    XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Time Out\nAnswer:  ${tebaklagu[m.sender.split('@')[0]]}\n\nWant to play? press the button below`, XeonBotInc.user.name, m)
+                    Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Time Out\nAnswer:  ${tebaklagu[m.sender.split('@')[0]]}\n\nWant to play? press the button below`, Turbo.user.name, m)
                     delete tebaklagu[m.sender.split('@')[0]]
                     
                     }
@@ -669,13 +669,13 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                     if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) throw "There are still unfinished sessions!"
                     let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakgambar.json')
                     let result = anu[Math.floor(Math.random() * anu.length)]
-                    XeonBotInc.sendImage(m.chat, result.img, `Please answer the questions above\n\nDescription : ${result.deskripsi}\nWaktu : 60s`, m).then(() => {
+                    Turbo.sendImage(m.chat, result.img, `Please answer the questions above\n\nDescription : ${result.deskripsi}\nWaktu : 60s`, m).then(() => {
                     tebakgambar[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
                     })
                     await sleep(60000)
                     if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Answer: " + result.jawaban)
-                    XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Time has run out\Answer:  ${tebakgambar[m.sender.split('@')[0]]}\n\nWant to play? press the button below`, XeonBotInc.user.name, m)
+                    Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Time has run out\Answer:  ${tebakgambar[m.sender.split('@')[0]]}\n\nWant to play? press the button below`, Turbo.user.name, m)
                     delete tebakgambar[m.sender.split('@')[0]]
                     
                     }
@@ -683,13 +683,13 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                     if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) throw "There are still unfinished sessions!"
                     let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakkata.json')
                     let result = anu[Math.floor(Math.random() * anu.length)]
-                    XeonBotInc.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
+                    Turbo.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
                     tebakkata[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
                     })
                     await sleep(60000)
                     if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Answer: " + result.jawaban)
-                    XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Time has run out\nAnswer:  ${tebakkata[m.sender.split('@')[0]]}\n\nWant to play? press the button below`, XeonBotInc.user.name, m)
+                    Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Time has run out\nAnswer:  ${tebakkata[m.sender.split('@')[0]]}\n\nWant to play? press the button below`, Turbo.user.name, m)
                     delete tebakkata[m.sender.split('@')[0]]
                     
                     }
@@ -697,13 +697,13 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                     if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) throw "There are still unfinished sessions!"
                     let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakkalimat.json')
                     let result = anu[Math.floor(Math.random() * anu.length)]
-                    XeonBotInc.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
+                    Turbo.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
                     tebakkalimat[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
                     })
                     await sleep(60000)
                     if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Answer: " + result.jawaban)
-                    XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, XeonBotInc.user.name, m)
+                    Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, Turbo.user.name, m)
                     delete tebakkalimat[m.sender.split('@')[0]]
                     
                     }
@@ -711,13 +711,13 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                     if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) throw "There are still unfinished sessions!"
                     let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebaklirik.json')
                     let result = anu[Math.floor(Math.random() * anu.length)]
-                    XeonBotInc.sendText(m.chat, `These are the lyrics of the song? : *${result.soal}*?\nTime : 60s`, m).then(() => {
+                    Turbo.sendText(m.chat, `These are the lyrics of the song? : *${result.soal}*?\nTime : 60s`, m).then(() => {
                     tebaklirik[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
                     })
                     await sleep(60000)
                     if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Answer: " + result.jawaban)
-                    XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, XeonBotInc.user.name, m)
+                    Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, Turbo.user.name, m)
                     delete tebaklirik[m.sender.split('@')[0]]
                     
                     }
@@ -725,14 +725,14 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                     if (caklontong.hasOwnProperty(m.sender.split('@')[0])) throw "There are still unfinished sessions!"
                     let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/caklontong.json')
                     let result = anu[Math.floor(Math.random() * anu.length)]
-                    XeonBotInc.sendText(m.chat, `*Answer the following questions :*\n${result.soal}*\nTime : 60s`, m).then(() => {
+                    Turbo.sendText(m.chat, `*Answer the following questions :*\n${result.soal}*\nTime : 60s`, m).then(() => {
                     caklontong[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
 		    caklontong_desk[m.sender.split('@')[0]] = result.deskripsi
                     })
                     await sleep(60000)
                     if (caklontong.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Answer: " + result.jawaban)
-                    XeonBotInc.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, XeonBotInc.user.name, m)
+                    Turbo.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, Turbo.user.name, m)
                     delete caklontong[m.sender.split('@')[0]]
 		    delete caklontong_desk[m.sender.split('@')[0]]
 		
@@ -745,7 +745,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                 let { genMath, modes } = require('./src/math')
                 if (!text) throw `Mode: ${Object.keys(modes).join(' | ')}\nExample: ${prefix}math medium`
                 let result = await genMath(text.toLowerCase())
-                XeonBotInc.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} seconds`, m).then(() => {
+                Turbo.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} seconds`, m).then(() => {
                     kuismath[m.sender.split('@')[0]] = result.jawaban
                 })
                 await sleep(result.waktu)
@@ -768,7 +768,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             let buttons = [
                         { buttonId: '❤️', buttonText: { displayText: '❤️' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, jawab, XeonBotInc.user.name, m, {mentions: ments})
+                    await Turbo.sendButtonText(m.chat, buttons, jawab, Turbo.user.name, m, {mentions: ments})
             }
             break
             case 'couple': {
@@ -782,7 +782,7 @@ Ciee Whats Going On💖👀`
             let buttons = [
                         { buttonId: '❤️congrats', buttonText: { displayText: '❤️congrats' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, jawab, XeonBotInc.user.name, m, {mentions: menst})
+                    await Turbo.sendButtonText(m.chat, buttons, jawab, Turbo.user.name, m, {mentions: menst})
             }
             break
             case 'join': {
@@ -791,12 +791,12 @@ Ciee Whats Going On💖👀`
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 replay(mess.wait)
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
-                await XeonBotInc.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                await Turbo.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
             case 'leave': {
                 if (!isCreator) throw mess.owner
-                await XeonBotInc.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
 	case 'kick': {
@@ -804,7 +804,7 @@ Ciee Whats Going On💖👀`
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await Turbo.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
 	case 'add': {
@@ -812,7 +812,7 @@ Ciee Whats Going On💖👀`
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await Turbo.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
 	case 'promote': {
@@ -820,7 +820,7 @@ Ciee Whats Going On💖👀`
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await Turbo.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
 	case 'demote': {
@@ -828,19 +828,19 @@ Ciee Whats Going On💖👀`
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await Turbo.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
         case 'block': {
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await Turbo.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
         case 'unblock': {
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await Turbo.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
 	    case 'setname': case 'setsubject': {
@@ -848,7 +848,7 @@ Ciee Whats Going On💖👀`
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (!text) throw 'Text ?'
-                await XeonBotInc.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
+                await Turbo.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
             }
             break
           case 'setdesc': case 'setdesk': {
@@ -856,7 +856,7 @@ Ciee Whats Going On💖👀`
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (!text) throw 'Text ?'
-                await XeonBotInc.groupUpdateDescription(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
+                await Turbo.groupUpdateDescription(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
             }
             break
           case 'setppbot': case 'setbotpp': {
@@ -864,8 +864,8 @@ Ciee Whats Going On💖👀`
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-                await XeonBotInc.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
+                await Turbo.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
                 reply(mess.success)
                 }
                 break
@@ -875,20 +875,20 @@ Ciee Whats Going On💖👀`
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-                await XeonBotInc.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
+                await Turbo.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
                 reply(mess.success)
                 }
                 break
 case 'grupinfo': case 'groupinfo':
 try{
- var pic = await XeonBotInc.getProfilePicture(m.chat)
+ var pic = await Turbo.getProfilePicture(m.chat)
   } catch {
  var pic = 'https://telegra.ph/file/08691a735d7317735af6a.jpg'
   }
 let ingfo = `*G R O U P  I N F O*\n\n*Name :* ${groupName}\n*ID Group :* ${m.chat}\n*Made :* ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n*Group Owner:* @${groupMetadata.owner.split('@')[0]}\n*Number Of Admins :* ${groupAdmins.length}\n*Number Of Participants :* ${participants.length}\n*Desc :* \n${groupMetadata.desc}`
 ds = await getBuffer(pic)
-XeonBotInc.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
+Turbo.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
 break
             case 'tagall': case 'tag': {
                 if (!m.isGroup) throw mess.group
@@ -900,13 +900,13 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 for (let mem of participants) {
                 teks += `⭔ @${mem.id.split('@')[0]}\n`
                 }
-                XeonBotInc.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
+                Turbo.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
                 case 'hidetag': {
             if (!m.isGroup) throw mess.group
             if (!isAdmins) throw mess.admin
-            XeonBotInc.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
+            Turbo.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
 	    case 'style': case 'styletext': {
@@ -957,11 +957,11 @@ let buttonsVote = [
 
             let buttonMessageVote = {
                 text: teks_vote,
-                footer: XeonBotInc.user.name,
+                footer: Turbo.user.name,
                 buttons: buttonsVote,
                 headerType: 1
             }
-            XeonBotInc.sendMessage(m.chat, buttonMessageVote)
+            Turbo.sendMessage(m.chat, buttonMessageVote)
 	    }
             break
                case 'upvote': {
@@ -998,12 +998,12 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
             let buttonMessageUpvote = {
                 text: teks_vote,
-                footer: XeonBotInc.user.name,
+                footer: Turbo.user.name,
                 buttons: buttonsUpvote,
                 headerType: 1,
                 mentions: menvote
              }
-            XeonBotInc.sendMessage(m.chat, buttonMessageUpvote)
+            Turbo.sendMessage(m.chat, buttonMessageUpvote)
 	    }
              break
                 case 'devote': {
@@ -1040,12 +1040,12 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
             let buttonMessageDevote = {
                 text: teks_vote,
-                footer: XeonBotInc.user.name,
+                footer: Turbo.user.name,
                 buttons: buttonsDevote,
                 headerType: 1,
                 mentions: menvote
             }
-            XeonBotInc.sendMessage(m.chat, buttonMessageDevote)
+            Turbo.sendMessage(m.chat, buttonMessageDevote)
 	}
             break
                  
@@ -1073,9 +1073,9 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 *${prefix}hapusvote* - to delete votes
 
 
-©${XeonBotInc.user.id}
+©${Turbo.user.id}
 `
-XeonBotInc.sendTextWithMentions(m.chat, teks_vote, m)
+Turbo.sendTextWithMentions(m.chat, teks_vote, m)
 break
 		case 'deletevote': case'delvote': case 'hapusvote': {
             if (!m.isGroup) throw mess.group
@@ -1089,15 +1089,15 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
                 if (args[0] === 'close'){
-                    await XeonBotInc.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`Successful Closing The Group`)).catch((err) => reply(jsonformat(err)))
+                    await Turbo.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`Successful Closing The Group`)).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'open'){
-                    await XeonBotInc.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Successful Opening The Group`)).catch((err) => reply(jsonformat(err)))
+                    await Turbo.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Successful Opening The Group`)).catch((err) => reply(jsonformat(err)))
                 } else {
                 let buttons = [
                         { buttonId: 'group open', buttonText: { displayText: '⭕Open⭕' }, type: 1 },
                         { buttonId: 'group close', buttonText: { displayText: '🚫Close🚫' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `Group Mode`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `Group Mode`, Turbo.user.name, m)
 
              }
             }
@@ -1107,15 +1107,15 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
              if (args[0] === 'open'){
-                await XeonBotInc.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`Successfully Opened Edit Group Info`)).catch((err) => reply(jsonformat(err)))
+                await Turbo.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`Successfully Opened Edit Group Info`)).catch((err) => reply(jsonformat(err)))
              } else if (args[0] === 'close'){
-                await XeonBotInc.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Close Edit Group Info`)).catch((err) => reply(jsonformat(err)))
+                await Turbo.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Close Edit Group Info`)).catch((err) => reply(jsonformat(err)))
              } else {
              let buttons = [
                         { buttonId: 'editinfo open', buttonText: { displayText: '⭕Open⭕' }, type: 1 },
                         { buttonId: 'editinfo close', buttonText: { displayText: '🚫Close🚫' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `Mode Edit Info`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `Mode Edit Info`, Turbo.user.name, m)
 
             }
             }
@@ -1129,7 +1129,7 @@ case 'antilink':
 						antilink.push(m.chat)
 						fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
 						reply('Successfully activated the antilink feature')
-						XeonBotInc.sendMessage(m.chat,  {text: `ALLERT!!! This group has been installed anti-link\nIf you violate then I will kick`})
+						Turbo.sendMessage(m.chat,  {text: `ALLERT!!! This group has been installed anti-link\nIf you violate then I will kick`})
 					} else if (args[0] === 'off') {
 						if (!isAntiLink) return reply('already deactivated')
 						var ini = antilink.indexOf(m.chat)
@@ -1157,7 +1157,7 @@ case 'antilink':
                         { buttonId: 'antiwame on', buttonText: { displayText: '⭕On⭕' }, type: 1 },
                         { buttonId: 'antiwame off', buttonText: { displayText: '❌Off❌' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `Mode Anti Wa.me`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `Mode Anti Wa.me`, Turbo.user.name, m)
                 }
              }
              break
@@ -1167,24 +1167,24 @@ case 'antilink':
                 if (args[0] === "on") {
                 if (db.chats[m.chat].mute) return reply(`Already activated`)
                 db.chats[m.chat].mute = true
-                reply(`${XeonBotInc.user.name} has been muted in this group !`)
+                reply(`${Turbo.user.name} has been muted in this group !`)
                 } else if (args[0] === "off") {
                 if (!db.chats[m.chat].mute) return reply(`Already deactivated`)
                 db.chats[m.chat].mute = false
-                reply(`${XeonBotInc.user.name} has been unmuted in this group!`)
+                reply(`${Turbo.user.name} has been unmuted in this group!`)
                 } else {
                  let buttons = [
                         { buttonId: 'mute on', buttonText: { displayText: '⭕On⭕' }, type: 1 },
                         { buttonId: 'mute off', buttonText: { displayText: '❌Off❌' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `Mute Bot`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `Mute Bot`, Turbo.user.name, m)
                 }
              }
              break
             case 'linkgroup': case 'grouplink': case 'gclink': case 'linkgc': {
                 if (!m.isGroup) throw mess.group
-                let response = await XeonBotInc.groupInviteCode(m.chat)
-                XeonBotInc.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink of: ${groupMetadata.subject} Group`, m, { detectLink: true })
+                let response = await Turbo.groupInviteCode(m.chat)
+                Turbo.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink of: ${groupMetadata.subject} Group`, m, { detectLink: true })
             }
             break
             case 'ephemeral': {
@@ -1193,9 +1193,9 @@ case 'antilink':
                 if (!isAdmins) throw mess.admin
                 if (!text) throw 'Enter the enable/disable value, For Example ${prefix}ephemeral enable'
                 if (args[0] === 'enable') {
-                    await XeonBotInc.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    await Turbo.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 } else if (args[0] === 'disable') {
-                    await XeonBotInc.sendMessage(m.chat, { disappearingMessagesInChat: false }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                    await Turbo.sendMessage(m.chat, { disappearingMessagesInChat: false }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
                 }
             }
             break
@@ -1203,13 +1203,13 @@ case 'antilink':
                 if (!m.quoted) throw false
                 let { chat, fromMe, id, isBaileys } = m.quoted
                 if (!isBaileys) throw 'The message was not sent by a bot!'
-                XeonBotInc.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+                Turbo.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
             case 'bcgc': case 'bcgroup': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw `Where is the text?\n\nExample : ${prefix + command} hello guys, am back`
-                let getGroups = await XeonBotInc.groupFetchAllParticipating()
+                let getGroups = await Turbo.groupFetchAllParticipating()
                 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
                 let anu = groups.map(v => v.id)
                 reply(`Send Broadcast To ${anu.length} Group Chat, Finish Time ${anu.length * 1.5} second`)
@@ -1241,9 +1241,9 @@ case 'antilink':
                                     id: 'sc'
                                 }
                             }]
-                      fatihgans = fs.readFileSync('./XeonMedia/cheemspic.jpg')
+                      fatihgans = fs.readFileSync('./TurboMedia/slayer.jpg')
                       let txt = `「 Cheems Bot Broadcast 」\n\n${text}`
-                      XeonBotInc.send5ButImg(i, txt, XeonBotInc.user.name, fatihgans, btn)
+                      Turbo.send5ButImg(i, txt, Turbo.user.name, fatihgans, btn)
                     }
                 reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
             }
@@ -1266,9 +1266,9 @@ case 'antilink':
                                     id: 'owner'
                                 }
                             }]
-                      fatihgans = fs.readFileSync('./XeonMedia/cheemspic.jpg')
+                      fatihgans = fs.readFileSync('./TurboMedia/slayer.jpg')
                       let txt = `「 Cheems Bot Broadcast 」\n\n${text}`
-                      XeonBotInc.send5ButImg(yoi, txt, `Broadcast By ${global.pengguna}`, fatihgans, btn)
+                      Turbo.send5ButImg(yoi, txt, `Broadcast By ${global.pengguna}`, fatihgans, btn)
 		}
 		reply('Broadcast Success')
             }
@@ -1285,12 +1285,12 @@ case 'antilink':
                     teks += `⭔ @${i.userJid.split('@')[0]}\n`
                     teks += ` ┗━⭔ *Time :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⭔ *Status :* ${read ? 'Read' : 'Unread'}\n\n`
                 }
-                XeonBotInc.sendTextWithMentions(m.chat, teks, m)
+                Turbo.sendTextWithMentions(m.chat, teks, m)
             }
             break
             case 'q': case 'quoted': {
 		if (!m.quoted) return reply('Reply Message!!')
-		let wokwol = await XeonBotInc.serializeM(await m.getQuotedObj())
+		let wokwol = await Turbo.serializeM(await m.getQuotedObj())
 		if (!wokwol.quoted) return reply('The message you replied to does not contain a reply')
 		await wokwol.quoted.copyNForward(m.chat, true)
             }
@@ -1302,23 +1302,23 @@ case 'antilink':
                      let nama = store.messages[i].array[0].pushName
                      teks += `⬡ *Name :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
                  }
-                 XeonBotInc.sendTextWithMentions(m.chat, teks, m)
+                 Turbo.sendTextWithMentions(m.chat, teks, m)
              }
              break
                 case 'listgc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
                  let teks = `⬣ *GROUP CHAT LIST*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
-                     let metadata = await XeonBotInc.groupMetadata(i)
+                     let metadata = await Turbo.groupMetadata(i)
                      teks += `⬡ *Name :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Made :* ${moment(metadata.creation * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
                  }
-                 XeonBotInc.sendTextWithMentions(m.chat, teks, m)
+                 Turbo.sendTextWithMentions(m.chat, teks, m)
              }
              break
              case 'listonline': case 'onlinelist': case 'liston': {
                     let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
                     let online = [...Object.keys(store.presences[id]), botNumber]
-                    XeonBotInc.sendText(m.chat, 'Online List:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+                    Turbo.sendText(m.chat, 'Online List:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
              break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
@@ -1326,12 +1326,12 @@ case 'antilink':
             replay(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
-                let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                let encmedia = await Turbo.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
                 if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
                 let media = await quoted.download()
-                let encmedia = await XeonBotInc.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                let encmedia = await Turbo.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
                 throw `Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`
@@ -1359,7 +1359,7 @@ case 'antilink':
 		let [emoji1, emoji2] = text.split`+`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
-		    let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
+		    let encmedia = await Turbo.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
 		    await fs.unlinkSync(encmedia)
 		}
 	    }
@@ -1368,13 +1368,13 @@ case 'antilink':
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
                 replay(mess.wait)
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
                 let ran = await getRandom('.png')
                 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
                     fs.unlinkSync(media)
                     if (err) throw err
                     let buffer = fs.readFileSync(ran)
-                    XeonBotInc.sendMessage(m.chat, { image: buffer }, { quoted: m })
+                    Turbo.sendMessage(m.chat, { image: buffer }, { quoted: m })
                     fs.unlinkSync(ran)
                 })
             }
@@ -1384,9 +1384,9 @@ case 'antilink':
                 if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
                 replay(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
-                await XeonBotInc.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
+                await Turbo.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
                 await fs.unlinkSync(media)
             }
             break
@@ -1397,7 +1397,7 @@ case 'antilink':
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            XeonBotInc.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
+            Turbo.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
             break
             case 'tomp3': {
@@ -1408,7 +1408,7 @@ case 'antilink':
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            XeonBotInc.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Converted By ${XeonBotInc.user.name}.mp3`}, { quoted : m })
+            Turbo.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Converted By ${Turbo.user.name}.mp3`}, { quoted : m })
             }
             break
             case 'tovn': case 'toptt': {
@@ -1418,7 +1418,7 @@ case 'antilink':
             let media = await quoted.download()
             let { toPTT } = require('./lib/converter')
             let audio = await toPTT(media, 'mp4')
-            XeonBotInc.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
+            Turbo.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
             }
             break
             case 'togif': {
@@ -1426,16 +1426,16 @@ case 'antilink':
                 if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
                 replay(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
-                await XeonBotInc.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
+                await Turbo.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
                 await fs.unlinkSync(media)
             }
             break
 	        case 'tourl': {
                 replay(mess.wait)
 		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
                 if (/image/.test(mime)) {
                     let anu = await TelegraPh(media)
                     reply(util.format(anu))
@@ -1454,7 +1454,7 @@ case 'antilink':
 	    let apirnobg = ['q61faXzzR5zNU6cvcrwtUkRU','S258diZhcuFJooAtHTaPEn4T','5LjfCVAp4vVNYiTjq9mXJWHF','aT7ibfUsGSwFyjaPZ9eoJc61','BY63t7Vx2tS68YZFY6AJ4HHF','5Gdq1sSWSeyZzPMHqz7ENfi8','86h6d6u4AXrst4BVMD9dzdGZ','xp8pSDavAgfE5XScqXo9UKHF','dWbCoCb3TacCP93imNEcPxcL']
 	    let apinobg = apirnobg[Math.floor(Math.random() * apirnobg.length)]
 	    hmm = await './src/remobg-'+getRandom('')
-	    localFile = await XeonBotInc.downloadAndSaveMediaMessage(quoted, hmm)
+	    localFile = await Turbo.downloadAndSaveMediaMessage(quoted, hmm)
 	    outputFile = await './src/hremo-'+getRandom('.png')
 	    replay(mess.wait)
 	    remobg.removeBackgroundFromImageFile({
@@ -1465,7 +1465,7 @@ case 'antilink':
 	      scale: "100%",
 	      outputFile 
 	    }).then(async result => {
-	    XeonBotInc.sendMessage(m.chat, {image: fs.readFileSync(outputFile), caption: mess.success}, { quoted : m })
+	    Turbo.sendMessage(m.chat, {image: fs.readFileSync(outputFile), caption: mess.success}, { quoted : m })
 	    await fs.unlinkSync(localFile)
 	    await fs.unlinkSync(outputFile)
 	    })
@@ -1480,7 +1480,7 @@ case 'antilink':
                 for (let i of search.all) {
                     teks += `⭔ No : ${no++}\n⭔ Type : ${i.type}\n⭔ Video ID : ${i.videoId}\n⭔ Title : ${i.title}\n⭔ Views : ${i.views}\n⭔ Duration : ${i.timestamp}\n⭔ Upload At : ${i.ago}\n⭔ Author : ${i.author.name}\n⭔ Url : ${i.url}\n\n─────────────────\n\n`
                 }
-                XeonBotInc.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
             break
         case 'google': {
@@ -1511,15 +1511,15 @@ case 'antilink':
                     caption: `*-------「 GIMAGE SEARCH 」-------*
 🤠 *Query* : ${text}
 🔗 *Media Url* : ${images}`,
-                    footer: XeonBotInc.user.name,
+                    footer: Turbo.user.name,
                     buttons: buttons,
                     headerType: 4
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
         })
         }
         break
-	    case 'play': case 'ytplay': {
+	    case 'play': case 'song': {
                 if (!text) throw `Example : ${prefix + command} bts boy with luv`
                 let yts = require("yt-search")
                 let search = await yts(text)
@@ -1535,7 +1535,7 @@ case 'antilink':
 ⭔ Channel : ${anu.author.url}
 ⭔ Description : ${anu.description}
 `
-message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   XeonBotInc.waUploadToServer })
+message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   Turbo.waUploadToServer })
                 template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -1560,7 +1560,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                         }
                     }
                 }), { userJid: m.chat, quoted: m })
-                  XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                  Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
 	    case 'ytmp3': case 'ytaudio': {
@@ -1569,8 +1569,8 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                XeonBotInc.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
-                XeonBotInc.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
+                Turbo.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
+                Turbo.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
             case 'ytmp4': case 'ytvideo': {
@@ -1579,7 +1579,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(text, quality)
                 if (media.filesize >= 999999) return reply('Video size is too big '+util.format(media))
-                XeonBotInc.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
 	    case 'getmusic': {
@@ -1592,8 +1592,8 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(urls[text - 1], quality)
                 if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                XeonBotInc.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
-                XeonBotInc.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
+                Turbo.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
+                Turbo.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
             case 'getvideo': {
@@ -1606,7 +1606,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(urls[text - 1], quality)
                 if (media.filesize >= 100000) return reply('File Over Limit '+util.format(media))
-                XeonBotInc.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '360p'}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
             case 'pinterest': {
@@ -1614,20 +1614,20 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
 		let { pinterest } = require('./lib/scraper')
                 anu = await pinterest(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
-                XeonBotInc.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
             }
             break
             case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': {
                 replay(mess.wait)
-                XeonBotInc.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/anime/'+command, 'apikey') }, caption: `Download From ${text}` }, { quoted: m})
+                Turbo.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/anime/'+command, 'apikey') }, caption: `Download From ${text}` }, { quoted: m})
             }
             break
 	    case 'couplepp': case 'ppcouple': {
                 replay(mess.wait)
                 let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
                 let random = anu[Math.floor(Math.random() * anu.length)]
-                XeonBotInc.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
-                XeonBotInc.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
             }
 	    break
             case 'coffee': case 'kopi': {
@@ -1637,11 +1637,11 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let buttonMessage = {
                     image: { url: 'https://coffee.alexflipnote.dev/random' },
                     caption: `☕Random Coffee☕`,
-                    footer: XeonBotInc.user.name,
+                    footer: Turbo.user.name,
                     buttons: buttons,
                     headerType: 4
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case 'wallpaper': {
@@ -1655,11 +1655,11 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let buttonMessage = {
                     image: { url: result.image[0] },
                     caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.type}\n⭔ Detail : ${result.source}\n⭔ Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
-                    footer: XeonBotInc.user.name,
+                    footer: Turbo.user.name,
                     buttons: buttons,
                     headerType: 4
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case 'wikimedia': {
@@ -1673,11 +1673,11 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let buttonMessage = {
                     image: { url: result.image },
                     caption: `⭔ Title : ${result.title}\n⭔ Source : ${result.source}\n⭔ Media Url : ${result.image}`,
-                    footer: XeonBotInc.user.name,
+                    footer: Turbo.user.name,
                     buttons: buttons,
                     headerType: 4
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case 'quotesanimekdksksksksk': case 'quoteanimexllzlzkl': {
@@ -1693,7 +1693,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 2
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
 	        case 'motivasi': case 'dilanquote': case 'bucinquote': case 'katasenja': case 'puisi': {
@@ -1707,25 +1707,25 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 2
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case '3dchristmas': case '3ddeepsea': case 'americanflag': case '3dscifi': case '3drainbow': case '3dwaterpipe': case 'halloweenskeleton': case 'sketch': case 'bluecircuit': case 'space': case 'metallic': case 'fiction': case 'greenhorror': case 'transformer': case 'berry': case 'thunder': case 'magma': case '3dcrackedstone': case '3dneonlight': case 'impressiveglitch': case 'naturalleaves': case 'fireworksparkle': case 'matrix': case 'dropwater':  case 'harrypotter': case 'foggywindow': case 'neondevils': case 'christmasholiday': case '3dgradient': case 'blackpink': case 'gluetext': {
                 if (!text) throw `Example : ${prefix + command} text`
                 replay(mess.wait)
-                XeonBotInc.sendMessage(m.chat, { image: { url: api('zenz', '/textpro/' + command, { text: text }, 'apikey') }, caption: `Text Pro ${command}` }, { quoted: m})
+                Turbo.sendMessage(m.chat, { image: { url: api('zenz', '/textpro/' + command, { text: text }, 'apikey') }, caption: `Text Pro ${command}` }, { quoted: m})
 	    }
             break
 	    case 'shadow': case 'romantic': case 'smoke': case 'burnpapper': case 'naruto': case 'lovemsg': case 'grassmsg': case 'lovetext': case 'coffecup': case 'butterfly': case 'harrypotter': case 'retrolol': {
                 if (!text) throw 'where is the text?'
                 replay(mess.wait)
-                XeonBotInc.sendMessage(m.chat, { image: { url: api('zenz', '/photooxy/' + command, { text: text }, 'apikey') }, caption: `Photo Oxy ${command}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: api('zenz', '/photooxy/' + command, { text: text }, 'apikey') }, caption: `Photo Oxy ${command}` }, { quoted: m })
             }
             break
             case 'ffcover': case 'crossfire': case 'galaxy': case 'glass': case 'neon': case 'beach': case 'blackpink': case 'igcertificate': case 'ytcertificate': {
                 if (!text) throw 'No Query Text'
                 replay(mess.wait)
-                XeonBotInc.sendMessage(m.chat, { image: { url: api('zenz', '/ephoto/' + command, { text: text }, 'apikey') }, caption: `Ephoto ${command}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { image: { url: api('zenz', '/ephoto/' + command, { text: text }, 'apikey') }, caption: `Ephoto ${command}` }, { quoted: m })
             }
             break
             case 'keberuntungan11111': case 'luck211111': {
@@ -1733,7 +1733,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let [nama, tgl, bln, thn] = text.split`,`
                 let anu = await primbon.potensi_keberuntungan(nama, tgl, bln, thn)
                 if (anu.status == false) return reply(anu.message)
-                XeonBotInc.sendText(m.chat, `⭔ *Name :* ${anu.message.nama}\n⭔ *Born :* ${anu.message.tgl_lahir}\n⭔ *Results :* ${anu.message.result}`, m)
+                Turbo.sendText(m.chat, `⭔ *Name :* ${anu.message.nama}\n⭔ *Born :* ${anu.message.tgl_lahir}\n⭔ *Results :* ${anu.message.result}`, m)
             }
             break
             case 'memancing1111': case 'fishing1111': {
@@ -1741,7 +1741,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.primbon_memancing_ikan(tgl, bln, thn)
                 if (anu.status == false) return reply(anu.message)
-                XeonBotInc.sendText(m.chat, `⭔ *Date :* ${anu.message.tgl_memancing}\n⭔ *Results :* ${anu.message.result}\n⭔ *Notes :* ${anu.message.catatan}`, m)
+                Turbo.sendText(m.chat, `⭔ *Date :* ${anu.message.tgl_memancing}\n⭔ *Results :* ${anu.message.result}\n⭔ *Notes :* ${anu.message.catatan}`, m)
             }
             break
             case 'masasubur111111': case 'fertiletimekekskdk': {
@@ -1749,7 +1749,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let [tgl, bln, thn, siklus] = text.split`,`
                 let anu = await primbon.masa_subur(tgl, bln, thn, siklus)
                 if (anu.status == false) return reply(anu.message)
-                XeonBotInc.sendText(m.chat, `⭔ *Hasil :* ${anu.message.result}\n⭔ *Notes :* ${anu.message.catatan}`, m)
+                Turbo.sendText(m.chat, `⭔ *Hasil :* ${anu.message.result}\n⭔ *Notes :* ${anu.message.catatan}`, m)
             }
             break
             case 'zodiakjfjdkkd': case 'zodiackckdkdk': {
@@ -1784,14 +1784,14 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 
                 let anu = await primbon.zodiak(zodiac)
                 if (anu.status == false) return reply(anu.message)
-                XeonBotInc.sendText(m.chat, `⭔ *Zodiac :* ${anu.message.zodiak}\n⭔ *Number :* ${anu.message.nomor_keberuntungan}\n⭔ *Aroma :* ${anu.message.aroma_keberuntungan}\n⭔ *Planet :* ${anu.message.planet_yang_mengitari}\n⭔ *Flower :* ${anu.message.bunga_keberuntungan}\n⭔ *Color :* ${anu.message.warna_keberuntungan}\n⭔ *Rock :* ${anu.message.batu_keberuntungan}\n⭔ *Element :* ${anu.message.elemen_keberuntungan}\n⭔ *Zodiac Couple :* ${anu.message.pasangan_zodiak}\n⭔ *Notes :* ${anu.message.catatan}`, m)
+                Turbo.sendText(m.chat, `⭔ *Zodiac :* ${anu.message.zodiak}\n⭔ *Number :* ${anu.message.nomor_keberuntungan}\n⭔ *Aroma :* ${anu.message.aroma_keberuntungan}\n⭔ *Planet :* ${anu.message.planet_yang_mengitari}\n⭔ *Flower :* ${anu.message.bunga_keberuntungan}\n⭔ *Color :* ${anu.message.warna_keberuntungan}\n⭔ *Rock :* ${anu.message.batu_keberuntungan}\n⭔ *Element :* ${anu.message.elemen_keberuntungan}\n⭔ *Zodiac Couple :* ${anu.message.pasangan_zodiak}\n⭔ *Notes :* ${anu.message.catatan}`, m)
             }
             break
             case 'shiondkskskso': {
                 if (!text) throw `Example : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`
                 let anu = await primbon.shio(text)
                 if (anu.status == false) return reply(anu.message)
-                XeonBotInc.sendText(m.chat, `⭔ *Results :* ${anu.message}`, m)
+                Turbo.sendText(m.chat, `⭔ *Results :* ${anu.message}`, m)
             }
             break
 	        case 'tiktok': case 'tiktoknowm': {
@@ -1809,7 +1809,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 5
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case 'tiktokwm': case 'tiktokwatermark': {
@@ -1827,7 +1827,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 5
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case 'tiktokmp3': case 'tiktokaudio': {
@@ -1844,11 +1844,11 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 2
                 }
-                let msg = await XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                let msg = await Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
 		let { toAudio } = require('./lib/converter')
 		let nganu = await getBuffer(anu.result.nowatermark)
 		let cnvrt = await toAudio(nganu, 'mp4')
-                XeonBotInc.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
+                Turbo.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
@@ -1856,10 +1856,10 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
                     let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'apikey'))
-                    for (let media of anu.data) XeonBotInc.sendMedia(m.chat, media, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
+                    for (let media of anu.data) Turbo.sendMedia(m.chat, media, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
                 } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
                     let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'apikey'))
-                    XeonBotInc.sendMedia(m.chat, anu.media[0].url, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
+                    Turbo.sendMedia(m.chat, anu.media[0].url, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
                 }
             }
             break
@@ -1867,16 +1867,16 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/joox', { query: text }, 'apikey'))
-                let msg = await XeonBotInc.sendImage(m.chat, anu.result.img, `⭔ Title : ${anu.result.lagu}\n⭔ Album : ${anu.result.album}\n⭔ Singer : ${anu.result.penyanyi}\n⭔ Publish : ${anu.result.publish}\n⭔ Lyrics :\n${anu.result.lirik.result}`, m)
-                XeonBotInc.sendMessage(m.chat, { audio: { url: anu.result.mp4aLink }, mimetype: 'audio/mpeg', fileName: anu.result.lagu+'.m4a' }, { quoted: msg })
+                let msg = await Turbo.sendImage(m.chat, anu.result.img, `⭔ Title : ${anu.result.lagu}\n⭔ Album : ${anu.result.album}\n⭔ Singer : ${anu.result.penyanyi}\n⭔ Publish : ${anu.result.publish}\n⭔ Lyrics :\n${anu.result.lirik.result}`, m)
+                Turbo.sendMessage(m.chat, { audio: { url: anu.result.mp4aLink }, mimetype: 'audio/mpeg', fileName: anu.result.lagu+'.m4a' }, { quoted: msg })
             }
             break
             case 'soundcloud': case 'scdl': {
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'apikey'))
-                let msg = await XeonBotInc.sendImage(m.chat, anu.result.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
-                XeonBotInc.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
+                let msg = await Turbo.sendImage(m.chat, anu.result.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
+                Turbo.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
             break
 	        case 'twitdl': case 'twitter': {
@@ -1893,7 +1893,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 5
                 }
-                XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
             case 'twittermp3': case 'twitteraudio': {
@@ -1910,22 +1910,22 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                     buttons: buttons,
                     headerType: 4
                 }
-                let msg = await XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
-                XeonBotInc.sendMessage(m.chat, { audio: { url: anu.result.audio } }, { quoted: msg })
+                let msg = await Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+                Turbo.sendMessage(m.chat, { audio: { url: anu.result.audio } }, { quoted: msg })
             }
             break
 	        case 'fbdlkxkxkx': case 'fbkckxkxk': case 'facebookjfkddkk': {
                 if (!text) throw 'Enter Query Link!'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'apikey'))
-                XeonBotInc.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `⭔ Title : ${anu.result.title}`}, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `⭔ Title : ${anu.result.title}`}, { quoted: m })
             }
             break
 	        case 'pindlkxkdksk': case 'pinterestdlksksks': {
                 if (!text) throw 'Enter Query Link!'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/pinterestdl', { url: text }, 'apikey'))
-                XeonBotInc.sendMessage(m.chat, { video: { url: anu.result }, caption: `Download From ${text}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: anu.result }, caption: `Download From ${text}` }, { quoted: m })
             }
             break
 
@@ -1948,14 +1948,14 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
 ⭔ Url : ${anu.media[0]}
 To download media, please click one of the buttons below or enter the ytmp3/ytmp4 command with the url above
 `,
-			footer: XeonBotInc.user.name,
+			footer: Turbo.user.name,
 			buttons,
 			headerType: 4
 		    }
-		    XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+		    Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
 		} else if (anu.type == 'image') {
 		    anu.media.map(async (url) => {
-		        XeonBotInc.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n⭔ Author : ${anu.author.name}\n⭔ Like : ${anu.like}\n⭔ Caption : ${anu.caption}` }, { quoted: m })
+		        Turbo.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n⭔ Author : ${anu.author.name}\n⭔ Like : ${anu.like}\n⭔ Caption : ${anu.caption}` }, { quoted: m })
 		    })
 		}
 	    }
@@ -1965,29 +1965,29 @@ To download media, please click one of the buttons below or enter the ytmp3/ytmp
         let { ringtone } = require('./lib/scraper')
 		let anu = await ringtone(text)
 		let result = anu[Math.floor(Math.random() * anu.length)]
-		XeonBotInc.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
+		Turbo.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
 	    }
 	    break
 		case 'iqra': {
 		oh = `Example : ${prefix + command} 3\n\Available IQRA : 1,2,3,4,5,6`
 		if (!text) throw oh
 		yy = await getBuffer(`https://islamic-api-indonesia.herokuapp.com/api/data/pdf/iqra${text}`)
-		XeonBotInc.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => reply(oh))
+		Turbo.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => reply(oh))
 		}
 		break
 		case 'juzamma': {
 		if (args[0] === 'pdf') {
 		replay(mess.wait)
-		XeonBotInc.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pdf'}, mimetype: 'application/pdf', fileName: 'juz-amma-arab-latin-indonesia.pdf'}, {quoted:m})
+		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pdf'}, mimetype: 'application/pdf', fileName: 'juz-amma-arab-latin-indonesia.pdf'}, {quoted:m})
 		} else if (args[0] === 'docx') {
 		replay(mess.wait)
-		XeonBotInc.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.docx'}, mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: 'juz-amma-arab-latin-indonesia.docx'}, {quoted:m})
+		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.docx'}, mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: 'juz-amma-arab-latin-indonesia.docx'}, {quoted:m})
 		} else if (args[0] === 'pptx') {
 		replay(mess.wait)
-		XeonBotInc.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pptx'}, mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', fileName: 'juz-amma-arab-latin-indonesia.pptx'}, {quoted:m})
+		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pptx'}, mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', fileName: 'juz-amma-arab-latin-indonesia.pptx'}, {quoted:m})
 		} else if (args[0] === 'xlsx') {
 		replay(mess.wait)
-		XeonBotInc.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx'}, {quoted:m})
+		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx'}, {quoted:m})
 		} else {
 		reply(`What format do you want? ? Example : ${prefix + command} pdf
 
@@ -2041,7 +2041,7 @@ ${id}`)
 
 ( Q.S ${res.result.data.surah.name.transliteration.id} : ${res.result.data.number.inSurah} )`
 		reply(txt)
-		XeonBotInc.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
+		Turbo.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
 		}
 		break
 		case 'tafsirsurah': {
@@ -2079,13 +2079,13 @@ break*/
                 if (/squirrel/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
                 if (/audio/.test(mime)) {
                 replay(mess.wait)
-                let media = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
+                let media = await Turbo.downloadAndSaveMediaMessage(quoted)
                 let ran = getRandom('.mp3')
                 exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
                 fs.unlinkSync(media)
                 if (err) return reply(err)
                 let buff = fs.readFileSync(ran)
-                XeonBotInc.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted : m })
+                Turbo.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted : m })
                 fs.unlinkSync(ran)
                 })
                 } else reply(`Reply to the audio you want to change with caption *${prefix + command}*`)
@@ -2123,7 +2123,7 @@ break*/
 Info: *bold* hash is locked
 ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}
 `.trim()
-                XeonBotInc.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
+                Turbo.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
             }
             break
             case 'lockcmd': {
@@ -2153,7 +2153,7 @@ View list of message with ${prefix}listmsg`)
                 if (!text) throw `Example : ${prefix + command} msg name\n\nView message list with ${prefix}listmsg`
                 let msgs = global.db.database
                 if (!(text.toLowerCase() in msgs)) throw `'${text}' not registered in message list`
-                XeonBotInc.copyNForward(m.chat, msgs[text.toLowerCase()], true)
+                Turbo.copyNForward(m.chat, msgs[text.toLowerCase()], true)
             }
             break
             case 'listmsg': {
@@ -2187,7 +2187,7 @@ View list of message with ${prefix}listmsg`)
                                     id: 'start'
                                 }
                             }]
-                XeonBotInc.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await XeonBotInc.getName(m.sender)} Welcome To Anonymous Chat\n\nClick The Button Below To Find A Partner\`\`\``, XeonBotInc.user.name, m)
+                Turbo.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await Turbo.getName(m.sender)} Welcome To Anonymous Chat\n\nClick The Button Below To Find A Partner\`\`\``, Turbo.user.name, m)
             }
 			break
 case 'sendkontak': case 'sendcontact': {
@@ -2198,13 +2198,13 @@ case 'sendkontak': case 'sendcontact': {
                     let buttons = [
                         { buttonId: 'start', buttonText: { displayText: '🚶Start🚶' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
+                    await Turbo.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
                     throw false
                 }
-                let profile = await XeonBotInc.profilePictureUrl(room.b)
-                let status = await XeonBotInc.fetchStatus(room.b)
-                let msg = await XeonBotInc.sendImage(room.a, profile, `Name : ${await XeonBotInc.getName(room.b)}\nBio : ${status.status}\nUser : @${room.b.split("@")[0]}`, m, { mentions: [room.b] })
-                XeonBotInc.sendContact(room.a, [room.b.split("@")[0]], msg)
+                let profile = await Turbo.profilePictureUrl(room.b)
+                let status = await Turbo.fetchStatus(room.b)
+                let msg = await Turbo.sendImage(room.a, profile, `Name : ${await Turbo.getName(room.b)}\nBio : ${status.status}\nUser : @${room.b.split("@")[0]}`, m, { mentions: [room.b] })
+                Turbo.sendContact(room.a, [room.b.split("@")[0]], msg)
             }
             break
             case 'keluar': case 'leave': {
@@ -2215,12 +2215,12 @@ case 'sendkontak': case 'sendcontact': {
                     let buttons = [
                         { buttonId: 'start', buttonText: { displayText: '🚶Start🚶' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
+                    await Turbo.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
                     throw false
                 }
                 reply('Ok')
                 let other = room.other(m.sender)
-                if (other) await XeonBotInc.sendText(other, `_Partner Has Left Anonymous Session_`, m)
+                if (other) await Turbo.sendText(other, `_Partner Has Left Anonymous Session_`, m)
                 delete this.anonymous[room.id]
                 if (command === 'leave') break
             }
@@ -2231,7 +2231,7 @@ case 'sendkontak': case 'sendcontact': {
                     let buttons = [
                         { buttonId: 'stop', buttonText: { displayText: '😏Stop😏' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `_You Are Still In Anonymous Session, Press The Button Below To Terminate Your Anonymous Session_`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `_You Are Still In Anonymous Session, Press The Button Below To Terminate Your Anonymous Session_`, Turbo.user.name, m)
                     throw false
                 }
                 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
@@ -2240,10 +2240,10 @@ case 'sendkontak': case 'sendcontact': {
                         { buttonId: 'next', buttonText: { displayText: '🍃Skip🍃' }, type: 1 },
                         { buttonId: 'stop', buttonText: { displayText: '😏Stop😏' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(room.a, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(room.a, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, Turbo.user.name, m)
                     room.b = m.sender
                     room.state = 'CHATTING'
-                    await XeonBotInc.sendButtonText(room.b, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(room.b, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, Turbo.user.name, m)
                 } else {
                     let id = + new Date
                     this.anonymous[id] = {
@@ -2261,7 +2261,7 @@ case 'sendkontak': case 'sendcontact': {
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: '😏Stop😏' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `_Please Wait, Looking For A Partner_`, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `_Please Wait, Looking For A Partner_`, Turbo.user.name, m)
                 }
                 break
             }
@@ -2273,11 +2273,11 @@ case 'sendkontak': case 'sendcontact': {
                     let buttons = [
                         { buttonId: 'start', buttonText: { displayText: '🚶Start🚶' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `\`\`\`You Are Not In Anonymous Session, Press The Button To Find A Partner\`\`\``)
+                    await Turbo.sendButtonText(m.chat, buttons, `\`\`\`You Are Not In Anonymous Session, Press The Button To Find A Partner\`\`\``)
                     throw false
                 }
                 let other = romeo.other(m.sender)
-                if (other) await XeonBotInc.sendText(other, `\`\`\`Partner Has Left Anonymous Session\`\`\``, m)
+                if (other) await Turbo.sendText(other, `\`\`\`Partner Has Left Anonymous Session\`\`\``, m)
                 delete this.anonymous[romeo.id]
                 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
                 if (room) {
@@ -2285,10 +2285,10 @@ case 'sendkontak': case 'sendcontact': {
                         { buttonId: 'next', buttonText: { displayText: '🍃Skip🍃' }, type: 1 },
                         { buttonId: 'keluar', buttonText: { displayText: '😏Stop😏' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(room.a, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(room.a, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, Turbo.user.name, m)
                     room.b = m.sender
                     room.state = 'CHATTING'
-                    await XeonBotInc.sendButtonText(room.b, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(room.b, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, Turbo.user.name, m)
                 } else {
                     let id = + new Date
                     this.anonymous[id] = {
@@ -2306,19 +2306,19 @@ case 'sendkontak': case 'sendcontact': {
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: '😏Stop😏' }, type: 1 }
                     ]
-                    await XeonBotInc.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, XeonBotInc.user.name, m)
+                    await Turbo.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, Turbo.user.name, m)
                 }
                 break
             }
             case 'public': {
                 if (!isCreator) throw mess.owner
-                XeonBotInc.public = true
+                Turbo.public = true
                 reply('Successfully Changed To Public Usage')
             }
             break
             case 'self': {
                 if (!isCreator) throw mess.owner
-                XeonBotInc.public = false
+                Turbo.public = false
                 reply('Successfully Changed To Self Usage')
             }
             break
@@ -2370,19 +2370,19 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': {
-            XeonBotInc.sendContact(m.chat, global.pemilik, m)
-           const devsound = fs.readFileSync('./XeonMedia/botdev.mp3') //u can change the music in XeonMedia folder
-           XeonBotInc.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
+            Turbo.sendContact(m.chat, global.pemilik, m)
+           const devsound = fs.readFileSync('./TurboMedia/owner.mp3') //u can change the music in TurboMedia folder
+           Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
             break
                     case 'bug': case 'report': {
                     	if(!text) throw `Enter The Bug Example\n\n${command} Menu Error `
-                    	XeonBotInc.sendMessage(`916380260672@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
+                    	Turbo.sendMessage(`916380260672@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
 Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break 
-case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'cheems': case 'doge':{
+case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                 anu = `Hi ${pushname}
 Slayer-Bot With You Forever!! 💖🤚`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -2390,7 +2390,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2421,7 +2421,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 }
 break
 
@@ -2434,7 +2434,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Hi 🤚 ${pushname}
 How Are You? 😊
 
@@ -2481,7 +2481,7 @@ Please Select Button Below
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 }
 break
 case 'command':{
@@ -2596,7 +2596,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
           listType: 1
                 }
             }), {})
-            XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
 case 'grupmenu': {
@@ -2620,7 +2620,7 @@ case 'grupmenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2636,7 +2636,7 @@ case 'grupmenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'downloadmenu': {
@@ -2662,7 +2662,7 @@ case 'downloadmenu': {
                         hydratedTemplate: {
                             hydratedContentText: okemenu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2678,7 +2678,7 @@ case 'downloadmenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break 
             case 'searchmenu': {
@@ -2699,7 +2699,7 @@ case 'downloadmenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2715,7 +2715,7 @@ case 'downloadmenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'randommenu': {
@@ -2730,7 +2730,7 @@ case 'randommenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2746,7 +2746,7 @@ case 'randommenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'funmenu': {
@@ -2762,7 +2762,7 @@ case 'funmenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2778,7 +2778,7 @@ case 'funmenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'voicemenu': {
@@ -2802,7 +2802,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2818,7 +2818,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'religionmenukdksoejdjj': {
@@ -2836,7 +2836,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2852,7 +2852,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'horoscopemenukcodk': {
@@ -2894,7 +2894,7 @@ case 'horoscopemenukcodk': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2910,7 +2910,7 @@ case 'horoscopemenukcodk': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'convertmenu': {
@@ -2932,7 +2932,7 @@ case 'convertmenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2948,7 +2948,7 @@ case 'convertmenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'nocategorymenu': {
@@ -2972,7 +2972,7 @@ case 'nocategorymenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -2988,7 +2988,7 @@ case 'nocategorymenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'databasemenu': {
@@ -3009,7 +3009,7 @@ case 'databasemenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -3025,7 +3025,7 @@ case 'databasemenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'anonymouschatmenu': {
@@ -3041,7 +3041,7 @@ case 'anonymouschatmenu': {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -3057,7 +3057,7 @@ case 'anonymouschatmenu': {
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'sistemmenu': {
@@ -3073,7 +3073,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -3089,7 +3089,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
   case 'ownermenu': {
@@ -3110,7 +3110,7 @@ break
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -3126,7 +3126,7 @@ break
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
   case 'allmenu': {
@@ -3251,7 +3251,7 @@ break
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./XeonMedia/cheemspic.jpg')},
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -3267,7 +3267,7 @@ break
                         }
                     }
                 }), { userJid: m.chat })
-                XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
 case 'tqtt': 
@@ -3338,7 +3338,7 @@ break
 		    if (m.isBaileys) return
 		    let msgs = global.db.database
 		    if (!(budy.toLowerCase() in msgs)) return
-		    XeonBotInc.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+		    Turbo.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 		}
         }
         
