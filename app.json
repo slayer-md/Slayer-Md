@@ -1,8 +1,8 @@
 {
-  "name": "CheemsBot-MD",
+  "name": "Slayer-MD",
   "description": "whatsapp md bot build with nodejs",
-  "repository": "https://github.com/Legend830/Slayer-Bot",
-  "logo": "https://pbs.twimg.com/media/FO7fojOakAAyYgt?format=jpg&name=900x900",
+  "repository": "https://github.com/TURBOHYPER/Slayer-Bot",
+  "logo": "https://telegra.ph/file/3647471c30b58308249ca.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
   "buildpacks": [
     {
