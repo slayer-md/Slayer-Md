@@ -100,11 +100,11 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 	
 //[target]\\
 	const reply = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` ī.am/ꪶ⇾🪀☻᳡₉ͭ₁ͦ₆ͯ₃ͥ₈ͨ₀ͭ₂ͧ₆ͬ₀ᷨ₆ͦ₇₂🇮🇳⃟ꫂ⁩⁩⁩ `, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ${global.botnma}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botnma}`,"body": ` ī.am/ꪶ⇾🪀☻᳡₉ͭ₁ͦ₆ͯ₃ͥ₈ͨ₀ͭ₂ͧ₆ͬ₀ᷨ₆ͦ₇₂🇮🇳⃟ꫂ⁩⁩⁩ `, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ${global.botnma}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
         }
 try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -869,7 +869,7 @@ Ciee Whats Going On💖👀`
                 reply(mess.success)
                 }
                 break
-           case 'setppgroup': case 'setgrouppp': case 'setgcpp': case 'setppgrup': case 'setppgc': {
+           case 'setppgroup': case 'ppgc': case 'setgcpp': case 'setppgrup': case 'setppgc': {
                 if (!m.isGroup) throw mess.group
                 if (!isAdmins) throw mess.admin
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
@@ -1296,6 +1296,7 @@ case 'antilink':
             }
 	    break
             case 'listpc': {
+            	 if (!isCreator) throw mess.owner
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
                  let teks = `⬣ *PERSONAL CHAT LIST*\n\nTotal Chat : ${anu.length} Chat\n\n`
                  for (let i of anu) {
@@ -1306,6 +1307,7 @@ case 'antilink':
              }
              break
                 case 'listgc': {
+                  if (!isCreator) throw mess.owner
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
                  let teks = `⬣ *GROUP CHAT LIST*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
@@ -1400,7 +1402,7 @@ case 'antilink':
             Turbo.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
             break
-            case 'tomp3': {
+            case 'tomp3' case 'mp3': {
             if (/document/.test(mime)) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`
             if (!quoted) throw `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`
@@ -1544,7 +1546,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                             hydratedFooterText: `Playing To ${text}`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: '🥬Video Source Link🥬',
+                                    displayText: '🌊Video Source Link🌊',
                                     url: `${anu.url}`
                                 }
                             }, {
@@ -1555,7 +1557,12 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                                 },{quickReplyButton: {
                                     displayText: '🎥VIdeo🎥',
                                     id: `ytmp4 ${anu.url} 360p`
-                                }
+                                     }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '🔍Youtube Search',
+                                    id: `getmusic ${anu.url} 320kbps`
+                                    }
                             }]
                         }
                     }
@@ -1569,7 +1576,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                Turbo.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
+                replay(mess.wait)
                 Turbo.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
@@ -1851,7 +1858,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 Turbo.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	        case 'instagram': case 'ig': case 'igdl': {
+	        case 'instagram': case 'ig': case 'igdl': case 'insta': {
                 if (!text) throw 'Enter Query Url!'
                 replay(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
@@ -3129,7 +3136,7 @@ break
   	anu = `
   *All Menu*
   
-  ꪶ💖Group Menu💖ꫂ
+  ꪶGroup Menuꫂ
   ➙ ${prefix}grouplink
   ➙ ${prefix}ephemeral [option]
   ➙ ${prefix}setgrouppp
@@ -3142,7 +3149,7 @@ break
   ➙ ${prefix}promote @user
   ➙ ${prefix}demote @user
   
-  ꪶ💖Download Menu💖ꫂ
+  ꪶDownload Menuꫂ
   ➙ ${prefix}tiktoknowm [url]
   ➙ ${prefix}tiktokwm [url]
   ➙ ${prefix}tiktokmp3 [url]
@@ -3157,7 +3164,7 @@ break
   ➙ ${prefix}getmusic [query]
   ➙ ${prefix}getvideo [query
   
-  ꪶ💖Search Menu💖ꫂ
+  ꪶSearch Menuꫂ
   ➙ ${prefix}play [query]
   ➙ ${prefix}yts [query]
   ➙ ${prefix}google [query]
@@ -3167,16 +3174,16 @@ break
   ➙ ${prefix}wikimedia [query]
   ➙ ${prefix}ytsearch [query]
   
-  ꪶ💖Random Menu💖ꫂ
+  ꪶRandom Menuꫂ
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
   
-  ꪶ💖Fun Menu💖ꫂ
+  ꪶFun Menuꫂ
   ➙ ${prefix}couple
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}math [mode]  
   
-  ꪶ💖Voice Changer Menu💖ꫂ
+  ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
   ➙ ${prefix}blown
   ➙ ${prefix}deep
@@ -3189,7 +3196,7 @@ break
   ➙ ${prefix}slow
   ➙ ${prefix}squirrel
    
-  ꪶ💖Convert Menu💖ꫂ
+  ꪶConvert Menuꫂ
   ➙ ${prefix}toimage
   ➙ ${prefix}removebg
   ➙ ${prefix}sticker
@@ -3200,7 +3207,7 @@ break
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
   
-  ꪶ💖Misc Menu💖ꫂ
+  ꪶMisc Menuꫂ
   ➙ ${prefix}ping
   ➙ ${prefix}owner
   ➙ ${prefix}donate
@@ -3213,7 +3220,7 @@ break
   ➙ ${prefix}listonline
   ➙ ${prefix}report (report bug to owner)
   
-  ꪶ💖Database Menu💖ꫂ
+  ꪶDatabase Menuꫂ
   ➙ ${prefix}setcmd
   ➙ ${prefix}listcmd
   ➙ ${prefix}delcmd
@@ -3223,17 +3230,17 @@ break
   ➙ ${prefix}getmsg
   ➙ ${prefix}delmsg
   
-  ꪶ💖Anonymous Menu💖ꫂ
+  ꪶAnonymous Menuꫂ
   ➙ ${prefix}start ( Start Chat )
   ➙ ${prefix}next ( Next user )
   ➙ ${prefix}stop ( stop Anonymous chat )
   
-  ꪶ💖System Menu💖ꫂ
+  ꪶSystem Menuꫂ
   ➙ ${prefix}antilink On/Off
   ➙ ${prefix}mute On/Off
   ➙ ${prefix}antiwame On/Off
   
-  ꪶ💖Owner Menu💖ꫂ
+  ꪶOwner Menuꫂ
   ➙ ${prefix}chat [option]
   ➙ ${prefix}join [link]
   ➙ ${prefix}leave
@@ -3265,6 +3272,25 @@ break
                 }), { userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+break
+case 'setlogo': case 'setthumb': {
+if (!isCreator) return reply(mess.owner)
+if (!quoted) return reply("*Reply to Image*")
+if (!/image/.test(mime)) return reply("*Reply to Image*")
+if (/webp/.test(mime)) return reply("*Reply to Image*")
+let delb = await Turbo.downloadMediaMessage(quoted)
+fs.writeFileSync(`./TurboMedia/slayer.jpg`, delb)
+fs.writeFileSync(`./TurboMedia/thumb.jpg`, delb)
+reply(mess.success)
+}
+break
+case 'setvideo': case 'setmenuvideo': {
+if (!isCreator) return reply(mess.owner)
+if (!/video/.test(mime) && !/audio/.test(mime)) return reply("*Reply to Video*")
+let delb = await Turbo.downloadMediaMessage(quoted)
+fs.writeFileSync(`./menuvideo.mp4`, delb)
+reply(mess.success)
+}
 break
 case 'tqtt': 
 reply(`Thanks to
