@@ -1518,7 +1518,7 @@ case 'antilink':
         }
         break
 	    case 'play': case 'song': {
-                if (!text) throw `Example : ${prefix + command} bts boy with luv`
+                if (!text) throw `Example : ${prefix + command} look at me`
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
@@ -1539,7 +1539,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                         hydratedTemplate: {
                             imageMessage: message.imageMessage,
                             hydratedContentText: ngen,
-                            hydratedFooterText: `Playing To ${text}`,
+                            hydratedFooterText: `${global.botnma}`,
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: '🌊Video Source Link🌊',
@@ -2097,6 +2097,7 @@ break*/
                 }
                 break
             case 'setcmd': {
+            	if (!isCreator) throw mess.owner
                 if (!m.quoted) throw 'Reply Message!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
                 if (!text) throw `Untuk Command Apa?`
@@ -2113,6 +2114,7 @@ break*/
             }
             break
             case 'delcmd': {
+            	if (!isCreator) throw mess.owner
                 let hash = m.quoted.fileSha256.toString('base64')
                 if (!hash) throw `No hashes`
                 if (global.db.sticker[hash] && global.db.sticker[hash].locked) throw 'You have no permission to delete this sticker command'              
@@ -2121,6 +2123,7 @@ break*/
             }
             break
             case 'listcmd': {
+            	if (!isCreator) throw mess.owner
                 let teks = `
 *Hash List*
 Info: *bold* hash is locked
@@ -2140,6 +2143,7 @@ ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. 
             }
             break
             case 'addmsg': {
+            	if (!isCreator) throw mess.owner
                 if (!m.quoted) throw 'Reply Message You Want To Save In Database'
                 if (!text) throw `Example : ${prefix + command} message name`
                 let msgs = global.db.database
@@ -2153,6 +2157,7 @@ View list of message with ${prefix}listmsg`)
             }
             break
             case 'getmsg': {
+            	if (!isCreator) throw mess.owner
                 if (!text) throw `Example : ${prefix + command} msg name\n\nView message list with ${prefix}listmsg`
                 let msgs = global.db.database
                 if (!(text.toLowerCase() in msgs)) throw `'${text}' not registered in message list`
@@ -2160,6 +2165,7 @@ View list of message with ${prefix}listmsg`)
             }
             break
             case 'listmsg': {
+            	if (!isCreator) throw mess.owner
                 let msgs = JSON.parse(fs.readFileSync('./src/database.json'))
 	        let seplit = Object.entries(global.db.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = '「 LIST DATABASE 」\n\n'
@@ -2170,6 +2176,7 @@ View list of message with ${prefix}listmsg`)
 	    }
 	    break
             case 'delmsg': case 'deletemsg': {
+            if (!isCreator) throw mess.owner
 	        let msgs = global.db.database
 	        if (!(text.toLowerCase() in msgs)) return reply(`'${text}' not listed in the message list`)
 		delete msgs[text.toLowerCase()]
@@ -2387,16 +2394,17 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
                     break 
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                 anu = `Hi ${pushname}
-❏「 INFO BOT 」
 
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-`
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -2444,15 +2452,16 @@ let contentText = `Hi 🤚 ${pushname}
 How Are You? 😊
 
 
-❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 
 
 Please Select Button Below
@@ -2496,15 +2505,16 @@ case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
                     title: `Hi ${pushname}`,
-                    description: `❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}`,
+                    description: `╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣`,
                     buttonText: "Click Here",
                     footerText: "_Slayer-Bot_",
                     listType: "SINGLE_SELECT",
@@ -2617,15 +2627,16 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
             break
 case 'grupmenu': {
 	            anu = `
-  ❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+  ╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 
     *Group Menu*
   
@@ -2667,15 +2678,16 @@ case 'grupmenu': {
 break
 case 'downloadmenu': {
 	okemenu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Downloader Menu*
   
@@ -2719,15 +2731,16 @@ case 'downloadmenu': {
             break 
             case 'searchmenu': {
             	anu = `
-            ❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
             
               *Search Menu*
   
@@ -2766,15 +2779,16 @@ case 'downloadmenu': {
 break
 case 'randommenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Random Menu*
   
@@ -2807,15 +2821,16 @@ case 'randommenu': {
 break
 case 'funmenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Fun Menu*
   
@@ -2849,15 +2864,16 @@ case 'funmenu': {
 break
 case 'voicemenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Voice Changer Menu*
 	
@@ -2899,15 +2915,16 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'religionmenukdksoejdjj': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Religion Menu*
 	
@@ -2943,15 +2960,16 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'horoscopemenukcodk': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Horoscope Menu*
   
@@ -3011,15 +3029,16 @@ case 'horoscopemenukcodk': {
 break
 case 'convertmenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Convert Menu*
   
@@ -3059,15 +3078,16 @@ case 'convertmenu': {
 break
 case 'nocategorymenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Misc Menu*
   
@@ -3109,15 +3129,16 @@ case 'nocategorymenu': {
 break
 case 'databasemenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Database Menu*
   
@@ -3156,15 +3177,16 @@ case 'databasemenu': {
 break
 case 'anonymouschatmenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*Anonymous Menu*
 	
@@ -3198,15 +3220,16 @@ case 'anonymouschatmenu': {
 break
 case 'sistemmenu': {
 	anu = `
-	❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 	
 	*System Menu*
 	
@@ -3240,15 +3263,16 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
   case 'ownermenu': {
   	anu = `
-  ❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
 
   *Owner Menu*
   
@@ -3287,15 +3311,16 @@ break
 break
   case 'allmenu': {
   	anu = `
-  ❏「 INFO BOT 」
-
-𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
-𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
-𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
   
   *All Menu*
   
