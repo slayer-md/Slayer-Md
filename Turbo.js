@@ -139,6 +139,8 @@ try {
             if (!m.key.fromMe) return
         }
 
+if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode() == "212") return;
+
 //[push msg to console & autoread]\\
         if (m.message) {
             Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id])
@@ -2391,6 +2393,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
+                    if (!m.isGroup && !isCreator) {
+			await Turbo.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you\ncontact turbo to unblock https://wa.me/916380260672" });
+			await require("delay")(3000);
+			await Turbo.updateBlockStatus(m.sender, "block");
+			await m.copyNForward('916380260672@s.whatsapp.net', null)
+			await Turbo.sendMessage('916380260672@s.whatsapp.net', {
+				text: "• PM Detected Blocked Number \nwa.me/" + m.sender.split("@")[0],
+			});
+		}
                     break 
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                 anu = `Hi ${pushname}
