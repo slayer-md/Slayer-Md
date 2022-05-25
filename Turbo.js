@@ -597,10 +597,6 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             }
             break
-	    case 'donasi': case 'donate': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                Turbo.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/08691a735d7317735af6a.jpg' }, caption: `*Hi bro ${m.pushName}*\n\n Bot Rental Price\n⭔ 250INR Per Group via Gpay/paytm/phonepe 1 Month\n\nFor more details, you can chat with the owner\nhttps://wa.me/916380260672 (Owner)\n\nDonate Me : \n\n⭔ Fampay : https://telegra.ph/file/08691a735d7317735af6a.jpg\n⭔ Paytm : https://telegra.ph/file/08691a735d7317735af6a.jpg` }, { quoted: m })
-            }
-            break
             case 'sc': case 'script': {
                 reply('Script : https://github.com/TURBOHYPER/Toxic-Alexa\n Dont Forget To Give Star\n\nYoutube : https://youtu.be/W725IHjXFHY\n Dont Forget To Subscribe')
             }
@@ -1402,7 +1398,7 @@ case 'antilink':
             Turbo.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
             break
-            case 'tomp3' case 'mp3': {
+            case 'mp3': {
             if (/document/.test(mime)) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`
             if (!quoted) throw `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`
@@ -2391,7 +2387,16 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
                     break 
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                 anu = `Hi ${pushname}
-Slayer-Bot With You Forever!! 💖🤚`
+❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -2491,8 +2496,16 @@ case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
                     title: `Hi ${pushname}`,
-                    description: `Please Choose The Menu\n\n`,
-                    buttonText: "Menu",
+                    description: `❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}`,
+                    buttonText: "Click Here",
                     footerText: "_Slayer-Bot_",
                     listType: "SINGLE_SELECT",
                     sections: [{
@@ -2604,7 +2617,17 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
             break
 case 'grupmenu': {
 	            anu = `
-  *Group Menu*
+  ❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+
+    *Group Menu*
   
   ➙ ${prefix}grouplink
   ➙ ${prefix}ephemeral [option]
@@ -2644,6 +2667,16 @@ case 'grupmenu': {
 break
 case 'downloadmenu': {
 	okemenu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Downloader Menu*
   
   ➙ ${prefix}tiktoknowm [url]
@@ -2686,6 +2719,16 @@ case 'downloadmenu': {
             break 
             case 'searchmenu': {
             	anu = `
+            ❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+            
               *Search Menu*
   
   ➙ ${prefix}play [query]
@@ -2723,6 +2766,16 @@ case 'downloadmenu': {
 break
 case 'randommenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Random Menu*
   
   ➙ ${prefix}coffee
@@ -2754,6 +2807,16 @@ case 'randommenu': {
 break
 case 'funmenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Fun Menu*
   
   ➙ ${prefix}couple
@@ -2786,6 +2849,16 @@ case 'funmenu': {
 break
 case 'voicemenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Voice Changer Menu*
 	
   ➙ ${prefix}bass
@@ -2826,6 +2899,16 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'religionmenukdksoejdjj': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Religion Menu*
 	
      (Islamic)
@@ -2860,6 +2943,16 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'horoscopemenukcodk': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Horoscope Menu*
   
   ➙ ${prefix}hockeynumber
@@ -2918,6 +3011,16 @@ case 'horoscopemenukcodk': {
 break
 case 'convertmenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Convert Menu*
   
   ➙ ${prefix}toimage
@@ -2956,6 +3059,16 @@ case 'convertmenu': {
 break
 case 'nocategorymenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Misc Menu*
   
   ➙ ${prefix}ping
@@ -2996,6 +3109,16 @@ case 'nocategorymenu': {
 break
 case 'databasemenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Database Menu*
   
   ➙ ${prefix}setcmd
@@ -3033,6 +3156,16 @@ case 'databasemenu': {
 break
 case 'anonymouschatmenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*Anonymous Menu*
 	
   ➙ ${prefix}start ( Start Chat )
@@ -3065,6 +3198,16 @@ case 'anonymouschatmenu': {
 break
 case 'sistemmenu': {
 	anu = `
+	❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+	
 	*System Menu*
 	
   ➙ ${prefix}antilink On/Off
@@ -3097,6 +3240,16 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
   case 'ownermenu': {
   	anu = `
+  ❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+
   *Owner Menu*
   
   ➙ ${prefix}chat [option]
@@ -3134,6 +3287,16 @@ break
 break
   case 'allmenu': {
   	anu = `
+  ❏「 INFO BOT 」
+
+𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botnma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝗮𝗺𝗲 : ${global.ownernma}
+𝗢𝘄𝗻𝗲𝗿 𝗡𝘂𝗺𝗯𝗲𝗿 : ${global.owner}
+𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+  
   *All Menu*
   
   ꪶGroup Menuꫂ
