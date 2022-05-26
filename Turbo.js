@@ -610,7 +610,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             break
             case 'sc': case 'script': {
-                reply('Script : https://github.com/TURBOHYPER/Toxic-Alexa\n Dont Forget To Give Star\n\nYoutube : https://youtu.be/W725IHjXFHY\n Dont Forget To Subscribe')
+                reply('Script : https://github.com/TURBOHYPER/Toxic-Alexa\n Dont Forget To Give Star\n\nYoutube : https://wa.me/916380260672\n Dont Forget To Subscribe')
             }
             break
             case 'chat': {
@@ -1231,8 +1231,8 @@ case 'antilink':
                     await sleep(1500)
                     let btn = [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 callButton: {
@@ -1540,17 +1540,17 @@ case 'antilink':
                 let yts = require("yt-search")
                 let search = await yts(text)
                     ngen = `
-⭔ Title : ${search.videos.title}
+⭔ Title : ${search.videos[0].title}
 ⭔ Ext : Search
-⭔ ID : ${search.videos.videoId}
-⭔ Duration : ${search.videos.timestamp}
-⭔ Viewers : ${search.videos.views}
-⭔ Uploaded : ${search.videos.ago}
-⭔ Author : ${search.videos.author.name}
-⭔ Channel : ${search.videos.author.url}
-⭔ Description : ${search.videos.description}
+⭔ ID : ${search.videos[0].videoId}
+⭔ Duration : ${search.videos[0].timestamp}
+⭔ Viewers : ${search.videos[0].views}
+⭔ Uploaded : ${search.videos[0].ago}
+⭔ Author : ${search.videos[0].author.name}
+⭔ Channel : ${search.videos[0].author.url}
+⭔ Description : ${search.videos[0].description}
 `
-message = await prepareWAMessageMedia({ image : { url: search.videos.thumbnail } }, { upload:   Turbo.waUploadToServer })
+message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } }, { upload:   Turbo.waUploadToServer })
                 template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -1560,21 +1560,21 @@ message = await prepareWAMessageMedia({ image : { url: search.videos.thumbnail }
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: '🌊Video Source Link🌊',
-                                    url: `${search.videos.url}`
+                                    url: `${search.videos[0].url}`
                                 }
                             }, {
                                 quickReplyButton: {
                                     displayText: '🎵Audio🎵',
-                                    id: `ytmp3 ${search.videos.url} 320kbps`
+                                    id: `ytmp3 ${search.videos[0].url} 320kbps`
                                     }
                                 },{quickReplyButton: {
-                                    displayText: '🎥VIdeo🎥',
-                                    id: `ytmp4 ${search.videos.url} 360p`
+                                    displayText: '🎥Video🎥',
+                                    id: `ytmp4 ${search.videos[0].url} 360p`
                                      }
                                 }, {
                                 quickReplyButton: {
                                     displayText: '🔍Youtube Search',
-                                    id: `getmusic ${search.videos.url} 320kbps`
+                                    id: `getmusic ${search.videos[0].url} 320kbps`
                                     }
                             }]
                         }
@@ -1585,7 +1585,7 @@ message = await prepareWAMessageMedia({ image : { url: search.videos.thumbnail }
             break
 	    case 'ytmp3': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY%27 320kbps`
+                if (!text) throw `Example : ${prefix + command} https://wa.me/916380260672%27 320kbps`
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
@@ -1595,7 +1595,7 @@ message = await prepareWAMessageMedia({ image : { url: search.videos.thumbnail }
             break
             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY%27 360p`
+                if (!text) throw `Example : ${prefix + command} https://wa.me/916380260672%27 360p`
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(text, quality)
                 if (media.filesize >= 999999) return reply('Video size is too big '+util.format(media))
@@ -2431,23 +2431,23 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                             	urlButton: {
-                                displayText: 'Script🔖',
+                                displayText: 'Script 🌊',
                                     url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '🍇All Menu🍇',
+                                    displayText: 'Menu 🗞️',
                                     id: `${prefix}allmenu`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '🍒List Menu🍒',
-                                    id: `${prefix}command`
+                                    displayText: 'Speed Test 🐌',
+                                    id: `${prefix}ping`
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -2486,22 +2486,22 @@ Please Select Button Below
 
 let buttons = [{
 urlButton: {
-displayText: 'YouTube📍',
+displayText: 'YouTube🦠',
 url: 'https://youtu.be/W725IHjXFHY'
 }
 }, {
 urlButton: {
-displayText: 'Script🔖',
+displayText: 'Script🌊',
 url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
 }
 }, {
 quickReplyButton: {
-displayText: '🍇All Menu🍇',
+displayText: 'Menu 🗞️',
 id: `${prefix}allmenu`
 }
 }, {
 quickReplyButton: {
-displayText: '🍒List Menu🍒',
+displayText: '🦄 List Menu 🦄',
 id: `${prefix}command`
 }
 }, {
@@ -2678,8 +2678,8 @@ case 'grupmenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2731,8 +2731,8 @@ case 'downloadmenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2779,8 +2779,8 @@ case 'downloadmenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2821,8 +2821,8 @@ case 'randommenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2864,8 +2864,8 @@ case 'funmenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2915,8 +2915,8 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2960,8 +2960,8 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3029,8 +3029,8 @@ case 'horoscopemenukcodk': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3078,8 +3078,8 @@ case 'convertmenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3129,8 +3129,8 @@ case 'nocategorymenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3177,8 +3177,8 @@ case 'databasemenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3220,8 +3220,8 @@ case 'anonymouschatmenu': {
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3263,8 +3263,8 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3311,8 +3311,8 @@ break
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3463,8 +3463,8 @@ break
                             hydratedFooterText: `Slayer-Bot`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'YouTube📍',
-                                    url: 'https://youtu.be/W725IHjXFHY'
+                                    displayText: 'Creator ✨',
+                                    url: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
