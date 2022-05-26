@@ -1535,23 +1535,22 @@ case 'antilink':
         })
         }
         break
-	    case 'play': case 'song': {
+	    case 'video': case 'song': {
                 if (!text) throw `Example : ${prefix + command} look at me`
                 let yts = require("yt-search")
                 let search = await yts(text)
-                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                     ngen = `
-⭔ Title : ${anu.title}
+⭔ Title : ${search.videos.title}
 ⭔ Ext : Search
-⭔ ID : ${anu.videoId}
-⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
-⭔ Uploaded : ${anu.ago}
-⭔ Author : ${anu.author.name}
-⭔ Channel : ${anu.author.url}
-⭔ Description : ${anu.description}
+⭔ ID : ${search.videos.videoId}
+⭔ Duration : ${search.videos.timestamp}
+⭔ Viewers : ${search.videos.views}
+⭔ Uploaded : ${search.videos.ago}
+⭔ Author : ${search.videos.author.name}
+⭔ Channel : ${search.videos.author.url}
+⭔ Description : ${search.videos.description}
 `
-message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   Turbo.waUploadToServer })
+message = await prepareWAMessageMedia({ image : { url: search.videos.thumbnail } }, { upload:   Turbo.waUploadToServer })
                 template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -1561,21 +1560,21 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                             hydratedButtons: [{
                                 urlButton: {
                                     displayText: '🌊Video Source Link🌊',
-                                    url: `${anu.url}`
+                                    url: `${search.videos.url}`
                                 }
                             }, {
                                 quickReplyButton: {
                                     displayText: '🎵Audio🎵',
-                                    id: `ytmp3 ${anu.url} 320kbps`
+                                    id: `ytmp3 ${search.videos.url} 320kbps`
                                     }
                                 },{quickReplyButton: {
                                     displayText: '🎥VIdeo🎥',
-                                    id: `ytmp4 ${anu.url} 360p`
+                                    id: `ytmp4 ${search.videos.url} 360p`
                                      }
                                 }, {
                                 quickReplyButton: {
                                     displayText: '🔍Youtube Search',
-                                    id: `getmusic ${anu.url} 320kbps`
+                                    id: `getmusic ${search.videos.url} 320kbps`
                                     }
                             }]
                         }
@@ -3035,7 +3034,7 @@ case 'horoscopemenukcodk': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '??Owner👤',
                                     id: `${prefix}owner`
                                 }
                             }]
