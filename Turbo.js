@@ -3498,6 +3498,14 @@ fs.writeFileSync(`./menuvideo.mp4`, delb)
 reply(mess.success)
 }
 break
+case 'setownervn': case 'setowneraudio': {
+if (!isCreator) return reply(mess.owner)
+if (!/audio/.test(mime) && !/audio/.test(mime)) return reply("*Reply to Audio*")
+let delb = await Turbo.downloadMediaMessage(quoted)
+fs.writeFileSync(`./TurboMedia/owner.mp3`, delb)
+reply(mess.success)
+}
+break
 case 'tqtt': 
 reply(`Thanks to
 LORD BUDDHA
