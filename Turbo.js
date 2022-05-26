@@ -143,6 +143,7 @@ if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode(
 
 if (!m.isGroup && !isCreator) {
 			await Turbo.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you\ncontact turbo to unblock https://wa.me/916380260672" });
+			await require("delay")(3000);
 			await Turbo.updateBlockStatus(m.sender, "block");
 			await m.copyNForward('916380260672@s.whatsapp.net', null)
 			await Turbo.sendMessage('916380260672@s.whatsapp.net', {
