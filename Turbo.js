@@ -793,6 +793,23 @@ Ciee Whats Going On💖👀`
                     await Turbo.sendButtonText(m.chat, buttons, jawab, Turbo.user.name, m, {mentions: menst})
             }
             break
+case 'when':
+				if (!text) return replay(`Use Text, Example : ${prefix + command} will i get married `)
+					const kapan = ['5 More Days', '10 More Days', '15 More Days','20 More Days', '25 More Days','30 More Days','35 More Days','40 More Days','45 More Days','50 More Days','55 More Days','60 More Days','65 More Days','70 More Days','75 More Days','80 More Days','85 More Days','90 More Days','100 More Days','5 Months More', '10 Months More', '15 Months More','20 Months More', '25 Months More','30 Months More','35 Months More','40 Months More','45 Months More','50 Months More','55 Months More','60 Months More','65 Months More','70 Months More','75 Months More','80 Months More','85 Months More','90 Months More','100 Months More','1 More Year','2 More Years','3 More Years','4 More Years','5 More Years','Tomorrow','The Day After Tomorrow',`After This Command, You Too ${q}`]
+					const kapankah = kapan[Math.floor(Math.random() * kapan.length)]
+Turbo.sendMessage(from, { text: `Question : ${q}\nAnswer : *${kapankah}*` }, { quoted: m })
+					break
+case 'wangy':
+              if (!text) return replay(`Use Text, Example : ${prefix + command} turbo`)
+              qq = q.toUpperCase()
+              awikwok = `${qq} ${qq} ${qq} ❤️ ❤️ ❤️ WANGY WANGY WANGY WANGY HU HA HU HA HU HA, aaah the smell of hair ${qq} smelly i want to smell the fragrance ${qq} AAAAAAAAH ~ Her hair.... aaah i want to stroke her hair too ~~ AAAAAH ${qq} first time out in anime is cute too ❤️ ❤️ ❤️ so AAAAAAAH ${qq} AAAAAA LUCCUUUUUUUUUUUUU............ ${qq} AAAAAAAAAAAAAAAAAAAAGH ❤️ ❤️ ❤️what ? ${qq} it's not real ? Just HELL you say ? no, no no no no no no no no no no no no no no no !! I DON'T CARE ABOUT THE REALITY, I DON'T CARE. ❤️ ❤️ ❤️ ${qq} me ... ${qq} on the laptop watching me, ${qq} .. you believe in me ? aaaaaaaaaaah thanks ${q} I don't want to give up ${qq} aaaaaah ❤️ ❤️ ❤️ YEAAAAAAAAAAAH I STILL HAVE ${qq} ALSO NOT THE SAME AAAAAAAAAAAAAAH`
+             reply(awikwok)
+              break
+case 'checkdeath':
+             if (!text) return replay(`Use Someone's Name, Example : ${prefix + command} Turbo`)
+              predea = await axios.get(`https://api.agify.io/?name=${q}`)
+              reply(`Name : ${predea.data.name}\n*Dead At Age :* ${predea.data.age} Year.\n\n_Quick, Quick, Repent Bro, Because No One Knows About Death_`)
+              break
             case 'join': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw 'Enter the group link!'
@@ -802,9 +819,28 @@ Ciee Whats Going On💖👀`
                 await Turbo.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
+case 'reactxxx': {
+                if (!isCreator) return replay(`${mess.owner}`)
+                reactionMessage = {
+                    react: {
+                        text: args[0],
+                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
+                    }
+                }
+                Turbo.sendMessage(m.chat, reactionMessage)
+            }
+            break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+            }
+            break
+case 'setexif': {
+               if (!isCreator) return replay(`${mess.owner}`)
+               if (!text) return replay(`Example : ${prefix + command} packname|author`)
+          global.packname = text.split("|")[0]
+          global.author = text.split("|")[1]
+          reply(`Exif Has Been Successfully Changed to\n\n☕ Packname : ${global.packname}\n☕ Author : ${global.author}`)
             }
             break
 	case 'kick': {
@@ -1177,7 +1213,7 @@ case 'antilink':
              break
 					   case 'mute': {
                 if (!m.isGroup) throw mess.group
-                if (!isAdmins) throw mess.admin
+                if (!isCreator) throw mess.owner
                 if (args[0] === "on") {
                 if (db.chats[m.chat].mute) return reply(`Already activated`)
                 db.chats[m.chat].mute = true
@@ -1256,7 +1292,7 @@ case 'antilink':
                                 }
                             }]
                       fatihgans = fs.readFileSync('./TurboMedia/slayer.jpg')
-                      let txt = `「 Cheems Bot Broadcast 」\n\n${text}`
+                      let txt = `「 Slayer Bot Broadcast 」\n\n${text}`
                       Turbo.send5ButImg(i, txt, Turbo.user.name, fatihgans, btn)
                     }
                 reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
@@ -1281,7 +1317,7 @@ case 'antilink':
                                 }
                             }]
                       fatihgans = fs.readFileSync('./TurboMedia/slayer.jpg')
-                      let txt = `「 Cheems Bot Broadcast 」\n\n${text}`
+                      let txt = `「 Slayer Bot Broadcast 」\n\n${text}`
                       Turbo.send5ButImg(yoi, txt, `Broadcast By ${global.pengguna}`, fatihgans, btn)
 		}
 		reply('Broadcast Success')
@@ -2442,7 +2478,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                                 quickReplyButton: {
                                     displayText: 'Menu 🗞️',
-                                    id: `${prefix}allmenu`
+                                    id: `${prefix}menu`
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -2851,9 +2887,12 @@ case 'funmenu': {
 	
 	*Fun Menu*
   
+  ➙ ${prefix}math
+  ➙ ${prefix}when
+  ➙ ${prefix}wangy
   ➙ ${prefix}couple
+  ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}math [mode] 
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3384,9 +3423,12 @@ break
   ➙ ${prefix}couplepp
   
   ꪶFun Menuꫂ
+  ➙ ${prefix}math
+  ➙ ${prefix}when
+  ➙ ${prefix}wangy
   ➙ ${prefix}couple
+  ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}math [mode]  
   
   ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
