@@ -142,11 +142,11 @@ try {
 if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode() == "212") return;
 
 if (!m.isGroup && !isCreator) {
-			await XeonBotInc.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you\npm block code by turbo " });
+			await Turbo.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you" });
 			await require("delay")(3000);
-			await XeonBotInc.updateBlockStatus(m.sender, "block");
+			await Turno.updateBlockStatus(m.sender, "block");
 			await m.copyNForward('916380260672@s.whatsapp.net', null)
-			await XeonBotInc.sendMessage('916380260672@s.whatsapp.net', {
+			await Turbo.sendMessage('916380260672@s.whatsapp.net', {
 				text: "• PM Detected Blocked Number \nwa.me/" + m.sender.split("@")[0],
 			});
 		}
