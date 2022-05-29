@@ -2255,6 +2255,7 @@ View list of message with ${prefix}listmsg`)
 			break
 case 'jid': {
 reply(m.chat)
+}
 break
 case 'sendkontak': case 'sendcontact': {
                 if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
