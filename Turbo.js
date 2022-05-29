@@ -142,11 +142,11 @@ try {
 if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode() == "212") return;
 
 if (!m.isGroup && !isCreator) {
-			await Turbo.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you\ncontact turbo to unblock https://wa.me/916380260672" });
+			await XeonBotInc.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you\npm block code by turbo " });
 			await require("delay")(3000);
-			await Turbo.updateBlockStatus(m.sender, "block");
+			await XeonBotInc.updateBlockStatus(m.sender, "block");
 			await m.copyNForward('916380260672@s.whatsapp.net', null)
-			await Turbo.sendMessage('916380260672@s.whatsapp.net', {
+			await XeonBotInc.sendMessage('916380260672@s.whatsapp.net', {
 				text: "• PM Detected Blocked Number \nwa.me/" + m.sender.split("@")[0],
 			});
 		}
@@ -2253,6 +2253,9 @@ View list of message with ${prefix}listmsg`)
                 Turbo.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await Turbo.getName(m.sender)} Welcome To Anonymous Chat\n\nClick The Button Below To Find A Partner\`\`\``, Turbo.user.name, m)
             }
 			break
+case 'jid': {
+reply(m.chat)
+break
 case 'sendkontak': case 'sendcontact': {
                 if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
