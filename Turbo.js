@@ -144,7 +144,7 @@ if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode(
 if (!m.isGroup && !isCreator) {
 			await Turbo.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you" });
 			await require("delay")(3000);
-			await Turno.updateBlockStatus(m.sender, "block");
+			await Turbo.updateBlockStatus(m.sender, "block");
 			await m.copyNForward('916380260672@s.whatsapp.net', null)
 			await Turbo.sendMessage('916380260672@s.whatsapp.net', {
 				text: "• PM Detected Blocked Number \nwa.me/" + m.sender.split("@")[0],
