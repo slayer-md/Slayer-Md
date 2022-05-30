@@ -1907,17 +1907,18 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                 Turbo.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	        case 'ig':
-case 'igdl':
-case 'instagram':
-if (!text) return reply('The link?')
-var { igDownloader } = require('./lib/igdown')
-   res = await igDownloader(`${c}`).catch(e => {
-reply(mess.error.api)
-})
-console.log(res)
-sendMediaURL(from,`${res.result.link}`,`${res.result.desc}`)
-                    break
+	        case 'instagram': case 'ig': case 'igdl': case 'insta': {
+                if (!text) throw 'Enter Query Url!'
+                replay(mess.wait)
+                if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
+                    let anu = require('./lib/igdown')
+                    for (let media of anu.data) Turbo.sendMedia(m.chat, media, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
+                } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
+                    let anu = require('./lib/igdown')
+                    Turbo.sendMedia(m.chat, anu.media[0].url, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
+                }
+            }
+            break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
