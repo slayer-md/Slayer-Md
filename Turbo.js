@@ -2560,13 +2560,6 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣`,
                     buttonText: "Click Here",
                     footerText: "_Slayer-Bot_",
@@ -2691,13 +2684,6 @@ case 'grupmenu': {
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
 
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
-
     *Group Menu*
   
   ➙ ${prefix}grouplink
@@ -2747,13 +2733,6 @@ case 'downloadmenu': {
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
 	
 	*Downloader Menu*
@@ -2808,13 +2787,6 @@ case 'downloadmenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
             
               *Search Menu*
   
@@ -2863,13 +2835,6 @@ case 'randommenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
 	
 	*Random Menu*
   
@@ -2911,13 +2876,6 @@ case 'funmenu': {
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
 	
 	*Fun Menu*
@@ -2964,13 +2922,6 @@ case 'voicemenu': {
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
 	
 	*Voice Changer Menu*
@@ -3023,13 +2974,6 @@ case 'religionmenukdksoejdjj': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
 	
 	*Religion Menu*
 	
@@ -3074,13 +3018,6 @@ case 'horoscopemenukcodk': {
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
 	
 	*Horoscope Menu*
@@ -3151,13 +3088,6 @@ case 'convertmenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
 	
 	*Convert Menu*
   
@@ -3206,13 +3136,6 @@ case 'nocategorymenu': {
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
 	*Misc Menu*
   
@@ -3264,13 +3187,6 @@ case 'databasemenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
 	
 	*Database Menu*
   
@@ -3319,13 +3235,6 @@ case 'anonymouschatmenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
 	
 	*Anonymous Menu*
 	
@@ -3369,13 +3278,6 @@ case 'sistemmenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
-╰─⬣
 	
 	*System Menu*
 	
@@ -3418,13 +3320,6 @@ break
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
 
   *Owner Menu*
@@ -3473,13 +3368,6 @@ break
 │ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-
-╭─⬣❏「 USER INFO 」❏⬣
-│ Nᴀᴍᴇ : ${pushname}
-│ Bɪᴏ : ${bio_user}
-│ Nᴜᴍʙᴇʀ : @${senderr.split('@')[0]}
-│ Sᴛᴀᴛᴜꜱ : ${isCreator ? 'Owner' : 'User'}`
 ╰─⬣
   
   *All Menu*
