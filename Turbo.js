@@ -1915,6 +1915,30 @@ reply('error')
 })
 Turbo.sendMedia(m.chat, res.result.link, '', `${res.result.desc}`, m)
 break
+case 'tts':
+if(!text) return reply(`Example : ${prefix}tts id|Turbo`)
+var tt = q.split("|")[0]
+var es = q.split("|")[1]
+reply(mess.wait)
+tts = await getBuffer(`http://zekais-api.herokuapp.com/speech?lang=${tt}&text=${es}`)
+senku.sendMessage(from, tts, audio, {mimetype: 'audio/mp4', filename: `${tts}.mp3`, quoted: sen,ptt : true})
+limitAdd(sender, limit)
+break
+case 'take':
+if (!isQuotedSticker) return reply(`Reply To A Sticker *${prefix}take Slayer By|Turbo*`)
+var pembawm = body.slice(6)
+var encmedia = JSON.parse(JSON.stringify(sen).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+var media = await abu.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
+var packname = pembawm.split('|')[0]
+var author = pembawm.split('|')[1]
+exif.create(packname, author, `takestick_${sender}`)
+exec(`webpmux -set exif ./sticker/takestick_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
+if (error) return reply('Error')
+Turbo.sendMessage(from, fs.readFileSync(`./sticker/${sender}.webp`), MessageType.sticker, {quoted: sen})
+fs.unlinkSync(media)
+fs.unlinkSync(`./sticker/takestick_${sender}.exif`)
+})
+break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
@@ -2432,7 +2456,7 @@ ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.
             }
             break
                     case 'bug': case 'report': {
-                    	if(!text) throw `Enter The Bug Example\n\n${command} Menu Error `
+                    	if(!text) throw `Type The Bug Example\n\n${command} Menu Error `
                     	Turbo.sendMessage(`916380260672@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
 Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
