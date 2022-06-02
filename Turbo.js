@@ -100,11 +100,11 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 	
 //[target]\\
 	const reply = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ${global.botnma}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ${global.botnma}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ${global.botnma}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": ""}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ${global.botnma}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
         }
 try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -610,7 +610,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             break
             case 'sc': case 'script': {
-                reply('Script : https://github.com/TURBOHYPER/Toxic-Alexa\n Dont Forget To Give Star\n\nYoutube : https://wa.me/916380260672\n Dont Forget To Subscribe')
+                reply('Script : https://github.com/TURBOHYPER/Slayer-Md\n Dont Forget To Give Star\n\nYoutube : https://wa.me/916380260672\n Dont Forget To Subscribe')
             }
             break
             case 'chat': {
@@ -1306,7 +1306,7 @@ case 'antilink':
 		    let btn = [{
                                 urlButton: {
                                     displayText: 'Script🔖',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2435,18 +2435,11 @@ case 'sendkontak': case 'sendcontact': {
 			            irq: 0
                 }
                 })
-                let timestamp = speed()
                 let latensi = speed() - timestamp
                 neww = performance.now()
                 oldd = performance.now()
                 respon = `
 Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
-
-Info Server
-RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
-
-NodeJS Memory Usaage
-${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
             }
             break
             case 'owner': case 'creator': {
@@ -2455,14 +2448,7 @@ ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
             break
-                    case 'bug': case 'report': {
-                    	if(!text) throw `Type The Bug Example\n\n${command} Menu Error `
-                    	Turbo.sendMessage(`916380260672@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
-Report Message: ${text}` })
-reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
-                    } 
-                    break 
-case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
+case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                 anu = `Hi ${pushname}
 
 ╭─⬣「 INFO BOT 」⬣
@@ -2490,7 +2476,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2545,7 +2531,7 @@ url: 'https://youtu.be/W725IHjXFHY'
 }, {
 urlButton: {
 displayText: 'Script🌊',
-url: 'https://github.com/TURBOHYPER/Toxic-Alexa'
+url: 'https://github.com/TURBOHYPER/Slayer-Md'
 }
 }, {
 quickReplyButton: {
@@ -3564,11 +3550,13 @@ reply(mess.success)
 }
 break
 case 'tqtt': 
-reply(`Thanks to
-LORD BUDDHA
+reply(`Thanks To
 Turbo (Me)
 Amru
-And all friends who helped assemble this sexy script !!!`)
+Abu
+Jifi
+Hermit
+And Our Team Members To Assemble This Slayer Md ✨`)
 break
             default:
                 if (budy.startsWith('=>')) {
