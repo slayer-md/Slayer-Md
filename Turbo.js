@@ -2448,59 +2448,6 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
             break
-case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
-                anu = `╭─⬣「 INFO BOT 」⬣
-│
-│ Sʟᴀʏᴇʀ Iꜱ Sᴛɪʟʟ Aʟɪᴠᴇ ${pushname}
-│
-│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
-│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
-│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
-│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
-│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
-│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
-│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣`
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
-                                urlButton: {
-                                    displayText: 'Creator',
-                                    url: 'https://wa.me/916380260672'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Menu 🗞️',
-                                    id: `${prefix}menu`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'Speed Test 🐌',
-                                    id: `${prefix}ping`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner👤',
-                                    id: `${prefix}owner`
-                                }
-                            }]
-                        }
-                    }
-                }), { userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-                }
-break
-
 case 'list': case 'menu': case 'help': case '?': {
 timestampe = speed();
 latensie = speed() - timestampe
