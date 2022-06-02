@@ -2449,9 +2449,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\
             }
             break
 case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
-                anu = `
-
-╭─⬣「 INFO BOT 」⬣
+                anu = `╭─⬣「 INFO BOT 」⬣
 │
 │ Sʟᴀʏᴇʀ Iꜱ Sᴛɪʟʟ Aʟɪᴠᴇ ${pushname}
 │
