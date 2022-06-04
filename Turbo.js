@@ -139,6 +139,12 @@ try {
             if (!m.key.fromMe) return
         }
 
+//[push msg to console & autoread]\\
+        if (m.message) {
+            Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id])
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
+        }
+        
 if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode() == "212") return;
 
 if (!m.isGroup && !isCreator) {
@@ -149,21 +155,15 @@ if (!m.isGroup && !isCreator) {
 			await Turbo.sendMessage('916380260672@s.whatsapp.net', {
 				text: "• PM Detected Blocked Number \nwa.me/" + m.sender.split("@")[0],
 			});
-		}
-
-//[push msg to console & autoread]\\
-        if (m.message) {
-            Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id])
-            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
-        }
+		}        
 	
 //[level(incomplete, still in devment)]\\
 const levelRole = getLevelingLevel(m.sender)
-	  var role = 'Small User'
+	  var role = 'bronz'
 	  if (levelRole <= 3) {
 	role = 'Copper'
 	  } else if (levelRole <= 5) {
-	role = 'User Iron'
+	role = 'Iron'
 	  } else if (levelRole <= 7) {
 	role = 'Silver'
 	  } else if (levelRole <= 10) {
@@ -178,16 +178,8 @@ const levelRole = getLevelingLevel(m.sender)
 	role = 'Adamantite'
 	  } else if (levelRole <= 45) {
 	role = 'Good In Game'
-	  } else if (levelRole <= 50) {
-	role = 'Op In Game'
-	  } else if (levelRole <= 60) {
-	role = 'Mass In Game'
-	  } else if (levelRole <= 80) {
-	role = 'Legend In Game'
-	  } else if (levelRole <= 100) {
-	role = 'God In Game'
 	  }
-	    
+	
 //[Antilink]\\
 	if (isAntiLink) 
 if (budy.includes('https://chat.whatsapp.com/')) {
@@ -609,8 +601,8 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             }
             break
-            case 'sc': case 'script': {
-                reply('Script : https://github.com/TURBOHYPER/Slayer-Md\n Dont Forget To Give Star\n\nYoutube : https://wa.me/916380260672\n Dont Forget To Subscribe')
+            case 'sc': case 'git': {
+                reply('Slayer Bot : https://github.com/TURBOHYPER/Slayer-Md\n Made By Turbo\n\nYoutube : https://youtu.be/imFIX-Wrt3s\n Dont Forget To Subscribe')
             }
             break
             case 'chat': {
@@ -793,23 +785,6 @@ Ciee Whats Going On💖👀`
                     await Turbo.sendButtonText(m.chat, buttons, jawab, Turbo.user.name, m, {mentions: menst})
             }
             break
-case 'when':
-				if (!text) return replay(`Use Text, Example : ${prefix + command} will i get married `)
-					const kapan = ['5 More Days', '10 More Days', '15 More Days','20 More Days', '25 More Days','30 More Days','35 More Days','40 More Days','45 More Days','50 More Days','55 More Days','60 More Days','65 More Days','70 More Days','75 More Days','80 More Days','85 More Days','90 More Days','100 More Days','5 Months More', '10 Months More', '15 Months More','20 Months More', '25 Months More','30 Months More','35 Months More','40 Months More','45 Months More','50 Months More','55 Months More','60 Months More','65 Months More','70 Months More','75 Months More','80 Months More','85 Months More','90 Months More','100 Months More','1 More Year','2 More Years','3 More Years','4 More Years','5 More Years','Tomorrow','The Day After Tomorrow',`After This Command, You Too ${q}`]
-					const kapankah = kapan[Math.floor(Math.random() * kapan.length)]
-Turbo.sendMessage(from, { text: `Question : ${q}\nAnswer : *${kapankah}*` }, { quoted: m })
-					break
-case 'wangy':
-              if (!text) return replay(`Use Text, Example : ${prefix + command} turbo`)
-              qq = q.toUpperCase()
-              awikwok = `${qq} ${qq} ${qq} ❤️ ❤️ ❤️ WANGY WANGY WANGY WANGY HU HA HU HA HU HA, aaah the smell of hair ${qq} smelly i want to smell the fragrance ${qq} AAAAAAAAH ~ Her hair.... aaah i want to stroke her hair too ~~ AAAAAH ${qq} first time out in anime is cute too ❤️ ❤️ ❤️ so AAAAAAAH ${qq} AAAAAA LUCCUUUUUUUUUUUUU............ ${qq} AAAAAAAAAAAAAAAAAAAAGH ❤️ ❤️ ❤️what ? ${qq} it's not real ? Just HELL you say ? no, no no no no no no no no no no no no no no no !! I DON'T CARE ABOUT THE REALITY, I DON'T CARE. ❤️ ❤️ ❤️ ${qq} me ... ${qq} on the laptop watching me, ${qq} .. you believe in me ? aaaaaaaaaaah thanks ${q} I don't want to give up ${qq} aaaaaah ❤️ ❤️ ❤️ YEAAAAAAAAAAAH I STILL HAVE ${qq} ALSO NOT THE SAME AAAAAAAAAAAAAAH`
-             reply(awikwok)
-              break
-case 'checkdeath':
-             if (!text) return replay(`Use Someone's Name, Example : ${prefix + command} Turbo`)
-              predea = await axios.get(`https://api.agify.io/?name=${q}`)
-              reply(`Name : ${predea.data.name}\n*Dead At Age :* ${predea.data.age} Year.\n\n_Quick, Quick, Repent Bro, Because No One Knows About Death_`)
-              break
             case 'join': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw 'Enter the group link!'
@@ -819,34 +794,17 @@ case 'checkdeath':
                 await Turbo.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
-case 'react': {
-reactionMessage = {
-react: {
-text: args[0],
-key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
-}}
-ser.sendMessage(m.chat, reactionMessage)
-}
-break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-            }
-            break
-case 'setexif': {
-               if (!isCreator) return replay(`${mess.owner}`)
-               if (!text) return replay(`Example : ${prefix + command} packname|author`)
-          global.packname = text.split("|")[0]
-          global.author = text.split("|")[1]
-          reply(`Exif Has Been Successfully Changed to\n\n☕ Packname : ${global.packname}\n☕ Author : ${global.author}`)
             }
             break
 	case 'kick': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
+                reply(mess.success)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		reply(mess.success)
 		await Turbo.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
@@ -854,8 +812,8 @@ case 'setexif': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
+                reply(mess.success)
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		reply(mess.success)
 		await Turbo.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
@@ -864,7 +822,6 @@ case 'setexif': {
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		reply(mess.success)
 		await Turbo.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
@@ -872,22 +829,22 @@ case 'setexif': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
+                reply(mess.success)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		reply(mess.success)
 		await Turbo.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
         case 'block': {
+        reply(mess.success)	
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		reply(mess.success)
 		await Turbo.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
         case 'unblock': {
+        reply(mess.success)	
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		reply(mess.success)
 		await Turbo.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
@@ -917,7 +874,7 @@ case 'setexif': {
                 reply(mess.success)
                 }
                 break
-           case 'setppgroup': case 'ppgc': case 'setgcpp': case 'setppgrup': case 'setppgc': {
+           case 'setppgroup': case 'setgrouppp': case 'setgcpp': case 'setppgrup': case 'setppgc': {
                 if (!m.isGroup) throw mess.group
                 if (!isAdmins) throw mess.admin
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
@@ -932,7 +889,7 @@ case 'grupinfo': case 'groupinfo':
 try{
  var pic = await Turbo.getProfilePicture(m.chat)
   } catch {
- var pic = 'https://telegra.ph/file/08691a735d7317735af6a.jpg'
+ var pic = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png'
   }
 let ingfo = `*G R O U P  I N F O*\n\n*Name :* ${groupName}\n*ID Group :* ${m.chat}\n*Made :* ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n*Group Owner:* @${groupMetadata.owner.split('@')[0]}\n*Number Of Admins :* ${groupAdmins.length}\n*Number Of Participants :* ${participants.length}\n*Desc :* \n${groupMetadata.desc}`
 ds = await getBuffer(pic)
@@ -951,7 +908,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 Turbo.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
-                case 'tag': {
+                case 'hidetag': {
             if (!m.isGroup) throw mess.group
             if (!isAdmins) throw mess.admin
             Turbo.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
@@ -1185,7 +1142,7 @@ case 'antilink':
 						fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
 						reply('Successfully disabled antilink feature')
 					} else if (!q){
- reply(`Pilih Antilink On / Off `)
+ reply(`Type Antilink On / Off `)
 					}
 					break 
 					case 'antiwame': {
@@ -1265,13 +1222,13 @@ case 'antilink':
                     await sleep(1500)
                     let btn = [{
                                 urlButton: {
-                                    displayText: 'Creator ✨',
-                                    url: 'https://wa.me/916380260672'
+                                    displayText: '💣 Sc 💣',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
                                 }
                             }, {
                                 callButton: {
                                     displayText: 'Owner Number👤',
-                                    phoneNumber: '+91 638-0260-672'
+                                    phoneNumber: 'https://wa.me/916380260672'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1298,9 +1255,9 @@ case 'antilink':
             break
             case 'bc': case 'broadcast': case 'bcall': {
                 if (!isCreator) throw mess.owner
-                if (!text) throw `Where is the text?\n\nExample : ${prefix + command} cheems bot here`
+                if (!text) throw `Where is the text?\n\nExample : ${prefix + command} Slayer bot here`
                 let anu = await store.chats.all().map(v => v.id)
-                reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} second`)
+                reply(`Send Broadcast To ${anu.length} Chat\nIn ${anu.length * 1.5} second`)
 		for (let yoi of anu) {
 		    await sleep(1500)
 		    let btn = [{
@@ -1344,7 +1301,6 @@ case 'antilink':
             }
 	    break
             case 'listpc': {
-            	 if (!isCreator) throw mess.owner
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
                  let teks = `⬣ *PERSONAL CHAT LIST*\n\nTotal Chat : ${anu.length} Chat\n\n`
                  for (let i of anu) {
@@ -1355,7 +1311,7 @@ case 'antilink':
              }
              break
                 case 'listgc': {
-                  if (!isCreator) throw mess.owner
+                 if (!isCreator) throw mess.owner	
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
                  let teks = `⬣ *GROUP CHAT LIST*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
@@ -1414,7 +1370,7 @@ case 'antilink':
 		}
 	    }
 	    break
-            case 'toimage': case 'toimg': {
+            case 'image': case 'photo': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
                 replay(mess.wait)
@@ -1451,14 +1407,14 @@ case 'antilink':
             }
             break
             case 'mp3': {
-            if (/document/.test(mime)) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
+            if (/audio/.test(mime)) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`
             if (!quoted) throw `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`
             replay(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            Turbo.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Converted By ${Turbo.user.name}.mp3`}, { quoted : m })
+            Turbo.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
             break
             case 'tovn': case 'toptt': {
@@ -1482,7 +1438,7 @@ case 'antilink':
                 await fs.unlinkSync(media)
             }
             break
-	        case 'tourl': {
+	        case 'url': {
                 replay(mess.wait)
 		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
                 let media = await Turbo.downloadAndSaveMediaMessage(quoted)
@@ -1643,10 +1599,10 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                 if (!m.quoted.isBaileys) throw `Can only reply to messages from bots`
 		let urls = quoted.text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))
                 if (!urls) throw `Maybe The Message You Replied Does Not Contain Ytsearch Results`
-                let quality = args[1] ? args[1] : '160kbps'
+                let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(urls[text - 1], quality)
                 if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                Turbo.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '160kbps'}`, m)
+                Turbo.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '320kbps'}`, m)
                 Turbo.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
@@ -1657,10 +1613,10 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                 if (!m.quoted.isBaileys) throw `Hanya Bisa Membalas Pesan Dari Bot`
                 let urls = quoted.text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))
                 if (!urls) throw `Maybe the message you replied does not contain the ytsearch result`
-                let quality = args[1] ? args[1] : '144p'
+                let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(urls[text - 1], quality)
                 if (media.filesize >= 100000) return reply('File Over Limit '+util.format(media))
-                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '144p'}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
             case 'pinterest': {
@@ -1915,30 +1871,6 @@ reply('error')
 })
 Turbo.sendMedia(m.chat, res.result.link, '', `${res.result.desc}`, m)
 break
-case 'tts':
-if(!text) return reply(`Example : ${prefix}tts id|Turbo`)
-var tt = q.split("|")[0]
-var es = q.split("|")[1]
-reply(mess.wait)
-tts = await getBuffer(`http://zekais-api.herokuapp.com/speech?lang=${tt}&text=${es}`)
-senku.sendMessage(from, tts, audio, {mimetype: 'audio/mp4', filename: `${tts}.mp3`, quoted: sen,ptt : true})
-limitAdd(sender, limit)
-break
-case 'take':
-if (!isQuotedSticker) return reply(`Reply To A Sticker *${prefix}take Slayer By|Turbo*`)
-var pembawm = body.slice(6)
-var encmedia = JSON.parse(JSON.stringify(sen).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-var media = await abu.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
-var packname = pembawm.split('|')[0]
-var author = pembawm.split('|')[1]
-exif.create(packname, author, `takestick_${sender}`)
-exec(`webpmux -set exif ./sticker/takestick_${sender}.exif ./sticker/${sender}.webp -o ./sticker/${sender}.webp`, async (error) => {
-if (error) return reply('Error')
-Turbo.sendMessage(from, fs.readFileSync(`./sticker/${sender}.webp`), MessageType.sticker, {quoted: sen})
-fs.unlinkSync(media)
-fs.unlinkSync(`./sticker/takestick_${sender}.exif`)
-})
-break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
@@ -2170,7 +2102,6 @@ break*/
                 }
                 break
             case 'setcmd': {
-            	if (!isCreator) throw mess.owner
                 if (!m.quoted) throw 'Reply Message!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
                 if (!text) throw `Untuk Command Apa?`
@@ -2187,7 +2118,6 @@ break*/
             }
             break
             case 'delcmd': {
-            	if (!isCreator) throw mess.owner
                 let hash = m.quoted.fileSha256.toString('base64')
                 if (!hash) throw `No hashes`
                 if (global.db.sticker[hash] && global.db.sticker[hash].locked) throw 'You have no permission to delete this sticker command'              
@@ -2196,7 +2126,6 @@ break*/
             }
             break
             case 'listcmd': {
-            	if (!isCreator) throw mess.owner
                 let teks = `
 *Hash List*
 Info: *bold* hash is locked
@@ -2216,7 +2145,6 @@ ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. 
             }
             break
             case 'addmsg': {
-            	if (!isCreator) throw mess.owner
                 if (!m.quoted) throw 'Reply Message You Want To Save In Database'
                 if (!text) throw `Example : ${prefix + command} message name`
                 let msgs = global.db.database
@@ -2230,7 +2158,6 @@ View list of message with ${prefix}listmsg`)
             }
             break
             case 'getmsg': {
-            	if (!isCreator) throw mess.owner
                 if (!text) throw `Example : ${prefix + command} msg name\n\nView message list with ${prefix}listmsg`
                 let msgs = global.db.database
                 if (!(text.toLowerCase() in msgs)) throw `'${text}' not registered in message list`
@@ -2238,7 +2165,6 @@ View list of message with ${prefix}listmsg`)
             }
             break
             case 'listmsg': {
-            	if (!isCreator) throw mess.owner
                 let msgs = JSON.parse(fs.readFileSync('./src/database.json'))
 	        let seplit = Object.entries(global.db.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = '「 LIST DATABASE 」\n\n'
@@ -2249,7 +2175,6 @@ View list of message with ${prefix}listmsg`)
 	    }
 	    break
             case 'delmsg': case 'deletemsg': {
-            if (!isCreator) throw mess.owner
 	        let msgs = global.db.database
 	        if (!(text.toLowerCase() in msgs)) return reply(`'${text}' not listed in the message list`)
 		delete msgs[text.toLowerCase()]
@@ -2273,10 +2198,6 @@ View list of message with ${prefix}listmsg`)
                 Turbo.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await Turbo.getName(m.sender)} Welcome To Anonymous Chat\n\nClick The Button Below To Find A Partner\`\`\``, Turbo.user.name, m)
             }
 			break
-case 'jid': {
-reply(m.chat)
-}
-break
 case 'sendkontak': case 'sendcontact': {
                 if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
@@ -2435,11 +2356,20 @@ case 'sendkontak': case 'sendcontact': {
 			            irq: 0
                 }
                 })
+                let timestamp = speed()
                 let latensi = speed() - timestamp
                 neww = performance.now()
                 oldd = performance.now()
                 respon = `
 Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
+
+Info Server
+RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+
+NodeJS Memory Usaage
+${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
+ `.trim()
+                reply(respon)
             }
             break
             case 'owner': case 'creator': {
@@ -2448,7 +2378,67 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
             break
-case 'list': case 'menu': case 'help': case '?': {
+                    case 'bug': case 'report': {
+                    	if(!text) throw `Enter The Bug Example\n\n${command} Menu Error `
+                    	Turbo.sendMessage(`916380260672@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
+Report Message: ${text}` })
+reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
+                    }
+                    break 
+case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
+                anu = `╭─⬣「 INFO BOT 」⬣
+│
+│ Sʟᴀʏᴇʀ Iꜱ Sᴛɪʟʟ Aʟɪᴠᴇ ${pushname}
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `Slayer-Bot`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Speed Test 🐌',
+                                    id: `${prefix}ping`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner👤',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }), { userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+                }
+break
+
+            case 'list': case 'menu': case 'help': case '?': {
 timestampe = speed();
 latensie = speed() - timestampe
 let contentText = `Hi 🤚 ${pushname}
@@ -3497,13 +3487,12 @@ reply(mess.success)
 }
 break
 case 'tqtt': 
-reply(`Thanks To
+reply(`Thanks to
 Turbo (Me)
 Amru
 Abu
 Jifi
-Hermit
-And Our Team Members To Assemble This Slayer Md ✨`)
+And Our Team Who Helped Assemble This Slayer-Md Script !!!`)
 break
             default:
                 if (budy.startsWith('=>')) {
