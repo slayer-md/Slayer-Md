@@ -303,8 +303,6 @@ try {
             Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id])
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
         }
-        
-if (require("awesome-phonenumber")("+" + m.sender.split("@")[0]).getCountryCode() == "212") return;
 
 if (!m.isGroup && !isCreator) {
 			await Turbo.sendMessage(m.chat, { text: "Don't PM bot\nSorry i will block you" });
@@ -2031,9 +2029,8 @@ if (!text) return reply('Link?')
 let { igDownload } = require('./lib/igdown')
 res = await igDownload(text).catch(e => {
 console.log(e)
-reply('error')
 })
-Turbo.sendMedia(m.chat, res.result.link, '', `${res.result.desc}`, m)
+Turbo.sendMedia(m.chat, res.result.link, m)
 break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
@@ -2549,7 +2546,7 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break 
-case 'alive': case 'menu': case 'list': case 'bot':{
+case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                            	timestampe = speed();
 latensie = speed() - timestampe
  anu = ` `
@@ -2593,7 +2590,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                                 quickReplyButton: {
                                     displayText: 'Menu 🗞️',
-                                    id: `${prefix}allmenu`
+                                    id: `${prefix}menu`
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -3638,19 +3635,19 @@ case "setowner":
 if (!text) return reply("1. video\n2. normal\n3. catalog\n4. status\n5. group\n\nExample .setowner video")
 if (q == "video") {
 typemenu = 'video'
-reply("Success Changing Menu To "+q)
+reply("Success Changing Owner Message To "+q)
 } else if (q == "normal") {
 typemenu = 'normal'
-reply("Success Changing Menu To "+q)
+reply("Success Changing Owner Message To "+q)
 } else if (q == "catalog") {
 typemenu = 'catalog'
-reply("Success Changing Menu To "+q)
+reply("Success Changing Owner Message To "+q)
 } else if (q == "status") {
 typemenu = 'status'
-reply("Success Changing Menu To "+q)
+reply("Success Changing Owner Message To "+q)
 } else if (q == "group") {
 typemenu = 'group'
-reply("Success Changing Menu To "+q)
+reply("Success Changing Owner Message To "+q)
 }
 break
 case 'setlogo': case 'setthumb': {
