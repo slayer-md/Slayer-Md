@@ -85,8 +85,13 @@ async function startTurbo() {
                 }
                 
 //═══════[welcome]════════\\
-if (anu.action == 'add') {
-               hehe = `𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝑻𝒐 ${metadata.subject} @${user.jid.split("@")[0]}`
+} else if (anu.action == 'add') {
+hehe = `┌▢ 「 𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝙱𝚁𝙾 」
+├▢ ʜʏ ʙʀᴏ  @${num.split("@")[0]},
+├▢ ɢʀᴏᴜᴘ ɴᴀᴍᴇ : ${groupName}
+├▢ ɢʀᴏᴜᴘ ᴍᴀᴋᴇᴅ ᴅᴀᴛᴇ :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
+└▢ ${metadata.subject} 
+ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇ ʙʏ sʟᴀʏᴇʀ`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
