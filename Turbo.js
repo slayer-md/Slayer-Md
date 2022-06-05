@@ -1573,13 +1573,12 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                   Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
-	    case 'ytmp3': case 'ytaudio': {
+	    case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 160kbps`
-                let quality = args[1] ? args[1] : '160kbps'
+                if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`)
+                let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
-                if (media.filesize >= 999999) return reply('Audio size is too big '+util.format(media))
-                replay(mess.wait)
+                if (media.filesize >= 999999) return reply('File Over Limit '+util.format(media))
                 Turbo.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
