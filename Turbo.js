@@ -27,6 +27,165 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLevelingLevel, getLevelingXp } = require("./lib/lvlfunction")
 const speedofbot = require("performance-now")
 
+const fvid = {
+	 key: { 
+          fromMe: false,
+	      participant: "0@s.whatsapp.net", 
+	     remoteJid: "916380260672@g.us" 
+                },
+	 message: { 
+                 "videoMessage": { 
+                 "title": `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                 "h": `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                 'duration': '99999', 
+                 'caption': `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                 'jpegThumbnail': global.thumb
+                        }
+                       }
+	                  }
+	                  
+const flike = {
+	key : {
+                          participant : "0@s.whatsapp.net",
+                          remoteJid: "status@broadcast"
+                        },
+       message: {
+                    orderMessage: {
+                            itemCount : 123,
+                            itemCoun : 404,
+                            surface : 404,
+                            message: `© ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            orderTitle: 'B',
+                            thumbnail: global.thumb, 
+                            sellerJid: '0@s.whatsapp.net'
+          
+                          }
+                        }
+                      }
+                      
+const ftex = {
+	 key: { 
+	      participant : "0@s.whatsapp.net",
+          remoteJid: "status@broadcast"
+                },
+	 message: { 
+		"extendedTextMessage": {
+                 "text": `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                 "title": `Bot Made By Turbo`,
+                 'jpegThumbnail': global.thumb
+                        }
+	                  } 
+                     }
+                     
+const fgclink = {
+                     key: {
+		                participant: "0@s.whatsapp.net",
+		                  remoteJid: "0@s.whatsapp.net"
+	               },
+	              message: {
+		               "groupInviteMessage": {
+			               "groupJid": "120363041691564687@g.us",
+			               "inviteCode": "https://chat.whatsapp.com/KHLXdHdY0Oa9stcxjHqglA",
+			               "groupName": "𝗦𝗟𝚫𝗬𝚵𝗥 ₪ 𝗕𝚯𝗧", 
+                           "caption": `𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯`, 
+                           'jpegThumbnail': fs.readFileSync(`./TurboMedia/slayer.jpg`)
+		                }
+	               }
+             } 
+
+      const fakegroup = {
+                    key: {
+                        participant : "0@s.whatsapp.net",
+                          remoteJid: "status@broadcast"
+                    },
+                    message: {
+                        "imageMessage": {
+                            "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
+                            "mimetype": "image/jpeg",
+                            "caption": `𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯`,
+                            "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
+                            "fileLength": "28777",
+                            "height": 1080,
+                            "width": 1079,
+                            "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=",
+                            "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
+                            "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
+                            "mediaKeyTimestamp": "1610993486",
+                            "jpegThumbnail": fs.readFileSync('./TurboMedia/slayer.jpg'),
+                            "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
+                        }
+                    }
+                } 
+
+const ftrol = {
+	key : {
+                          participant : '0@s.whatsapp.net'
+                        },
+       message: {
+                    orderMessage: {
+                            itemCount : 10000,
+                            status: 1,
+                            surface : 1,
+                            message: `▢ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ▢`,
+                            orderTitle: ``,
+                            thumbnail: ('./TurboMedia/slayer.jpg'),
+                            sellerJid: '0@s.whatsapp.net' 
+                          }
+                        }
+                      }            
+
+const todlink =[
+'https://youtu.be/IiYRFELAC0s',
+'https://youtu.be/bNoFWGc1iJ0',
+'https://youtu.be/DKm8Fg7dAp0',
+'https://youtu.be/PagvjtVfsPk',
+'https://youtu.be/CQLgEvxPs2w',
+'https://youtu.be/MsLnLxxjzPE',
+'https://youtu.be/YkDCqgk-QZY',
+'https://youtu.be/RGihGa5eAA8',
+'https://youtu.be/YkDCqgk-QZY',
+'https://youtu.be/KCOdjVN-x64',
+'https://youtu.be/6t_fdHhFrTg',
+'https://youtu.be/xzu_ODGpCRs',
+'https://youtu.be/Rz1diG58Rhs',
+'https://youtu.be/umQDV0UHUsQ',
+'https://youtu.be/W3m3yKpMTDg',
+'https://youtu.be/jRDJv5lfiH0',
+'https://youtu.be/FjdUiHW5JpQ',
+'https://youtu.be/i3OgJLwB2lc',
+'https://youtu.be/r1_EDhYbsHA',
+'https://youtu.be/MsLnLxxjzPE',
+'https://youtu.be/JWHV8lPTzPs',
+'https://youtu.be/EjVcqMknvUU',
+'https://youtu.be/2iCEd94TZ4o',
+'https://youtu.be/S8F2L3v10mA',
+'https://youtu.be/xvRWA9_18So',
+'https://youtu.be/sSynIGIVjUs',
+'https://youtu.be/E6NQYmO2qbA',
+'https://youtu.be/usY2mQGtpyw',
+'https://youtu.be/dMPnLAXAOBY',
+'https://youtu.be/b0md2fEIFpg',
+'https://youtu.be/e08eDavj0oI',
+'https://youtu.be/IYo8iXPCmgQ',
+'https://youtu.be/iuHy1fHikVo',
+'https://youtu.be/TwbhA23jSsw',
+]
+let tod = todlink[Math.floor(Math.random() * (todlink.length))]
+
+///Button Document
+const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
+kma = doc1
+mhan = await hisoka.prepareMessage(m.chat, media, document, kma)
+const buttonMessages = {
+documentMessage: mhan.message.documentMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: "DOCUMENT"
+}
+hisoka.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+}
+
 //[thumb]\\
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 
@@ -2377,8 +2536,8 @@ ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.
                 reply(respon)
             }
             break
-            case 'owner': case 'creator': {
-            Turbo.sendContact(m.chat, global.pemilik, m)
+           case 'owner': case 'creator': {
+                Turbo.sendContact(m.chat, global.owner, flike)
            const devsound = fs.readFileSync('./TurboMedia/owner.mp3') //u can change the music in TurboMedia folder
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
@@ -2390,29 +2549,41 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break 
-case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
-                anu = `╭─⬣「 INFO BOT 」⬣
-│
-│ Sʟᴀʏᴇʀ Iꜱ Sᴛɪʟʟ Aʟɪᴠᴇ ${pushname}
-│
-│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
-│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
-│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
-│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
-│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
-│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
-│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣`
+case 'alive': case 'menu': case 'list': case 'bot':{
+                           	timestampe = speed();
+latensie = speed() - timestampe
+ anu = ` `
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
                             hydratedContentText: anu,
                             locationMessage: {
                             jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
+                            hydratedFooterText: `
+╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
+│   
+│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
+│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
+│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
+│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
+│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐎𝐖𝐍𝐄𝐑 :- @${groupMetadata.owner.split('@')[0]}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
+╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'Creator',
+                                    displayText: 'Creator 💣',
                                     url: 'https://wa.me/916380260672'
                                 }
                             }, {
@@ -2423,24 +2594,24 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                                 quickReplyButton: {
                                     displayText: 'Menu 🗞️',
-                                    id: `${prefix}menu`
+                                    id: `${prefix}allmenu`
                                 }
                                 }, {
                                 quickReplyButton: {
                                     displayText: 'Speed Test 🐌',
-                                    id: `${prefix}ping`
+                                    id: `${prefix}command`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤Owner',
                                     id: `${prefix}owner`
                                 }
                             }]
                         }
                     }
-                }), { userJid: m.chat })
+                }),{ userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-                }
+            }
 break
 
             case 'list': case 'menu': case 'help': case '?': {
@@ -3463,6 +3634,25 @@ break
                 }), { userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+break
+case "setowner": 
+if (!text) return reply("1. video\n2. normal\n3. catalog\n4. status\n5. group\n\nExample .setowner video")
+if (q == "video") {
+typemenu = 'video'
+reply("Success Changing Menu To "+q)
+} else if (q == "normal") {
+typemenu = 'normal'
+reply("Success Changing Menu To "+q)
+} else if (q == "catalog") {
+typemenu = 'catalog'
+reply("Success Changing Menu To "+q)
+} else if (q == "status") {
+typemenu = 'status'
+reply("Success Changing Menu To "+q)
+} else if (q == "group") {
+typemenu = 'group'
+reply("Success Changing Menu To "+q)
+}
 break
 case 'setlogo': case 'setthumb': {
 if (!isCreator) return reply(mess.owner)
