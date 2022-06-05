@@ -1555,11 +1555,11 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                             }, {
                                 quickReplyButton: {
                                     displayText: '🎵Audio🎵',
-                                    id: `ytmp3 ${search.videos[0].url} 160kbps`
+                                    id: `ytmp3 ${search.videos[0].url} 320kbps`
                                     }
                                 },{quickReplyButton: {
                                     displayText: '🎥Video🎥',
-                                    id: `ytmp4 ${search.videos[0].url} 360p`
+                                    id: `ytmp4 ${search.videos[0].url} 144p`
                                      }
                                 }, {
                                 quickReplyButton: {
