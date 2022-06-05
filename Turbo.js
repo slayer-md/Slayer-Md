@@ -2578,7 +2578,6 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐎𝐖𝐍𝐄𝐑 :- @${groupMetadata.owner.split('@')[0]}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
 ╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
                             hydratedButtons: [{
