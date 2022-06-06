@@ -758,10 +758,60 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             }
             break
-            case 'sc': case 'git': {
-                reply('Slayer Bot : https://github.com/TURBOHYPER/Slayer-Md\n Made By Turbo\n\nYoutube : https://youtu.be/imFIX-Wrt3s\n Dont Forget To Subscribe')
+            case 'git': case 'sc': case 'sourcecode': case 'script': case 'botlink':{
+                           	timestampe = speed();
+latensie = speed() - timestampe
+ anu = ` `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `
+╭────⬡ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ────⬡
+│   
+│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
+╰─⬡───⬡────────⬡───⬡──⬡
+                             │
+╭─⬡───⬡ 𝐒𝐂𝐑𝐈𝐏𝐓 ⬡───⬡──⬡
+│𒆜 𝐒𝐂𝐑𝐈𝐏𝐓: https://github.com/TURBOHYPER/Slayer-Md
+│𒆜 𝐅𝐔𝐋𝐋 𝐒𝐂𝐑𝐈𝐏𝐓 : ғᴏʀ ғᴜʟʟ sᴄʀɪᴘᴛ ʏᴏᴜ ᴛᴏ ᴘᴀʏ
+╰─⬡───⬡────────⬡───⬡──⬡`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Youtube 🦄',
+                                    url: 'https://youtube.com/c/TurboMods'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'ListMenu 🔥',
+                                    id: `${prefix}command`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
-            break
+break
             case 'chat': {
                 if (!isCreator) throw mess.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
@@ -951,13 +1001,61 @@ Ciee Whats Going On💖👀`
                 await Turbo.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
-case 'warn': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
-                return reply('Hi ${pushname} Warn Feature Coming Soon')
+case 'warn':{
+const time = moment().tz('Asia/Kolkata').format("HH:mm:ss")
+if (!m.isGroup) throw mess.group
+if (!isAdmins) throw mess.admin
+if (!isBotAdmins) throw mess.botAdmin
+let user = m.mention || m.reply_message
+if (!text) return replay(`Reply To The Message, Example : ${prefix + command} Do Not Spam`)
+ anu = `╭──〔 *⚠️ ᴡᴀʀɴɪɴɢ ⚠️* 〕
+├ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:* ${user}
+├ *ʀᴇᴀsᴏɴ:* ${text}
+├ *ʀᴇᴍᴀɪɴɪɴɢ:*
+├ *ᴛᴏᴛᴀʟ ʟɪᴍɪᴛ:* 3
+├ *ɢʀᴏᴜᴘ:* ${groupName}
+├ *ᴡᴀʀɴᴇʀ:* wa.me/${m.sender.split("@")[0]}
+├ *ᴛɪᴍᴇ:* ${time}
+╰────────────── `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'I Am Sorry 😕',
+                                    id: `${prefix}aosjkwkje`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'I Will Not Do This Again 🙂',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
-            break
+break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -2097,7 +2195,6 @@ break
                 Turbo.sendMessage(m.chat, { video: { url: anu.result }, caption: `Download From ${text}` }, { quoted: m })
             }
             break
-
             case 'umma': case 'ummadl': {
 	        if (!text) throw `Example : ${prefix + command} https://umma.id/channel/video/post/gus-arafat-sumber-kecewa-84464612933698`
                 let { umma } = require('./lib) scraper')
@@ -2343,7 +2440,6 @@ View list of message with ${prefix}listmsg`)
             }
 	    break
 	    case 'anonymous': {
-                if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
 				this.anonymous = this.anonymous ? this.anonymous : {}
 				let buttons = [{
                                 urlButton: {
@@ -2360,7 +2456,6 @@ View list of message with ${prefix}listmsg`)
             }
 			break
 case 'sendkontak': case 'sendcontact': {
-                if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
                 if (!room) {
@@ -2377,7 +2472,6 @@ case 'sendkontak': case 'sendcontact': {
             }
             break
             case 'keluar': case 'leave': {
-                if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
                 if (!room) {
@@ -2394,7 +2488,6 @@ case 'sendkontak': case 'sendcontact': {
                 if (command === 'leave') break
             }
             case 'mulai': case 'start': {
-                if (m.isGroup) return reply('This Features Cannot Be Use in Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 if (Object.values(this.anonymous).find(room => room.check(m.sender))) {
                     let buttons = [
@@ -2435,7 +2528,6 @@ case 'sendkontak': case 'sendcontact': {
                 break
             }
             case 'next': case 'lanjut': {
-                if (m.isGroup) return reply('This Feature Cannot Be Used In Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let romeo = Object.values(this.anonymous).find(room => room.check(m.sender))
                 if (!romeo) {
@@ -2549,7 +2641,7 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
 case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                            	timestampe = speed();
 latensie = speed() - timestampe
- anu = ` `
+ anu = ``
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -2595,7 +2687,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                                 }, {
                                 quickReplyButton: {
                                     displayText: 'Speed Test 🐌',
-                                    id: `${prefix}command`
+                                    id: `${prefix}ping`
                                 }
                                 }, {
                                 quickReplyButton: {
