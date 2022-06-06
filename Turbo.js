@@ -44,7 +44,7 @@ const fvid = {
                        }
 	                  }
 	                  
-const flike = {
+const forder = {
 	key : {
                           participant : "0@s.whatsapp.net",
                           remoteJid: "status@broadcast"
@@ -63,7 +63,7 @@ const flike = {
                         }
                       }
                       
-const ftex = {
+const fstatus = {
 	 key: { 
 	      participant : "0@s.whatsapp.net",
           remoteJid: "status@broadcast"
@@ -77,7 +77,7 @@ const ftex = {
 	                  } 
                      }
                      
-const fgclink = {
+const fakegroup = {
                      key: {
 		                participant: "0@s.whatsapp.net",
 		                  remoteJid: "0@s.whatsapp.net"
@@ -93,7 +93,7 @@ const fgclink = {
 	               }
              } 
 
-      const fakegroup = {
+      const fakeimage = {
                     key: {
                         participant : "0@s.whatsapp.net",
                           remoteJid: "status@broadcast"
@@ -117,7 +117,7 @@ const fgclink = {
                     }
                 } 
 
-const ftrol = {
+const fcatalogue = {
 	key : {
                           participant : '0@s.whatsapp.net'
                         },
@@ -1006,17 +1006,23 @@ const time = moment().tz('Asia/Kolkata').format("HH:mm:ss")
 if (!m.isGroup) throw mess.group
 if (!isAdmins) throw mess.admin
 if (!isBotAdmins) throw mess.botAdmin
-let user = m.mention || m.reply_message
+const limitedwarn =[
+'2',
+'1',
+'0',
+]
+let twarn = limitedwarn[Math.floor(Math.random() * (limitedwarn.length))]
 if (!text) return replay(`Reply To The Message, Example : ${prefix + command} Do Not Spam`)
- anu = `╭──〔 *⚠️ ᴡᴀʀɴɪɴɢ ⚠️* 〕
-├ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:* ${user}
-├ *ʀᴇᴀsᴏɴ:* ${text}
-├ *ʀᴇᴍᴀɪɴɪɴɢ:*
-├ *ᴛᴏᴛᴀʟ ʟɪᴍɪᴛ:* 3
-├ *ɢʀᴏᴜᴘ:* ${groupName}
-├ *ᴡᴀʀɴᴇʀ:* wa.me/${m.sender.split("@")[0]}
-├ *ᴛɪᴍᴇ:* ${time}
-╰────────────── `
+ anu = `╭──⧀〔 *⚠︎ 𝖶𝖠𝖱𝖭𝖨𝖭𝖦 ⚠︎* 〕
+│
+│➟ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:* ${m.sender.split("@")[0]}
+│➟ *ʀᴇᴀsᴏɴ:* ${text}
+│➟ *ʀᴇᴍᴀɪɴɪɴɢ:* ${twarn}
+│➟ *ᴛᴏᴛᴀʟ ʟɪᴍɪᴛ:* 3
+│➟ *ɢʀᴏᴜᴘ:* ${groupName}
+│➟ *ᴡᴀʀɴᴇʀ:* wa.me/${m.sender.split("@")[0]}
+│➟ *ᴛɪᴍᴇ:* ${time}
+╰──⧁ `
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -2626,7 +2632,7 @@ ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.
             }
             break
            case 'owner': case 'creator': {
-                Turbo.sendContact(m.chat, global.owner, flike)
+                Turbo.sendContact(m.chat, global.owner, forder)
            const devsound = fs.readFileSync('./TurboMedia/owner.mp3') //u can change the music in TurboMedia folder
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
@@ -3724,21 +3730,27 @@ break
             }
 break
 case "setowner": 
-if (!text) return reply("1. video\n2. normal\n3. catalog\n4. status\n5. group\n\nExample .setowner video")
+if (!text) return reply("1. video\n2. normal\n3. catalog\n4. status\n5. group\n6. image\n7. order\n\nExample .setowner video")
 if (q == "video") {
-typemenu = 'video'
+typeowner = 'video'
 reply("Success Changing Owner Message To "+q)
 } else if (q == "normal") {
-typemenu = 'normal'
+typeowner = 'normal'
 reply("Success Changing Owner Message To "+q)
 } else if (q == "catalog") {
-typemenu = 'catalog'
+typeowner = 'catalog'
 reply("Success Changing Owner Message To "+q)
 } else if (q == "status") {
-typemenu = 'status'
+typeowner = 'status'
 reply("Success Changing Owner Message To "+q)
 } else if (q == "group") {
-typemenu = 'group'
+typeowner = 'group'
+reply("Success Changing Owner Message To "+q)
+} else if (q == "image") {
+typeowner = 'image'
+reply("Success Changing Owner Message To "+q)
+} else if (q == "order") {
+typeowner = 'order'
 reply("Success Changing Owner Message To "+q)
 }
 break
