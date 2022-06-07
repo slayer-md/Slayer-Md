@@ -1067,7 +1067,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'warn':{
+case 'rules':{
 if (!m.isGroup) throw mess.group
 if (!isAdmins) throw mess.admin
 if (!isBotAdmins) throw mess.botAdmin
