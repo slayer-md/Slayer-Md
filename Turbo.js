@@ -338,14 +338,19 @@ const levelRole = getLevelingLevel(m.sender)
 	  }
 	
 //[Antilink]\\
-	if (isAntiLink) 
-if (budy.includes('https://chat.whatsapp.com/')) {
-               if (!m.key.fromMe) {
-               reply('*LINK DETECTED*\nWow, how naughty, this group has been installed with Antilink, OK?..,\nGood Bye To You..👋🏻')
-               let sianj = m.sender
-               await Turbo.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-               }
-	  }
+	if (db.data.chats[m.chat].antilink) {
+        if (budy.match(`chat.whatsapp.com`)) {
+        reply(`「 ANTI LINK 」\n\nOh Sending A Group\nThe Admins Installed Me With A Antilink Good Bye !`)
+        if (!isBotAdmins) return reply(`I Am Not A Admin How The Can I Kick Are You Stupid First Make Me Admin`)
+        let gclink = (`https://chat.whatsapp.com/`+await Turbo.groupInviteCode(m.chat))
+        let isLinkThisGc = new RegExp(gclink, 'i')
+        let isgclink = isLinkThisGc.test(m.text)
+        if (isgclink) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because You Sent This Group Link❤️`)
+        if (isAdmins) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because You Are An Admin Of The Group❤️`)
+        if (isCreator) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because Your My Creator Your The Reason That I Am Still Alive\nI Will Always Be Royal To You Turbo My Master ✨❤️ `)
+        Turbo.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+        }
+        }
 	if (db.chats[m.chat].wame) {
         if (budy.match(`wa.me/`)) {
         m.reply(`「 WA.ME DETECTED 」\n\nYou have been detected sending a wa.me link, sorry you will be kicked !`)
@@ -1015,7 +1020,7 @@ let twarn = limitedwarn[Math.floor(Math.random() * (limitedwarn.length))]
 if (!text) return replay(`Reply To The Message, Example : ${prefix + command} Do Not Spam`)
  anu = `╭──⧀〔 *⚠︎ 𝖶𝖠𝖱𝖭𝖨𝖭𝖦 ⚠︎* 〕
 │
-│➟ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:* ${m.sender.split("@")[0]}
+│➟ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:*
 │➟ *ʀᴇᴀsᴏɴ:* ${text}
 │➟ *ʀᴇᴍᴀɪɴɪɴɢ:* ${twarn}
 │➟ *ᴛᴏᴛᴀʟ ʟɪᴍɪᴛ:* 3
@@ -1023,6 +1028,63 @@ if (!text) return replay(`Reply To The Message, Example : ${prefix + command} Do
 │➟ *ᴡᴀʀɴᴇʀ:* wa.me/${m.sender.split("@")[0]}
 │➟ *ᴛɪᴍᴇ:* ${time}
 ╰──⧁ `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'I Am Sorry 😕',
+                                    id: `${prefix}aosjkwkje`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'I Will Not Do This Again 🙂',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'warn':{
+if (!m.isGroup) throw mess.group
+if (!isAdmins) throw mess.admin
+if (!isBotAdmins) throw mess.botAdmin
+ anu = `*_RULES BOT_*
+
+1. Do Not Spam Bot Command.
+Sanctions: *Block*
+
+2. Do Not Call Bot.
+Sanctions: *Block*
+
+3. Do Not Pm Bot.
+Sanctions: *Permanen Block*
+
+Any Bug Report To Turbo Type Bug And Enter The Bug
+
+──「 *${global.ownernma}* 」── `
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -1826,7 +1888,7 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                                     }
                                 },{quickReplyButton: {
                                     displayText: '🎥Video🎥',
-                                    id: `ytmp4 ${search.videos[0].url} 144p`
+                                    id: `ytmp4 ${search.videos[0].url} 360p`
                                      }
                                 }, {
                                 quickReplyButton: {
@@ -1842,7 +1904,7 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
             break
 	    case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
-                if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`)
+                if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 320kbps`)
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 999999) return reply('File Over Limit '+util.format(media))
@@ -1851,11 +1913,11 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
             break
             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 144p`
-                let quality = args[1] ? args[1] : '144p'
+                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 360p`
+                let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(text, quality)
                 if (media.filesize >= 999999) return reply('Video size is too big '+util.format(media))
-                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '144p'}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
 	    case 'getmusic': {
@@ -2825,8 +2887,8 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 										"rowId": `${prefix}convertmenu`
 										},
 										{
-										"title": "Miscellaneous Menu",
-										"description": "Displays The List Of Miscellaneous Features",
+										"title": "Main Menu",
+										"description": "Displays The List Of Main Features",
 										"rowId": `${prefix}nocategorymenu`
 										},
 										{
@@ -3354,7 +3416,7 @@ case 'nocategorymenu': {
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-	*Misc Menu*
+	*Main Menu*
   
   ➙ ${prefix}ping
   ➙ ${prefix}owner
@@ -3363,6 +3425,7 @@ case 'nocategorymenu': {
   ➙ ${prefix}delete
   ➙ ${prefix}chatinfo
   ➙ ${prefix}quoted
+  ➙  ${prefix}rules
   ➙ ${prefix}listpc
   ➙ ${prefix}listgc
   ➙ ${prefix}listonline
@@ -3663,7 +3726,7 @@ break
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
   
-  ꪶMisc Menuꫂ
+  ꪶMain Menuꫂ
   ➙ ${prefix}ping
   ➙ ${prefix}owner
   ➙ ${prefix}donate
@@ -3671,6 +3734,7 @@ break
   ➙ ${prefix}delete
   ➙ ${prefix}chatinfo
   ➙ ${prefix}quoted
+  ➙  ${prefix}rules
   ➙ ${prefix}listpc
   ➙ ${prefix}listgc
   ➙ ${prefix}listonline
