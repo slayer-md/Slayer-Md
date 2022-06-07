@@ -338,19 +338,19 @@ const levelRole = getLevelingLevel(m.sender)
 	  }
 	
 //[Antilink]\\
-	if (db.data.chats[m.chat].antilink) {
-        if (budy.match(`chat.whatsapp.com`)) {
-        reply(`「 ANTI LINK 」\n\nOh Sending A Group\nThe Admins Installed Me With A Antilink Good Bye !`)
-        if (!isBotAdmins) return reply(`I Am Not A Admin How The Can I Kick Are You Stupid First Make Me Admin`)
-        let gclink = (`https://chat.whatsapp.com/`+await Turbo.groupInviteCode(m.chat))
-        let isLinkThisGc = new RegExp(gclink, 'i')
-        let isgclink = isLinkThisGc.test(m.text)
-        if (isgclink) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because You Sent This Group Link❤️`)
-        if (isAdmins) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because You Are An Admin Of The Group❤️`)
-        if (isCreator) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because Your My Creator Your The Reason That I Am Still Alive\nI Will Always Be Royal To You Turbo My Master ✨❤️ `)
-        Turbo.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-        }
-        }
+	if (isAntiLink) 
+if (budy.includes('https://chat.whatsapp.com/')) {
+               if (!m.key.fromMe) {
+               let gclink = (`https://chat.whatsapp.com/`+await Turbo.groupInviteCode(m.chat))
+               let isLinkThisGc = new RegExp(gclink, 'i')
+               let isgclink = isLinkThisGc.test(m.text)
+               if (isgclink) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because You Sent This Group Link❤️`)
+               if (isAdmins) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because You Are An Admin Of The Group❤️`)	
+               if (isCreator) return reply(`Group Is Installed With Anti-Link But I Will Not Kick You 😉, Because Your My Creator Your The Reason That I Am Still Alive\nI Will Always Be Royal To You Turbo My Master ✨❤️ `)
+               let sianj = m.sender
+               await Turbo.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+               }
+	  }
 	if (db.chats[m.chat].wame) {
         if (budy.match(`wa.me/`)) {
         m.reply(`「 WA.ME DETECTED 」\n\nYou have been detected sending a wa.me link, sorry you will be kicked !`)
