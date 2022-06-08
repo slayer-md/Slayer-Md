@@ -783,7 +783,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                              │
 ╭─⬡───⬡ 𝐒𝐂𝐑𝐈𝐏𝐓 ⬡───⬡──⬡
 │𒆜 𝐒𝐂𝐑𝐈𝐏𝐓: https://github.com/TURBOHYPER/Slayer-Md
-│𒆜 𝐅𝐔𝐋𝐋 𝐒𝐂𝐑𝐈𝐏𝐓 : ғᴏʀ ғᴜʟʟ sᴄʀɪᴘᴛ ʏᴏᴜ ᴛᴏ ᴘᴀʏ
+│𒆜 𝐅𝐔𝐋𝐋 𝐒𝐂𝐑𝐈𝐏𝐓 : ғᴏʀ ғᴜʟʟ sᴄʀɪᴘᴛ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴘᴀʏ
 ╰─⬡───⬡────────⬡───⬡──⬡`,
                             hydratedButtons: [{
                                 urlButton: {
@@ -1067,6 +1067,93 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'fake':{
+const { name, gender, age, birtday, occupation, address, zip_code, state, country, email, password, phone, card, code, date, pin_code, weight, height, blood_type, status } = await fetchJson('https://docs-jojo.herokuapp.com/api/fake_identity')
+anu = `*name* : _${name}_\n *gender* : _${gender}_\n *age* :  _${age}_\n *birtday* : _${birtday}_\n *occupation* : _${occupation}_\n *address* : _${address}_\n *zip_code* : _${zip_code}_\n *state* : _${state}_\n *country* : _${country}_\n *email* : ${email} *password* : _${password}_\n *phone* : _${phone}_\n *card* : _${card}_\n *code* : _${code}_\n *date* : _${date}_\n *pin_code* : _${pin_code}_\n *weight* : _${weight}_\n *height* : _${height}_\n *blood_type* : _${blood_type}_\n *status* : ${status}`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'This Person Does Not Exist 😲',
+                                    id: `${prefix}aosjkwkje`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Wow 😲',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'ig':{
+if (!text) return reply('*Give me a instagram username*')
+const { result, status } = await fetchJson(`https://levanter.up.railway.app/ig?q=${text}`)
+if (!status) return reply('*not found*')
+const { name, username, avatar, posts, following, followers, description } = result
+anu = `username : ${username}\nname : ${name}\nbio : ${description}\nposts : ${posts}\nfollowers : ${followers}\nfollowning : ${following}`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Thanks ❤️',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'rules':{
 if (!m.isGroup) throw mess.group
 if (!isAdmins) throw mess.admin
@@ -1078,7 +1165,7 @@ Sanctions: *Block*
 
 2. Do Not Call Bot.
 Sanctions: *Block*
-
+,
 3. Do Not Pm Bot.
 Sanctions: *Permanen Block*
 
@@ -2976,6 +3063,7 @@ case 'grupmenu': {
   ➙ ${prefix}kick @user
   ➙ ${prefix}promote @user
   ➙ ${prefix}demote @user
+  ➙ ${prefix}warn
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3020,9 +3108,7 @@ case 'downloadmenu': {
   ➙ ${prefix}tiktokwm [url]
   ➙ ${prefix}tiktokmp3 [url]
   ➙ ${prefix}instagram [url]
-  ➙ ${prefix}ig2 [url]
-  ➙ ${prefix}igreels [url]
-  ➙ ${prefix}igtv [url]
+  ➙ ${prefix}ig [username]
   ➙ ${prefix}twitter [url]
   ➙ ${prefix}twittermp3 [url]
   ➙ ${prefix}ytmp3 [url]
@@ -3165,6 +3251,7 @@ case 'funmenu': {
   ➙ ${prefix}couple
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
+  ➙ ${prefix}fake
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3664,15 +3751,14 @@ break
   ➙ ${prefix}kick @user
   ➙ ${prefix}promote @user
   ➙ ${prefix}demote @user
+  ➙ ${prefix}warn
   
   ꪶDownload Menuꫂ
   ➙ ${prefix}tiktoknowm [url]
   ➙ ${prefix}tiktokwm [url]
   ➙ ${prefix}tiktokmp3 [url]
   ➙ ${prefix}instagram [url]
-  ➙ ${prefix}ig2 [url]
-  ➙ ${prefix}igreels [url]
-  ➙ ${prefix}igtv [url]
+  ➙ ${prefix}ig [username]
   ➙ ${prefix}twitter [url]
   ➙ ${prefix}twittermp3 [url]
   ➙ ${prefix}ytmp3 [url]
@@ -3701,6 +3787,7 @@ break
   ➙ ${prefix}couple
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
+  ➙ ${prefix}fake
   
   ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
