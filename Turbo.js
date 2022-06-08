@@ -1154,10 +1154,175 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'github':{
+if (!text) return reply('*Give me a github username*')
+const {avatar_url,name,login,id,html_url,type,company,location,email,bio,twitter_username,public_repos,public_gists,following,followers,created_at,updated_at} = await fetchJson(`https://api.github.com/users/${text}`)
+anu = `╭══〘 𝚄𝚂𝙴𝚁 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 〙══⊷❍
+┃✩╭─────────────────
+┃✩│𝗡𝗔𝗠𝗘: ${name}
+┃✩│𝗨𝗦𝗘𝗥 𝗡𝗔𝗠𝗘: ${login}
+┃✩│𝗜𝗗: ${id}
+┃✩│𝗟𝗜𝗡𝗞: ${html_url}
+┃✩│𝗧𝗬𝗣𝗘: ${type}
+┃✩│𝗙𝗢𝗟𝗟𝗢𝗪𝗜𝗡𝗚: ${following}
+┃✩│𝗙𝗢𝗟𝗟𝗢𝗪𝗘𝗥𝗦: ${followers}
+┃✩│𝗖𝗢𝗠𝗣𝗔𝗡𝗬: ${company}
+┃✩│𝗟𝗢𝗖𝗔𝗧𝗜𝗢𝗡: ${location}
+┃✩│𝗘𝗠𝗔𝗜𝗟: ${email}
+┃✩│𝗕𝗜𝗢: ${bio}
+┃✩│𝗧𝗪𝗜𝗧𝗧𝗘𝗥: ${twitter_username}
+┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗚𝗜𝗦𝗧𝗦: ${public_gists}
+┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗣𝗢𝗦: ${public_repos}
+┃✩│𝗖𝗥𝗘𝗔𝗧𝗘𝗗 𝗔𝗧: ${created_at}
+┃✩│𝗟𝗔𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
+┃✩╰─────────────────
+╰══════════════════⊷❍`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Thanks ❤️',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'bio':{
+	const tbio =[
+'*What is the distance you call? Did not we love Allah without seeing 🕊* ',
+'*Do not sweat in other bodies and do not follow me, you will get cold. 🌌* ',
+'*If you do not go to the one who calls with prayer, will the one you call with prayer ever come to you✨* ',
+'*My God is either Kavuş or Forget ... 🥀⛓* ',
+'*My Fan Is For Those Who Know Both His Limits And His Lord...* ',
+ '*You Are The Most Beautiful Thing That Has Happened To Me In This World..❤* ',
+'*We Are Obligated To Love? God knows it...🌿* ',
+'*I do not regret it, if I see that smile, I will succumb again🍂🌒* ',
+'*Love Souls, Bodies Will Rot...🍂🍂* ',
+'*Our Faith Is: The World Is A Load God Is Great...✨* ',
+'*I found you among eight billion people, but you could not find my heart among my 78 organs.* ',
+'*I do not owe anyone any memory, I do not like coffee anyway..! 🖤* ',
+'*Do not Trust Those Who Will Never Do It Because of What We Always Said She Would not Do* ',
+'*May Allah protect us not from those who do not love us, but from those who pretend to love us. 🐆* ',
+'*I entrusted dreams to you, you to prayer, and prayer to God. 🔐❤️* ',
+'*...Toxic Turbo Is The Best...* ',
+'*Sleepy dreams are deceiving people if we wake up 🕊* ',
+'*I do not trust anyone, they write well, they speak well, language is different, heart is different* ',
+'*Our heart is like a bird forced to migrate without learning to fly.🖤🔗* ',
+'*Time does not heal everything, you realize that when you plant flowers on a grave...🥀* ',
+'*We said good things take time, time took good things* ',
+'*Do not look twice at what you can not have in life, now you can exit your profile :)*' ,
+'*I am not the same for everyone. From whom did you listen to me...🥀*' ,
+'*If you are in the dark, even your shadow leaves you alone.*' ,
+'*Everything Good Is Forgotten You Remember Me Bad...🚬🥀*' ,
+'*It is decency that makes beauty beautiful, and decency is a reason to love beauty 🌼*' ,
+'*A bullet stands in my heart more honorable than you.*' ,
+'*What Was The Poet Saying? A Wish Is Not Made To The Star Of Every Night...🕊* ',
+'*And then she said to the dry leaf branch, do not forget our green days 🍀* ',
+'*I knew that Allah would take my life, but I did not know that her servant would take my breath away.* ',
+'*We Did not Have A Bright Enough To Light Up The Darkness Of The Night..😏🍷🥂* ',
+'*I live not to be different, I live to be happy...🌹🙂* ',
+'*I do not care about your return, my only concern was your departure...😒* ',
+'*♤...♡...♤ what is the difference in the price of the watch on our wrist as every second of us goes to death ♤...♡...♤* ',
+'*dont forget! Someone died by blowing the heart that you turned to ashes 🥀🕊️🍂* ',
+'*I am strong... Because I have no other choice, I know I won not be able to catch up if I fall...🚬* ',
+'*Temporary people teach permanent lessons🥀* ',
+'*In this life, you are going to pull you out so that there is room for those who love you 🔥🤍* ',
+'*If everything was as it is seen, the sea water you take in your hand would be blue, no one understood, I preferred to keep silent...* ',
+'*Pleasing people is an unattainable goal, and pleasing God is a goal that should not be abandoned.. * ',
+'*Dreams were nice too, if they could be lived...* ',
+'*The World Is Just A Hell For Sensitive Hearts🥀* ',
+'*I would not mind if they gave me the whole city, I hesitate when I am walking down that street* ',
+'*Maybe I won not be a poet, but you will be the most beautiful poem I will ever lived 🍁🌹* ',
+'*No good words come out of a cold heart, do not wait, you will get hurt...🥀* ',
+'*I HOPE IT IS VALUABLE FOR THE VOICES THAT YOU PREFER..!* ',
+'*We were buried in the wrong soil when we bloomed beautifully* ',
+'*If I did what I forgive, they would not forgive 🙂* ',
+'*We did not even have to drink tea, We got up and fell in love...🍂* ',
+'*Let those who go go, let those who delete erase. If you have a bone to throw, you will have many dogs to come..! 😉* ',
+'*All people who love beauty will fall for the wrong hearts again...💔😒☄️* ',
+'*The sound that echoes even on a wall sometimes does not touch a persons heart. 🍂🖤* ',
+'*your look! my legacy🗝️* ',
+'*I looked at you once. My eyes could not see another garden..🍁🍂* ',
+'*I had a nerve for every purse, but I used to laugh when I saw you❤☘* ',
+'*I do not know how many prayers you will come after, but I sacrificed my hands to the sky ♥️...* ',
+'*May my heart be the desire of my heart, let my pillow be made of stone..🕊🔐* ',
+'*My dreams live as long as a butterfly 💔🥀* ',
+'*It is not the age, but the experiences that make a person grow🖇️🍃* ',
+'*I LOVED LONELINESS AS I KNEW PEOPLE ... 🙂🌹* ',
+'*MY SILENCE WILL BE AS BRUTAL AS THE FIRST BULLET LEAVING THE BARREL*',
+'*Pain Is not Important, Hope Tires You....😒💔* ',
+]
+let tgbio = tbio[Math.floor(Math.random() * (tbio.length))]
+anu = `${tgbio}`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Thanks ❤️',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'rules':{
-if (!m.isGroup) throw mess.group
-if (!isAdmins) throw mess.admin
-if (!isBotAdmins) throw mess.botAdmin
  anu = `*_RULES BOT_*
 
 1. Do Not Spam Bot Command.
