@@ -7,6 +7,13 @@
 //~Thank you to LORD BUDDHA, ME AND MY 
 //FAMILY.
 
+//Codded by @TURBOHYPER
+//Whatsapp: wa.me/+916380260672 
+//Instagram: toxic_turbo777
+//Thanks:Turbo
+//*İdea by @TURBOHYPER
+//copy with credits
+
 //[modules]\\
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
@@ -15,6 +22,7 @@ const util = require('util')
 const chalk = require('chalk')
 const { exec, spawn, execSync } = require("child_process")
 const axios = require('axios')
+//const acrcloud = require('acrcloud')
 const path = require('path')
 const os = require('os')
 const moment = require('moment-timezone')
@@ -132,8 +140,8 @@ const fcatalogue = {
                             sellerJid: '0@s.whatsapp.net' 
                           }
                         }
-                      }            
-
+                      } 
+                                        
 const todlink =[
 'https://youtu.be/IiYRFELAC0s',
 'https://youtu.be/bNoFWGc1iJ0',
@@ -175,7 +183,7 @@ let tod = todlink[Math.floor(Math.random() * (todlink.length))]
 ///Button Document
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
 kma = doc1
-mhan = await hisoka.prepareMessage(m.chat, media, document, kma)
+mhan = await Turbo.prepareMessage(m.chat, media, document, kma)
 const buttonMessages = {
 documentMessage: mhan.message.documentMessage,
 contentText: text1,
@@ -183,7 +191,7 @@ footerText: desc1,
 buttons: but,
 headerType: "DOCUMENT"
 }
-hisoka.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+Turbo.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 }
 
 //[thumb]\\
@@ -244,6 +252,7 @@ module.exports = Turbo = async (Turbo, m, chatUpdate, store) => {
 	const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
 	
 //════════[runtime]═════════//
+
 const runtime = function (seconds) {
 seconds = Number(seconds);
 var d = Math.floor(seconds / (3600 * 24));
@@ -258,7 +267,7 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 }
 	
 //[target]\\
-	const reply = (teks) => {
+const reply = (teks) => {
             Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
         }
         
@@ -384,6 +393,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             scheduled: true,
             timezone: "Asia/Kolkata"
         })
+        
 	    
 //[respond cmd with media]\\
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.sticker)) {
@@ -817,6 +827,45 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'find' :{
+let acrcloud = require('acrcloud')
+let acr = new acrcloud({
+	host: 'identify-eu-west-1.acrcloud.com',
+	access_key: 'c816ad50a2bd6282e07b90447d93c38c',
+	access_secret: 'ZpYSwmCFpRovcSQBCFCe1KArX7xt8DTkYx2XKiIP'
+})
+	try{
+	let q = m.quoted ? m.quoted : m
+	let mime = (q.msg || q).mimetype || ''
+	if (/audio|video/.test(mime)) {
+		let media = await q.download()
+		let ext = mime.split('/')[1]
+		fs.writeFileSync(`./${m.sender}.${ext}`, media)
+		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
+		let { code, msg } = res.status
+		if (code !== 0) throw msg
+		let { title, artists, album, genres, release_date } = res.metadata.music[0]
+		let button = [
+                    {buttonId: `song ${title}`, buttonText: {displayText: '𝐏𝐥𝐚𝐲 𝐈𝐭 𝐇𝐞𝐫𝐞'}, type: 1}
+                ]
+		let txt = `*𝐓𝐢𝐭𝐥𝐞:* ${title}
+
+*𝐀𝐫𝐭𝐢𝐬𝐭:* ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
+
+*𝐀𝐥𝐛𝐮𝐦:* ${album.name || ''}
+
+*𝐆𝐞𝐧𝐫𝐞𝐬:* ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
+
+*𝐑𝐞𝐥𝐞𝐚𝐬𝐞 𝐃𝐚𝐭𝐞:* ${release_date}`
+		fs.unlinkSync(`./${m.sender}.${ext}`)
+		
+     await Turbo.sendButtonText(m.chat, button, txt, Turbo.user.name, m)
+	//	await m.reply(txt)
+	} else throw 'Reply audio/video!'
+}catch(e){
+    m.reply(`${e}`)
+  }}
+       break
             case 'chat': {
                 if (!isCreator) throw mess.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
@@ -1509,8 +1558,9 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 reply(teks)
 	    }
 	    break
-               case 'vote': {
+               case 'startvote': {
             if (!m.isGroup) throw mess.group
+            if (!isAdmins) throw mess.admin
             if (m.chat in vote) throw `_There are still votes in this chat!_\n\n*${prefix}deletevote* - to delete votes`
             if (!text) throw `Enter Reason for Vote, Example: *${prefix + command} Owner is handsome*`
             reply(`Voting starts!\n\n*${prefix}upvote* - for yes\n*${prefix}devote* - for no\n*${prefix}checkvote* - to check the votes\n*${prefix}deletevote* - to delete vote`)
@@ -1551,9 +1601,9 @@ let buttonsVote = [
             Turbo.sendMessage(m.chat, buttonMessageVote)
 	    }
             break
-               case 'upvote': {
+               case 'vote': {
             if (!m.isGroup) throw mess.group
-            if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*Type ${prefix}vote* - to start voting`
+            if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*Type ${prefix}startvote* - to start voting`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
             if (wasVote) throw 'You have Voted'
@@ -1595,7 +1645,7 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
              break
                 case 'devote': {
             if (!m.isGroup) throw mess.group
-            if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`
+            if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*${prefix}startvote* - to start voting`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
             if (wasVote) throw 'You Have Voted'
@@ -2712,6 +2762,11 @@ ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. 
                 Turbo.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
             }
             break
+            case 'update': {
+            respon = ` *Hey Master Bot Is Up To Date* `
+ 	       reply(respon)
+            }
+            break
             case 'lockcmd': {
                 if (!isCreator) throw mess.owner
                 if (!m.quoted) throw 'Reply Message!'
@@ -3229,6 +3284,10 @@ case 'grupmenu': {
   ➙ ${prefix}promote @user
   ➙ ${prefix}demote @user
   ➙ ${prefix}warn
+  ➙ ${prefix}startvote
+  ➙ ${prefix}vote
+  ➙ ${prefix}devote
+  ➙ ${prefix}delvote
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3320,7 +3379,8 @@ case 'downloadmenu': {
             
               *Search Menu*
   
-  ➙ ${prefix}play [query]
+  ➙ ${prefix}song [query]
+  ➙ ${prefix}video [query]
   ➙ ${prefix}yts [query]
   ➙ ${prefix}google [query]
   ➙ ${prefix}gimage [query]
@@ -3417,6 +3477,7 @@ case 'funmenu': {
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}fake
+  ➙ ${prefix}bio
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3622,13 +3683,13 @@ case 'convertmenu': {
 	
 	*Convert Menu*
   
-  ➙ ${prefix}toimage
+  ➙ ${prefix}photo
   ➙ ${prefix}removebg
   ➙ ${prefix}sticker
   ➙ ${prefix}emojimix
   ➙ ${prefix}tovideo
   ➙ ${prefix}togif
-  ➙ ${prefix}tourl
+  ➙ ${prefix}url
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
   `
@@ -3917,6 +3978,10 @@ break
   ➙ ${prefix}promote @user
   ➙ ${prefix}demote @user
   ➙ ${prefix}warn
+  ➙ ${prefix}startvote
+  ➙ ${prefix}vote
+  ➙ ${prefix}devote
+  ➙ ${prefix}delvote
   
   ꪶDownload Menuꫂ
   ➙ ${prefix}tiktoknowm [url]
@@ -3932,7 +3997,8 @@ break
   ➙ ${prefix}getvideo [query
   
   ꪶSearch Menuꫂ
-  ➙ ${prefix}play [query]
+  ➙ ${prefix}song [query]
+  ➙ ${prefix}video [query]
   ➙ ${prefix}yts [query]
   ➙ ${prefix}google [query]
   ➙ ${prefix}gimage [query]
@@ -3953,6 +4019,7 @@ break
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}fake
+  ➙ ${prefix}bio
   
   ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
@@ -3968,13 +4035,13 @@ break
   ➙ ${prefix}squirrel
    
   ꪶConvert Menuꫂ
-  ➙ ${prefix}toimage
+  ➙ ${prefix}photo
   ➙ ${prefix}removebg
   ➙ ${prefix}sticker
   ➙ ${prefix}emojimix
   ➙ ${prefix}tovideo
   ➙ ${prefix}togif
-  ➙ ${prefix}tourl
+  ➙ ${prefix}url
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
   
@@ -4078,6 +4145,16 @@ if (/webp/.test(mime)) return reply("*Reply to Image*")
 let delb = await Turbo.downloadMediaMessage(quoted)
 fs.writeFileSync(`./TurboMedia/slayer.jpg`, delb)
 fs.writeFileSync(`./TurboMedia/thumb.jpg`, delb)
+reply(mess.success)
+}
+break
+case 'setlogo': case 'setthumb': {
+if (!isCreator) return reply(mess.owner)
+if (!quoted) return reply("*Reply to Image*")
+if (!/image/.test(mime)) return reply("*Reply to Image*")
+if (/webp/.test(mime)) return reply("*Reply to Image*")
+let delb = await Turbo.downloadMediaMessage(quoted)
+fs.writeFileSync(`./TurboMedia/banner.jpg`, delb)
 reply(mess.success)
 }
 break
