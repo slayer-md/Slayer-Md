@@ -1069,7 +1069,7 @@ let twarn = limitedwarn[Math.floor(Math.random() * (limitedwarn.length))]
 if (!text) return replay(`Reply To The Message, Example : ${prefix + command} Do Not Spam`)
  anu = `╭──⧀〔 *⚠︎ 𝖶𝖠𝖱𝖭𝖨𝖭𝖦 ⚠︎* 〕
 │
-│➟ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:*
+│➟ *ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ:* wa.me/${m.mentionedJid[0].split`@`[0]}
 │➟ *ʀᴇᴀsᴏɴ:* ${text}
 │➟ *ʀᴇᴍᴀɪɴɪɴɢ:* ${twarn}
 │➟ *ᴛᴏᴛᴀʟ ʟɪᴍɪᴛ:* 3
@@ -1157,6 +1157,10 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 }),{ userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+break
+case 'jid':{
+reply(m.chat)
+}
 break
 case 'ig':{
 if (!text) return reply('*Give me a instagram username*')
@@ -2760,11 +2764,6 @@ Info: *bold* hash is locked
 ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}
 `.trim()
                 Turbo.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
-            }
-            break
-            case 'update': {
-            respon = ` *Hey Master Bot Is Up To Date* `
- 	       reply(respon)
             }
             break
             case 'lockcmd': {
