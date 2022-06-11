@@ -837,11 +837,18 @@ let acr = new acrcloud({
 		let button = [
                     {buttonId: `song ${title}`, buttonText: {displayText: '𝐏𝐥𝐚𝐲 𝐈𝐭 𝐇𝐞𝐫𝐞'}, type: 1}
                 ]
-		let txt = `*𝐓𝐢𝐭𝐥𝐞:* ${title}
-*𝐀𝐫𝐭𝐢𝐬𝐭:* ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
-*𝐀𝐥𝐛𝐮𝐦:* ${album.name || ''}
-*𝐆𝐞𝐧𝐫𝐞𝐬:* ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
-*𝐑𝐞𝐥𝐞𝐚𝐬𝐞 𝐃𝐚𝐭𝐞:* ${release_date}`
+		let txt = `╭────⬡ ꪶ𝐒𝐎𝐍𝐆 𝐅𝐎𝐔𝐍𝐃ꫂ⁩⁩⁩ ────⬡
+│   
+│𒆜 𝐒𝐎𝐍𝐆 𝐓𝐈𝐓𝐋𝐄 :- ${title}
+│   
+│𒆜 𝐌𝐔𝐒𝐈𝐂 𝐀𝐑𝐓𝐈𝐒𝐓 :- ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
+│
+│𒆜 𝐀𝐋𝐁𝐔𝐌 :- ${album.name || ''}
+│
+│𒆜 𝐆𝐄𝐍𝐑𝐄𝐒 :- ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
+│
+│𒆜 𝐒𝐎𝐍𝐆 𝐑𝐄𝐋𝐄𝐀𝐒𝐄 𝐃𝐀𝐓𝐄 :- ${release_date}
+╰────⬡ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ────⬡`
 		fs.unlinkSync(`./${m.sender}.${ext}`)
 		
      await Turbo.sendButtonText(m.chat, button, txt, Turbo.user.name, m)
