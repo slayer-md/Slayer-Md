@@ -1268,6 +1268,52 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'true':{
+if (!text) return reply('Give me a number')
+const { data, status } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer`)
+if (!status) return reply('not found')
+const { name, access, e164Format, nationalFormat, type, dialingCode, countryCode, carrier, city, timeZone, gender, birthday, score } = data
+anu = `╭══〘 ͲᎡႮᎬᏟᎪᏞᏞᎬᎡ ՏᎬᎪᎡᏟᎻ 〙══⊷❍
+┃✩╭─────────────────
+┃✩│𝐍𝐀𝐌𝐄: ${name}
+┃✩│𝐀𝐂𝐂𝐄𝐒𝐒: ${access}
+┃✩│𝐍𝐔𝐌𝐁𝐄𝐑: ${e164Format}
+┃✩│𝐍𝐀𝐓𝐈𝐎𝐍𝐀𝐋 𝐅𝐎𝐑𝐌𝐀𝐓: ${nationalformat}
+┃✩│𝐓𝐘𝐏𝐄: ${type}
+┃✩│𝐏𝐑𝐄𝐅𝐈𝐗: ${dialingCode}
+┃✩│𝐂𝐎𝐔𝐍𝐓𝐘 𝐂𝐎𝐃𝐄: ${countyCode}
+┃✩│𝐂𝐀𝐑𝐑𝐈𝐄𝐑: ${carrier}
+┃✩│𝐂𝐈𝐓𝐘: ${city}
+┃✩│𝐆𝐄𝐍𝐃𝐄𝐑: ${gender}
+┃✩│𝐁𝐈𝐑𝐓𝐇𝐃𝐀𝐘: ${birthday}
+┃✩│𝐒𝐂𝐎𝐑𝐄: ${sunrise}
+┃✩│𝐓𝐈𝐌𝐄𝐙𝐎𝐍𝐄: ${timezone}
+┃✩╰─────────────────
+╰══════════════════⊷❍`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                displayText: 'Number',
+                                    url: `${text}`
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'fake':{
 const { name, gender, age, birtday, occupation, address, zip_code, state, country, email, password, phone, card, code, date, pin_code, weight, height, blood_type, status } = await fetchJson('https://docs-jojo.herokuapp.com/api/fake_identity')
 anu = `*name* : _${name}_\n *gender* : _${gender}_\n *age* :  _${age}_\n *birtday* : _${birtday}_\n *occupation* : _${occupation}_\n *address* : _${address}_\n *zip_code* : _${zip_code}_\n *state* : _${state}_\n *country* : _${country}_\n *email* : ${email} *password* : _${password}_\n *phone* : _${phone}_\n *card* : _${card}_\n *code* : _${code}_\n *date* : _${date}_\n *pin_code* : _${pin_code}_\n *weight* : _${weight}_\n *height* : _${height}_\n *blood_type* : _${blood_type}_\n *status* : ${status}`
