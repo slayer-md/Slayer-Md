@@ -1319,7 +1319,6 @@ case 'insta':
 if (!text) return reply('Link?')
 const { result, status } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/downloader/instagram/?url=${text}`)
 if (!status) return reply('*error*')
-})
 Turbo.sendMedia(m.chat, res.result.link, m)
 break
 case 'ig':{
