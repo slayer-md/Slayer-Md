@@ -124,6 +124,49 @@ const fakegroup = {
                         }
                     }
                 } 
+      
+const fakesticker = {
+                    key: {
+                        participant : "0@s.whatsapp.net",
+                          remoteJid: "status@broadcast"
+                    },
+                    message: {
+                        "stickerMessage": {
+          "url": "https://mmg.whatsapp.net/d/f/AnMLFb_a-AUduBzB2BAB3DdD7q_ZavGPqyc9xmDs3oCT.enc",
+          "fileSha256": "w7BeHfQ7m5xR47DQLNePzky8uTSrdjGvvLmlQFXkCpw=",
+          "fileEncSha256": "7vtfMdFqUOsTqfU4v3KPHVu50wlPQ34dK5etRBmyaKI=",
+          "mediaKey": "OAi0w2oeFi2fZEIBqG52zmRhkKg8kaQV3OkuGTE44m0=",
+          "mimetype": "image/webp",
+          "height": 1080,
+           "width": 1079,
+          "directPath": "/v/t62.7118-24/32516566_1036785326946768_8593021454221369201_n.enc?ccb=11-4&oh=01_AVy6wyOJsaKdYGqUoh3ivmLj4m57HLjOq_Cqq-yn_v4B5Q&oe=62CB47D0",
+          "fileLength": "18638",
+          "mediaKeyTimestamp": "1655016292",
+          "isAnimated": false
+                        }
+                    }
+                }
+
+const fakevn = {
+                    key: {
+                        participant : "0@s.whatsapp.net",
+                          remoteJid: "status@broadcast"
+                    },
+                    message: {
+                        "audioMessage": {
+          "url": "https://mmg.whatsapp.net/d/f/AiwYCQbAK4YUqfGmS0-pCiDvVbjbfYySpSUScCUWedyn.enc",
+          "mimetype": "audio/mpeg",
+          "fileSha256": "FSAf7xbvfzw2CNztr52o7eVR+msyQlY5YDJLPxI/JKI=",
+          "fileLength": "1162976",
+          "seconds": 31996800,
+          "ptt": true,
+          "mediaKey": "Vu7oo+7pqTzmPO+mzjKJ6MmQIMrwdls82UWeideJnaU=",
+          "fileEncSha256": "TE1mK85Cgz3hLGjbQTfJ1RNxJYv6BxB3AxphWGlxbPU=",
+          "directPath": "/v/t62.7117-24/19252900_7326731340730483_5549624686726290871_n.enc?ccb=11-4&oh=01_AVy1iNff4WS7COqfrl4y8WV6t8wNETqIPpC5LP-MCD_w2w&oe=62CAB7A8",
+          "mediaKeyTimestamp": "1654968307"
+                        }
+                    }
+                }
 
 const fcatalogue = {
 	key : {
@@ -4084,6 +4127,12 @@ typeowner = 'image'
 reply("Success Changing Owner Message To "+q)
 } else if (q == "order") {
 typeowner = 'order'
+reply("Success Changing Owner Message To "+q)
+} else if (q == "fakesticker") {
+typeowner = 'fakesticker'
+reply("Success Changing Owner Message To "+q)
+} else if (q == "fakevn") {
+typeowner = 'fakevn'
 reply("Success Changing Owner Message To "+q)
 }
 break
