@@ -1360,9 +1360,8 @@ break
 case 'instagram':
 case 'insta':
 if (!text) return reply('Link?')
-const { result, status } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/downloader/instagram/?url=${text}`)
-if (!status) return reply('*error*')
-Turbo.sendMedia(m.chat, res.result.link, m)
+const { result } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/downloader/instagram/?url=${text}`)
+Turbo.sendMedia(m.chat, result, m)
 break
 case 'ig':{
 if (!text) return reply('*Give me a instagram username*')
@@ -3198,7 +3197,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 ╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
-│𒆜 ??𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
 ╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
                             hydratedButtons: [{
