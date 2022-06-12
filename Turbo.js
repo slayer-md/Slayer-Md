@@ -1152,7 +1152,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             }
 break
 case 'weather':{
-if (!text) return reply('testing')
+if (!text) return reply('Give me a location')
 const { result, status } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/weather?place=${text}`)
 if (!status) return reply('not found')
 const { location, latitude, longitude, weather_desc, max_temp, min_temp, humidity, clouds, wind_speed, pressure, sunrise, sunset, timezone } = result
@@ -2575,15 +2575,6 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                 Turbo.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	        case 'instagram':
-case 'insta':
-if (!text) return reply('Link?')
-let { igDownload } = require('./lib/igdown')
-res = await igDownload(text).catch(e => {
-console.log(e)
-})
-Turbo.sendMedia(m.chat, res.result.link, m)
-break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
                 replay(mess.wait)
