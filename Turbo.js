@@ -1211,7 +1211,63 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 }),{ userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
-break			
+break
+case 'covid':{
+const { data, status } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/covidworld`)
+if (!status) return reply('error')
+const { totalCases, totalDeaths, totalTests, totalRecovered, todayCases, todayDeaths, todayRecovered, affectedCountries, critical } = data
+anu = `╭══〘 ᏟϴᏙᏆᎠ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
+┃✩╭─────────────────
+┃✩│*Cases*: ${totalCases}
+┃✩│*Deaths*: ${totalDeaths}
+┃✩│*Tests*: ${totalTests}
+┃✩│*Recovered*: ${totalRecovered}
+┃✩│*TodayCases*: ${todayCases}
+┃✩│*TodayDeaths*: ${todayDeaths}
+┃✩│*TodayRecovered*: ${todayRecovered}
+┃✩│*AffectedCountries*: ${affectedCountries}
+┃✩│*Critical*: ${critical}
+┃✩╰─────────────────
+╰══════════════════⊷❍`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Fake Identity Generator',
+                                    id: `${prefix}fake`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Bio',
+                                    id: `${prefix}bio`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'fake':{
 const { name, gender, age, birtday, occupation, address, zip_code, state, country, email, password, phone, card, code, date, pin_code, weight, height, blood_type, status } = await fetchJson('https://docs-jojo.herokuapp.com/api/fake_identity')
 anu = `*name* : _${name}_\n *gender* : _${gender}_\n *age* :  _${age}_\n *birtday* : _${birtday}_\n *occupation* : _${occupation}_\n *address* : _${address}_\n *zip_code* : _${zip_code}_\n *state* : _${state}_\n *country* : _${country}_\n *email* : ${email} *password* : _${password}_\n *phone* : _${phone}_\n *card* : _${card}_\n *code* : _${code}_\n *date* : _${date}_\n *pin_code* : _${pin_code}_\n *weight* : _${weight}_\n *height* : _${height}_\n *blood_type* : _${blood_type}_\n *status* : ${status}`
@@ -3484,6 +3540,7 @@ case 'randommenu': {
   
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
+  ➙ ${prefix}fake
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3530,8 +3587,9 @@ case 'funmenu': {
   ➙ ${prefix}couple
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}fake
   ➙ ${prefix}bio
+  ➙ ${prefix}weather
+  ➙ ${prefix}covid
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4063,6 +4121,7 @@ break
   ꪶRandom Menuꫂ
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
+  ➙ ${prefix}fake
   
   ꪶFun Menuꫂ
   ➙ ${prefix}math
@@ -4071,8 +4130,9 @@ break
   ➙ ${prefix}couple
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}fake
   ➙ ${prefix}bio
+  ➙ ${prefix}weather
+  ➙ ${prefix}covid
   
   ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
