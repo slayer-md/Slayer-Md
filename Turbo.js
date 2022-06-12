@@ -1151,6 +1151,67 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'weather':{
+if (!text) return reply('testing')
+const { result, status } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/weather?place=${text}`)
+if (!status) return reply('not found')
+const { location, latitude, longitude, weather_desc, max_temp, min_temp, humidity, clouds, wind_speed, pressure, sunrise, sunset, timezone } = result
+anu = `╭══〘 ᏔᎬᎪͲᎻᎬᎡ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
+┃✩╭─────────────────
+┃✩│𝐋𝐎𝐂𝐀𝐓𝐈𝐎𝐍: ${location}
+┃✩│𝐋𝐀𝐓𝐈𝐓𝐔𝐃𝐄: ${latitude}
+┃✩│𝐋𝐎𝐍𝐆𝐈𝐓𝐔𝐃𝐄: ${longitude}
+┃✩│𝐖𝐄𝐀𝐓𝐇𝐄𝐑_𝐃𝐄𝐒𝐂: ${weather_desc}
+┃✩│𝐌𝐀𝐗_𝐓𝐄𝐌𝐏: ${max_temp}
+┃✩│𝐌𝐈𝐍_𝐓𝐄𝐌𝐏: ${min_temp}
+┃✩│𝐇𝐔𝐌𝐈𝐃𝐈𝐓𝐘: ${humidity}
+┃✩│𝐂𝐋𝐎𝐔𝐃𝐒: ${clouds}
+┃✩│𝐖𝐈𝐍𝐃_𝐒𝐏𝐄𝐄𝐃: ${wind_speed}
+┃✩│𝐏𝐑𝐄𝐒𝐒𝐔𝐑𝐄: ${pressure}
+┃✩│𝐓𝐈𝐌𝐄𝐙𝐎𝐍𝐄: ${timezone}
+┃✩│𝐒𝐔𝐍𝐑𝐈𝐒𝐄: ${sunrise}
+┃✩│𝐒𝐔𝐍𝐒𝐄𝐓: ${sunset}
+┃✩╰─────────────────
+╰══════════════════⊷❍`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Fake Identity Generator',
+                                    id: `${prefix}fake`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Bio',
+                                    id: `${prefix}bio`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break			
 case 'fake':{
 const { name, gender, age, birtday, occupation, address, zip_code, state, country, email, password, phone, card, code, date, pin_code, weight, height, blood_type, status } = await fetchJson('https://docs-jojo.herokuapp.com/api/fake_identity')
 anu = `*name* : _${name}_\n *gender* : _${gender}_\n *age* :  _${age}_\n *birtday* : _${birtday}_\n *occupation* : _${occupation}_\n *address* : _${address}_\n *zip_code* : _${zip_code}_\n *state* : _${state}_\n *country* : _${country}_\n *email* : ${email} *password* : _${password}_\n *phone* : _${phone}_\n *card* : _${card}_\n *code* : _${code}_\n *date* : _${date}_\n *pin_code* : _${pin_code}_\n *weight* : _${weight}_\n *height* : _${height}_\n *blood_type* : _${blood_type}_\n *status* : ${status}`
