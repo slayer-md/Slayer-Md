@@ -85,59 +85,27 @@ async function startTurbo() {
                 }
                 
 //═══════[welcome]════════\\
-} else if (anu.action == 'add') {
-hehe = `┌▢ 「 𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝙱𝚁𝙾 」
+/welcome\\
+        let nama = await Turbo.getName(num)
+memb = metadata.participants.length
+
+Kon = await getBuffer(`https://hardianto.xyz/api/welcome3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/a72625ad915561c9783cc.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
+
+Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/a72625ad915561c9783cc.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
+                if (anu.action == 'add') {
+                    Turbo.sendMessage(anu.id, { image: Kon, contextInfo: { mentionedJid: [num] }, caption: `
+┌▢ 「 𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝙱𝚁𝙾 」
 ├▢ ʜʏ ʙʀᴏ  @${num.split("@")[0]},
 ├▢ ɢʀᴏᴜᴘ ɴᴀᴍᴇ : ${groupName}
 ├▢ ɢʀᴏᴜᴘ ᴍᴀᴋᴇᴅ ᴅᴀᴛᴇ :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
 └▢ ${metadata.subject} 
-ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇ ʙʏ sʟᴀʏᴇʀ`
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: hehe,
-                               locationMessage: {
-                           jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-      
-                       //    jpegThumbnail: ppuser,
-                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
-                            hydratedButtons: [{
-                            urlButton: {
-                                    displayText: 'Creator',
-                                    url: 'https://wa.me/916380260672'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'ɢʀᴏᴜᴘ ɪɴғᴏ',
-                                    id: `${prefix}groupinfo`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'ᴡᴇʟᴄᴏᴍᴇ ʙʀᴏ ✨',
-                                    id: `${prefix}sojalm`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner👤',
-                                    id: `${prefix}owner`
-                                }
-                            }]
-                        }
-                    }
-                }), { userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            
+ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇ ʙʏ sʟᴀʏᴇʀ`} )
                 } else if (anu.action == 'remove') {
-                    Turbo.sendMessage(anu.id, { image: { url: ppuser }, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Leaving To ${metadata.subject}` })
+                    Turbo.sendMessage(anu.id, { image: Tol, contextInfo: { mentionedJid: [num] }, caption: `✑ @${num.split("@")[0]} Left From ${metadata.subject}` })
                 }
             }
         } catch (err) {
-            //console.log(err)
+            console.log(err)
         }
     })
 	
