@@ -133,7 +133,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }]
                         }
                     }
-                }),{ userJid: m.chat })
+                },{ userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 } else if (anu.action == 'remove') {
                     Turbo.sendMessage(anu.id, { image: Tol, contextInfo: { mentionedJid: [num] }, caption: `✑ @${num.split("@")[0]} Left From ${metadata.subject}` })
