@@ -85,62 +85,45 @@ async function startTurbo() {
                 }
                 
 //═══════[welcome]════════\\
-        let nama = await Turbo.getName(num)
+let nama = await Turbo.getName(num)
 memb = metadata.participants.length
 
 Kon = await getBuffer(`https://hardianto.xyz/api/welcome3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/a72625ad915561c9783cc.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
 
 Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/a72625ad915561c9783cc.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
+		    
                 if (anu.action == 'add') {
-                    anu = `┌▢ 「 𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝙱𝚁𝙾 」
-├▢ ʜʏ ʙʀᴏ  ${pushname},
-├▢ ɢʀᴏᴜᴘ ɴᴀᴍᴇ : ${groupName}
-├▢ ɢʀᴏᴜᴘ ᴍᴀᴋᴇᴅ ᴅᴀᴛᴇ :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
-└▢ ${metadata.subject} 
-ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇ ʙʏ sʟᴀʏᴇʀ `
+                    anu = `┌▢ 「 𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝙱𝚁𝙾 」	    
+		    
+        if (anu.action == 'add') {
+               hehe = `𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝑻𝒐 ${metadata.subject} @${user.jid.split("@")[0]}`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: Kon,
-                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
+                            hydratedContentText: hehe,
+                               locationMessage: {
+                           jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+      
+                       //    jpegThumbnail: Kon,
+                            hydratedFooterText: `TurboMods`,
                             hydratedButtons: [{
+                                
                                 urlButton: {
-                                    displayText: 'Creator 💣',
-                                    url: 'https://wa.me/916380260672'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Sc 🦄',
-                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'groupinfo',
-                                    id: `${prefix}groupinfo`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'menu 🔥',
-                                    id: `${prefix}menu`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner',
-                                    id: `${prefix}owner`
+                                    displayText: '𝒊𝒏𝒔𝒕𝒂𝒈𝒓𝒂𝒎',
+                                    url: 'https://instagram.com/toxic_turbo777'
                                 }
                             }]
                         }
                     }
-                },{ userJid: m.chat })
+                }), { userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            
                 } else if (anu.action == 'remove') {
-                    Turbo.sendMessage(anu.id, { image: Tol, contextInfo: { mentionedJid: [num] }, caption: `✑ @${num.split("@")[0]} Left From ${metadata.subject}` })
+                    Turbo.sendMessage(anu.id, { image: { url: Tol }, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Leaving From ${metadata.subject}` })
                 }
             }
         } catch (err) {
-            console.log(err)
+            //console.log(err)
         }
     })
 	
