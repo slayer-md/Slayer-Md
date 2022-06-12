@@ -85,7 +85,6 @@ async function startTurbo() {
                 }
                 
 //═══════[welcome]════════\\
-/welcome\\
         let nama = await Turbo.getName(num)
 memb = metadata.participants.length
 
