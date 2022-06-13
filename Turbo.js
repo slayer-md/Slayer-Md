@@ -2534,14 +2534,32 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                 Turbo.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
             }
             break
-            case 'anime': case 'sfw': {
-                replay(mess.wait)
-                Turbo.sendMessage(m.chat, { image: { url: api-toxic-devil.herokuapp.com/api/random/anime?type=sfw }, caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ` }, { quoted: m})
+	    case 'anime': case 'sfw': {
+            let buttons = [
+                    {buttonId: `sfw`, buttonText: {displayText: '➡️Next Image➡️'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: 'https://api-toxic-devil.herokuapp.com/api/random/anime?type=sfw' },
+                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
+                    footer: Turbo.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
 	    case 'nsfw': {
-                replay(mess.wait)
-                Turbo.sendMessage(m.chat, { image: { url: api-toxic-devil.herokuapp.com/api/random/anime?type=nsfw }, caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ` }, { quoted: m})
+            let buttons = [
+                    {buttonId: `nsfw`, buttonText: {displayText: '➡️Next Image➡️'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: 'https://api-toxic-devil.herokuapp.com/api/random/anime?type=nsfw' },
+                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
+                    footer: Turbo.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
 	    case 'couplepp': case 'ppcouple': {
