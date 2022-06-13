@@ -2536,12 +2536,12 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
             break
             case 'anime': case 'sfw': {
                 replay(mess.wait)
-                Turbo.sendMessage(m.chat, { image: { url: https://api-toxic-devil.herokuapp.com/api/random/anime?type=sfw }, caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ` }, { quoted: m})
+                Turbo.sendMessage(m.chat, { image: { url: api-toxic-devil.herokuapp.com/api/random/anime?type=sfw }, caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ` }, { quoted: m})
             }
             break
 	    case 'nsfw': {
                 replay(mess.wait)
-                Turbo.sendMessage(m.chat, { image: { url: https://api-toxic-devil.herokuapp.com/api/random/anime?type=nsfw }, caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ` }, { quoted: m})
+                Turbo.sendMessage(m.chat, { image: { url: api-toxic-devil.herokuapp.com/api/random/anime?type=nsfw }, caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ` }, { quoted: m})
             }
             break
 	    case 'couplepp': case 'ppcouple': {
