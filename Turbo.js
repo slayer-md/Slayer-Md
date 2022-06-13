@@ -1280,7 +1280,7 @@ reply(binary)
 break
 case 'itune': case 'itunes': {
 if (!text) return reply('Give me a song name')
-const { name, artist, album, genre, price, url, release_date } = await fetchJson(`https://api.popcat.xyz/itunes?q=${text}`)
+const { name, artist, album, genre, price, url, release_date } = await fetchJson('https://api.popcat.xyz/itunes?q=${text}')
 anu = `╭══〘 ᏆͲႮΝᎬՏ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
 ┃✩╭─────────────────
 ┃✩│𝐍𝐀𝐌𝐄: ${name}
