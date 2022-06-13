@@ -1335,6 +1335,7 @@ case 'wame':{
 if (!text) return reply('Give me a number')
 const { result } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/wa-me-link?number=${text}`)
 reply(result)
+}
 break
 case 'joke':{
 const { joke } = await fetchJson('https://api.popcat.xyz/joke')
