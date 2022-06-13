@@ -1268,19 +1268,19 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'encode': {
 if (!text) return reply('Give me a text')
-const { binary } = await fetchJson('https://api.popcat.xyz/encode?text=${text}')
+const { binary } = await fetchJson(`https://api.popcat.xyz/encode?text=${text}`)
 reply(binary)
 }
 break
 case 'decode': {
 if (!text) return reply('Give me a text')
-const { binary } = await fetchJson('https://api.popcat.xyz/decode?binary=${text}')
+const { binary } = await fetchJson(`https://api.popcat.xyz/decode?binary=${text}`)
 reply(binary)
 }
 break
 case 'itune': case 'itunes': {
 if (!text) return reply('Give me a song name')
-const { name, artist, album, genre, price, url, release_date } = await fetchJson('https://api.popcat.xyz/itunes?q=${text}')
+const { name, artist, album, genre, price, url, release_date } = await fetchJson(`https://api.popcat.xyz/itunes?q=${text}`)
 anu = `╭══〘 ᏆͲႮΝᎬՏ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
 ┃✩╭─────────────────
 ┃✩│𝐍𝐀𝐌𝐄: ${name}
@@ -1375,7 +1375,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'lyrics': {
 	if (!text) return reply('Give me a song name')
-	const { title, image, artist, lyrics } = await fetchJson('https://api.popcat.xyz/lyrics?song=${text}')
+	const { title, image, artist, lyrics } = await fetchJson(`https://api.popcat.xyz/lyrics?song=${text}`)
             let buttons = [
                     {buttonId: `${prefix}song ${title}`, buttonText: {displayText: 'Play It'}, type: 1}
                 ]
@@ -1391,7 +1391,7 @@ case 'lyrics': {
             break
 case 'true':{
 if (!text) return reply('Give me a number')
-const { data } = await fetchJson('https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer')
+const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer`)
 const { name, access, e164Format, nationalFormat, type, dialingCode, countryCode, carrier, city, timeZone, gender, birthday, score } = data
 anu = `╭══〘 ͲᎡႮᎬᏟᎪᏞᏞᎬᎡ ՏᎬᎪᎡᏟᎻ 〙══⊷❍
 ┃✩╭─────────────────
