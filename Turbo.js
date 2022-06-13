@@ -1212,7 +1212,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             }
 break
 case 'covid':{
-const { data } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/covidworld`)
+const { data } = await fetchJson('https://api-toxic-devil.herokuapp.com/api/covidworld')
 const { totalCases, totalDeaths, totalTests, totalRecovered, todayCases, todayDeaths, todayRecovered, affectedCountries, critical } = data
 anu = `╭══〘 ᏟϴᏙᏆᎠ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
 ┃✩╭─────────────────
