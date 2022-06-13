@@ -1373,7 +1373,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'lyrics': {
+case 'lyric': case 'lyrics': {
 	if (!text) return reply('Give me a song name')
 	const { title, image, artist, lyrics } = await fetchJson(`https://api.popcat.xyz/lyrics?song=${text}`)
             let buttons = [
@@ -1391,7 +1391,7 @@ case 'lyrics': {
             break
 case 'true':{
 if (!text) return reply('Give me a number')
-const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer`)
+const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=millie`)
 const { name, access, e164Format, nationalFormat, type, dialingCode, countryCode, carrier, city, timeZone, gender, birthday, score } = data
 anu = `╭══〘 ͲᎡႮᎬᏟᎪᏞᏞᎬᎡ ՏᎬᎪᎡᏟᎻ 〙══⊷❍
 ┃✩╭─────────────────
