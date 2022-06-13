@@ -1266,6 +1266,101 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'itune':{
+if (!text) return reply('Give me a song name')
+const { name, artist, album, genre, price, url, release_date } = await fetchJson('https://api.popcat.xyz/itunes?q=${text}')
+anu = `╭══〘 ᏆͲႮΝᎬՏ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
+┃✩╭─────────────────
+┃✩│𝐍𝐀𝐌𝐄: ${name}
+┃✩│𝐀𝐑𝐓𝐈𝐒𝐓: ${artist}
+┃✩│𝐀𝐋𝐁𝐔𝐌: ${album}
+┃✩│𝐆𝐄𝐍𝐑𝐄: ${genre}
+┃✩│𝐏𝐑𝐈𝐂𝐄: ${price}
+┃✩│𝐑𝐄𝐋𝐄𝐀𝐒𝐄 𝐃𝐀𝐓𝐄: ${release_date}
+┃✩│𝐔𝐑𝐋: ${url}
+┃✩╰─────────────────
+╰══════════════════⊷❍`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Covid',
+                                    id: `${prefix}covid`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Play It',
+                                    id: `${prefix}song ${name}`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'joke':{
+const { joke } = await fetchJson('https://api.popcat.xyz/joke')
+anu = ` *${joke}* `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Bio',
+                                    id: `${prefix}bio`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Covid',
+                                    id: `${prefix}covid`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'true':{
 if (!text) return reply('Give me a number')
 const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer`)
@@ -1361,7 +1456,8 @@ case 'instagram':
 case 'insta':
 if (!text) return reply('Link?')
 const { result } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/downloader/instagram/?url=${text}`)
-Turbo.sendMedia(m.chat, result, m)
+const { url } = result
+Turbo.sendMedia(m.chat, url, m)
 break
 case 'ig':{
 if (!text) return reply('*Give me a instagram username*')
@@ -3539,6 +3635,9 @@ case 'downloadmenu': {
   ➙ ${prefix}wallpaper [query]
   ➙ ${prefix}wikimedia [query]
   ➙ ${prefix}ytsearch [query]
+  ➙ ${prefix}true [number]
+  ➙ ${prefix}weather [country code or name]
+  ➙ ${prefix}itunes [song name]
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3629,7 +3728,7 @@ case 'funmenu': {
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}bio
-  ➙ ${prefix}weather
+  ➙ ${prefix}joke
   ➙ ${prefix}covid
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -4158,6 +4257,9 @@ break
   ➙ ${prefix}wallpaper [query]
   ➙ ${prefix}wikimedia [query]
   ➙ ${prefix}ytsearch [query]
+  ➙ ${prefix}true [number]
+  ➙ ${prefix}weather [country code or name]
+  ➙ ${prefix}itunes [song name]
   
   ꪶRandom Menuꫂ
   ➙ ${prefix}coffee
@@ -4172,8 +4274,9 @@ break
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}bio
-  ➙ ${prefix}weather
+  ➙ ${prefix}joke
   ➙ ${prefix}covid
+  
   
   ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
