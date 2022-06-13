@@ -1278,7 +1278,7 @@ const { binary } = await fetchJson('https://api.popcat.xyz/decode?binary=${text}
 reply(binary)
 }
 break
-case 'itune':{
+case 'itune': case 'itunes': {
 if (!text) return reply('Give me a song name')
 const { name, artist, album, genre, price, url, release_date } = await fetchJson('https://api.popcat.xyz/itunes?q=${text}')
 anu = `╭══〘 ᏆͲႮΝᎬՏ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
@@ -3689,6 +3689,9 @@ case 'downloadmenu': {
   ➙ ${prefix}true [number]
   ➙ ${prefix}weather [country code or name]
   ➙ ${prefix}itunes [song name]
+  ➙ ${prefix}encode [text]
+  ➙ ${prefix}decode [text]
+  ➙ ${prefix}lyrics [song name]
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4311,6 +4314,9 @@ break
   ➙ ${prefix}true [number]
   ➙ ${prefix}weather [country code or name]
   ➙ ${prefix}itunes [song name]
+  ➙ ${prefix}encode [text]
+  ➙ ${prefix}decode [text]
+  ➙ ${prefix}lyrics [song name]
   
   ꪶRandom Menuꫂ
   ➙ ${prefix}coffee
