@@ -1266,6 +1266,18 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'encode': {
+if (!text) return reply('Give me a text')
+const { binary } = await fetchJson('https://api.popcat.xyz/encode?text=${text}')
+reply(binary)
+}
+break
+case 'decode': {
+if (!text) return reply('Give me a text')
+const { binary } = await fetchJson('https://api.popcat.xyz/decode?binary=${text}')
+reply(binary)
+}
+break
 case 'itune':{
 if (!text) return reply('Give me a song name')
 const { name, artist, album, genre, price, url, release_date } = await fetchJson('https://api.popcat.xyz/itunes?q=${text}')
@@ -1361,9 +1373,25 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'lyrics': {
+	if (!text) return reply('Give me a song name')
+	const { title, image, artist, lyrics } = await fetchJson('https://api.popcat.xyz/lyrics?song=${text}')
+            let buttons = [
+                    {buttonId: `${prefix}song ${title}`, buttonText: {displayText: 'Play It'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: `${image}`,
+                    caption: `${title}\n${artist}\n\n${lyrics}`,
+                    footer: Turbo.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
 case 'true':{
 if (!text) return reply('Give me a number')
-const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer`)
+const { data } = await fetchJson('https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer')
 const { name, access, e164Format, nationalFormat, type, dialingCode, countryCode, carrier, city, timeZone, gender, birthday, score } = data
 anu = `╭══〘 ͲᎡႮᎬᏟᎪᏞᏞᎬᎡ ՏᎬᎪᎡᏟᎻ 〙══⊷❍
 ┃✩╭─────────────────
