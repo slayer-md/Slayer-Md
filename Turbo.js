@@ -1216,15 +1216,15 @@ const { data } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/covi
 const { totalCases, totalDeaths, totalTests, totalRecovered, todayCases, todayDeaths, todayRecovered, affectedCountries, critical } = data
 anu = `╭══〘 ᏟϴᏙᏆᎠ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
 ┃✩╭─────────────────
-┃✩│*Cases*: ${totalCases}
-┃✩│*Deaths*: ${totalDeaths}
-┃✩│*Tests*: ${totalTests}
-┃✩│*Recovered*: ${totalRecovered}
-┃✩│*TodayCases*: ${todayCases}
-┃✩│*TodayDeaths*: ${todayDeaths}
-┃✩│*TodayRecovered*: ${todayRecovered}
-┃✩│*AffectedCountries*: ${affectedCountries}
-┃✩│*Critical*: ${critical}
+┃✩│𝐂𝐀𝐒𝐄𝐒: ${totalCases}
+┃✩│𝐃𝐄𝐀𝐓𝐇𝐒: ${totalDeaths}
+┃✩│𝐓𝐄𝐒𝐓𝐒: ${totalTests}
+┃✩│𝐑𝐄𝐕𝐎𝐕𝐄𝐑𝐄𝐃: ${totalRecovered}
+┃✩│𝐓𝐎𝐃𝐀𝐘𝐂𝐀𝐒𝐄𝐒: ${todayCases}
+┃✩│𝐓𝐎𝐃𝐀𝐘𝐃𝐄𝐀𝐓𝐇𝐒: ${todayDeaths}
+┃✩│𝐓𝐎𝐃𝐀𝐘𝐑𝐄𝐂𝐎𝐕𝐄𝐑𝐄𝐃: ${todayRecovered}
+┃✩│𝐀𝐅𝐅𝐄𝐂𝐓𝐄𝐃𝐂𝐎𝐔𝐍𝐓𝐑𝐈𝐄𝐒: ${affectedCountries}
+┃✩│𝐂𝐑𝐈𝐓𝐈𝐂𝐀𝐋: ${critical}
 ┃✩╰─────────────────
 ╰══════════════════⊷❍`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -1275,16 +1275,16 @@ anu = `╭══〘 ͲᎡႮᎬᏟᎪᏞᏞᎬᎡ ՏᎬᎪᎡᏟᎻ 〙══⊷
 ┃✩│𝐍𝐀𝐌𝐄: ${name}
 ┃✩│𝐀𝐂𝐂𝐄𝐒𝐒: ${access}
 ┃✩│𝐍𝐔𝐌𝐁𝐄𝐑: ${e164Format}
-┃✩│𝐍𝐀𝐓𝐈𝐎𝐍𝐀𝐋 𝐅𝐎𝐑𝐌𝐀𝐓: ${nationalformat}
+┃✩│𝐍𝐀𝐓𝐈𝐎𝐍𝐀𝐋 𝐅𝐎𝐑𝐌𝐀𝐓: ${nationalFormat}
 ┃✩│𝐓𝐘𝐏𝐄: ${type}
 ┃✩│𝐏𝐑𝐄𝐅𝐈𝐗: ${dialingCode}
-┃✩│𝐂𝐎𝐔𝐍𝐓𝐘 𝐂𝐎𝐃𝐄: ${countyCode}
+┃✩│𝐂𝐎𝐔𝐍𝐓𝐘 𝐂𝐎𝐃𝐄: ${countryCode}
 ┃✩│𝐂𝐀𝐑𝐑𝐈𝐄𝐑: ${carrier}
 ┃✩│𝐂𝐈𝐓𝐘: ${city}
 ┃✩│𝐆𝐄𝐍𝐃𝐄𝐑: ${gender}
 ┃✩│𝐁𝐈𝐑𝐓𝐇𝐃𝐀𝐘: ${birthday}
-┃✩│𝐒𝐂𝐎𝐑𝐄: ${sunrise}
-┃✩│𝐓𝐈𝐌𝐄𝐙𝐎𝐍𝐄: ${timezone}
+┃✩│𝐒𝐂𝐎𝐑𝐄: ${score}
+┃✩│𝐓𝐈𝐌𝐄𝐙𝐎𝐍𝐄: ${timeZone}
 ┃✩╰─────────────────
 ╰══════════════════⊷❍`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
