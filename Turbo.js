@@ -242,6 +242,7 @@ let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
+let vien = JSON.parse(fs.readFileSync('./database/vien.json'));
 
 //[database reader]\\
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
@@ -418,31 +419,12 @@ if (budy.includes('https://chat.whatsapp.com/')) {
         }
 	    
 	    //auto reply by Turbo 🦄
-        for (let anji of setik){
-				if (budy === anji){
-					result = fs.readFileSync(`./TurboMedia/sticker/${anji}.webp`)
-					Turbo.sendMessage(m.chat, { sticker: result }, { quoted: m })
-					}
-			}
-			for (let anju of vien){
-				if (budy === anju){
-					result = fs.readFileSync(`./TurboMedia/vn/${anju}.mp3`)
-					Turbo.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
-					}
-			}
-			for (let anjh of imagi){
-				if (budy === anjh){
-					result = fs.readFileSync(`./TurboMedia/image/${anjh}.jpg`)
-					Turbo.sendMessage(m.chat, { image: result }, { quoted: m })
-					}
-			}
-					for (let anjh of videox){
-				if (budy === anjh){
-					result = fs.readFileSync(`./TurboMedia/vid/${anjh}.mp4`)
-					Turbo.sendMessage(m.chat, { video: result }, { quoted: m })
-					}
-				  }
-	    
+       for (let anju of vien){
+		if (budy === anju){
+		   result = fs.readFileSync(`./TurboMedia/vn/${anju}.mp3`)
+			Turbo.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
+		      }
+                     }
 	    
 //[mute chat]\\
       if (db.chats[m.chat].mute && !isAdmins && !isCreator) {
