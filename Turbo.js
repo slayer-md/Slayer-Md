@@ -446,12 +446,6 @@ if (budy.includes('https://chat.whatsapp.com/')) {
             scheduled: true,
             timezone: "Asia/Kolkata"
         })
-        
-//[Database]\\
-let setik = JSON.parse(fs.readFileSync('./database/setik.json'));
-let vien = JSON.parse(fs.readFileSync('./database/vien.json'));
-let imagi = JSON.parse(fs.readFileSync('./database/imagi.json'))
-let videox = JSON.parse(fs.readFileSync('./database/video.json'))
 	    
 //[respond cmd with media]\\
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.sticker)) {
