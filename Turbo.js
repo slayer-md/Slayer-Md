@@ -1346,6 +1346,23 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'take': {
+            if (!quoted) return replay(`sᴇɴᴅ ʀᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ\nᴇxᴀᴍᴘʟᴇ ${prefix + command} 𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯`)
+            reply(mess.wait)
+                    if (/image/.test(mime)) {
+                let media = await quoted.download()
+                let encmedia = await Jsl.sendImageAsSticker(m.chat, media, m, { packname: text })
+                await fs.unlinkSync(encmedia)
+            } else if (/video/.test(mime)) {
+                if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 Seconds!')
+                let media = await quoted.download()
+                let encmedia = await Jsl.sendVideoAsSticker(m.chat, media, m, { packname: text })
+                await fs.unlinkSync(encmedia)
+            } else {
+                reply(`sᴇɴᴅ ʀᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ\nᴇxᴀᴍᴘʟᴇ ${prefix + command} 𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯`)
+                }
+            }
+            break
 case 'wame':{
 if (!text) return reply('Give me a number')
 const { result } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/wa-me-link?number=${text}`)
