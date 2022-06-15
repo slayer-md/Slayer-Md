@@ -1079,7 +1079,7 @@ Ciee Whats Going On💖👀`
                     ]
                     await Turbo.sendButtonText(m.chat, buttons, jawab, Turbo.user.name, m, {mentions: menst})
             }
-            break
+           break
             case 'join': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw 'Enter the group link!'
@@ -1088,7 +1088,7 @@ Ciee Whats Going On💖👀`
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
                 await Turbo.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
-            break
+           break
 case 'warn':{
 const time = moment().tz('Asia/Kolkata').format("HH:mm:ss")
 if (!m.isGroup) throw mess.group
@@ -1336,12 +1336,12 @@ case 'take': {
             reply(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
-                let encmedia = await Jsl.sendImageAsSticker(m.chat, media, m, { packname: text })
+                let encmedia = await Turbo.sendImageAsSticker(m.chat, media, m, { packname: text })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
                 if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 Seconds!')
                 let media = await quoted.download()
-                let encmedia = await Jsl.sendVideoAsSticker(m.chat, media, m, { packname: text })
+                let encmedia = await Turbo.sendVideoAsSticker(m.chat, media, m, { packname: text })
                 await fs.unlinkSync(encmedia)
             } else {
                 reply(`sᴇɴᴅ ʀᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ\nᴇxᴀᴍᴘʟᴇ ${prefix + command} 𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯`)
