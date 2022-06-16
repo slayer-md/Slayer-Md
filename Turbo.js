@@ -3364,7 +3364,7 @@ ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.
             }
             break
            case 'owner': case 'creator': {
-                Turbo.sendContact(m.chat, global.owner, forder)
+                Turbo.sendContact(m.chat, global.owner, faketurbo)
            const devsound = fs.readFileSync('./TurboMedia/owner.mp3') //u can change the music in TurboMedia folder
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
