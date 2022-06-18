@@ -348,11 +348,11 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 	
 //[target]\\
 const reply = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://chat.whatsapp.com/LWjJ4tu2qe9BWQZ1JzRZgp"}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://chat.whatsapp.com/LWjJ4tu2qe9BWQZ1JzRZgp"}}}, { quoted: m})
         }
 try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -2369,7 +2369,7 @@ case 'antilink':
 	    break
             case 'image': case 'photo': {
                 if (!quoted) throw 'Reply Image'
-                if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
+                if (!/webp/.test(mime)) throw `reply to a sticker with caption *${prefix + command}*`
                 replay(mess.wait)
                 let media = await Turbo.downloadAndSaveMediaMessage(quoted)
                 let ran = await getRandom('.png')
@@ -2384,7 +2384,7 @@ case 'antilink':
             break
 	        case 'tomp4': case 'tovideo': {
                 if (!quoted) throw 'Reply Image'
-                if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
+                if (!/webp/.test(mime)) throw `reply to a sticker with caption *${prefix + command}*`
                 replay(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await Turbo.downloadAndSaveMediaMessage(quoted)
@@ -2425,7 +2425,7 @@ case 'antilink':
             break
             case 'togif': {
                 if (!quoted) throw 'Reply Image'
-                if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
+                if (!/webp/.test(mime)) throw `reply to a video with caption *${prefix + command}*`
                 replay(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await Turbo.downloadAndSaveMediaMessage(quoted)
@@ -3364,7 +3364,7 @@ ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.
             }
             break
            case 'owner': case 'creator': {
-                Turbo.sendContact(m.chat, global.owner, faketurbo)
+                Turbo.sendContact(m.chat, global.owner, fakesticker)
            const devsound = fs.readFileSync('./TurboMedia/owner.mp3') //u can change the music in TurboMedia folder
            Turbo.sendMessage(m.chat, { audio: devsound, mimetype: 'audio/mp4', ptt: true, quoted: m })
             }
