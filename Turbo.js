@@ -1540,13 +1540,18 @@ case 'jid':{
 reply(m.chat)
 }
 break
-case 'instagram':
-case 'insta':
-if (!text) return reply('Link?')
-const { result } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/downloader/instagram/?url=${text}`)
-const { url } = result
-Turbo.sendMedia(m.chat, url, m)
-break
+case 'insta': case 'ig': {
+              try{
+const { instagramdl, instagramdlv2, instagramdlv3 } = require('@bochilteam/scraper')
+           let tes = text ? text : m.quoted && m.quoted.text
+   let a = await instagramdlv3(tes)
+   let urla = a[0].url
+ await Turbo.sendMessage(m.chat, { text : '```Please Wait...```' }, {quoted : m})
+  for(let { thumbnail, url } of a)
+      Turbo.sendFileUrl(m.chat, urla, '```Downloaded From Instagram```', m)
+    } catch (err) {
+             Turbo.sendMessage(m.chat, { text :  '```Invalid Url```' }, {quoted : m})}
+            }break
 case 'ig':{
 if (!text) return reply('*Give me a instagram username*')
 const { result, status } = await fetchJson(`https://levanter.up.railway.app/ig?q=${text}`)
