@@ -24,7 +24,7 @@
     "@adiwajshing/baileys": "^4.0.1",
     "@adiwajshing/keyed-db": "^0.2.4",
     "awesome-phonenumber": "^2.64.0",
-    "@bochilteam/scraper": "^0.0.81",
+    "@bochilteam/scraper": "0.0.81",
     "axios": "^0.24.0",
     "node-gtts": "^2.0.2",
     "chalk": "^4.1.2",
