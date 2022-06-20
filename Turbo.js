@@ -404,27 +404,6 @@ if (!m.isGroup && !isCreator) {
 		}        
 	
 //[level(incomplete, still in devment)]\\
-const levelRole = getLevelingLevel(m.sender)
-	  var role = 'bronz'
-	  if (levelRole <= 3) {
-	role = 'Copper'
-	  } else if (levelRole <= 5) {
-	role = 'Iron'
-	  } else if (levelRole <= 7) {
-	role = 'Silver'
-	  } else if (levelRole <= 10) {
-	role = 'Gold'
-	  } else if (levelRole <= 12) {
-	role = 'Platinum'
-	  } else if (levelRole <= 15) {
-	role = 'Mithril'
-	  } else if (levelRole <= 18) {
-	role = 'Orichalcum'
-	  } else if (levelRole <= 25) {
-	role = 'Adamantite'
-	  } else if (levelRole <= 45) {
-	role = 'Good In Game'
-	  }
 	
 //[Antilink]\\
 	if (isAntiLink) 
@@ -1433,22 +1412,19 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'lyric': case 'lyrics': {
-	if (!text) return reply('Give me a song name')
-	const { title, image, artist, lyrics } = await fetchJson(`https://api.popcat.xyz/lyrics?song=${text}`)
-            let buttons = [
-                    {buttonId: `${prefix}song ${title}`, buttonText: {displayText: 'Play It'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: `${image}`,
-                    caption: `${title}\n${artist}\n\n${lyrics}`,
-                    footer: Turbo.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-            }
-            break
+case 'lyrics': {
+if (!text) return reply(`Use example ${prefix}lyrics stay`)
+m.reply(mess.wait)
+const { lyrics, lyricsv2 } = require('@bochilteam/scraper')
+const result = await lyricsv2(text).catch(async _ => await lyrics(text))
+m.reply(`
+ *TITLE :* *${result.title}*
+ *AUTHOR :* ${result.author}
+ LYRICS : ${result.lyrics}
+ 
+`.trim())
+}
+break
 case 'true':{
 if (!text) return reply('Give me a number')
 const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=millie`)
@@ -2255,6 +2231,51 @@ case 'antilink':
                 reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
             }
             break
+case 'bcimage': case 'bcvideo': case 'bcaudio': {
+                if (!isCreator) throw mess.owner
+                if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
+                let anu = await store.chats.all().map(v => v.id)
+                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916380260672@s.whatsapp.net"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'), surface: 200, message: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, orderTitle: 'ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                m.reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} minutes*`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    let butoon = [{
+                                urlButton: {
+                                    displayText: `Owner`,
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            },
+                            {
+                                quickReplyButton: {
+                                    displayText: 'MENU',
+                                    id: 'menu'
+                                }
+                            }]
+                    let media = await Turbo.downloadAndSaveMediaMessage(quoted)
+                    let buffer = fs.readFileSync(media)
+                    if (/webp/.test(mime)) {
+                    Turbo.sendMessage(i, { sticker: { url: media } }, { quoted: fakesticker })
+                    } else if (/image/.test(mime)) {
+                    let junn = `*_BROADCAST IMAGE_*${text ? '\n\n' + text : ''}`
+                    Turbo.send5ButImg(i, junn, `${global.botname}`, buffer, butoon)
+                    } else if (/video/.test(mime)) {
+                    let junn = `*_BROADCAST VIDEO*${text ? '\n\n' + text : ''}`
+                    Turbo.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: fvid })
+                    } else if (/audio/.test(mime)) {
+                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg'}, { quoted : fakevn })
+                    } else {
+                    m.reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
+                    }
+                    await fs.unlinkSync(media)
+                    }
+                m.reply(` *Send Broadcast To* ${anu.length} *Chats*`)
+            }
+            break
+case 'attp': {
+           if (!text) throw `*Example : ${prefix + command} hi turbo*`
+           await Turbo.sendMedia(m.chat, `https://cililitan.herokuapp.com/api/attp?teks=${text}`, 'Slayer Md', 'TurboMods', m, {asSticker: true}).catch((err) => m.reply('*error while sending sticker*'))
+         }
+         break
             case 'bc': case 'broadcast': case 'bcall': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw `Where is the text?\n\nExample : ${prefix + command} Slayer bot here`
@@ -3216,6 +3237,28 @@ case 'sendkontak': case 'sendcontact': {
                 Turbo.sendContact(room.a, [room.b.split("@")[0]], msg)
             }
             break
+case 'searchanime': {
+                if (!text) throw `Example : ${prefix + command} nama anime`
+                anu = await getBuffer(`https://api.akuari.my.id/search/konachan?query=${text}`)
+                Turbo.sendMessage(m.chat, { image: anu, caption: `${command}` }, { quoted: m}).catch((err) => m.reply('*Sorry Team Toxic Api Server Is Down*'))
+	            }
+                break
+case 'repo': case 'gitclone':
+            let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
+            if (!args[0]) throw 'link github  EXAMPLE: https://github.com/TURBOHYPER/Toxic-Alexa'
+    if (!regex1.test(args[0])) throw 'link!'
+    let [, user, repo] = args[0].match(regex1) || []
+    repo = repo.replace(/.git$/, '')
+    let url = `https://api.github.com/repos/${user}/${repo}/zipball`
+    let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
+    // 'attachment; filenameq=ZidniGanz.zip'
+    m.reply(`*Please wait, sending repository..*`)
+    Turbo.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' }, { quoted: m }).catch((err) => m.reply('*Sorry, the github link you provided is private, and cant be made into a file*'))
+			break
+case 'tagme': {
+Turbo.sendMessage(m.chat, {text:`@${m.sender.split("@")[0]}`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+}
+break
             case 'keluar': case 'leave': {
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
@@ -3651,6 +3694,7 @@ case 'grupmenu': {
   ➙ ${prefix}vote
   ➙ ${prefix}devote
   ➙ ${prefix}delvote
+  ➙ ${prefix}tagme
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3702,6 +3746,7 @@ case 'downloadmenu': {
   ➙ ${prefix}ytmp4 [url]
   ➙ ${prefix}getmusic [query]
   ➙ ${prefix}getvideo [query
+  ➙ ${prefix}repo
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -3757,6 +3802,7 @@ case 'downloadmenu': {
   ➙ ${prefix}encode [text]
   ➙ ${prefix}decode [text]
   ➙ ${prefix}lyrics [song name]
+  ➙ ${prefix}searchanime
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4064,6 +4110,7 @@ case 'convertmenu': {
   ➙ ${prefix}url
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
+  ➙ ${prefix}attp
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4296,6 +4343,9 @@ break
   ➙ ${prefix}unblock @user
   ➙ ${prefix}bcgroup
   ➙ ${prefix}bcall
+  ➙ ${prefix}bcimage
+  ➙ ${prefix}bcaudio 
+  ➙ ${prefix}bcvideo
   `
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4353,6 +4403,7 @@ break
   ➙ ${prefix}vote
   ➙ ${prefix}devote
   ➙ ${prefix}delvote
+  ➙ ${prefix}tagme
   
   ꪶDownload Menuꫂ
   ➙ ${prefix}tiktoknowm [url]
@@ -4366,6 +4417,7 @@ break
   ➙ ${prefix}ytmp4 [url]
   ➙ ${prefix}getmusic [query]
   ➙ ${prefix}getvideo [query
+  ➙ ${prefix}repo
   
   ꪶSearch Menuꫂ
   ➙ ${prefix}song [query]
@@ -4383,6 +4435,7 @@ break
   ➙ ${prefix}encode [text]
   ➙ ${prefix}decode [text]
   ➙ ${prefix}lyrics [song name]
+  ➙ ${prefix}searchanime
   
   ꪶRandom Menuꫂ
   ➙ ${prefix}coffee
@@ -4425,6 +4478,7 @@ break
   ➙ ${prefix}url
   ➙ ${prefix}ebinary
   ➙ ${prefix}dbinary
+  ➙ ${prefix}attp
   
   ꪶMain Menuꫂ
   ➙ ${prefix}ping
@@ -4468,7 +4522,10 @@ break
   ➙ ${prefix}block @user
   ➙ ${prefix}unblock @user
   ➙ ${prefix}bcgroup
-  ➙ ${prefix}bcall`
+  ➙ ${prefix}bcall
+  ➙ ${prefix}bcimage
+  ➙ ${prefix}bcaudio 
+  ➙ ${prefix}bcvideo`
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
