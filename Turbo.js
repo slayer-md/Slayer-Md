@@ -4585,6 +4585,7 @@ case 'sendtoai': {
 if (!isCreator) return reply(mess.owner)
 hehe = ' *hey master the report is sent to your ai it will send to the reported person soon* '
 reply(hehe)
+}
 break
 case 'setlogo': case 'setthumb': {
 if (!isCreator) return reply(mess.owner)
