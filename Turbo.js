@@ -348,11 +348,11 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 	
 //[target]\\
 const reply = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://chat.whatsapp.com/LWjJ4tu2qe9BWQZ1JzRZgp"}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://chat.whatsapp.com/LWjJ4tu2qe9BWQZ1JzRZgp"}}}, { quoted: m})
+            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Slayer-Md"}}}, { quoted: m})
         }
 try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -4580,6 +4580,11 @@ reply("Success Changing Owner Message To "+q)
 typeowner = 'fakevn'
 reply("Success Changing Owner Message To "+q)
 }
+break
+case 'sendtoai': {
+if (!isCreator) return reply(mess.owner)
+hehe = ' *hey master the report is sent to your ai it will send to the reported person soon* '
+reply(hehe)
 break
 case 'setlogo': case 'setthumb': {
 if (!isCreator) return reply(mess.owner)
