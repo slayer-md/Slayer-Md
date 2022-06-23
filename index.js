@@ -14,6 +14,7 @@ const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
 const pino = require('pino')
 const fs = require('fs')
 const chalk = require('chalk')
+const fetch = require('node-fetch')
 const FileType = require('file-type')
 const path = require('path')
 const  { Boom } = require('@hapi/boom')
@@ -68,28 +69,29 @@ async function startTurbo() {
         console.log(anu)
         try {
             let metadata = await Turbo.groupMetadata(anu.id)
+            string = "" + metadata.desc ;
+            description = string.toString();
             let participants = anu.participants
             for (let num of participants) {
-//═══════[get profile pic]════════\\
+                // Get Profile Picture User
                 try {
                     ppuser = await Turbo.profilePictureUrl(num, 'image')
                 } catch {
                     ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
 
-//═══════[get group dp]════════\\
+                // Get Profile Picture Group
                 try {
                     ppgroup = await Turbo.profilePictureUrl(anu.id, 'image')
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
-                
-//═══════[welcome]════════\\
+                }          
+               
                 if (anu.action == 'add') {
                     const templateButtons = [
-                        {index: 1, urlButton: {displayText: 'Sᴏᴜʀᴄᴇ Cᴏᴅᴇ', url: 'https://github.com/TURBOHYPER/Slayer-Md'}},
-                        {index: 2, quickReplyButton: {displayText: 'Mᴇɴᴜ', id: 'menu'}},
-                        {index: 3, quickReplyButton: {displayText: 'Gᴏᴏᴅ Bʏᴇ', id: '😙'}},
+                        {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
+                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘɪɴғᴏ', id: 'groupinfo'}},
+                        {index: 3, quickReplyButton: {displayText: 'ᴡᴇʟᴄᴏᴍᴇ ʙʀᴏ', id: '😙'}},
                     ]
                     let welcome = `ʜɪ @${num.split("@")[0]} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ${metadata.subject}\n\n${description}`
                     const templateMessage = {
@@ -102,9 +104,20 @@ async function startTurbo() {
                     await Turbo.sendMessage(anu.id, templateMessage,{ contextInfo: { mentionedJid: [num]}})
                     
                 } else if (anu.action == 'remove') {
-                    let msg = `@${num.split("@")[0]} left ${metadata.subject}`
-                    Turbo.sendText(anu.id,msg, { contextInfo: { mentionedJid: [num]}})
-                    //Turbo.sendMessage(anu.id, { text:},{ contextInfo: { mentionedJid: [num] }})
+                    const templateButtons = [
+                        {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
+                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘɪɴғᴏ', id: 'groupinfo'}},
+                        {index: 3, quickReplyButton: {displayText: 'ɢᴏᴏᴅʙʏᴇ', id: '😭'}},
+                    ]
+                    let leave = `@${num.split("@")[0]} ɪs ʟᴇᴀᴠɪɴɢ ${metadata.subject}\n\n${description}`
+                    const templateMessage = {
+                        image: { url: ppuser },
+                        jpegThumbnail: await (await fetch(ppuser)).buffer(),
+                        caption:welcome,
+                        footer: Turbo.user.name,
+                        templateButtons: templateButtons
+                    }
+                    await Turbo.sendMessage(anu.id, templateMessage,{ contextInfo: { mentionedJid: [num]}})
                 }
             }
         } catch (err) {
@@ -213,6 +226,122 @@ async function startTurbo() {
         templateMessage: {
         hydratedTemplate: {
         imageMessage: message.imageMessage,
+               "hydratedContentText": text,
+               "hydratedFooterText": footer,
+               "hydratedButtons": but
+            }
+            }
+            }), options)
+            Turbo.relayMessage(jid, template.message, { messageId: template.key.id })
+    }
+    
+    // Add Other
+    /** Send List Messaage
+      *
+      *@param {*} jid
+      *@param {*} text
+      *@param {*} footer
+      *@param {*} title
+      *@param {*} butText
+      *@param [*] sections
+      *@param {*} quoted
+      */
+        Turbo.sendListMsg = (jid, text = '', footer = '', title = '' , butText = '', sects = [], quoted) => {
+        let sections = sects
+        var listMes = {
+        text: text,
+        footer: footer,
+        title: title,
+        buttonText: butText,
+        sections
+        }
+        Turbo.sendMessage(jid, listMes, { quoted: quoted })
+        }
+        
+        /** Send Button 5 Message
+     * 
+     * @param {*} jid
+     * @param {*} text
+     * @param {*} footer
+     * @param {*} button
+     * @returns 
+     */
+        Turbo.send5ButMsg = (jid, text = '' , footer = '', but = []) =>{
+        let templateButtons = but
+        var templateMessage = {
+        text: text,
+        footer: footer,
+        templateButtons: templateButtons
+        }
+        Turbo.sendMessage(jid, templateMessage)
+        }
+        
+        /** Send Button 5 Image
+     *
+     * @param {*} jid
+     * @param {*} text
+     * @param {*} footer
+     * @param {*} image
+     * @param [*] button
+     * @param {*} options
+     * @returns
+     */
+    Turbo.send5ButImg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ image: img }, { upload: Turbo.waUploadToServer })
+        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+        imageMessage: message.imageMessage,
+               "hydratedContentText": text,
+               "hydratedFooterText": footer,
+               "hydratedButtons": but
+            }
+            }
+            }), options)
+            Turbo.relayMessage(jid, template.message, { messageId: template.key.id })
+    }
+    
+    /** Send Button 5 Video
+     *
+     * @param {*} jid
+     * @param {*} text
+     * @param {*} footer
+     * @param {*} Video
+     * @param [*] button
+     * @param {*} options
+     * @returns
+     */
+    Turbo.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: vid }, { upload: Turbo.waUploadToServer })
+        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+        videoMessage: message.videoMessage,
+               "hydratedContentText": text,
+               "hydratedFooterText": footer,
+               "hydratedButtons": but
+            }
+            }
+            }), options)
+            Turbo.relayMessage(jid, template.message, { messageId: template.key.id })
+    }
+
+    /** Send Button 5 Gif
+     *
+     * @param {*} jid
+     * @param {*} text
+     * @param {*} footer
+     * @param {*} Gif
+     * @param [*] button
+     * @param {*} options
+     * @returns
+     */
+    Turbo.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: Turbo.waUploadToServer })
+        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+        videoMessage: message.videoMessage,
                "hydratedContentText": text,
                "hydratedFooterText": footer,
                "hydratedButtons": but
@@ -380,6 +509,36 @@ async function startTurbo() {
         
 	return buffer
      } 
+     
+     /**
+      * sendFileUrl
+      * @param {*} jid
+      * @param {*} url
+      * @param {*} caption
+      * @param {*} quoted
+      * @param {*} options
+      */
+     Turbo.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
+      let mime = '';
+      let res = await axios.head(url)
+      mime = res.headers['content-type']
+      if (mime.split("/")[1] === "gif") {
+     return Turbo.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options}, { quoted: quoted, ...options})
+      }
+      let type = mime.split("/")[0]+"Message"
+      if(mime === "application/pdf"){
+     return Turbo.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options}, { quoted: quoted, ...options })
+      }
+      if(mime.split("/")[0] === "image"){
+     return Turbo.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options}, { quoted: quoted, ...options})
+      }
+      if(mime.split("/")[0] === "video"){
+     return Turbo.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options}, { quoted: quoted, ...options })
+      }
+      if(mime.split("/")[0] === "audio"){
+     return Turbo.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options}, { quoted: quoted, ...options })
+      }
+      }
     
     /**
      * 

@@ -33,6 +33,7 @@ const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLevelingLevel, getLevelingXp } = require("./lib/lvlfunction")
+const { mediafireDl } = require('./lib/mediafire.js')
 const speedofbot = require("performance-now")
 
 const fvid = {
@@ -1096,6 +1097,15 @@ Ciee Whats Going On💖👀`
                     await Turbo.sendButtonText(m.chat, buttons, jawab, Turbo.user.name, m, {mentions: menst})
             }
            break
+case 'imagetopdf': {
+ if (!/image/.test(mime)) throw `*Send/Reply Image With Caption* ${prefix + command}`
+let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let medi = await Turbo.downloadAndSaveMediaMessage(quoted)                
+                let anu = await TelegraPh(medi)            
+hayo = `https://xteam.xyz/imagetopdf?url=${anu}&APIKEY=${setting.riy}`
+Turbo.sendMessage(m.chat, {document: await getBuffer(hayo), mimetype: 'application/pdf', fileName: `${botname}.pdf`}, {quoted:m}).catch ((err) => m.reply('*Sorry Problem In Our Turbo Api*'))     
+}
+break
             case 'join': {
                 if (!isCreator) throw mess.owner
                 if (!text) throw 'Enter the group link!'
@@ -1516,18 +1526,45 @@ case 'jid':{
 reply(m.chat)
 }
 break
-case 'insta': case 'ig': {
-              try{
-const { instagramdl, instagramdlv2, instagramdlv3 } = require('@bochilteam/scraper')
-           let tes = text ? text : m.quoted && m.quoted.text
-   let a = await instagramdlv3(tes)
-   let urla = a[0].url
- await Turbo.sendMessage(m.chat, { text : '```Please Wait...```' }, {quoted : m})
-  for(let { thumbnail, url } of a)
-      Turbo.sendFileUrl(m.chat, urla, '```Downloaded From Instagram```', m)
-    } catch (err) {
-             Turbo.sendMessage(m.chat, { text :  '```Invalid Url```' }, {quoted : m})}
-            }break
+case 'ig': case 'igdl': case 'instagram': {
+                if (!text) throw '*Please Enter Instagarm Link*' 
+                if (!isUrl(args[0]) && !args[0].includes('instagram.com')) throw '*The link you provided is not valid*'    
+                let urlnya = text
+	            hx.igdl(urlnya)
+	            .then(async(result) => {	  
+	            var halo = 0		
+	            Turbo.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM DOWNLOADER 」----*\n\n*⬤ Username :* ${result.user.username}\n*⬤ Fullname :* ${result.user.fullName}\n*⬤ Followers :* ${result.user.followers}\n*⬤ Following :* ${result.user.following}\n*⬤ ID :* ${result.user.id}\n*⬤ Filetype :* ${result.medias[0].fileType}\n*⬤ Type :* ${result.medias[0].type}\n*⬤ Jumlah Media :* ${result.medias.length}\n*⬤ Url :* ${text}\n\nꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩` }, { quoted: m })	                                  	                      	            
+		        for(let i of result.medias) {		
+		        if(i.url.includes('mp4')){		           			    				
+				let link = await getBuffer(i.url)
+                Turbo.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })
+                } else {
+                let link = await getBuffer(i.url)
+                Turbo.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })          
+               }
+              }
+            }).catch((err) => m.reply(`*Sorry Instagram ${text} Not found*`))
+            }		
+			break
+case 'igs': case 'igstory': case 'instagramstory': {
+                if (!text) throw 'Type  Username!'               
+                let urlnya = text
+	            hx.igstory(urlnya)
+	            .then(async(result) => {
+		        var halo = 0		
+	            Turbo.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM STORY 」----*\n\n*⬤ Username :* ${result.user.username}\n*⬤ Fullname :* ${result.user.fullName}\n*⬤ Followers :* ${result.user.followers}\n*⬤ Following :* ${result.user.following}\n*⬤ ID :* ${result.user.id}\n*⬤ Filetype :* ${result.medias[0].fileType}\n*⬤ Type :* ${result.medias[0].type}\n*⬤ Media :* ${result.medias.length}\n*⬤ Bio :* ${result.user.biography}\n\nꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩` }, { quoted: m })	                                  	                      	            
+		        for(let i of result.medias) {
+			    if(i.url.includes('mp4')){
+				let link = await getBuffer(i.url)
+                Turbo.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Story ${i.type}*` }, { quoted: m }) 
+                } else {
+                    let link = await getBuffer(i.url)
+                  Turbo.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Story ${i.type}*` }, { quoted: m })                  
+                }
+            }
+            }).catch((err) => m.reply(`*Sorry Story Instagram ${text} not found*`))
+            }		
+			break
 case 'ig':{
 if (!text) return reply('*Give me a instagram username*')
 const { result, status } = await fetchJson(`https://levanter.up.railway.app/ig?q=${text}`)
@@ -1882,6 +1919,14 @@ break
                 reply(mess.success)
                 }
                 break
+case 'powner': case 'promoteowner': { //corded by turbo
+            if (!m.isGroup) throw mess.group
+                    if (!isBotAdmins) throw mess.botAdmin
+                    if (!isCreator) throw mess.owner
+                let users =   m.sender[0] ? m.sender : text.replace(/[^global.owner]/g, '')+'@s.whatsapp.net'
+            await Turbo.groupParticipantsUpdate(m.chat,  [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+        }
+        break
 case 'grupinfo': case 'groupinfo':
 try{
  var pic = await Turbo.getProfilePicture(m.chat)
@@ -1911,6 +1956,14 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
             Turbo.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
+case 'translate': case 'terjemahan': case 'tr': {
+if (!args.join(" ")) return m.reply("Text?")
+tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
+Infoo = tes.info
+Detek = tes.translate
+m.reply(`🌐Translate : ${Detek}\n📘Results : ${Infoo}`)
+}
+break
 	    case 'style': case 'styletext': {
 	        if (!isPremium && global.db.users[m.sender].limit < 1) return reply(mess.endLimit) // response when limit runs out
 		db.users[m.sender].limit -= 1 // -1 limit
@@ -2262,7 +2315,7 @@ case 'bcimage': case 'bcvideo': case 'bcaudio': {
                     let junn = `*_BROADCAST VIDEO*${text ? '\n\n' + text : ''}`
                     Turbo.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: fvid })
                     } else if (/audio/.test(mime)) {
-                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg'}, { quoted : fakevn })
+                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : fakevn })
                     } else {
                     m.reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
                     }
@@ -2764,6 +2817,24 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                 Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
+case 'mediafire': {
+if (!text) throw '*Enter a Link!*'
+if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) throw '*The link you provided is not valid*'
+const turbo1 = await mediafireDl(text)
+if (turbo1[0].size.split('MB')[0] >= 100) return m.reply('*File Over Limit* '+util.format(turbo1))
+const result4 = `*▊▊▊MEDIAFIRE DL▊▊▊*
+				
+*Name* : ${turbo1[0].nama}
+*Size* : ${turbo1[0].size}
+*Mime* : ${turbo1[0].mime}
+*Link* : ${turbo1[0].link}\n
+_please wait slayer was made by turbo i will try to be fast as my master turbo_ 
+
+*𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯*`
+m.reply(`${result4}`)
+Turbo.sendMessage(m.chat, { document : { url : turbo1[0].link}, fileName : turbo1[0].nama, mimetype: turbo1[0].mime }, { quoted : m }).catch ((err) => m.reply('*sorry error in turbo api*'))
+}
+break
             case '3dchristmas': case '3ddeepsea': case 'americanflag': case '3dscifi': case '3drainbow': case '3dwaterpipe': case 'halloweenskeleton': case 'sketch': case 'bluecircuit': case 'space': case 'metallic': case 'fiction': case 'greenhorror': case 'transformer': case 'berry': case 'thunder': case 'magma': case '3dcrackedstone': case '3dneonlight': case 'impressiveglitch': case 'naturalleaves': case 'fireworksparkle': case 'matrix': case 'dropwater':  case 'harrypotter': case 'foggywindow': case 'neondevils': case 'christmasholiday': case '3dgradient': case 'blackpink': case 'gluetext': {
                 if (!text) throw `Example : ${prefix + command} text`
                 replay(mess.wait)
@@ -3747,6 +3818,7 @@ case 'downloadmenu': {
   ➙ ${prefix}getmusic [query]
   ➙ ${prefix}getvideo [query
   ➙ ${prefix}repo
+  ➙ ${prefix}mediafire
   `
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4346,6 +4418,7 @@ break
   ➙ ${prefix}bcimage
   ➙ ${prefix}bcaudio 
   ➙ ${prefix}bcvideo
+  ➙ ${prefix}promoteowner
   `
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -4418,6 +4491,7 @@ break
   ➙ ${prefix}getmusic [query]
   ➙ ${prefix}getvideo [query
   ➙ ${prefix}repo
+  ➙ ${prefix}mediafire
   
   ꪶSearch Menuꫂ
   ➙ ${prefix}song [query]
@@ -4525,7 +4599,8 @@ break
   ➙ ${prefix}bcall
   ➙ ${prefix}bcimage
   ➙ ${prefix}bcaudio 
-  ➙ ${prefix}bcvideo`
+  ➙ ${prefix}bcvideo
+  ➙ ${prefix}promoteowner`
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
