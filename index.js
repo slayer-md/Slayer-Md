@@ -85,9 +85,11 @@ async function startTurbo() {
                     ppgroup = await Turbo.profilePictureUrl(anu.id, 'image')
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }          
-               
+                }
+
                 if (anu.action == 'add') {
+                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916380260672@s.whatsapp.net"}, "message": {orderMessage: {itemCount: link,status: 200, thumbnail: await (await fetch(ppuser)).buffer(), surface: 200, message: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, orderTitle: 'ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                let link = `@${num.split("@")[0]}`
                     const templateButtons = [
                         {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
                         {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘɪɴғᴏ', id: 'groupinfo'}},
@@ -96,24 +98,25 @@ async function startTurbo() {
                     let welcome = `ʜɪ @${num.split("@")[0]} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ${metadata.subject}\n\n${description}`
                     const templateMessage = {
                         image: { url: ppuser },
+                        mentions: [num],
                         jpegThumbnail: await (await fetch(ppuser)).buffer(),
                         caption:welcome,
                         footer: Turbo.user.name,
                         templateButtons: templateButtons
                     }
-                    await Turbo.sendMessage(anu.id, templateMessage,{ contextInfo: { mentionedJid: [num]}})
+                    await Turbo.sendMessage(anu.id, templateMessage,{ contextInfo: {quoted:ftroli})
                     
                 } else if (anu.action == 'remove') {
                     const templateButtons = [
                         {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
                         {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘɪɴғᴏ', id: 'groupinfo'}},
-                        {index: 3, quickReplyButton: {displayText: 'ɢᴏᴏᴅʙʏᴇ', id: '😭'}},
+                        {index: 3, quickReplyButton: {displayText: 'ᴡᴇʟᴄᴏᴍᴇ ʙʀᴏ', id: '😙'}},
                     ]
-                    let leave = `@${num.split("@")[0]} ɪs ʟᴇᴀᴠɪɴɢ ${metadata.subject}\n\n${description}`
+                    let godbye = `ʙʏ ʙʀᴏ @${num.split("@")[0]} ғʀᴏᴍᴇ ᴛʜᴇ ɢʀᴏᴜᴘ ${metadata.subject}\n\nɢᴏᴅʙʏᴇ ᴍᴇssᴀɢᴇ ʙʏ sʟᴀʏᴇʀ ᴍᴅ/n/nᴏᴡɴᴇʀ :- ᴛᴜʀʙᴏ`
                     const templateMessage = {
                         image: { url: ppuser },
                         jpegThumbnail: await (await fetch(ppuser)).buffer(),
-                        caption:welcome,
+                        caption:godbye,
                         footer: Turbo.user.name,
                         templateButtons: templateButtons
                     }
