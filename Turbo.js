@@ -36,6 +36,9 @@ let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLeveling
 const { mediafireDl } = require('./lib/mediafire.js')
 const speedofbot = require("performance-now")
 
+//turbo api keys
+const setting = JSON.parse(fs.readFileSync('./apikey.json'))
+
 const fvid = {
 	 key: { 
           fromMe: false,
@@ -2648,23 +2651,21 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                   Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
-	    case 'ytmp3': case 'getmusic': case 'ytaudio': {
+case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 320kbps`)
                 let quality = args[1] ? args[1] : '320kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 999999) return reply('File Over Limit '+util.format(media))
-                Turbo.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
-            }
-            break
-            case 'ytmp4': case 'ytvideo': {
-                let { ytv } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 360p`
-                let quality = args[1] ? args[1] : '360p'
-                let media = await ytv(text, quality)
-                if (media.filesize >= 999999) return reply('Video size is too big '+util.format(media))
-                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
-            }
+                buf = await getBuffer(media.thumb)
+                Turbo.sendMessage(m.chat, {audio:{url:media.dl_link}, mimetype:"audio/mp4", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
+                title:media.title,
+                body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+                mediaType:2,
+                thumbnail:buf,
+                mediaUrl:`${text}`, 
+                sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
+                }
             break
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
@@ -3781,7 +3782,7 @@ case 'grupmenu': {
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner👤',
+                                    displayText: '👤Owner??',
                                     id: `${prefix}owner`
                                 }
                             }]
