@@ -24,7 +24,10 @@
     "@adiwajshing/baileys": "^4.0.1",
     "@adiwajshing/keyed-db": "^0.2.4",
     "awesome-phonenumber": "^2.64.0",
-    "@bochilteam/scraper": "0.0.81",
+    "@develoka/angka-terbilang-js": "^1.4.2",
+    "@shineiichijo/marika": "^2.0.2",
+    "@shineiichijo/nhentai-pdf": "^1.0.5",
+    "@bochilteam/scraper": "^2.0.0",
     "axios": "^0.24.0",
     "node-gtts": "^2.0.2",
     "chalk": "^4.1.2",
@@ -35,6 +38,7 @@
     "file-type": "^16.5.3",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "0.0.1-security",
+    "figlet": "^1.5.0",
     "got": "^11.8.3",
     "g-i-s": "^2.1.6",
     "delay": "^5.0.0",
@@ -65,10 +69,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TURBOHYPER/Slayer-Md.git"
+    "url": "git+https://github.com/slayer-md/Slayer-Md.git"
   },
   "bugs": {
-    "url": "https://github.com/TURBOHYPER/Slayer-Md/issues"
+    "url": "https://github.com/slayer-md/Slayer-Md/issues"
   },
-  "homepage": "https://github.com/TURBOHYPER/Slayer-Md#readme"
+  "homepage": "https://github.com/slayer-md/Slayer-Md#readme"
 }

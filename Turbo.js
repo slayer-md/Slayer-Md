@@ -32,7 +32,6 @@ const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
-let { addLevelingId, addLevelingLevel, addLevelingXp, getLevelingId, getLevelingLevel, getLevelingXp } = require("./lib/lvlfunction")
 const { mediafireDl } = require('./lib/mediafire.js')
 const speedofbot = require("performance-now")
 
@@ -283,6 +282,7 @@ let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
+autoreadsw = false
 
 //[database reader]\\
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
@@ -406,8 +406,35 @@ if (!m.isGroup && !isCreator) {
 				text: "• PM Detected Blocked Number \nwa.me/" + m.sender.split("@")[0],
 			});
 		}        
-	
-//[level(incomplete, still in devment)]\\
+                
+    //auto read whatsapp status
+if (autoreadsw) {
+		if (from === 'status@broadcast') {
+		Turbo.chatRead(from)
+	}
+	}
+//autoreader gc and pm
+if (global.autoreadpmngc) {
+if (command) {
+await Turbo.sendPresenceUpdate('composing', m.chat)
+Turbo.sendReadReceipt(from, m.sender, [m.key.id])}
+}
+  //autoread gc only
+  if (global.autoReadGc) {
+  if (m.isGroup) { Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
+}
+//autoread all
+  if (global.autoReadAll) { if (m.chat) { Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
+  }
+  //auto recording all
+    if (global.autoRecord) { if (m.chat) { Turbo.sendPresenceUpdate('recording', m.chat) }
+}
+//autotyper all
+  if (global.autoTyping) { if (m.chat) { Turbo.sendPresenceUpdate('composing', m.chat) }
+}
+//auto available all
+  if (global.available) { if (m.chat) { Turbo.sendPresenceUpdate('available', m.chat) }
+  }
 	
 //[Antilink]\\
 	if (isAntiLink) 
@@ -1529,45 +1556,6 @@ case 'jid':{
 reply(m.chat)
 }
 break
-case 'ig': case 'igdl': case 'instagram': {
-                if (!text) throw '*Please Enter Instagarm Link*' 
-                if (!isUrl(args[0]) && !args[0].includes('instagram.com')) throw '*The link you provided is not valid*'    
-                let urlnya = text
-	            hx.igdl(urlnya)
-	            .then(async(result) => {	  
-	            var halo = 0		
-	            Turbo.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM DOWNLOADER 」----*\n\n*⬤ Username :* ${result.user.username}\n*⬤ Fullname :* ${result.user.fullName}\n*⬤ Followers :* ${result.user.followers}\n*⬤ Following :* ${result.user.following}\n*⬤ ID :* ${result.user.id}\n*⬤ Filetype :* ${result.medias[0].fileType}\n*⬤ Type :* ${result.medias[0].type}\n*⬤ Jumlah Media :* ${result.medias.length}\n*⬤ Url :* ${text}\n\nꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩` }, { quoted: m })	                                  	                      	            
-		        for(let i of result.medias) {		
-		        if(i.url.includes('mp4')){		           			    				
-				let link = await getBuffer(i.url)
-                Turbo.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })
-                } else {
-                let link = await getBuffer(i.url)
-                Turbo.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })          
-               }
-              }
-            }).catch((err) => m.reply(`*Sorry Instagram ${text} Not found*`))
-            }		
-			break
-case 'igs': case 'igstory': case 'instagramstory': {
-                if (!text) throw 'Type  Username!'               
-                let urlnya = text
-	            hx.igstory(urlnya)
-	            .then(async(result) => {
-		        var halo = 0		
-	            Turbo.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM STORY 」----*\n\n*⬤ Username :* ${result.user.username}\n*⬤ Fullname :* ${result.user.fullName}\n*⬤ Followers :* ${result.user.followers}\n*⬤ Following :* ${result.user.following}\n*⬤ ID :* ${result.user.id}\n*⬤ Filetype :* ${result.medias[0].fileType}\n*⬤ Type :* ${result.medias[0].type}\n*⬤ Media :* ${result.medias.length}\n*⬤ Bio :* ${result.user.biography}\n\nꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩` }, { quoted: m })	                                  	                      	            
-		        for(let i of result.medias) {
-			    if(i.url.includes('mp4')){
-				let link = await getBuffer(i.url)
-                Turbo.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Story ${i.type}*` }, { quoted: m }) 
-                } else {
-                    let link = await getBuffer(i.url)
-                  Turbo.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Story ${i.type}*` }, { quoted: m })                  
-                }
-            }
-            }).catch((err) => m.reply(`*Sorry Story Instagram ${text} not found*`))
-            }		
-			break
 case 'ig':{
 if (!text) return reply('*Give me a instagram username*')
 const { result, status } = await fetchJson(`https://levanter.up.railway.app/ig?q=${text}`)
@@ -2633,7 +2621,7 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                             }, {
                                 quickReplyButton: {
                                     displayText: '🎵Audio🎵',
-                                    id: `ytmp3 ${search.videos[0].url} 320kbps`
+                                    id: `ytmp3 ${search.videos[0].url} 128kbps`
                                     }
                                 },{quickReplyButton: {
                                     displayText: '🎥Video🎥',
@@ -2642,7 +2630,7 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
                                 }, {
                                 quickReplyButton: {
                                     displayText: '🔍Youtube Search',
-                                    id: `getmusic ${search.videos[0].url} 160kbps`
+                                    id: `ytsearch ${search.videos[0].url}`
                                     }
                             }]
                         }
@@ -2654,11 +2642,12 @@ message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnai
 case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 320kbps`)
-                let quality = args[1] ? args[1] : '320kbps'
+                if (!isUrl(args[0]) && !args[0].includes('youtube.com')) throw '*The link you provided is not valid*'
+                let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 999999) return reply('File Over Limit '+util.format(media))
                 buf = await getBuffer(media.thumb)
-                Turbo.sendMessage(m.chat, {audio:{url:media.dl_link}, mimetype:"audio/mp4", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
+                Turbo.sendMessage(m.chat, {audio:{url:media.dl_link}, mimetype:"audio/mpeg", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
                 title:media.title,
                 body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
                 mediaType:2,
@@ -2666,6 +2655,15 @@ case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 mediaUrl:`${text}`, 
                 sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
                 }
+            break
+case 'ytmp4': case 'ytvideo': {
+                let { ytv } = require('./lib/y2mate')
+                if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 360p`
+                let quality = args[1] ? args[1] : '360p'
+                let media = await ytv(text, quality)
+                if (media.filesize >= 999999) return reply('Video size is too big '+util.format(media))
+                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
+            }
             break
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
@@ -3329,6 +3327,20 @@ case 'repo': case 'gitclone':
 			break
 case 'tagme': {
 Turbo.sendMessage(m.chat, {text:`@${m.sender.split("@")[0]}`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+}
+break
+case 'autoreadsw': case 'autoreadstatus':
+if (!isCreator) return reply(mess.owner)
+if (args[0] == 'on') {
+if (autoreadsw) return reply('*Already activated!*')
+autoreadsw = true
+reply('*Successfully activate auto read status*')
+} else if (args[0] == 'off') {
+if (!autoreadsw) return reply('*Already deactivated!*')
+autoreadsw = false
+reply('*Successfully turn off auto read status*')
+} else {
+reply('Choose on or off!')
 }
 break
             case 'keluar': case 'leave': {

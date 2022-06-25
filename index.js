@@ -18,6 +18,7 @@ const fetch = require('node-fetch')
 const FileType = require('file-type')
 const path = require('path')
 const  { Boom } = require('@hapi/boom')
+const moment = require('moment-timezone')
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
@@ -35,6 +36,7 @@ async function startTurbo() {
         auth: state,
         version
     })
+
 
     store.bind(Turbo.ev)
 
@@ -64,6 +66,29 @@ async function startTurbo() {
             console.log(err)
         }
     })
+    
+    //GRUP UPDATE
+Turbo.ev.on('groups.update', async pea => {
+       //console.log(pea)
+    // Get Profile Picture Group
+       try {
+       ppgc = await Turbo.profilePictureUrl(pea[0].id, 'image')
+       } catch {
+       ppgc = 'https://telegra.ph/file/3983c55ac7f3ebea225d3.jpg'
+       }
+       let wm_fatih = { url : ppgroup }
+       if (pea[0].announce == true) {
+       Turbo.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been closed by admin, Now only admin can send messages !`, `${botnma}`, wm_fatih, [])
+       } else if(pea[0].announce == false) {
+       Turbo.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been opened by admin, Now participants can send messages !`, `${botnma}`, wm_fatih, [])
+       } else if (pea[0].restrict == true) {
+       Turbo.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup info has been restricted, Now only admin can edit group info !`, `${botnma}`, wm_fatih, [])
+       } else if (pea[0].restrict == false) {
+       Turbo.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup info has been opened, Now participants can edit group info !`, `${botnma}`, wm_fatih, [])
+       } else {
+       Turbo.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Subject has been changed to *${pea[0].subject}*`, `${botnma}`, wm_fatih, [])
+     }
+    })
 
     Turbo.ev.on('group-participants.update', async (anu) => {
         console.log(anu)
@@ -77,7 +102,7 @@ async function startTurbo() {
                 try {
                     ppuser = await Turbo.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                    ppuser = (`https://hardianto.xyz/api/welcome3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/d460e086f9f9bf6b04e17.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
                 }
 
                 // Get Profile Picture Group
@@ -86,37 +111,34 @@ async function startTurbo() {
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
-
+                                                              
                 if (anu.action == 'add') {
-                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916380260672@s.whatsapp.net"}, "message": {orderMessage: {itemCount: link,status: 200, thumbnail: await (await fetch(ppuser)).buffer(), surface: 200, message: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, orderTitle: 'ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                let link = `@${num.split("@")[0]}`
                     const templateButtons = [
                         {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
-                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘɪɴғᴏ', id: 'groupinfo'}},
+                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘ ɪɴғᴏ', id: 'group info'}},
                         {index: 3, quickReplyButton: {displayText: 'ᴡᴇʟᴄᴏᴍᴇ ʙʀᴏ', id: '😙'}},
                     ]
                     let welcome = `ʜɪ @${num.split("@")[0]} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ${metadata.subject}\n\n${description}`
                     const templateMessage = {
                         image: { url: ppuser },
-                        mentions: [num],
                         jpegThumbnail: await (await fetch(ppuser)).buffer(),
                         caption:welcome,
                         footer: Turbo.user.name,
                         templateButtons: templateButtons
                     }
-                    await Turbo.sendMessage(anu.id, templateMessage,{ contextInfo: {quoted:ftroli})
+                    await Turbo.sendMessage(anu.id, templateMessage,{ contextInfo: { mentionedJid: [num]}})
                     
                 } else if (anu.action == 'remove') {
                     const templateButtons = [
                         {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
-                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘɪɴғᴏ', id: 'groupinfo'}},
-                        {index: 3, quickReplyButton: {displayText: 'ᴡᴇʟᴄᴏᴍᴇ ʙʀᴏ', id: '😙'}},
+                        {index: 2, quickReplyButton: {displayText: 'ᴍᴇɴᴜ', id: 'menu'}},
+                        {index: 3, quickReplyButton: {displayText: 'ʙʏ ʙʏ ʙʀᴏ☺️', id: '😙'}},
                     ]
-                    let godbye = `ʙʏ ʙʀᴏ @${num.split("@")[0]} ғʀᴏᴍᴇ ᴛʜᴇ ɢʀᴏᴜᴘ ${metadata.subject}\n\nɢᴏᴅʙʏᴇ ᴍᴇssᴀɢᴇ ʙʏ sʟᴀʏᴇʀ ᴍᴅ/n/nᴏᴡɴᴇʀ :- ᴛᴜʀʙᴏ`
+                    let welcome = `ʟᴇғᴛᴇᴅ ᴍᴇᴍʙᴇʀ @${num.split("@")[0]} `
                     const templateMessage = {
                         image: { url: ppuser },
                         jpegThumbnail: await (await fetch(ppuser)).buffer(),
-                        caption:godbye,
+                        caption:welcome,
                         footer: Turbo.user.name,
                         templateButtons: templateButtons
                     }

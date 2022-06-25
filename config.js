@@ -21,6 +21,14 @@ global.APIKeys = {
 	'https://zenzapi.xyz': 'sanzychan01', //thank you to zenz
 }
 
+//═══════[automatically]════════\\
+global.autoTyping = false //auto tying in gc (true to on, false to off)
+global.autoreadpmngc = false //auto reading in gc and pm (true to on, false to off)
+global.autoReadGc = false //auto reading in gc (true to on, false to off)
+global.autoReadAll = false // auto reading in all pchat gc and status (true to on, false to off)
+global.autoRecord = false //auto recording (true to on, false to off)
+global.available = false //auto available (true to on, false to off)
+
 //═══════[modification]════════\\
 global.owner = ['916380260672'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
 global.pemilik = ['916380260672,917025994178,917025631103,919995801023,642777770829'] //another owner number
