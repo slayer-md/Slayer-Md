@@ -852,59 +852,32 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             }
             break
-            case 'git': case 'sc': case 'sourcecode': case 'script': case 'botlink':{
-                           	timestampe = speed();
-latensie = speed() - timestampe
- anu = ` `
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `
-╭────⬡ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ────⬡
-│   
-│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
-╰─⬡───⬡────────⬡───⬡──⬡
-                             │
-╭─⬡───⬡ 𝐒𝐂𝐑𝐈𝐏𝐓 ⬡───⬡──⬡
-│𒆜 𝐒𝐂𝐑𝐈𝐏𝐓: https://github.com/TURBOHYPER/Slayer-Md
-│𒆜 𝐅𝐔𝐋𝐋 𝐒𝐂𝐑𝐈𝐏𝐓 : ғᴏʀ ғᴜʟʟ sᴄʀɪᴘᴛ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴘᴀʏ
-╰─⬡───⬡────────⬡───⬡──⬡`,
-                            hydratedButtons: [{
-                                urlButton: {
-                                    displayText: 'Creator 💣',
-                                    url: 'https://wa.me/916380260672'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Youtube 🦄',
-                                    url: 'https://youtube.com/c/TurboMods'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Menu 🗞️',
-                                    id: `${prefix}menu`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'ListMenu 🔥',
-                                    id: `${prefix}command`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner',
-                                    id: `${prefix}owner`
-                                }
-                            }]
-                        }
-                    }
-                }),{ userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
+            case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
+	if (isBan) return reply(mess.ban)	 			
+if (isBanChat) return reply(mess.banChat)
+let sclog0 = fs.readFileSync('./TurboMedia/thumb.jpg')
+scte7t = `*「 ${global.botname} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Slayer-Md\n\nDont forget to follow 😓`
+let buttons = [
+{buttonId: `owner`, buttonText: {displayText: 'Owner 😏'}, type: 1}
+]
+let buttonMessage = {
+image: sclog0,
+jpegThumbnail: sclog0,
+caption: scte7t,
+footer: `${botname}`,
+buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title:"I deserve something for my hardwork",
+body: "So Follow My Instagram", 
+thumbnail: fs.readFileSync("TurboMedia/theme/alexa.jpg"),
+mediaType:1,
+mediaUrl: 'https://instagram.com/toxic_turbo777',
+sourceUrl: "https://instagram.com/toxic_turbo777"
+}}
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
 break
 case 'find' :{
 let acrcloud = require('acrcloud')
