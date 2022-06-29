@@ -853,8 +853,6 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             break
             case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
-	if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
 let sclog0 = fs.readFileSync('./TurboMedia/thumb.jpg')
 scte7t = `*「 ${global.botname} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Slayer-Md\n\nDont forget to follow 😓`
 let buttons = [
