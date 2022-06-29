@@ -854,7 +854,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             break
             case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
 let sclog0 = fs.readFileSync('./TurboMedia/thumb.jpg')
-scte7t = `*「 ${global.botname} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Slayer-Md\n\nDont forget to follow 😓`
+scte7t = `*「 ${global.botnma} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Slayer-Md\n\nDont forget to follow 😓`
 let buttons = [
 {buttonId: `owner`, buttonText: {displayText: 'Owner 😏'}, type: 1}
 ]
@@ -862,7 +862,7 @@ let buttonMessage = {
 image: sclog0,
 jpegThumbnail: sclog0,
 caption: scte7t,
-footer: `${botname}`,
+footer: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
