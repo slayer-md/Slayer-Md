@@ -868,7 +868,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"I deserve something for my hardwork",
 body: "So Follow My Instagram", 
-thumbnail: fs.readFileSync("TurboMedia/theme/alexa.jpg"),
+thumbnail: fs.readFileSync('./TurboMedia/thumb.jpg'),
 mediaType:1,
 mediaUrl: 'https://instagram.com/toxic_turbo777',
 sourceUrl: "https://instagram.com/toxic_turbo777"
