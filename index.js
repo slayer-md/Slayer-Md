@@ -22,41 +22,17 @@ const moment = require('moment-timezone')
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
-const figlet = require('figlet')
-const {
-    color
-} = require('./lib/color')
 
 global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
-async function startXeonBotInc() {
-console.log(color(figlet.textSync('Slayer-Md', {
-		font: 'Pagga',
-		horizontalLayout: 'default',
-		vertivalLayout: 'default',
-	    width: 80,
-		whitespaceBreak: true
-        }), 'yellow'))
-console.log(color('\n🔥 YT CHANNEL: Turbo Mods ','silver'))
-console.log(color('💓 GITHUB: TURBOHYPER ','silver'))
-console.log(color('👀 WA NUMBER: +916380260672 ','silver'))
-console.log(color('  🦄Turbo Mods Inc. 2022🦄','mediumseagreen'))
-    console.log(color('🦁','red'), color('I Wrote This Script By Myself!', 'yellow'))
-    console.log(color('😾','red'), color('Source Code Version: 1.0', 'aqua'))
-    console.log(color('✨','red'), color('Bug? Error? Suggestion? Talk to developer:', 'aqua'))
-    console.log(color('🌹', 'cyan'), color('https://wa.me/916380260672'))
-    console.log(color('🫂', 'cyan'), color('Slayer Md Is Online...', 'pink'))
-    console.log(color('😚', 'cyan'), color('Welcome Back Owner! Hope You Doing Well~', 'magenta'))
-    console.log(color('🙂','red'), color('Thanks For Using Slayer Md', 'white'))
-    let { version, isLatest } = await fetchLatestBaileysVersion()
+async function startTurbo() {
     const Turbo = TurboConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
         browser: ['Subscribe Turbo','Safari','1.0.0'],
-        auth: state,
-        version
+        auth: state
     })
 
 
