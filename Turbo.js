@@ -35,6 +35,24 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const { mediafireDl } = require('./lib/mediafire.js')
 const speedofbot = require("performance-now")
 
+// Quoted
+const content = JSON.stringify(m.message)
+const q = args.join(' ')
+const isImage = (m.type === 'imageMessage')
+        const isVideo = (m.type === 'videoMessage')
+        const isMedias = (m.mtype === 'imageMessage' || m.mtype === 'videoMessage')
+		const isQuotedImage = m.mtype === 'extendedTextMessage' && content.includes('imageMessage')
+		const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
+		const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
+		const isQuotedSticker = m.mtype === 'extendedTextMessage' && content.includes('stickerMessage')
+		const isQuotedLoca = m.mtype === 'extendedTextMessage' && content.includes('locationMessage')
+        const isQuotedContact = m.mtype === 'extendedTextMessage' && content.includes('contactMessage')
+        const isQuotedDocs = m.mtype === 'extendedTextMessage' && content.includes('documentMessage')
+        const isQuotedTeks = m.mtype === 'extendedTextMessage' && content.includes('quotedMessage')
+        const isQuotedTag = m.mtype === 'extendedTextMessage' && content.includes('mentionedJid')
+        const isQuotedProd = m.mtype === 'extendedTextMessage' && content.includes('productMessage')
+        const isQuotedReply = m.mtype === 'extendedTextMessage' && content.includes('Message')
+
 //turbo api keys
 const setting = JSON.parse(fs.readFileSync('./apikey.json'))
 
@@ -852,30 +870,59 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             }
             break
-            case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
-let sclog0 = fs.readFileSync('./TurboMedia/thumb.jpg')
-scte7t = `*「 ${global.botnma} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Slayer-Md\n\nDont forget to follow 😓`
-let buttons = [
-{buttonId: `owner`, buttonText: {displayText: 'Owner 😏'}, type: 1}
-]
-let buttonMessage = {
-image: sclog0,
-jpegThumbnail: sclog0,
-caption: scte7t,
-footer: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
-buttons: buttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title:"I deserve something for my hardwork",
-body: "So Follow My Instagram", 
-thumbnail: fs.readFileSync('./TurboMedia/thumb.jpg'),
-mediaType:1,
-mediaUrl: 'https://instagram.com/toxic_turbo777',
-sourceUrl: "https://instagram.com/toxic_turbo777"
-}}
-}
-Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
+            case 'git': case 'sc': case 'sourcecode': case 'script': case 'botlink':{
+                           	timestampe = speed();
+latensie = speed() - timestampe
+ anu = ` `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `
+╭────⬡ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ────⬡
+│   
+│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
+╰─⬡───⬡────────⬡───⬡──⬡
+                             │
+╭─⬡───⬡ 𝐒𝐂𝐑𝐈𝐏𝐓 ⬡───⬡──⬡
+│𒆜 𝐒𝐂𝐑𝐈𝐏𝐓: https://github.com/TURBOHYPER/Slayer-Md
+│𒆜 𝐅𝐔𝐋𝐋 𝐒𝐂𝐑𝐈𝐏𝐓 : ғᴏʀ ғᴜʟʟ sᴄʀɪᴘᴛ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴘᴀʏ
+╰─⬡───⬡────────⬡───⬡──⬡`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Youtube 🦄',
+                                    url: 'https://youtube.com/c/TurboMods'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'ListMenu 🔥',
+                                    id: `${prefix}command`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
 break
 case 'find' :{
 let acrcloud = require('acrcloud')
