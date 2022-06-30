@@ -57,7 +57,7 @@ global.limitawal = {
     free: 100 //free user limit
 }
 global.thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-global.vidmenu = fs.readFileSync('/TurboMedia/menuvideo.mp4')
+global.vidmenu = fs.readFileSync('./TurboMedia/menuvideo.mp4')
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
