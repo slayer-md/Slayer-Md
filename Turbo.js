@@ -280,6 +280,37 @@ Turbo.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 //[thumb]\\
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 
+//[doc]\\
+
+let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
+let docs = pickRandom(documents)
+
+//[alive message]\\
+
+timestampe = speed();
+latensie = speed() - timestampe
+const alivemessage = `
+╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
+│   
+│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
+│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
+│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
+│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
+│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
+│𒆜 ??𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
+╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`
+
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 autoreadsw = false
@@ -3479,71 +3510,111 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
-case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
-                           	timestampe = speed();
-latensie = speed() - timestampe
- anu = ``
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `
-╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
-│   
-│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
-╰─⬡───⬡────────⬡───⬡──⬡
-                                      │
-╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
-│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
-│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
-│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
-│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
-╰─⬡───⬡────────⬡───⬡──⬡
-                                      │
-╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
-╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
-                            hydratedButtons: [{
+case 'setmenu': {
+            if (!isCreator) return reply(mess.owner)
+            let setbot = db.data.settings[botNumber]
+               if (args[0] === 'templateImage'){
+                setbot.templateImage = true
+                setbot.templateVideo = false
+                setbot.templateGif = false
+                setbot.templateMsg = false
+                setbot.templateDocument = false
+                reply(mess.success)
+                } else if (args[0] === 'templateGif'){
+                setbot.templateImage = false
+                setbot.templateVideo = false
+                setbot.templateGif = true
+                setbot.templateMsg = false
+                setbot.templateDocument = false
+                reply(mess.success)
+                } else if (args[0] === 'templateMessage'){
+                setbot.templateImage = false
+                setbot.templateVideo = false
+                setbot.templateGif = false
+                setbot.templateMsg = true
+                setbot.templateDocument = false
+                reply(mess.success)
+                } else if (args[0] === 'templateDocument'){
+                setbot.templateImage = false
+                setbot.templateVideo = false
+                setbot.templateGif = false
+                setbot.templateMsg = false
+                setbot.templateDocument = true
+                reply(mess.success)
+		} else if (args[0] === 'templateVideo'){
+                setbot.templateImage = false
+                setbot.templateVideo = true
+                setbot.templateGif = false
+                setbot.templateMsg = false
+                setbot.templateDocument = false
+                reply(mess.success)
+                } else {
+                let sections = [
+                {
+                title: "😛CHANGE BOT MENU😛",
+                rows: [
+                {title: "Image Menu", rowId: `setmenu templateImage`, description: `Tap to change bot menu to Image Menu`},
+                {title: "Gif Menu", rowId: `setmenu templateGif`, description: `Tap to change bot menu to Gif Menu`},
+		{title: "Video Menu", rowId: `setmenu templateVideo`, description: `Tap to change bot menu to Video Menu`},
+                {title: "Text Menu", rowId: `setmenu templateMessage`, description: `Tap to change bot menu to Text Menu`},
+                {title: "Document Menu", rowId: `setmenu templateDocument`, description: `Tap to change bot menu to Document Menu`}
+                ]
+                },
+                ]
+                Turbo.sendListMsg(m.chat, `Please select the menu you want to change!`, ` `, Turbo.user.name, `Click Here`, sections, m)
+                }
+            }
+            break
+case 'alive': case 'list': case 'menu': case 'bot': case 'help': case 'alexa': {
+Turbo.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+	                let btn = [{
                                 urlButton: {
-                                    displayText: 'Creator 💣',
-                                    url: 'https://wa.me/916380260672'
+                                    displayText: 'YouTube🦠',
+                                    url: 'https://youtube.com/c/TurboMods'
                                 }
                             }, {
-                            	urlButton: {
-                                displayText: 'Script 🌊',
+                                callButton: {
+                                    displayText: 'Script🌊',
                                     url: 'https://github.com/TURBOHYPER/Slayer-Md'
                                 }
                             }, {
                                 quickReplyButton: {
                                     displayText: 'Menu 🗞️',
-                                    id: `${prefix}menu`
+                                    id: 'menu'
                                 }
-                                }, {
+                            }, {
                                 quickReplyButton: {
-                                    displayText: 'Speed Test 🐌',
-                                    id: `${prefix}ping`
-                                }
-                                }, {
+                                    displayText: 'List Menu ✨',
+                                    id: 'command'
+                                }  
+                            }, {
                                 quickReplyButton: {
-                                    displayText: '👤Owner',
-                                    id: `${prefix}owner`
+                                    displayText: 'Owner 🤣',
+                                    id: 'owner'
                                 }
                             }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        Turbo.send5ButImg(m.chat, alivemessage, global.botnma, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        Turbo.send5ButGif(m.chat, alivemessage, global.botnma, global.vidmenu, btn, global.thumb)
+                        } else if (setbot.templateVideo) {
+                        Turbo.send5ButVid(m.chat, alivemessage, global.botnma, global.vidmenu, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        Turbo.send5ButMsg(m.chat, alivemessage, global.botnma, btn)
+                        } else if (setbot.templateDocument) {
+                        let buttonmenu = [
+        	{ urlButton: { displayText: `YouTube🦠, url : 'https://youtube.com/c/TurboMods' } },
+            { urlButton: { displayText: `Script🌊`, url: 'https://github.com/TURBOHYPER/Slayer-Md' } },
+            { quickReplyButton: { displayText: `All Menu 🗞️`, id: 'allmenu'} },
+            { quickReplyButton: { displayText: `List Menu 🦄`, id: 'command'} },
+            { quickReplyButton: { displayText: `Owner ♾️`, id: 'owner'} }
+        	]
+        	Turbo.sendMessage(m.chat, { caption: alivemessage, document: fs.readFileSync('./TurboMedia/slayer.xlsx'), mimetype: `${docs}`, fileName: `${global.ownernma}`, templateButtons: buttonmenu, footer: `${global.botnma}`, mentionedJid: [m.sender] })
                         }
-                    }
-                }),{ userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
-break
-
-            case 'list': case 'menu': case 'help': case '?': {
+                     }
+            break
+            case 'oldlist': case 'oldmenu': case 'oldhelp': case 'old?': {
 timestampe = speed();
 latensie = speed() - timestampe
 let contentText = `Hi 🤚 ${pushname}
@@ -4657,21 +4728,11 @@ fs.writeFileSync(`./TurboMedia/thumb.jpg`, delb)
 reply(mess.success)
 }
 break
-case 'setlogo': case 'setthumb': {
-if (!isCreator) return reply(mess.owner)
-if (!quoted) return reply("*Reply to Image*")
-if (!/image/.test(mime)) return reply("*Reply to Image*")
-if (/webp/.test(mime)) return reply("*Reply to Image*")
-let delb = await Turbo.downloadMediaMessage(quoted)
-fs.writeFileSync(`./TurboMedia/banner.jpg`, delb)
-reply(mess.success)
-}
-break
 case 'setvideo': case 'setmenuvideo': {
 if (!isCreator) return reply(mess.owner)
 if (!/video/.test(mime) && !/audio/.test(mime)) return reply("*Reply to Video*")
 let delb = await Turbo.downloadMediaMessage(quoted)
-fs.writeFileSync(`./menuvideo.mp4`, delb)
+fs.writeFileSync(`./TurboMedia/menuvideo.mp4`, delb)
 reply(mess.success)
 }
 break
