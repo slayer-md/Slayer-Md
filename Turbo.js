@@ -35,24 +35,6 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const { mediafireDl } = require('./lib/mediafire.js')
 const speedofbot = require("performance-now")
 
-// Quoted
-const content = JSON.stringify(m.message)
-const q = args.join(' ')
-const isImage = (m.type === 'imageMessage')
-        const isVideo = (m.type === 'videoMessage')
-        const isMedias = (m.mtype === 'imageMessage' || m.mtype === 'videoMessage')
-		const isQuotedImage = m.mtype === 'extendedTextMessage' && content.includes('imageMessage')
-		const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
-		const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
-		const isQuotedSticker = m.mtype === 'extendedTextMessage' && content.includes('stickerMessage')
-		const isQuotedLoca = m.mtype === 'extendedTextMessage' && content.includes('locationMessage')
-        const isQuotedContact = m.mtype === 'extendedTextMessage' && content.includes('contactMessage')
-        const isQuotedDocs = m.mtype === 'extendedTextMessage' && content.includes('documentMessage')
-        const isQuotedTeks = m.mtype === 'extendedTextMessage' && content.includes('quotedMessage')
-        const isQuotedTag = m.mtype === 'extendedTextMessage' && content.includes('mentionedJid')
-        const isQuotedProd = m.mtype === 'extendedTextMessage' && content.includes('productMessage')
-        const isQuotedReply = m.mtype === 'extendedTextMessage' && content.includes('Message')
-
 //turbo api keys
 const setting = JSON.parse(fs.readFileSync('./apikey.json'))
 
