@@ -3604,11 +3604,11 @@ Turbo.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
                         Turbo.send5ButMsg(m.chat, alivemessage, global.botnma, btn)
                         } else if (setbot.templateDocument) {
                         let buttonmenu = [
-        	{ urlButton: { displayText: `YouTube🦠, url : 'https://youtube.com/c/TurboMods' } },
-            { urlButton: { displayText: `Script🌊`, url: 'https://github.com/TURBOHYPER/Slayer-Md' } },
-            { quickReplyButton: { displayText: `All Menu 🗞️`, id: 'allmenu'} },
-            { quickReplyButton: { displayText: `List Menu 🦄`, id: 'command'} },
-            { quickReplyButton: { displayText: `Owner ♾️`, id: 'owner'} }
+        	{ urlButton: { displayText: 'YouTube🦠', url : 'https://youtube.com/c/TurboMods' } },
+            { urlButton: { displayText: 'Script🌊', url: 'https://github.com/TURBOHYPER/Slayer-Md' } },
+            { quickReplyButton: { displayText: 'All Menu 🗞️', id: 'allmenu'} },
+            { quickReplyButton: { displayText: 'List Menu 🦄', id: 'command'} },
+            { quickReplyButton: { displayText: 'Owner ♾️', id: 'owner'} }
         	]
         	Turbo.sendMessage(m.chat, { caption: alivemessage, document: fs.readFileSync('./TurboMedia/slayer.xlsx'), mimetype: `${docs}`, fileName: `${global.ownernma}`, templateButtons: buttonmenu, footer: `${global.botnma}`, mentionedJid: [m.sender] })
                         }
