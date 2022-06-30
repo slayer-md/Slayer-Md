@@ -113,7 +113,7 @@ Turbo.ev.on('groups.update', async pea => {
                 if (anu.action == 'add') {
                     const templateButtons = [
                         {index: 1, urlButton: {displayText: 'ᴏᴡɴᴇʀ', url: 'https://wa.me/916380260672'}},
-                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘ ɪɴғᴏ', id: 'group info'}},
+                        {index: 2, quickReplyButton: {displayText: 'ɢʀᴏᴜᴘ ɪɴғᴏ', id: 'groupinfo'}},
                         {index: 3, quickReplyButton: {displayText: 'ᴡᴇʟᴄᴏᴍᴇ ʙʀᴏ', id: '😙'}},
                     ]
                     let welcome = `ʜɪ @${num.split("@")[0]} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ${metadata.subject}\n\n${description}`
