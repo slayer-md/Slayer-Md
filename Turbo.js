@@ -3610,7 +3610,7 @@ Turbo.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
             { quickReplyButton: { displayText: 'List Menu 🦄', id: 'command'} },
             { quickReplyButton: { displayText: 'Owner ♾️', id: 'owner'} }
         	]
-        	Turbo.sendMessage(m.chat, { caption: alivemessage, document: fs.readFileSync('./TurboMedia/slayer.xlsx'), mimetype: `${docs}`, fileName: `${global.ownernma}`, templateButtons: buttonmenu, footer: `${global.botnma}`, mentionedJid: [m.sender] })
+        	Turbo.sendMessage(m.chat, { caption: alivemessage, document: fs.readFileSync('./TurboMedia/slayer.xlsx'), mimetype: document, fileName: `${global.ownernma}`, templateButtons: buttonmenu, footer: `${global.botnma}`, mentionedJid: [m.sender] })
                         }
                      }
             break
