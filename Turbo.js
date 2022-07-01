@@ -280,11 +280,6 @@ Turbo.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 //[thumb]\\
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 
-//[doc]\\
-
-let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
-let docs = pickRandom(documents)
-
 //[alive message]\\
 
 timestampe = speed();
@@ -3510,111 +3505,7 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
-case 'setmenu': {
-            if (!isCreator) return reply(mess.owner)
-            let setbot = db.data.settings[botNumber]
-               if (args[0] === 'templateImage'){
-                setbot.templateImage = true
-                setbot.templateVideo = false
-                setbot.templateGif = false
-                setbot.templateMsg = false
-                setbot.templateDocument = false
-                reply(mess.success)
-                } else if (args[0] === 'templateGif'){
-                setbot.templateImage = false
-                setbot.templateVideo = false
-                setbot.templateGif = true
-                setbot.templateMsg = false
-                setbot.templateDocument = false
-                reply(mess.success)
-                } else if (args[0] === 'templateMessage'){
-                setbot.templateImage = false
-                setbot.templateVideo = false
-                setbot.templateGif = false
-                setbot.templateMsg = true
-                setbot.templateDocument = false
-                reply(mess.success)
-                } else if (args[0] === 'templateDocument'){
-                setbot.templateImage = false
-                setbot.templateVideo = false
-                setbot.templateGif = false
-                setbot.templateMsg = false
-                setbot.templateDocument = true
-                reply(mess.success)
-		} else if (args[0] === 'templateVideo'){
-                setbot.templateImage = false
-                setbot.templateVideo = true
-                setbot.templateGif = false
-                setbot.templateMsg = false
-                setbot.templateDocument = false
-                reply(mess.success)
-                } else {
-                let sections = [
-                {
-                title: "😛CHANGE BOT MENU😛",
-                rows: [
-                {title: "Image Menu", rowId: `setmenu templateImage`, description: `Tap to change bot menu to Image Menu`},
-                {title: "Gif Menu", rowId: `setmenu templateGif`, description: `Tap to change bot menu to Gif Menu`},
-		        {title: "Video Menu", rowId: `setmenu templateVideo`, description: `Tap to change bot menu to Video Menu`},
-                {title: "Text Menu", rowId: `setmenu templateMessage`, description: `Tap to change bot menu to Text Menu`},
-                {title: "Document Menu", rowId: `setmenu templateDocument`, description: `Tap to change bot menu to Document Menu`}
-                ]
-                },
-                ]
-                Turbo.sendListMsg(m.chat, `Please select the menu you want to change!`, ` `, Turbo.user.name, `Click Here`, sections, m)
-                }
-            }
-            break
-case 'alive': case 'list': case 'menu': case 'bot': case 'help': case 'alexa': {
-Turbo.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
-	                let btn = [{
-                                urlButton: {
-                                    displayText: 'YouTube🦠',
-                                    url: 'https://youtube.com/c/TurboMods'
-                                }
-                            }, {
-                                callButton: {
-                                    displayText: 'Script🌊',
-                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Menu 🗞️',
-                                    id: 'menu'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'List Menu ✨',
-                                    id: 'command'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Owner 🤣',
-                                    id: 'owner'
-                                }
-                            }]
-                         let setbot = db.data.settings[botNumber]
-                        if (setbot.templateImage) {
-                        Turbo.send5ButImg(m.chat, alivemessage, global.botnma, global.thumb, btn, global.thumb)
-                        } else if (setbot.templateGif) {
-                        Turbo.send5ButGif(m.chat, alivemessage, global.botnma, global.vidmenu, btn, global.thumb)
-                        } else if (setbot.templateVideo) {
-                        Turbo.send5ButVid(m.chat, alivemessage, global.botnma, global.vidmenu, btn, global.thumb)
-                        } else if (setbot.templateMsg) {
-                        Turbo.send5ButMsg(m.chat, alivemessage, global.botnma, btn)
-                        } else if (setbot.templateDocument) {
-                        let buttonmenu = [
-        	{ urlButton: { displayText: 'YouTube🦠', url : 'https://youtube.com/c/TurboMods' } },
-            { urlButton: { displayText: 'Script🌊', url: 'https://github.com/TURBOHYPER/Slayer-Md' } },
-            { quickReplyButton: { displayText: 'All Menu 🗞️', id: 'allmenu'} },
-            { quickReplyButton: { displayText: 'List Menu 🦄', id: 'command'} },
-            { quickReplyButton: { displayText: 'Owner ♾️', id: 'owner'} }
-        	]
-        	Turbo.sendMessage(m.chat, { caption: alivemessage, document: fs.readFileSync('./TurboMedia/slayer.xlsx'), mimetype: document, fileName: `${global.ownernma}`, templateButtons: buttonmenu, footer: `${global.botnma}`, mentionedJid: [m.sender] })
-                        }
-                     }
-            break
-            case 'oldlist': case 'oldmenu': case 'oldhelp': case 'old?': {
+            case 'list': case 'menu': case 'help': case '?': {
 timestampe = speed();
 latensie = speed() - timestampe
 let contentText = `Hi 🤚 ${pushname}
