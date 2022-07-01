@@ -3508,8 +3508,7 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
             case 'list': case 'menu': case 'help': case '?': {
 timestampe = speed();
 latensie = speed() - timestampe
-let contentText = `Hi 🤚 ${pushname}
-How Are You? 😊
+let contentText = `Hi 🤚 How Are You? 😊
 ╭─⬣「 INFO BOT 」⬣
 │
 │ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
