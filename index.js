@@ -72,9 +72,9 @@ Turbo.ev.on('groups.update', async pea => {
        try {
        ppgc = await Turbo.profilePictureUrl(pea[0].id, 'image')
        } catch {
-       ppgc = 'https://telegra.ph/file/3983c55ac7f3ebea225d3.jpg'
+       ppgc = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
        }
-       let wm_fatih = { url : ppgroup }
+       let wm_fatih = { url : ppgc }
        if (pea[0].announce == true) {
        Turbo.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been closed by admin, Now only admin can send messages !`, `${botnma}`, wm_fatih, [])
        } else if(pea[0].announce == false) {
