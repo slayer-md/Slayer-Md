@@ -1850,7 +1850,7 @@ break
 		await Turbo.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
-case 'banacmd': case 'banadmincmd': {
+case 'ban': case 'banned': {
 if (!isCreator) return m.reply(mess.owner)
 if (!args[0]) return m.reply(`*Enter Option Select add or delete*`)
 if (args[1]) {
@@ -1859,18 +1859,12 @@ orgnye = args[1] + "@s.whatsapp.net"
 orgnye = m.quoted.sender
 }
 const isBane = banned.includes(orgnye)
-if (args[0] === "on") {
-if (isBane) return m.reply('*Admin Command has been banned 🚫*')
+if (args[0] === "add") {
+if (isBane) return m.reply('*Group Admin Command Has Been Banned*')
 banned.push(orgnye)
 m.reply(`Succes ban`)
-} else if (args[0] === "off") {
-if (!isBane) return m.reply('*Admin Command Are Open 😍*')
-let delbans = banned.indexOf(orgnye)
-banned.splice(delbans, 1)
-m.reply(`*Test*`)
-} else {
-m.reply("Error")
-}
+} else if (args[0] === "del") {
+if (!isBane) return m.reply('*Ban Lifted You Happy*')
 }
 break
 	    case 'setname': case 'setsubject': {
