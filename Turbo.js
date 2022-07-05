@@ -1381,6 +1381,56 @@ const { result } = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/wa
 reply(result)
 }
 break
+case 'gender': case 'checkgender': { 
+if (!text) return reply('Give me a name')
+const { name, gender, probability, count } = await fetchJson('https://api.genderize.io/?name=${text}')
+anu = `╭══〘 ᏀᎬΝᎠᎬᎡ ᏟᎻᎬᏟᏦ 〙══⊷❍
+┃✩╭─────────────────
+┃✩│𝐍𝐀𝐌𝐄: ${name}
+┃✩│𝐆𝐄𝐍𝐃𝐄𝐑: ${gender}
+┃✩│𝐂𝐎𝐔𝐍𝐓: ${count}
+┃✩│𝐏𝐑𝐎𝐁𝐀𝐁𝐈𝐋𝐈𝐓𝐘: ${probability}
+┃✩╰─────────────────
+╰══════════════════⊷❍`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Joke',
+                                    id: `${prefix}joke`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Fact',
+                                    id: `${prefix}fact`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'joke':{
 const { joke } = await fetchJson('https://api.popcat.xyz/joke')
 anu = ` *${joke}* `
@@ -3996,6 +4046,7 @@ case 'randommenu': {
   ➙ ${prefix}bio
   ➙ ${prefix}joke
   ➙ ${prefix}fact
+  ➙ ${prefix}catimg
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -4043,6 +4094,7 @@ case 'funmenu': {
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}covid
+  ➙ ${prefix}gender
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -4596,6 +4648,7 @@ break
   ➙ ${prefix}bio
   ➙ ${prefix}joke
   ➙ ${prefix}fact
+  ➙ ${prefix}catimg
   
   ꪶFun Menuꫂ
   ➙ ${prefix}math
@@ -4605,7 +4658,8 @@ break
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
   ➙ ${prefix}covid
-  
+  ➙ ${prefix}gender
+
   
   ꪶVoice Changer Menuꫂ
   ➙ ${prefix}bass
