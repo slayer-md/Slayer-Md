@@ -50,6 +50,7 @@ global.mess = {
     private: 'Fᴇᴀᴛᴜʀᴇs Usᴇᴅ Oɴʟʏ Fᴏʀ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ!',
     bot: 'Tʜɪs Fᴇᴀᴛᴜʀᴇ Iɴ Oɴʟʏ Fᴏʀ Tʜᴇ Bᴏᴛ Nᴜᴍʙᴇʀ',
     wait: 'Pʟᴇᴀsᴇ Wᴀɪᴛ A Mɪɴᴜᴛᴇ ...',
+    ban: 'Sᴏʀʀʏ Tᴜʀʙᴏ Bᴀɴɴᴇᴅ Tʜɪs Gʀᴏᴜᴘ Fʀᴏᴍ Usɪɴɢ Aᴅᴍɪɴ ᴄCᴏᴍᴍᴀɴᴅ',
     endLimit: 'Yᴏᴜʀ Dᴀɪʟʏ Lɪᴍɪᴛ Hᴀs Exᴘɪʀᴇᴅ, Tʜᴇ Lɪᴍɪᴛ Wɪʟʟ Bᴇ Rᴇsᴇᴛ Eᴠᴇʀʏ 12 Hᴏᴜʀs',
 }
 global.limitawal = {
