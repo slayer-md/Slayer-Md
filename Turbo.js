@@ -1941,7 +1941,7 @@ let ingfo = `*G R O U P  I N F O*\n\n*Name :* ${groupName}\n*ID Group :* ${m.cha
 ds = await getBuffer(pic)
 Turbo.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
 break
-            case 'tagall': case 'tag': { 
+            case 'tagall': case 'tagallgroup': { 
                 if (!m.isGroup) throw mess.group
                 if (!isAdmins) throw mess.admin
 let teks = `══✪〘 *👥 Tag All* 〙✪══
@@ -3805,7 +3805,7 @@ case 'grupmenu': {
   ➙ ${prefix}delvote
   ➙ ${prefix}tagme
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -3858,7 +3858,7 @@ case 'downloadmenu': {
   ➙ ${prefix}repo
   ➙ ${prefix}mediafire
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -3914,7 +3914,7 @@ case 'downloadmenu': {
   ➙ ${prefix}lyrics [song name]
   ➙ ${prefix}searchanime
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -3957,7 +3957,7 @@ case 'randommenu': {
   ➙ ${prefix}couplepp
   ➙ ${prefix}fake
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4006,7 +4006,7 @@ case 'funmenu': {
   ➙ ${prefix}joke
   ➙ ${prefix}covid
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4057,7 +4057,7 @@ case 'voicemenu': {
   ➙ ${prefix}slow
   ➙ ${prefix}squirrel
 `
-let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4103,7 +4103,7 @@ case 'religionmenukdksoejdjj': {
   ➙ ${prefix}juzamma
   ➙ ${prefix}tafsirsurah`
   
-let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4173,7 +4173,7 @@ case 'horoscopemenukcodk': {
   ➙ ${prefix}zodiac
   ➙ ${prefix}shio`
   
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4224,7 +4224,7 @@ case 'convertmenu': {
   ➙ ${prefix}dbinary
   ➙ ${prefix}attp
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4275,7 +4275,7 @@ case 'nocategorymenu': {
   ➙ ${prefix}listonline
   ➙ ${prefix}report (report bug to owner)
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4323,7 +4323,7 @@ case 'databasemenu': {
   ➙ ${prefix}getmsg
   ➙ ${prefix}delmsg
   `
-  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4366,7 +4366,7 @@ case 'anonymouschatmenu': {
   ➙ ${prefix}next ( Next user )
   ➙ ${prefix}stop ( stop Anonymous chat )
 	`
-	  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+	  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4409,7 +4409,7 @@ case 'sistemmenu': {
   ➙ ${prefix}mute On/Off
   ➙ ${prefix}antiwame On/Off
 `
-let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4460,7 +4460,7 @@ break
   ➙ ${prefix}bcvideo
   ➙ ${prefix}promoteowner
   `
-    let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+    let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
@@ -4642,7 +4642,7 @@ break
   ➙ ${prefix}bcvideo
   ➙ ${prefix}promoteowner`
   
-    let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+    let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
