@@ -1423,48 +1423,6 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'joke':{
-const { joke } = await fetchJson('https://api.popcat.xyz/joke')
-wm = ` *${joke}* `
-let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4')}, { upload: Turbo.waUploadToServer })
-     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-     templateMessage: {
-         hydratedTemplate: {
-           videoMessage: message.videoMessage,
-           hydratedContentText: text.trim(),
-           hydratedFooterText: wm,
-           hydratedButtons: [{
-                                urlButton: {
-                                    displayText: 'Creator 💣',
-                                    url: 'https://wa.me/916380260672'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Bio',
-                                    id: `${prefix}bio`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'Covid',
-                                    id: `${prefix}covid`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner',
-                                    id: `${prefix}owner`
-                                }
-                            }]
-                        }
-                    }
-                }),{ userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
-break
 case 'fact':{
 const { fact } = await fetchJson('https://api.popcat.xyz/fact')
 wm = ` *${fact}* `
@@ -1473,8 +1431,8 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: text.trim(),
-           hydratedFooterText: wm,
+           hydratedContentText: wm,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator 💣',
