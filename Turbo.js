@@ -1866,6 +1866,7 @@ m.reply(`Succes ban`)
 } else if (args[0] === "del") {
 if (!isBane) return m.reply('*Ban Lifted You Happy*')
 }
+}
 break
 	    case 'setname': case 'setsubject': {
 		        if (isBan) throw mess.ban
