@@ -1425,7 +1425,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
 break
 case 'fact':{
 const { fact } = await fetchJson('https://api.popcat.xyz/fact')
-wm = ` *${fact}* `
+anu = ` *${fact}* `
 let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
@@ -3956,6 +3956,9 @@ case 'randommenu': {
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
   ➙ ${prefix}fake
+  ➙ ${prefix}bio
+  ➙ ${prefix}joke
+  ➙ ${prefix}fact
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -4002,8 +4005,6 @@ case 'funmenu': {
   ➙ ${prefix}couple
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}bio
-  ➙ ${prefix}joke
   ➙ ${prefix}covid
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
@@ -4555,6 +4556,9 @@ break
   ➙ ${prefix}coffee
   ➙ ${prefix}couplepp
   ➙ ${prefix}fake
+  ➙ ${prefix}bio
+  ➙ ${prefix}joke
+  ➙ ${prefix}fact
   
   ꪶFun Menuꫂ
   ➙ ${prefix}math
@@ -4563,8 +4567,6 @@ break
   ➙ ${prefix}couple
   ➙ ${prefix}checkdeath
   ➙ ${prefix}mysoulmate
-  ➙ ${prefix}bio
-  ➙ ${prefix}joke
   ➙ ${prefix}covid
   
   
