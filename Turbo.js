@@ -3651,7 +3651,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           jpegThumbnail: thumb,
+           jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
            hydratedContentText: contentText,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
