@@ -3805,14 +3805,14 @@ case 'grupmenu': {
   ➙ ${prefix}delvote
   ➙ ${prefix}tagme
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: grupmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -3858,14 +3858,14 @@ case 'downloadmenu': {
   ➙ ${prefix}repo
   ➙ ${prefix}mediafire
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: okemenu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: downloadmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -3914,14 +3914,14 @@ case 'downloadmenu': {
   ➙ ${prefix}lyrics [song name]
   ➙ ${prefix}searchanime
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: searchmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -3957,14 +3957,14 @@ case 'randommenu': {
   ➙ ${prefix}couplepp
   ➙ ${prefix}fake
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: randommenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4006,14 +4006,14 @@ case 'funmenu': {
   ➙ ${prefix}joke
   ➙ ${prefix}covid
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: funmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4057,14 +4057,14 @@ case 'voicemenu': {
   ➙ ${prefix}slow
   ➙ ${prefix}squirrel
 `
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: voicemenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4102,14 +4102,15 @@ case 'religionmenukdksoejdjj': {
   ➙ ${prefix}alquran
   ➙ ${prefix}juzamma
   ➙ ${prefix}tafsirsurah`
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: religionmenukdksoejdjj,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4171,14 +4172,15 @@ case 'horoscopemenukcodk': {
   ➙ ${prefix}fertiletime
   ➙ ${prefix}zodiac
   ➙ ${prefix}shio`
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: horoscopemenukcodk,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4222,14 +4224,14 @@ case 'convertmenu': {
   ➙ ${prefix}dbinary
   ➙ ${prefix}attp
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: convertmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4273,14 +4275,14 @@ case 'nocategorymenu': {
   ➙ ${prefix}listonline
   ➙ ${prefix}report (report bug to owner)
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: nocategorymenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4321,14 +4323,14 @@ case 'databasemenu': {
   ➙ ${prefix}getmsg
   ➙ ${prefix}delmsg
   `
-  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: databasemenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4364,14 +4366,14 @@ case 'anonymouschatmenu': {
   ➙ ${prefix}next ( Next user )
   ➙ ${prefix}stop ( stop Anonymous chat )
 	`
-	  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+	  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: anonymouschatmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4407,14 +4409,14 @@ case 'sistemmenu': {
   ➙ ${prefix}mute On/Off
   ➙ ${prefix}antiwame On/Off
 `
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: sistemmenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4458,14 +4460,14 @@ break
   ➙ ${prefix}bcvideo
   ➙ ${prefix}promoteowner
   `
-    const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+    let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: ownermenu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
@@ -4639,14 +4641,15 @@ break
   ➙ ${prefix}bcaudio 
   ➙ ${prefix}bcvideo
   ➙ ${prefix}promoteowner`
-    const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `Slayer-Bot`,
-                            hydratedButtons: [{
+  
+    let message = await prepareWAMessageMedia({ video: fs.readFileSync('./media/menu.mp4'), gifPlayback: true }, { upload: conn.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: anu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator ✨',
                                     url: 'https://wa.me/916380260672'
