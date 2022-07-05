@@ -283,7 +283,6 @@ let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 autoreadsw = false
-const banned = JSON.parse(fs.readFileSync('./database/banned.json'))
 
 //[database reader]\\
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
@@ -320,7 +319,6 @@ module.exports = Turbo = async (Turbo, m, chatUpdate, store) => {
         const botNumber = await Turbo.decodeJid(Turbo.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
-        const isBan = banned.includes(m.sender)
         const text = q = args.join(" ")
         const quoted = m.quoted ? m.quoted : m
         const mime = (quoted.msg || quoted).mimetype || ''
@@ -1798,7 +1796,6 @@ break
             }
             break
 	case 'kick': {
-		if (isBan) throw mess.ban
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1808,7 +1805,6 @@ break
 	}
 	break
 	case 'add': {
-		if (isBan) throw mess.ban
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1818,7 +1814,6 @@ break
 	}
 	break
 	case 'promote': {
-		if (isBan) throw mess.ban
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1827,7 +1822,6 @@ break
 	}
 	break
 	case 'demote': {
-		if (isBan) throw mess.ban
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1850,26 +1844,7 @@ break
 		await Turbo.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 	}
 	break
-case 'ban': case 'banned': {
-if (!isCreator) return m.reply(mess.owner)
-if (!args[0]) return m.reply(`*Enter Option Select add or delete*`)
-if (args[1]) {
-orgnye = args[1] + "@s.whatsapp.net"
-} else if (m.quoted) {
-orgnye = m.quoted.sender
-}
-const isBane = banned.includes(orgnye)
-if (args[0] === "add") {
-if (isBane) return m.reply('*Group Admin Command Has Been Banned*')
-banned.push(orgnye)
-m.reply(`Succes ban`)
-} else if (args[0] === "del") {
-if (!isBane) return m.reply('*Ban Lifted You Happy*')
-}
-}
-break
 	    case 'setname': case 'setsubject': {
-		        if (isBan) throw mess.ban
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1878,7 +1853,6 @@ break
             }
             break
           case 'setdesc': case 'setdesk': {
-          	  if (isBan) throw mess.ban
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1887,7 +1861,6 @@ break
             }
             break
           case 'setppbot': case 'setbotpp': {
-          	  if (isBan) throw mess.ban
                 if (!isCreator) throw mess.owner
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
@@ -1898,7 +1871,6 @@ break
                 }
                 break
            case 'setppgroup': case 'setgrouppp': case 'setgcpp': case 'setppgrup': case 'setppgc': {
-           	 if (isBan) throw mess.ban
                 if (!m.isGroup) throw mess.group
                 if (!isAdmins) throw mess.admin
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
@@ -1910,7 +1882,6 @@ break
                 }
                 break
 case 'powner': case 'promoteowner': { //corded by turbo
-if (isBan) throw mess.ban
             if (!m.isGroup) throw mess.group
                     if (!isBotAdmins) throw mess.botAdmin
                     if (!isCreator) throw mess.owner
@@ -1928,8 +1899,7 @@ let ingfo = `*G R O U P  I N F O*\n\n*Name :* ${groupName}\n*ID Group :* ${m.cha
 ds = await getBuffer(pic)
 Turbo.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
 break
-            case 'tagall': case 'tag': {
-            	if (isBan) throw mess.ban
+            case 'tagall': case 'tag': { 
                 if (!m.isGroup) throw mess.group
                 if (!isAdmins) throw mess.admin
 let teks = `══✪〘 *👥 Tag All* 〙✪══
@@ -1942,7 +1912,6 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 }
                 break
                 case 'hidetag': {
-            if (isBan) throw mess.ban
             if (!m.isGroup) throw mess.group
             if (!isAdmins) throw mess.admin
             Turbo.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
