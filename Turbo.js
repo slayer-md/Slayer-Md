@@ -1423,6 +1423,90 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'joke':{
+const { joke } = await fetchJson('https://api.popcat.xyz/joke')
+wm = ` *${joke}* `
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4')}, { upload: Turbo.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: text.trim(),
+           hydratedFooterText: wm,
+           hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Bio',
+                                    id: `${prefix}bio`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Covid',
+                                    id: `${prefix}covid`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'fact':{
+const { fact } = await fetchJson('https://api.popcat.xyz/fact')
+wm = ` *${fact}* `
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4')}, { upload: Turbo.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: text.trim(),
+           hydratedFooterText: wm,
+           hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Slayer-Md'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Bio',
+                                    id: `${prefix}bio`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Joke',
+                                    id: `${prefix}joke`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'lyrics': {
 if (!text) return reply(`Use example ${prefix}lyrics stay`)
 m.reply(mess.wait)
@@ -2676,6 +2760,20 @@ case 'ytmp4': case 'ytvideo': {
                 ]
                 let buttonMessage = {
                     image: { url: 'https://api-toxic-devil.herokuapp.com/api/random/anime?type=sfw' },
+                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
+                    footer: Turbo.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
+case 'catimg': case 'catimage': {
+            let buttons = [
+                    {buttonId: `catimg`, buttonText: {displayText: '➡️Next Image➡️'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: 'https://api-toxic-devil.herokuapp.com/api/random/cats?text=TOXIC%20TURBO%20API&type=img' },
                     caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
                     footer: Turbo.user.name,
                     buttons: buttons,
