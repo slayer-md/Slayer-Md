@@ -1886,7 +1886,7 @@ const opsallhehesend =[
 '*Some Thing Problem With Your Brain 🤥*',
 '*Wow Wonderful 🌹*',
 ]
-let opsallrg = tbio[Math.floor(Math.random() * (tbio.length))]
+let opsallrg = opshehesend[Math.floor(Math.random() * (tbio.length))]
 anu = `${opsallrg}`
 reply(anu)
 }
