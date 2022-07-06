@@ -1889,6 +1889,7 @@ const opsallhehesend =[
 let opsallrg = tbio[Math.floor(Math.random() * (tbio.length))]
 anu = `${opsallrg}`
 reply(anu)
+}
 break
 case 'rules':{
  anu = `*_RULES BOT_*
