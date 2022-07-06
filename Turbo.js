@@ -1666,15 +1666,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'wyr': case 'would you rather': {
 const { ops1, ops2 } = await fetchJson(`https://api.popcat.xyz/wyr`)
-anu = `╭══〘 ᏔϴႮᏞᎠ ᎽϴႮ ᎡᎪͲᎻᎬᎡ 〙══⊷❍
-┃✩╭─────────────────
-┃✩│${ops1}
-┃✩│
-┃✩│
-┃✩│${ops2}
-┃✩│
-┃✩╰─────────────────
-╰══════════════════⊷❍`
+anu = `ᏔϴႮᏞᎠ ᎽϴႮ ᎡᎪͲᎻᎬᎡ
+
+${ops1}
+
+${ops2}`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -1694,13 +1690,13 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Menu 🗞️',
-                                    id: `${prefix}menu`
+                                    displayText: 'i choose option one',
+                                    id: `${prefix}opshehesend`
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: 'Thanks ❤️',
-                                    id: `${prefix}oaaosj`
+                                    displayText: 'i choose option two',
+                                    id: `${prefix}opshehesend`
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -1881,6 +1877,18 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                 }),{ userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+break
+case 'opshehesend': {
+const opsallhehesend =[
+'*Wow Good Choice 😍*',
+'*What A Crazy Person 😒*',
+'*Thats A Bad Choice 💩*',
+'*Some Thing Problem With Your Brain 🤥*',
+'*Wow Wonderful 🌹*',
+]
+let opsallrg = tbio[Math.floor(Math.random() * (tbio.length))]
+anu = `${opsallrg}`
+reply(anu)
 break
 case 'rules':{
  anu = `*_RULES BOT_*
@@ -2860,7 +2868,7 @@ case 'rpp': case 'randomprofilephoto': {
                 ]
                 let buttonMessage = {
                     image: { url: 'https://api-toxic-devil.herokuapp.com/api/random/anime?type=nsfw' },
-                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-??𝗗ꫂ`,
+                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
                     footer: Turbo.user.name,
                     buttons: buttons,
                     headerType: 4
