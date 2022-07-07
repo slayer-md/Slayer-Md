@@ -1667,8 +1667,6 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             }
 break
 case 'insta': case 'igdl': case 'instagram': {
-               if (isBan) return reply(mess.ban)
-	if (isBanChat) return reply(mess.banChat)
                 if (!text) return reply(`Where is the link bro`)
                 if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(`The link you provided is not a instagram link`)             
                 let urlnya = text
@@ -1754,7 +1752,7 @@ anu = `╭══〘 𝚄𝚂𝙴𝚁 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 〙══⊷�
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗚𝗜𝗦𝗧𝗦: ${public_gists}
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗣𝗢𝗦: ${public_repos}
 ┃✩│𝗖𝗥𝗘𝗔𝗧𝗘𝗗 𝗔𝗧: ${created_at}
-┃✩│𝗟𝗔𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
+┃✩│𝗟𝗔??𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
 ┃✩╰─────────────────
 ╰══════════════════⊷❍`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
