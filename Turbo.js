@@ -1666,26 +1666,41 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'insta': case 'igdl': case 'instagram': {
-                if (!text) return reply(`Where is the link bro`)
-                if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(`The link you provided is not a instagram link`)             
-                let urlnya = text
-	            hx.igdl(urlnya)
-	            .then(async(result) => {	  
-	            var halo = 0		
-	            Turbo.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM DOWNLOADER 」----*\n\n*${themeemoji} Username :* ${result.user.username}\n*${themeemoji} Fullname :* ${result.user.fullName}\n*${themeemoji} Followers :* ${result.user.followers}\n*${themeemoji} Following :* ${result.user.following}\n*${themeemoji} ID :* ${result.user.id}\n*${themeemoji} Filetype :* ${result.medias[0].fileType}\n*${themeemoji} Type :* ${result.medias[0].type}\n*${themeemoji} Jumlah Media :* ${result.medias.length}\n*${themeemoji} Url :* ${text}\n\n*${botname}*` }, { quoted: m })	                                  	                      	            
-		        for(let i of result.medias) {		
-		        if(i.url.includes('mp4')){		           			    				
-				let link = await getBuffer(i.url)
-                Turbo.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })
-                } else {
-                let link = await getBuffer(i.url)
-                Turbo.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })                      
-               }
-              }
-            }).catch((err) => reply(mess.error))
-            }		
-			break
+case 'insta': case 'instagram': case 'instagramreels': case 'igreels': {
+if (!args[0]) return reply(`Example :\n${prefix + command} https://www.instagram.com/p/CcvJGuxh9VI/?igshid=YmMyMTA2M2Y=`)
+try {
+hx.igdl(args[0]).then(async(resed) => {
+ini_anu = []
+anu_list = []
+textbv = `*| INSTAGRAM DOWNLOADER |*\n\n${global.themeemoji} Username : ${resed.user.username ? resed.user.name : "undefined"}\n${global.themeemoji} Followers : ${resed.user.followers}`
+urut = 1
+for (let i = 0; i < resed.medias.length; i++) {
+ini_anu.push({
+ "type": resed.medias[i].fileType,
+ "url": resed.medias[i].url
+})
+}
+ilod = 1
+for (let i of ini_anu) {
+anu_list.push({buttonId: `ig ${i.type} ${i.url}`, buttonText: {displayText: `Media ${ilod++}`}, type: 1})
+}
+textbv += `\n\n_Select the media below to download_`
+let buttons = anu_list
+let buttonMessage = {
+image:log0,
+jpegThumbnail:thum,
+caption: textbv,
+footer: `${global.botname}`,
+buttons: buttons,
+headerType: 4
+}
+Turbo.sendMessage(from, buttonMessage, {quoted:m})
+})
+} catch (err) {
+reply(String(err))
+}
+}
+break
 case 'wyr': case 'would you rather': {
 const { ops1, ops2 } = await fetchJson(`https://api.popcat.xyz/wyr`)
 anu = `ᏔϴႮᏞᎠ ᎽϴႮ ᎡᎪͲᎻᎬᎡ
@@ -1752,7 +1767,7 @@ anu = `╭══〘 𝚄𝚂𝙴𝚁 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 〙══⊷�
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗚𝗜𝗦𝗧𝗦: ${public_gists}
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗣𝗢𝗦: ${public_repos}
 ┃✩│𝗖𝗥𝗘𝗔𝗧𝗘𝗗 𝗔𝗧: ${created_at}
-┃✩│𝗟𝗔??𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
+┃✩│𝗟𝗔𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
 ┃✩╰─────────────────
 ╰══════════════════⊷❍`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
