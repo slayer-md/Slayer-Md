@@ -1664,6 +1664,26 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'insta': case 'igdl': case 'instagram': {
+                if (!text) return reply(`Where is the link bro`)
+                if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(`The link you provided is not a instagram link`)             
+                let urlnya = text
+	            hx.igdl(urlnya)
+	            .then(async(result) => {	  
+	            var halo = 0		
+	            Turbo.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM DOWNLOADER 」----*\n\n*Downloading from *${result.user.username}*\n\n*${botname}*` }, { quoted: m })	                                  	                      	            
+		        for(let i of result.medias) {		
+		        if(i.url.includes('mp4')){		           			    				
+				let link = await getBuffer(i.url)
+                Turbo.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `Downloaded From *${result.user.username}* Using Slayer-Md` }, { quoted: m })
+                } else {
+                let link = await getBuffer(i.url)
+                Turbo.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `Downloaded From *${result.user.username}* Using Slayer-Md` }, { quoted: m })                      
+               }
+              }
+            }).catch((err) => reply(mess.error))
+            }		
+			break
 case 'wyr': case 'would you rather': {
 const { ops1, ops2 } = await fetchJson(`https://api.popcat.xyz/wyr`)
 anu = `ᏔϴႮᏞᎠ ᎽϴႮ ᎡᎪͲᎻᎬᎡ
