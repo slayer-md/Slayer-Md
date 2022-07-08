@@ -265,15 +265,6 @@ const todlink =[
 ]
 let tod = todlink[Math.floor(Math.random() * (todlink.length))]
 
-const newmenulink =[
-'https://youtu.be/ZVwwoK7d3Yo',
-'https://youtu.be/qK_NeRZOdq4',
-'https://youtu.be/KFy6RN__308',
-'https://youtu.be/n2bvbnfd3Fg',
-]
-let newmenulinksend = newmenulink[Math.floor(Math.random() * (todlink.length))]
-
-
 ///Button Document
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
 kma = doc1
@@ -3856,6 +3847,13 @@ id: `${prefix}owner`
             }
             break 
             case 'ytmenu': case 'ytlist': case 'ythelp': case 'yt?': {
+            	const newmenulink =[
+'https://youtu.be/ZVwwoK7d3Yo',
+'https://youtu.be/qK_NeRZOdq4',
+'https://youtu.be/KFy6RN__308',
+'https://youtu.be/n2bvbnfd3Fg',
+]
+let newmenulinksend = newmenulink[Math.floor(Math.random() * (todlink.length))]
 timestampe = speed();
 latensie = speed() - timestampe
 let contentText = `Hi 🤚 ${pushname}
