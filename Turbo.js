@@ -265,6 +265,15 @@ const todlink =[
 ]
 let tod = todlink[Math.floor(Math.random() * (todlink.length))]
 
+const newmenulink =[
+'https://youtu.be/ZVwwoK7d3Yo',
+'https://youtu.be/qK_NeRZOdq4',
+'https://youtu.be/KFy6RN__308',
+'https://youtu.be/n2bvbnfd3Fg',
+]
+let newmenulinksend = newmenulink[Math.floor(Math.random() * (todlink.length))]
+
+
 ///Button Document
 const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
 kma = doc1
@@ -3864,6 +3873,10 @@ How Are You? 😊
 Please Select Button Below
 `
 
+let title = `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`
+let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
+let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
+
 let buttons = [{
 urlButton: {
 displayText: 'YouTube🦠',
@@ -3891,18 +3904,21 @@ id: `${prefix}owner`
 }
 }]
 
-let title = `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`
-let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
-let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-Turbo.sendMessage(m.chat, contentText, video, button, contextInfo: { externalAdReply:{
-                title: title,
-                body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-                mediaType:2,
-                thumbnail: thumb,
-                mediaUrl:`https://youtu.be/ZVwwoK7d3Yo`, 
-                sourceUrl: `https://youtu.be/ZVwwoK7d3Yo` }}}, {quoted:m})
-                }
-            break
+let buttonMessage = {
+buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: title,
+body: `${global.botnma}`,
+thumbnail: thumb,
+mediaType:2,
+mediaUrl: newmenulinksend,
+sourceUrl: newmenulinksend,
+}}
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
+break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
