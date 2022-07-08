@@ -3846,6 +3846,63 @@ id: `${prefix}owner`
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break 
+            case 'ytmenu': case 'ytlist': case 'ythelp': case 'yt?': {
+timestampe = speed();
+latensie = speed() - timestampe
+let contentText = `Hi 🤚 ${pushname}
+How Are You? 😊
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
+Please Select Button Below
+`
+
+let buttons = [{
+urlButton: {
+displayText: 'YouTube🦠',
+url: 'https://youtu.be/W725IHjXFHY'
+}
+}, {
+urlButton: {
+displayText: 'Script🌊',
+url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+}
+}, {
+quickReplyButton: {
+displayText: 'Menu 🗞️',
+id: `${prefix}allmenu`
+}
+}, {
+quickReplyButton: {
+displayText: '🦄 List Menu 🦄',
+id: `${prefix}command`
+}
+}, {
+quickReplyButton: {
+displayText: '👤Owner👤',
+id: `${prefix}owner`
+}
+}]
+
+let title = `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`
+let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
+let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
+Turbo.sendMessage(m.chat, contentText, video, button, quoted: m, contextInfo: { externalAdReply:{
+                title: title,
+                body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+                mediaType:2,
+                thumbnail: thumb,
+                mediaUrl:`https://youtu.be/ZVwwoK7d3Yo`, 
+                sourceUrl: `https://youtu.be/ZVwwoK7d3Yo` }}}, {quoted:m})
+                }
+            break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
