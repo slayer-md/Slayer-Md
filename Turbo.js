@@ -3903,6 +3903,9 @@ id: `${prefix}owner`
 }]
 
 let buttonMessage = {
+image: thumb,
+caption: contentText,
+footer: `${global.botnma}`,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
