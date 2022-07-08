@@ -3916,7 +3916,7 @@ mediaUrl: newmenulink,
 sourceUrl: newmenulink
 }}
 }
-Turbo.relayMessage(m.chat, buttons, contentText, { quoted: m })
+Turbo.relayMessage(m.chat, buttons, ytnewlook, { quoted: m })
                 }
             break
 case 'command':{
