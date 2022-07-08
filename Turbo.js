@@ -3901,25 +3901,15 @@ displayText: '👤Owner👤',
 id: `${prefix}owner`
 }
 }]
-
-let buttonMessage = {
-image: thumb,
-caption: contentText,
-footer: `${global.botnma}`,
-buttons: buttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title: title,
-body: `${global.botnma}`,
-thumbnail: thumb,
-mediaType:2,
-mediaUrl: newmenulinksend,
-sourceUrl: newmenulinksend,
-}}
-}
-Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
-break
+Turbo.sendMessage(m.chat, buttons, contentText, quoted: m, contextInfo: { externalAdReply:{
+                title: title,
+                body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+                mediaType:2,
+                thumbnail: thumb,
+                mediaUrl:`https://youtu.be/n2bvbnfd3Fg`, 
+                sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
+                }
+            break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
