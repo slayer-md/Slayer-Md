@@ -3901,13 +3901,13 @@ displayText: '👤Owner👤',
 id: `${prefix}owner`
 }
 }]
-Turbo.sendMessage(m.chat, buttons, contentText, quoted: m, contextInfo: { externalAdReply:{
+Turbo.relayMessage(m.chat, buttons, contentText, contextInfo: { externalAdReply:{
                 title: title,
                 body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
                 mediaType:2,
                 thumbnail: thumb,
                 mediaUrl:`https://youtu.be/n2bvbnfd3Fg`, 
-                sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
+                sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}, {quoted:m})
                 }
             break
 case 'command':{
