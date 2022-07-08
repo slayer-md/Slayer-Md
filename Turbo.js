@@ -3901,13 +3901,22 @@ displayText: '👤Owner👤',
 id: `${prefix}owner`
 }
 }]
-Turbo.relayMessage(m.chat, buttons, contentText, contextInfo: { externalAdReply:{
-                title: title,
-                body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-                mediaType:2,
-                thumbnail: thumb,
-                mediaUrl:`https://youtu.be/n2bvbnfd3Fg`, 
-                sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
+let ytnewlook = {
+image: thumb,
+caption: contentText,
+footer: `${global.botnma}`,
+buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: title,
+body: `${global.botnma}`,
+thumbnail: thumb,
+mediaType:2,
+mediaUrl: newmenulink,
+sourceUrl: newmenulink
+}}
+}
+Turbo.relayMessage(m.chat, buttons, contentText, { quoted: m })
                 }
             break
 case 'command':{
