@@ -3894,7 +3894,7 @@ id: `${prefix}owner`
 let title = `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`
 let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
 let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-Turbo.sendMessage(m.chat, contentText, video, button, quoted: m, contextInfo: { externalAdReply:{
+Turbo.sendMessage(m.chat, contentText, video, button, contextInfo: { externalAdReply:{
                 title: title,
                 body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
                 mediaType:2,
