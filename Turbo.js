@@ -2657,7 +2657,7 @@ case 'attp': {
             Turbo.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
             break
-            case 'tomp3': {
+            case 'mp3': {
             if (!/video/.test(mime) && !/audio/.test(mime)) return replay(`Send/Reply Video/Audio You Want To Convert into MP3 With Caption ${prefix + command}`)
             if (!quoted) return replay(`Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`)
             reply(mess.wait)
@@ -2677,7 +2677,7 @@ case 'attp': {
             Turbo.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
             }
             break
-            case 'togif': {
+            case 'gif': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `reply to a video with caption *${prefix + command}*`
                 replay(mess.wait)
