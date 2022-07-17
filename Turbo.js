@@ -24,10 +24,10 @@ const { exec, spawn, execSync } = require("child_process")
 const axios = require('axios')
 //const acrcloud = require('acrcloud')
 const path = require('path')
+const Config = require('./turboco');
 const os = require('os')
 const hx = require("hxz-api")
 const hxz = require('./lib/hxz-api')
-const Config = require('./turbo');
 const simpleGit = require('simple-git');
 const git = simpleGit();
 const moment = require('moment-timezone')
@@ -40,6 +40,9 @@ const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 const { mediafireDl } = require('./lib/mediafire.js')
 const speedofbot = require("performance-now")
+
+//message type
+let turboco = fs.readFileSync('./TurboMedia/slayer.jpg') 
 
 //turbo api keys
 const setting = JSON.parse(fs.readFileSync('./apikey.json'))
