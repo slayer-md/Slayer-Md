@@ -381,12 +381,11 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 	
 //[target]\\
 const reply = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Toxic-Alexa_V3"}}}, { quoted: faketurbo})
-        }
-        
-        const replay = (teks) => {
-            Turbo.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": `${global.botnma}`,"body": ` ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./TurboMedia/thumb.jpg`),"sourceUrl": "https://github.com/TURBOHYPER/Toxic-Alexa-V3"}}}, { quoted: faketurbo})
-        }
+    Turbo.sendMessage(m.chat, {text: teks, contextInfo: {"externalAdReply": {title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",mediaType: 3, renderLargerThumbnail: false, showAdAttribution: true, detectLinks: true,body: "ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ", thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),sourceUrl: ("https://github.com/TURBOHYPER/Toxic-Alexa_V3")}}})
+}
+const replay = (teks) => {
+    Turbo.sendMessage(m.chat, {text: teks, contextInfo: {"externalAdReply": {title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",mediaType: 3, renderLargerThumbnail: false, showAdAttribution: true, body: "ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ", thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),sourceUrl: ("https://github.com/TURBOHYPER/Toxic-Alexa_V3")}}})
+}
 try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
@@ -1794,7 +1793,7 @@ anu = `╭══〘 𝚄𝚂𝙴𝚁 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 〙══⊷�
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗚𝗜𝗦𝗧𝗦: ${public_gists}
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗣𝗢𝗦: ${public_repos}
 ┃✩│𝗖𝗥𝗘𝗔𝗧𝗘𝗗 𝗔𝗧: ${created_at}
-┃✩│𝗟𝗔𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
+┃✩│𝗟??𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
 ┃✩╰─────────────────
 ╰══════════════════⊷❍`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
