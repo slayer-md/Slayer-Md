@@ -3918,7 +3918,7 @@ case 'setmenu': {
       setbot.templateDoc = true
       setbot.templateSlayer = false
       reply(mess.success)
-    } else if (args[0] === 'templateZimbot'){
+    } else if (args[0] === 'templateSlayer'){
       setbot.templateImage = false
       setbot.templateLocation = false
       setbot.templateGif = false
@@ -4432,6 +4432,7 @@ anu = `
     }}}, {quoted:m})
     } else if  (setbot.templateMsg) {
       Turbo.send5ButMsg(m.chat, anu, global.botname, btn)
+}
 }
 break
 case 'grupmenu': {
