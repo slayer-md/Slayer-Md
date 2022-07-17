@@ -4223,7 +4223,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
             Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
-case 'list': case 'menu': case 'help': case '?': {
+case 'testlist': case 'testmenu': case 'testhelp': case '?': {
 let datane = fs.readFileSync('./lib/random.js')
 jsonData = JSON.parse(datane)
 randIndex = Math.floor(Math.random() * jsonData.length)
