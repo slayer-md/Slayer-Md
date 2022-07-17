@@ -27,11 +27,15 @@ const path = require('path')
 const os = require('os')
 const hx = require("hxz-api")
 const hxz = require('./lib/hxz-api')
+const Config = require('./turbo');
+const simpleGit = require('simple-git');
+const git = simpleGit();
 const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
+const Heroku = require('heroku-client');
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 const { mediafireDl } = require('./lib/mediafire.js')
@@ -226,6 +230,26 @@ const fcatalogue = {
                           }
                         }
                       } 
+                      
+                      const fakead =  {
+  key : {
+    fromMe: false,
+participant : '0@s.whatsapp.net'
+},
+     contextInfo: {
+    forwardingScore: 9999,
+    isForwarded: false,
+showAdAttribution: true,
+title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+body: "⛾ 𝗧𝗼𝘅𝗶𝗰 𝗧𝘂𝗿𝗯𝗼",
+mediaType: "VIDEO",
+mediaUrl: `https://githb.com/TURBOHYPER/Toxic-Alexa_V3`,
+description: 'TURBO MODS',
+previewType: "PHOTO",
+thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
+sourceUrl: "https://github.com/TURBOHYPER",
+detectLinks: false,
+    }}
                                         
 const todlink =[
 'https://youtu.be/IiYRFELAC0s',
@@ -3347,10 +3371,90 @@ ${id}`)
 		reply(txt)
 		}
 		break
-/*case 'alkitab':  if(!text) throw `Masukan Search Yang Anda Cari`
-epep = await.fetchJson(`https://melcanz.com/alkitabsearch?q=${text}&apikey=melcantik`)
-break*/
+case 'lyrics':
+reply(mess.wait)
+if (args.length < 1) return reply('What is the name of the song?')
+teks = body.slice(7)
+lirikLagu(teks).then((res) => {
+let lirik = `${res[0].result}`
+reply(lirik)
+})
+ break
+ 
+ case 'apk':
+  reply(mess.wait)
+if (args.length == 0) return reply(`Example: ${prefix + command} Bgmi`)
+query = args.join(' ')
+get_result = await fetchJson(`https://dhn-api.herokuapp.com/api/apk/uapkpro?apps=${query}&page=1&apikey=cabd55849002ea851ce8`, { method: 'get' })
+kontol = get_result.result
+ini_txt = '❰ *APPLICATIONS* ❱\n\n'
+for (var x of kontol) {
+  ini_txt += `Name : ${x.apps_name}\n`
+  ini_txt += `Link :${x.apps_linkdl}\n`
+  ini_txt += `Tag : ${x.apps_tag}\n`
+  ini_txt += `\n`
+}
+reply(ini_txt)
+break
+case 'update':
+  const heroku = new Heroku({ token: Config.HEROKU_API_KEY })
+  await git.fetch();
+  var commits = await git.log(['main' + '..origin/' + 'main']);
+  if (commits.total === 0) {
+    reply("*No pending updates!*")
+  } else {
+    var changelog = "_Pending updates:_\n\n";
+    commits['all'].map(
+        (commit) => {
+            reply(`• *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`)
+          }
+          );
+          mss = changelog;
+          var img = ""
+       var buttons = [{
+        urlButton: {
+            displayText: 'TURBO MODS',
+            url: 'tes'
+        }
+    },// By Turbo 
+    {
+        quickReplyButton: {
+            displayText: 'lol',
+            id: `${prefix}upd`
+        }
+    }];
+    }
+    await Turbo.sendMessage(m.chat, {text: ` *type updatenow to update the bot*`});
+break
+case 'updatenow':
+  
+    await git.fetch();
+    var commits = await git.log(['main' + '..origin/' + 'main']);
+    if (commits.total === 0) {
+      return await Turbo.sendMessage(m.chat, { text:"_Bot up to date_"})
+    } else {
+      await Turbo.sendMessage(m.chat, {text: "_Update started 🔥_"})
+      try {
+        var app = await heroku.get('/apps/' + Config.HEROKU_APP_NAME)
+        var git_url = await heroku.get(app.git_url)
+    } catch {
+        await Turbo.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
 
+        await new Promise(r => setTimeout(r, 1000));
+      }
+      git.fetch('upstream', 'main');
+      git.reset('hard', ['FETCH_HEAD']);//lols
+
+    git_url =  git_url.replace("https://", "https://api:" + Config.HEROKU_API_KEY + "@")//turbo
+      try {
+        await git.addRemote('heroku', git_url);
+    } catch {console.log('Deploy error catched. Retrying...')}
+    try { await git.push('heroku', 'main'); } catch(e){ 
+    if (e.message.includes("concurrent")) return reply("Your account has reached in-parallel build limit! Please wait for the other app to finish its deploy ❗"); 
+    }
+    await Turbo.sendMessage(m.chat, {text:"_Finished Update! Restarting.._"})
+  }
+break
 		   case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'squirrel':
                 try {
                 let set
@@ -3757,6 +3861,155 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'setmenu': {
+  if (!isCreator) throw mess.owner
+  let setbot = db.settings[botNumber]
+     if (args[0] === 'templateImage'){
+      setbot.templateImage = true
+      setbot.templateLocation = false
+      setbot.templateGif = false
+      setbot.templateMsg = false
+      setbot.templateList = false
+      setbot.templateDoc = false
+      setbot.templateSlayer = false
+      reply(mess.success)
+      } else if (args[0] === 'templateLocation'){
+      setbot.templateImage = false
+      setbot.templateLocation = true
+      setbot.templateGif = false
+      setbot.templateMsg = false
+      setbot.templateList = false
+      setbot.templateDoc = false
+      setbot.templateSlayer = false
+      reply(mess.success)
+      } else if (args[0] === 'templateGif'){
+      setbot.templateImage = false
+      setbot.templateLocation = false
+      setbot.templateGif = true
+      setbot.templateMsg = false
+      setbot.templateList = false
+      setbot.templateDoc = false
+      setbot.templateSlayer = false
+      reply(mess.success)
+      } else if (args[0] === 'templateMessage'){
+      setbot.templateImage = false
+      setbot.templateLocation = false
+      setbot.templateGif = false
+      setbot.templateMsg = true
+      setbot.templateList = false
+      setbot.templateDoc = false
+      setbot.templateSlayer = false
+      reply(mess.success)
+      } else if (args[0] === 'templateList'){
+      setbot.templateImage = false
+      setbot.templateLocation = false
+      setbot.templateGif = false
+      setbot.templateMsg = false
+      setbot.templateList = true
+      setbot.templateDoc = false
+      setbot.templateSlayer = false
+      reply(mess.success)
+      } else if (args[0] === 'templateDoc'){
+      setbot.templateImage = false
+      setbot.templateLocation = false
+      setbot.templateGif = false
+      setbot.templateMsg = false
+      setbot.templateList = false
+      setbot.templateDoc = true
+      setbot.templateSlayer = false
+      reply(mess.success)
+    } else if (args[0] === 'templateZimbot'){
+      setbot.templateImage = false
+      setbot.templateLocation = false
+      setbot.templateGif = false
+      setbot.templateMsg = false
+      setbot.templateList = false
+      setbot.templateDoc = false
+      setbot.templateSlayer = true
+      reply(mess.success)
+      } else {
+        let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+          listMessage :{
+         title: ``,
+         description:
+ `
+ ╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
+        `,
+         buttonText: "SET MENU",
+         footerText: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+         listType: "SINGLE_SELECT",
+         sections: [{
+       "title": "𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯",
+       "rows": [
+       {
+       "title": "TEMPLATE SLAYER",
+       
+       "rowId": `${prefix}setmenu templateSlayer`
+       }
+       ]
+       },
+       {
+       "title": "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+       "rows": [
+       {
+       "title": "TEMPLATE IMAGE",
+       
+       "rowId": `${prefix}setmenu templateImage`
+       },
+       {
+       "title": "TEMPLATE MESSAGE",
+       
+       "rowId": `${prefix}setmenu templateMessage`
+       },
+       {
+       "title": "TEMPLATE LIST",
+       
+       "rowId": `${prefix}setmenu templateList`
+       },
+       {
+       "title": "TEMPLATE DOC",
+       
+       "rowId": `${prefix}setmenu templateDoc`
+       },
+       {
+       "title": "TEMPLATE GIF",
+       
+       "rowId": `${prefix}setmenu templateGif`
+       },
+       {
+       "title": "TEMPLATE LOCATION",
+       
+       "rowId": `${prefix}setmenu templateLocation`
+       },
+       {
+       "title": "SOURCE CODE",
+       
+       "rowId": `${prefix}sc`
+       },
+       {
+       "title": "OWNER",
+       
+       "rowId": `${prefix}owner`
+       }
+       ]
+       }
+       ],
+         listType: 1
+          }
+        }), {})
+        Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+        }
+      }
+  break
             case 'list': case 'menu': case 'help': case '?': {
 timestampe = speed();
 latensie = speed() - timestampe
@@ -3846,79 +4099,6 @@ id: `${prefix}owner`
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break 
-            case 'ytmenu': case 'ytlist': case 'ythelp': case 'yt?': {
-            	const newmenulink =[
-'https://youtu.be/ZVwwoK7d3Yo',
-'https://youtu.be/qK_NeRZOdq4',
-'https://youtu.be/KFy6RN__308',
-'https://youtu.be/n2bvbnfd3Fg',
-]
-let newmenulinksend = newmenulink[Math.floor(Math.random() * (todlink.length))]
-timestampe = speed();
-latensie = speed() - timestampe
-let contentText = `Hi 🤚 ${pushname}
-How Are You? 😊
-╭─⬣「 INFO BOT 」⬣
-│
-│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
-│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
-│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
-│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
-│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
-│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
-│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-Please Select Button Below
-`
-
-let title = `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`
-let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
-let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-
-let buttons = [{
-urlButton: {
-displayText: 'YouTube🦠',
-url: 'https://youtu.be/W725IHjXFHY'
-}
-}, {
-urlButton: {
-displayText: 'Script🌊',
-url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
-}
-}, {
-quickReplyButton: {
-displayText: 'Menu 🗞️',
-id: `${prefix}allmenu`
-}
-}, {
-quickReplyButton: {
-displayText: '🦄 List Menu 🦄',
-id: `${prefix}command`
-}
-}, {
-quickReplyButton: {
-displayText: '👤Owner👤',
-id: `${prefix}owner`
-}
-}]
-let ytnewlook = {
-image: thumb,
-caption: contentText,
-footer: `${global.botnma}`,
-buttons: buttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title: title,
-body: `${global.botnma}`,
-thumbnail: thumb,
-mediaType:2,
-mediaUrl: newmenulink,
-sourceUrl: newmenulink
-}}
-}
-Turbo.relayMessage(m.chat, buttons, ytnewlook, { quoted: m })
-                }
-            break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
@@ -4043,6 +4223,217 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
             Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
+case 'list': case 'menu': case 'help': case '?': {
+let datane = fs.readFileSync('./lib/random.js')
+jsonData = JSON.parse(datane)
+randIndex = Math.floor(Math.random() * jsonData.length)
+randKey = jsonData[randIndex];
+buffer = await getBuffer(randKey.result)
+const { device_manufacturer } = require('os')
+timestampe = speed();
+latensie = speed() - timestampe
+anu = `
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
+%readmore` 
+    let btn = [{
+        urlButton: {
+            displayText: 'Owner 😊',
+            url: 'https://wa.me/916380260672'
+        }
+    }, {
+        urlButton: {
+            displayText: 'Script 🌊',
+            url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3/fork'
+        }
+    }, {
+        quickReplyButton: {
+            displayText: '👤Owner👤',
+            id: 'owner'
+        }
+    }, {
+        quickReplyButton: {
+            displayText: 'Menu 🗞️',
+            id: 'owner'
+        }  
+    }, {
+        quickReplyButton: {
+            displayText: '🦄 List Menu 🦄',
+            id: 'command'
+        }
+    }]
+    let setbot = global.db.settings[botNumber]
+    if (setbot.templateImage) {
+    let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Turbo.waUploadToServer })
+    const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+    templateMessage: {
+    hydratedTemplate: {
+    imageMessage: message.imageMessage,
+    hydratedContentText: anu,
+    hydratedFooterText: `${global.botname}`,
+    hydratedButtons: [{
+    urlButton: {
+    displayText: 'Owner 😊',
+    url: 'https://wa.me/916380260672'
+    }
+    }, {
+    urlButton: {
+    displayText: 'Script 🌊',
+    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3/fork'
+    }
+    }, {
+    quickReplyButton: {
+    displayText: '👤Owner👤',
+    id: 'ping'
+    }
+    }, {
+    quickReplyButton: {
+    displayText: 'Menu 🗞️',
+    id: 'allmenu'
+    }  
+    }, {
+    quickReplyButton: {
+    displayText: '🦄 List Menu 🦄',
+    id: 'command'
+    }
+    }]
+    }
+    }
+    }), { userJid: m.chat, quoted: m })
+    Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+    } else if (setbot.templateGif) {
+    let message = await prepareWAMessageMedia({ video: global.visoka, gifPlayback:true, jpegThumbnail:`` }, { upload: Turbo.waUploadToServer })
+    const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+    templateMessage: {
+    hydratedTemplate: {
+    videoMessage: message.videoMessage,
+    hydratedContentText: anu,
+    hydratedFooterText: `${botname}`,
+    hydratedButtons: [{
+    urlButton: {
+    displayText: 'Owner 😊',
+    url: 'https://wa.me/916380260672'
+    }
+    }, {
+    urlButton: {
+    displayText: 'Script 🌊',
+    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3/fork'
+    }
+    }, {
+    quickReplyButton: {
+    displayText: '👤Owner👤',
+    id: 'ping'
+    }
+    }, {
+    quickReplyButton: {
+    displayText: 'Menu 🗞️',
+    id: 'allmenu'
+    }  
+    }, {
+    quickReplyButton: {
+    displayText: '🦄 List Menu 🦄',
+    id: 'command'
+    }
+    }]
+    }
+    }
+    }), { userJid: m.chat, quoted: m })
+    Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+    } else if (setbot.templateLocation) {
+    const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+    templateMessage: {
+    hydratedTemplate: {
+    hydratedContentText: anu,
+    locationMessage: {
+    jpegThumbnail: buffer},
+    hydratedFooterText: botname,
+    hydratedButtons: [{
+    urlButton: {
+    displayText: 'Owner 😊',
+    url: 'https://wa.me/916380260672'
+    }
+    }, {
+    urlButton: {
+    displayText: 'Script 🌊',
+    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3/fork'
+    }
+    }, {
+    quickReplyButton: {
+    displayText: '👤Owner👤',
+    id: 'ping'
+    }
+    }, {
+    quickReplyButton: {
+    displayText: 'Menu 🗞️',
+    id: 'allmenu'
+    }  
+    }, {
+    quickReplyButton: {
+    displayText: '🦄 List Menu 🦄',
+    id: 'command'
+    }
+    }]
+    }
+    }
+    }), { userJid: m.chat, quoted: m })
+    Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+    } else if (setbot.templateSlayer) {
+        try {
+            ppuser = await Turbo.profilePictureUrl(m.sender, 'image')
+        } catch {
+            ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+        }
+        
+    var buffer = await getBuffer(ppuser)
+    const buttonsDefault = [{ urlButton: { displayText: `Owner 😊`, url : `https://wa.me/916380260672` } }, { urlButton: { displayText: `GITHUB`, url : `https://github.com/TURBOHYPER/Toxic-Alexa_V3/fork` } },
+    {					
+      quickReplyButton: {
+      displayText: '👤Owner👤',
+      id: 'ping'
+      }
+      },
+      {
+      quickReplyButton: {
+      displayText: 'Menu 🗞️',
+      id: 'owner'
+      }
+      },	
+      {
+      quickReplyButton: {
+      displayText: '🦄 List Menu 🦄',
+      id: 'command'
+      }},]
+      Turbo.sendMessage(m.chat,{
+        caption: anu,
+    document: fs.readFileSync('./lib/slayer.xlsx'),
+    mimetype: dripsee,
+    jpegThumbnail: buffer,
+    fileName: `𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯`,
+    fileLength: 99999999999999,
+    templateButtons: buttonsDefault,
+    footer: `©ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ 2022`,
+    headerType: 4,
+    contextInfo: { externalAdReply:{
+      title:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+      body:"𝗧𝚯𝗫𝗜𝗖 𝗧𝗨𝗥𝗕𝚯",
+      showAdAttribution: true,
+      mediaType:2,
+      thumbnail: fs.readFileSync(`./TurboMedia/slayer.jpg`) ,
+      mediaUrl:`https://youtu.be/Dhqt5eTHKEEU`, 
+    sourceUrl: `https://youtu.be/Dhqt5eTHKEEU`
+    }}}, {quoted:m})
+    } else if  (setbot.templateMsg) {
+      Turbo.send5ButMsg(m.chat, anu, global.botname, btn)
+}
+break
 case 'grupmenu': {
 	            anu = `
 ╭─⬣「 INFO BOT 」⬣
