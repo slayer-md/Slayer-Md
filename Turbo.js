@@ -3972,75 +3972,7 @@ id: `${prefix}owner`
                 }), { userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
-            break 
-            case 'testlist': case 'testmenu': case 'testhelp': case 'test?': {
-timestampe = speed();
-latensie = speed() - timestampe
-let contentText = `Hi 🤚 ${pushname}
-How Are You? 😊
-╭─⬣「 INFO BOT 」⬣
-│
-│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
-│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
-│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
-│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
-│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
-│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
-│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-Please Select Button Below
-`
-
-let buttons = [{
-urlButton: {
-displayText: 'YouTube🦠',
-url: 'https://youtu.be/W725IHjXFHY'
-}
-}, {
-urlButton: {
-displayText: 'Script🌊',
-url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
-}
-}, {
-quickReplyButton: {
-displayText: 'Menu 🗞️',
-id: `${prefix}allmenu`
-}
-}, {
-quickReplyButton: {
-displayText: '🦄 List Menu 🦄',
-id: `${prefix}command`
-}
-}, {
-quickReplyButton: {
-displayText: '👤Owner👤',
-id: `${prefix}owner`
-}
-}]
-
-let footer = ``
-let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
-let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-            Turbo.sendMessage(m.chat,{
-        caption: contentText,
-    document: fs.readFileSync('./TurboMedia/slayer.xlsx'),
-    mimetype: turboee,
-    jpegThumbnail: thumb,
-    fileName: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
-    fileLength: 99999999999999,
-    templateButtons: buttons,
-    footer: `©Turbo Mods 2022`,
-    headerType: 4,
-    contextInfo: { externalAdReply:{
-      title:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-      body:"Turbo Mods",
-      showAdAttribution: true,
-      mediaType:2,
-      thumbnail: thumb,
-      mediaUrl:`https://youtu.be/n2bvbnfd3Fg`, 
-    sourceUrl: `https://youtu.be/n2bvbnfd3Fg`
-    }}}, {quoted:m})
-    break
+            break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
