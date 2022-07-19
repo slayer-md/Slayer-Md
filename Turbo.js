@@ -3599,6 +3599,24 @@ case 'sendkontak': case 'sendcontact': {
                 Turbo.sendContact(room.a, [room.b.split("@")[0]], msg)
             }
             break
+case 'request': case 'suggest': {
+    if (!args.join(" ")) return m.reply(`Example : ${prefix + command} turbo can you add setmenu`)
+    teks = `*▊▊▊REQUEST FEATURE▊▊▊*`
+    teks1 = `\n\n*NUMBER :* @${m.sender.split("@")[0]}\n*REQUEST :* ${args.join(" ")}`
+    teks2 = `\n\nSucces Send To Turbo`
+    for (let i of owner) {
+    Turbo.sendMessage(i + "@s.whatsapp.net", {text: teks + teks1, mentions:[m.sender]}, {quoted:m})
+    }
+    Turbo.sendMessage(m.chat, {text: teks + teks2 + teks1, mentions:[m.sender]}, {quoted:m})
+    }
+    break
+    case 'amino': {
+      if (!text) throw `what are you looking for!, example : ${prefix + command} naruto`
+      
+      let anu = await fetchJson(`https://violetics.pw/api/search/amino?apikey=beta&query=${text}`)
+      m.reply(`${util.format(anu)}`)
+      }
+  break
 case 'searchanime': {
                 if (!text) throw `Example : ${prefix + command} nama anime`
                 anu = await getBuffer(`https://api.akuari.my.id/search/konachan?query=${text}`)
