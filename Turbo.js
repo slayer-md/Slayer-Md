@@ -464,8 +464,6 @@ Turbo.sendReadReceipt(from, m.sender, [m.key.id])}
   if (global.available) { if (m.chat) { Turbo.sendPresenceUpdate('available', m.chat) }
   }
   
-  let beeturbo = [f1,f2,f3,f4,f5,f6]
-        let turboee = pickRandom(beeturbo)
 	
 //[Antilink]\\
 	if (isAntiLink) 
