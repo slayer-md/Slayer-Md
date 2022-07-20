@@ -1836,6 +1836,90 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'truth':{
+const {truth} = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/truth-or-dare/truth?lang=en`)
+anu = `${truth}`
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: anu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Dare',
+                                    id: `${prefix}dare`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'dare':{
+const {dare} = await fetchJson(`https://api-toxic-devil.herokuapp.com/api/truth-or-dare/dare?lang=en`)
+anu = `${dare}`
+let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           videoMessage: message.videoMessage,
+           hydratedContentText: anu,
+           hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+           hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Menu 🗞️',
+                                    id: `${prefix}menu`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Truth',
+                                    id: `${prefix}truth`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'bio':{
 	const tbio =[
 '*What is the distance you call? Did not we love Allah without seeing 🕊* ',
@@ -2947,13 +3031,6 @@ case 'rpp': case 'randomprofilephoto': {
                 let random = anu[Math.floor(Math.random() * anu.length)]
                 Turbo.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
                 Turbo.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
-            }
-	    break
-case '❤️': case 'lovestatus': {
-                replay(mess.wait)
-                let anu = await fetchJson('https://gist.github.com/TURBOHYPER/aeeb4e61bd9dd0cee11e612adc7aae47/raw')
-                let random = anu[Math.floor(Math.random() * anu.length)]
-                Turbo.sendMessage(m.chat, { video: { url: random }, caption: `Love Video ` }, { quoted: m })
             }
 	    break
             case 'coffee': case 'kopi': {
