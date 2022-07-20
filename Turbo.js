@@ -2949,6 +2949,13 @@ case 'rpp': case 'randomprofilephoto': {
                 Turbo.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
             }
 	    break
+case '❤️': case 'lovestatus': {
+                replay(mess.wait)
+                let anu = await fetchJson('https://gist.github.com/TURBOHYPER/aeeb4e61bd9dd0cee11e612adc7aae47/raw')
+                let random = anu[Math.floor(Math.random() * anu.length)]
+                Turbo.sendMessage(m.chat, { video: { url: random }, caption: `Love Video ` }, { quoted: m })
+            }
+	    break
             case 'coffee': case 'kopi': {
             let buttons = [
                     {buttonId: `coffe`, buttonText: {displayText: '➡️Next Image➡️'}, type: 1}
