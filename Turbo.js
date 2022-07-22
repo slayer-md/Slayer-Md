@@ -4090,7 +4090,6 @@ contextInfo:{externalAdReply:{
 title: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥 ₪ 𝗠𝗗ꫂ⁩⁩⁩`,
 body: `A Whatsapp Md Bot Made By Turbo Mods`,
 thumbnail: ytmenulogo,
-showAdAttribution: true,
 mediaType:2,
 mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
 sourceUrl: `https://youtu.be/fHFBLrGrVXo`,
