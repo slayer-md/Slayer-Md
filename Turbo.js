@@ -4061,6 +4061,7 @@ latensie = speed() - timestampe
 let footer = ``
 let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
 let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
+let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
 
 let buttons = [
 {buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
@@ -4068,7 +4069,6 @@ let buttons = [
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
 ]
 let buttonMessage = {
-image: thumb,
 caption: `Hi 🤚 ${pushname}
 How Are You? 😊
 ╭─⬣「 INFO BOT 」⬣
@@ -4082,13 +4082,14 @@ How Are You? 😊
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
 Please Select Button Below`,
+document: fs.readFileSync('./TurboMedia/slayer.xlsx'),
 footer: `${global.botnma}`,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
 title: `${global.botnma}`,
 body: `${global.botnma}`,
-thumbnail: thumb,
+thumbnail: ytmenulogo,
 mediaType:2,
 mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
 sourceUrl: `https://youtu.be/fHFBLrGrVXo`,
