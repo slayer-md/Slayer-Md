@@ -4062,6 +4062,7 @@ let footer = ``
 let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
 let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
 let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
+let message = await prepareWAMessageMedia({ video: global.vidmenu, gifPlayback:true, jpegThumbnail:`` }, { upload: Turbo.waUploadToServer })
 
 let buttons = [
 {buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
@@ -4082,13 +4083,13 @@ How Are You? 😊
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
 Please Select Button Below`,
-document: fs.readFileSync('./TurboMedia/slayer.xlsx'),
-footer: `${global.botnma}`,
+footer: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
+videoMessage: message.videoMessage,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
-title: `${global.botnma}`,
-body: `${global.botnma}`,
+title: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥 ₪ 𝗠𝗗ꫂ⁩⁩⁩`,
+body: `A Whatsapp Md Bot Made By Turbo Mods`,
 thumbnail: ytmenulogo,
 mediaType:2,
 mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
