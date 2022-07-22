@@ -4064,11 +4064,9 @@ let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
 let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
 
 let buttons = [
-{ urlButton: { displayText: `YouTube🦠`, url : `https://youtu.be/W725IHjXFHY` } },
-{ urlButton: { displayText: `Script🌊`, url: `https://github.com/TURBOHYPER/Toxic-Alexa-V3` } },
-{ quickReplyButton: { displayText: `Menu 🗞️'`, id: 'allmenu'} },
-{ quickReplyButton: { displayText: `🦄 List Menu 🦄`, id: 'command'} },
-{ quickReplyButton: { displayText: `👤Owner👤`, id: 'owner'} }
+{buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
+{buttonId: `command`, buttonText: {displayText: '🦄 List Menu 🦄'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: '👤Owner👤'}, type: 1}
 ]
 let buttonMessage = {
 image: thumb,
@@ -4092,6 +4090,7 @@ contextInfo:{externalAdReply:{
 title: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥 ₪ 𝗠𝗗ꫂ⁩⁩⁩`,
 body: `A Whatsapp Md Bot Made By Turbo Mods`,
 thumbnail: ytmenulogo,
+showAdAttribution: true,
 mediaType:2,
 mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
 sourceUrl: `https://youtu.be/fHFBLrGrVXo`,
