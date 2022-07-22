@@ -4062,14 +4062,16 @@ let footer = ``
 let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
 let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
 let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
-let message = await prepareWAMessageMedia({ video: global.vidmenu, gifPlayback:true, jpegThumbnail:`` }, { upload: Turbo.waUploadToServer })
 
 let buttons = [
-{buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
-{buttonId: `command`, buttonText: {displayText: '🦄 List Menu 🦄'}, type: 1},
-{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
+{ urlButton: { displayText: `YouTube🦠`, url : `https://youtu.be/W725IHjXFHY` } },
+{ urlButton: { displayText: `Script🌊`, url: `https://github.com/TURBOHYPER/Toxic-Alexa-V3` } },
+{ quickReplyButton: { displayText: `Menu 🗞️'`, id: 'allmenu'} },
+{ quickReplyButton: { displayText: `🦄 List Menu 🦄`, id: 'command'} },
+{ quickReplyButton: { displayText: `👤Owner👤`, id: 'owner'} }
 ]
 let buttonMessage = {
+image: thumb,
 caption: `Hi 🤚 ${pushname}
 How Are You? 😊
 ╭─⬣「 INFO BOT 」⬣
@@ -4084,7 +4086,6 @@ How Are You? 😊
 ╰─⬣
 Please Select Button Below`,
 footer: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
-videoMessage: message.videoMessage,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
