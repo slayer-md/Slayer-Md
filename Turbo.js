@@ -4055,6 +4055,48 @@ id: `${prefix}owner`
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
+case 'ytmenu': case 'ytlist': case 'ythelp': case 'yt?': {
+timestampe = speed();
+latensie = speed() - timestampe
+let footer = ``
+let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
+let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
+
+let buttons = [
+{buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
+{buttonId: `command`, buttonText: {displayText: '🦄 List Menu 🦄'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
+]
+let buttonMessage = {
+image: { url: https://telegra.ph/file/1d60a471490fd33960cbc.jpg },
+caption: `Hi 🤚 ${pushname}
+How Are You? 😊
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
+Please Select Button Below`,
+footer: `${global.botnma}`,
+buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: `${global.botnma}`,
+body: `${global.botnma}`,
+thumbnail: thumb,
+mediaType:2,
+mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
+sourceUrl: `https://youtu.be/fHFBLrGrVXo`,
+}}
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
+break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
