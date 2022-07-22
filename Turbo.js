@@ -4068,7 +4068,7 @@ let buttons = [
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
 ]
 let buttonMessage = {
-image: { url: https://telegra.ph/file/1d60a471490fd33960cbc.jpg },
+image: thumb,
 caption: `Hi 🤚 ${pushname}
 How Are You? 😊
 ╭─⬣「 INFO BOT 」⬣
