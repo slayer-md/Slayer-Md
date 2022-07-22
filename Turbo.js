@@ -308,6 +308,7 @@ Turbo.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 
 //[thumb]\\
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
+let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
 
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -1792,7 +1793,7 @@ anu = `╭══〘 𝚄𝚂𝙴𝚁 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 〙══⊷�
 ┃✩│𝗕𝗜𝗢: ${bio}
 ┃✩│𝗧𝗪𝗜𝗧𝗧𝗘𝗥: ${twitter_username}
 ┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗚𝗜𝗦𝗧𝗦: ${public_gists}
-┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗣𝗢𝗦: ${public_repos}
+┃✩│𝗣𝗨𝗕𝗟𝗜𝗖 𝗥𝗘𝗣𝗢??: ${public_repos}
 ┃✩│𝗖𝗥𝗘𝗔𝗧𝗘𝗗 𝗔𝗧: ${created_at}
 ┃✩│𝗟??𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗗: ${updated_at}
 ┃✩╰─────────────────
@@ -4061,7 +4062,6 @@ latensie = speed() - timestampe
 let footer = ``
 let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
 let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
 
 let buttons = [
 {buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
@@ -4089,7 +4089,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥 ₪ 𝗠𝗗ꫂ⁩⁩⁩`,
 body: `A Whatsapp Md Bot Made By Turbo Mods`,
-thumbnail: fs.readFileSync("./TurboMedia/ytlogo.jpg"),
+thumbnail: ytmenulogo,
 mediaType:2,
 mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
 sourceUrl: `https://youtu.be/fHFBLrGrVXo`,
