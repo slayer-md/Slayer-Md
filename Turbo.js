@@ -1184,7 +1184,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1244,7 +1244,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1299,7 +1299,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1364,7 +1364,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1437,7 +1437,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1479,7 +1479,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1521,7 +1521,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1621,7 +1621,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1670,7 +1670,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1751,7 +1751,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1813,7 +1813,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1855,7 +1855,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1897,7 +1897,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2003,7 +2003,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2066,7 +2066,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -2515,7 +2515,7 @@ case 'antilink':
                     let btn = [{
                                 urlButton: {
                                     displayText: '💣 Sc 💣',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 callButton: {
@@ -2600,7 +2600,7 @@ case 'attp': {
 		    let btn = [{
                                 urlButton: {
                                     displayText: 'Script🔖',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3943,7 +3943,7 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                             }, {
                             	urlButton: {
                                 displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3993,7 +3993,7 @@ url: 'https://youtu.be/W725IHjXFHY'
 }, {
 urlButton: {
 displayText: 'Script🌊',
-url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
 }
 }, {
 quickReplyButton: {
@@ -4032,7 +4032,7 @@ url: 'https://youtu.be/W725IHjXFHY'
 }, {
 urlButton: {
 displayText: 'Script🌊',
-url: 'https://github.com/TURBOHYPER/Toxic-Alexa-V3'
+url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
 }
 }, {
 quickReplyButton: {
