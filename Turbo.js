@@ -2576,7 +2576,7 @@ case 'bcimage': case 'bcvideo': case 'bcaudio': {
                     let junn = `*_BROADCAST VIDEO*${text ? '\n\n' + text : ''}`
                     Turbo.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: fvid })
                     } else if (/audio/.test(mime)) {
-                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : fakead })
+                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : forder })
                     } else {
                     m.reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
                     }
