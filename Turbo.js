@@ -884,7 +884,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             break
             case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
 let sclog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
-scte3t = `*「 ${global.botnma} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Toxic-Alexa-V3\n\nDont forgot to follow 🫂`
+scte3t = `*「 ${global.botnma} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Toxic-Alexa_V3\n\nDont forgot to follow 🫂`
 let scbuttons = [
 {buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1}
 ]
@@ -2576,7 +2576,7 @@ case 'bcimage': case 'bcvideo': case 'bcaudio': {
                     let junn = `*_BROADCAST VIDEO*${text ? '\n\n' + text : ''}`
                     Turbo.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: fvid })
                     } else if (/audio/.test(mime)) {
-                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : fakevn })
+                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : fakead })
                     } else {
                     m.reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
                     }
@@ -2586,8 +2586,8 @@ case 'bcimage': case 'bcvideo': case 'bcaudio': {
             }
             break
 case 'attp': {
-           if (!text) throw `*Example : ${prefix + command} hi turbo*`
-           await Turbo.sendMedia(m.chat, `https://cililitan.herokuapp.com/api/attp?teks=${text}`, 'Slayer Md', 'TurboMods', m, {asSticker: true}).catch((err) => m.reply('*error while sending sticker*'))
+           if (!text) return reply(`Example : ${prefix + command} text`)
+           await Turbo.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'Turbo', 'morou', m, {asSticker: true})
          }
          break
             case 'bc': case 'broadcast': case 'bcall': {
