@@ -1560,7 +1560,7 @@ m.reply(`
 break
 case 'true':{
 if (!text) return reply('Give me a number')
-const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=millie`)
+const { data } = await fetchJson(`https://neeraj-x0-api.up.railway.app/api/truecaller?q=${text}&apikey=MaskSer`)
 const { name, access, e164Format, nationalFormat, type, dialingCode, countryCode, carrier, city, timeZone, gender, birthday, score } = data
 anu = `╭══〘 ͲᎡႮᎬᏟᎪᏞᏞᎬᎡ ՏᎬᎪᎡᏟᎻ 〙══⊷❍
 ┃✩╭─────────────────
@@ -4056,21 +4056,10 @@ id: `${prefix}owner`
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
-case 'ytmenu': case 'ytlist': case 'ythelp': case 'yt?': {
-timestampe = speed();
-latensie = speed() - timestampe
-let footer = ``
-let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
-let thumb = fs.readFileSync('./TurboMedia/slayer.jpg')
-
-let buttons = [
-{buttonId: `allmenu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
-{buttonId: `command`, buttonText: {displayText: '🦄 List Menu 🦄'}, type: 1},
-{buttonId: `owner`, buttonText: {displayText: '👤Owner👤'}, type: 1}
-]
-let buttonMessage = {
-image: thumb,
-caption: `Hi 🤚 ${pushname}
+case 'testlist': case 'testmenu': case 'testhelp': case 'test?': {
+const timestampe = speed();
+const latensie = speed() - timestampe
+let contentText = `Hi 🤚 ${pushname}
 How Are You? 😊
 ╭─⬣「 INFO BOT 」⬣
 │
@@ -4082,22 +4071,58 @@ How Are You? 😊
 │ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
 │ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
 ╰─⬣
-Please Select Button Below`,
-footer: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
-buttons: buttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥 ₪ 𝗠𝗗ꫂ⁩⁩⁩`,
-body: `A Whatsapp Md Bot Made By Turbo Mods`,
-thumbnail: ytmenulogo,
-mediaType:2,
-mediaUrl: `https://youtu.be/fHFBLrGrVXo`,
-sourceUrl: `https://youtu.be/fHFBLrGrVXo`,
-}}
+Please Select Button Below
+`
+
+let buttons = [{
+urlButton: {
+displayText: 'YouTube🦠',
+url: 'https://youtu.be/W725IHjXFHY'
 }
-Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}, {
+urlButton: {
+displayText: 'Script🌊',
+url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
 }
-break
+}, {
+quickReplyButton: {
+displayText: 'Menu 🗞️',
+id: `${prefix}allmenu`
+}
+}, {
+quickReplyButton: {
+displayText: '🦄 List Menu 🦄',
+id: `${prefix}command`
+}
+}, {
+quickReplyButton: {
+displayText: '👤Owner👤',
+id: `${prefix}owner`
+}
+}]
+
+let footer = ``
+let video = fs.readFileSync('./TurboMedia/menuvideo.mp4')
+let thumb = fs.readFileSync('./TurboMedia/alexa.jpg')
+            Turbo.sendMessage(m.chat,{
+        caption: contentText,
+    document: fs.readFileSync('./TurboMedia/slayet.xlsx'),
+    mimetype: turboee,
+    jpegThumbnail: thumb,
+    fileName: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+    fileLength: 99999999999999,
+    templateButtons: buttons,
+    footer: `©𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯 2022`,
+    headerType: 4,
+    contextInfo: { externalAdReply:{
+      title:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+      body:"𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯",
+      mediaType:2,
+      thumbnail: thumb,
+      mediaUrl:`https://youtu.be/fHFBLrGrVXo`, 
+    sourceUrl: `https://youtu.be/fHFBLrGrVXo`}}}, {quoted:m})
+   }
+    break
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
