@@ -234,7 +234,26 @@ const fcatalogue = {
                         }
                       } 
                       
-                      const fakead =  {
+                      const fakegit =  {
+  key : {
+    fromMe: false,
+participant : '0@s.whatsapp.net'
+},
+     contextInfo: {
+    forwardingScore: 9999,
+    isForwarded: false,
+title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+body: "⛾ 𝗧𝗼𝘅𝗶𝗰 𝗧𝘂𝗿𝗯𝗼",
+mediaType: "VIDEO",
+mediaUrl: `https://githb.com/TURBOHYPER/Toxic-Alexa_V3`,
+description: 'TURBO MODS',
+previewType: "PHOTO",
+thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
+sourceUrl: "https://github.com/TURBOHYPER",
+detectLinks: false,
+    }}
+    
+    const fakead =  {
   key : {
     fromMe: false,
 participant : '0@s.whatsapp.net'
@@ -309,6 +328,23 @@ Turbo.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 //[thumb]\\
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
+
+//[document randomizer]\\
+let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
+let docs = pickRandom(documents)
+
+//[document randomizer]\\
+function pickRandom(list) {
+return list[Math.floor(list.length * Math.random())]
+}
+
+//[react function]\\
+const reactionMessage = {
+                    react: {
+                        text: args[0],
+                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
+                    }
+                }
 
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -2576,7 +2612,7 @@ case 'bcimage': case 'bcvideo': case 'bcaudio': {
                     let junn = `*_BROADCAST VIDEO*${text ? '\n\n' + text : ''}`
                     Turbo.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: fvid })
                     } else if (/audio/.test(mime)) {
-                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : forder })
+                    Turbo.sendMessage(i, {audio: buffer, mimetype: 'audio/mp4', ptt: true}, { quoted : fakegit })
                     } else {
                     m.reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
                     }
@@ -2925,7 +2961,7 @@ case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 mediaUrl:`${text}`, 
                 sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
                 }
-            break
+            break            
 case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 360p`
@@ -3904,6 +3940,10 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
+case 'turbo': case 'turbomods': {
+Turbo.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+}
+break
 case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                            	timestampe = speed();
 latensie = speed() - timestampe
