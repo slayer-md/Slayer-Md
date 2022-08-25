@@ -233,64 +233,25 @@ const fcatalogue = {
                           }
                         }
                       } 
-                      
-                      const fakegit =  {
-  key : {
-    fromMe: false,
-participant : '0@s.whatsapp.net'
-},
-     contextInfo: {
-    forwardingScore: 9999,
-    isForwarded: false,
-title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-body: "⛾ 𝗧𝗼𝘅𝗶𝗰 𝗧𝘂𝗿𝗯𝗼",
-mediaType: "VIDEO",
-mediaUrl: `https://githb.com/TURBOHYPER/Toxic-Alexa_V3`,
-description: 'TURBO MODS',
-previewType: "PHOTO",
-thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
-sourceUrl: "https://github.com/TURBOHYPER",
-detectLinks: false,
-    }}
-    
-    const fakead =  {
-  key : {
-    fromMe: false,
-participant : '0@s.whatsapp.net'
-},
-     contextInfo: {
-    forwardingScore: 9999,
-    isForwarded: false,
-showAdAttribution: true,
-title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-body: "⛾ 𝗧𝗼𝘅𝗶𝗰 𝗧𝘂𝗿𝗯𝗼",
-mediaType: "VIDEO",
-mediaUrl: `https://githb.com/TURBOHYPER/Toxic-Alexa_V3`,
-description: 'TURBO MODS',
-previewType: "PHOTO",
-thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
-sourceUrl: "https://github.com/TURBOHYPER",
-detectLinks: false,
-    }}
+                     
     
     const fakegit =  {
-  key : {
-    fromMe: false,
+    key : { 
+     fromMe: false,
 participant : '0@s.whatsapp.net'
 },
-     contextInfo: {
-    forwardingScore: 9999,
-    isForwarded: false,
+message: {
+contextInfo: {
 title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-body: "⛾ 𝗧𝗼𝘅𝗶𝗰 𝗧𝘂𝗿𝗯𝗼",
-mediaType: "VIDEO",
-mediaUrl: `https://githb.com/TURBOHYPER/Toxic-Alexa_V3`,
-description: 'TURBO MODS',
-previewType: "PHOTO",
+mediaType: 3,
+renderLargerThumbnail: false,
+detectLinks: true,
+body: "ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ",
 thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
-sourceUrl: "https://github.com/TURBOHYPER",
-detectLinks: false,
-    }}
+sourceUrl: ("https://github.com/TURBOHYPER/Toxic-Alexa_V3")
+}
+}
+}
                                         
 const todlink =[
 'https://youtu.be/IiYRFELAC0s',
