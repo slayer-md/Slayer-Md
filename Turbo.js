@@ -295,14 +295,6 @@ let tod = todlink[Math.floor(Math.random() * (todlink.length))]
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
 
-//[react function]\\
-const reactionMessage = {
-                    react: {
-                        text: args[0],
-                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
-                    }
-                }
-
 //[database]\\
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 autoreadsw = false
@@ -3364,172 +3356,6 @@ To download media, please click one of the buttons below or enter the ytmp3/ytmp
 		Turbo.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
 	    }
 	    break
-		case 'iqra': {
-		oh = `Example : ${prefix + command} 3\n\Available IQRA : 1,2,3,4,5,6`
-		if (!text) throw oh
-		yy = await getBuffer(`https://islamic-api-indonesia.herokuapp.com/api/data/pdf/iqra${text}`)
-		Turbo.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => reply(oh))
-		}
-		break
-		case 'juzamma': {
-		if (args[0] === 'pdf') {
-		replay(mess.wait)
-		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pdf'}, mimetype: 'application/pdf', fileName: 'juz-amma-arab-latin-indonesia.pdf'}, {quoted:m})
-		} else if (args[0] === 'docx') {
-		replay(mess.wait)
-		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.docx'}, mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: 'juz-amma-arab-latin-indonesia.docx'}, {quoted:m})
-		} else if (args[0] === 'pptx') {
-		replay(mess.wait)
-		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pptx'}, mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', fileName: 'juz-amma-arab-latin-indonesia.pptx'}, {quoted:m})
-		} else if (args[0] === 'xlsx') {
-		replay(mess.wait)
-		Turbo.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx'}, {quoted:m})
-		} else {
-		reply(`What format do you want? ? Example : ${prefix + command} pdf
-Available formats : pdf, docx, pptx, xlsx`)
-		}
-		}
-		break
-		case 'hadith': case 'hadist': {
-		if (!args[0]) throw `Example:
-${prefix + command} bukhari 1
-${prefix + command} abu-daud 1
-Options available:
-abu-daud
-1 - 4590
-ahmad
-1 - 26363
-bukhari
-1 - 7008
-darimi
-1 - 3367
-ibu-majah
-1 - 4331
-nasai
-1 - 5662
-malik
-1 - 1594
-muslim
-1 - 5362`
-		if (!args[1]) throw `Which Hadith??\n\nExample:\n${prefix + command} muslim 1`
-		try {
-		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/json/hadith/${args[0]}`)
-		let { number, arab, id } = res.find(v => v.number == args[1])
-		reply(`No. ${number}
-${arab}
-${id}`)
-		} catch (e) {
-		reply(`Hadith not found !`)
-		}
-		}
-		break
-		case 'alquran': {
-		if (!args[0]) throw `Example:\n${prefix + command} 1 2\n\nthen the result is surah Al-Fatihah verse 2 along with the audio, and the verse is just 1`
-		if (!args[1]) throw `Example:\n${prefix + command} 1 2\n\nthen the result is surah Al-Fatihah verse 2 along with the audio, and the verse is just 1`
-		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
-		let txt = `*Arab* : ${res.result.data.text.arab}
-*English* : ${res.result.data.translation.en}
-*Indonesia* : ${res.result.data.translation.id}
-( Q.S ${res.result.data.surah.name.transliteration.id} : ${res.result.data.number.inSurah} )`
-		reply(txt)
-		Turbo.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
-		}
-		break
-		case 'tafsirsurah': {
-		if (!args[0]) throw `Example:\n${prefix + command} 1 2\n\nthen the result is the interpretation of Surah Al-Fatihah verse 2`
-		if (!args[1]) throw `Example:\n${prefix + command} 1 2\n\nthen the result is the interpretation of Surah Al-Fatihah verse 2`
-		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
-		let txt = `「 *Tafsir Surah*  」
-*Short* : ${res.result.data.tafsir.id.short}
-*Long* : ${res.result.data.tafsir.id.long}
-( Q.S ${res.result.data.surah.name.transliteration.id} : ${res.result.data.number.inSurah} )`
-		reply(txt)
-		}
-		break
-case 'lyrics':
-reply(mess.wait)
-if (args.length < 1) return reply('What is the name of the song?')
-teks = body.slice(7)
-lirikLagu(teks).then((res) => {
-let lirik = `${res[0].result}`
-reply(lirik)
-})
- break
- 
- case 'apk':
-  reply(mess.wait)
-if (args.length == 0) return reply(`Example: ${prefix + command} Bgmi`)
-query = args.join(' ')
-get_result = await fetchJson(`https://dhn-api.herokuapp.com/api/apk/uapkpro?apps=${query}&page=1&apikey=cabd55849002ea851ce8`, { method: 'get' })
-kontol = get_result.result
-ini_txt = '❰ *APPLICATIONS* ❱\n\n'
-for (var x of kontol) {
-  ini_txt += `Name : ${x.apps_name}\n`
-  ini_txt += `Link :${x.apps_linkdl}\n`
-  ini_txt += `Tag : ${x.apps_tag}\n`
-  ini_txt += `\n`
-}
-reply(ini_txt)
-break
-case 'update':
-  const heroku = new Heroku({ token: Config.HEROKU_API_KEY })
-  await git.fetch();
-  var commits = await git.log(['main' + '..origin/' + 'main']);
-  if (commits.total === 0) {
-    reply("*No pending updates!*")
-  } else {
-    var changelog = "_Pending updates:_\n\n";
-    commits['all'].map(
-        (commit) => {
-            reply(`• *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`)
-          }
-          );
-          mss = changelog;
-          var img = ""
-       var buttons = [{
-        urlButton: {
-            displayText: 'TURBO MODS',
-            url: 'tes'
-        }
-    },// By Turbo 
-    {
-        quickReplyButton: {
-            displayText: 'lol',
-            id: `${prefix}upd`
-        }
-    }];
-    }
-    await Turbo.sendMessage(m.chat, {text: ` *type updatenow to update the bot*`});
-break
-case 'updatenow':
-  
-    await git.fetch();
-    var commits = await git.log(['main' + '..origin/' + 'main']);
-    if (commits.total === 0) {
-      return await Turbo.sendMessage(m.chat, { text:"_Bot up to date_"})
-    } else {
-      await Turbo.sendMessage(m.chat, {text: "_Update started 🔥_"})
-      try {
-        var app = await heroku.get('/apps/' + Config.HEROKU_APP_NAME)
-        var git_url = await heroku.get(app.git_url)
-    } catch {
-        await Turbo.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
-
-        await new Promise(r => setTimeout(r, 1000));
-      }
-      git.fetch('upstream', 'main');
-      git.reset('hard', ['FETCH_HEAD']);//lols
-
-    git_url =  git_url.replace("https://", "https://api:" + Config.HEROKU_API_KEY + "@")//turbo
-      try {
-        await git.addRemote('heroku', git_url);
-    } catch {console.log('Deploy error catched. Retrying...')}
-    try { await git.push('heroku', 'main'); } catch(e){ 
-    if (e.message.includes("concurrent")) return reply("Your account has reached in-parallel build limit! Please wait for the other app to finish its deploy ❗"); 
-    }
-    await Turbo.sendMessage(m.chat, {text:"_Finished Update! Restarting.._"})
-  }
-break
 		   case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'squirrel':
                 try {
                 let set
@@ -3891,10 +3717,6 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
-case 'turbo': case 'turbomods': {
-Turbo.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
-}
-break
 case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                            	timestampe = speed();
 latensie = speed() - timestampe
