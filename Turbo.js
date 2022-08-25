@@ -245,7 +245,7 @@ const fcatalogue = {
                 "product": {
                 "productImage":{
                 "mimetype": "image/jpeg",
-                "jpegThumbnail": ${global.thumb}
+                "jpegThumbnail": `${global.thumb}`
                 },
                 "title": `${global.ownernma}`, 
                 "description": `${global.botnma}`, 
@@ -267,7 +267,7 @@ const fcatalogue = {
   message: {
   locationMessage: {
   name: `${global.location}`,
-  jpegThumbnail: ${global.thumb}
+  jpegThumbnail: `${global.thumb}`
   }
   }
   }
@@ -279,7 +279,7 @@ const fcatalogue = {
   message: {
   documentMessage: {
   title: `${global.botnma}`, 
-  jpegThumbnail: ${global.thumb}
+  jpegThumbnail: `${global.thumb}`
   }
   }
   }
