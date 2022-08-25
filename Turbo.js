@@ -272,6 +272,25 @@ thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
 sourceUrl: "https://github.com/TURBOHYPER",
 detectLinks: false,
     }}
+    
+    const fakegit =  {
+  key : {
+    fromMe: false,
+participant : '0@s.whatsapp.net'
+},
+     contextInfo: {
+    forwardingScore: 9999,
+    isForwarded: false,
+title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+body: "⛾ 𝗧𝗼𝘅𝗶𝗰 𝗧𝘂𝗿𝗯𝗼",
+mediaType: "VIDEO",
+mediaUrl: `https://githb.com/TURBOHYPER/Toxic-Alexa_V3`,
+description: 'TURBO MODS',
+previewType: "PHOTO",
+thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
+sourceUrl: "https://github.com/TURBOHYPER",
+detectLinks: false,
+    }}
                                         
 const todlink =[
 'https://youtu.be/IiYRFELAC0s',
@@ -311,32 +330,9 @@ const todlink =[
 ]
 let tod = todlink[Math.floor(Math.random() * (todlink.length))]
 
-///Button Document
-const sendButDocument = async(id, text1, desc1, media, doc1, but = [], options = {}) => {
-kma = doc1
-mhan = await Turbo.prepareMessage(m.chat, media, document, kma)
-const buttonMessages = {
-documentMessage: mhan.message.documentMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: "DOCUMENT"
-}
-Turbo.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
-
 //[thumb]\\
 let Turbo = fs.readFileSync('./TurboMedia/thumb.jpg')
 let ytmenulogo = fs.readFileSync('./TurboMedia/ytlogo.jpg')
-
-//[document randomizer]\\
-let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
-let docs = pickRandom(documents)
-
-//[document randomizer]\\
-function pickRandom(list) {
-return list[Math.floor(list.length * Math.random())]
-}
 
 //[react function]\\
 const reactionMessage = {
@@ -1253,7 +1249,7 @@ anu = `╭══〘 ᏔᎬᎪͲᎻᎬᎡ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
 ┃✩│𝐋𝐎𝐂𝐀𝐓𝐈𝐎𝐍: ${location}
 ┃✩│𝐋𝐀𝐓𝐈𝐓𝐔𝐃𝐄: ${latitude}
 ┃✩│𝐋𝐎𝐍𝐆𝐈𝐓𝐔𝐃𝐄: ${longitude}
-┃✩│𝐖𝐄𝐀𝐓𝐇𝐄𝐑_𝐃𝐄𝐒𝐂: ${weather_desc}
+┃✩│𝐖𝐄𝐀𝐓𝐇𝐄𝐑_𝐃𝐄𝐒??: ${weather_desc}
 ┃✩│𝐌𝐀𝐗_𝐓𝐄𝐌𝐏: ${max_temp}
 ┃✩│𝐌𝐈𝐍_𝐓𝐄𝐌𝐏: ${min_temp}
 ┃✩│𝐇𝐔𝐌𝐈𝐃𝐈𝐓𝐘: ${humidity}
