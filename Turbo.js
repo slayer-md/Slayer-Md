@@ -19,6 +19,7 @@ require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const util = require('util')
+let fetch = require('node-fetch')
 const chalk = require('chalk')
 const { exec, spawn, execSync } = require("child_process")
 const axios = require('axios')
@@ -2921,7 +2922,18 @@ case 'ytmp3': case 'getmusic': case 'ytaudio': {
                 mediaUrl:`${text}`, 
                 sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted:m})
                 }
-            break            
+            break  
+case 'tts':{
+               if (!text) return reply(`Example : ${prefix + command} i am turbo mods`)
+               let sonic = await fetch(`https://api.lolhuman.xyz/api/gtts/en?apikey=5e0b5cf41125348368c4f017&text=${text}`)
+               let json = await sonic.json()
+               let {cnt}=json
+               let res 
+               try { res = await tts(cnt, 'en') }
+               catch {
+               res = await tts(cnt)
+               Turbo.sendMedia(m.chat, res, 'tts.opus', null, m)
+               break
 case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtu.be/W725IHjXFHY 360p`
