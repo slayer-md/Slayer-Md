@@ -2925,7 +2925,7 @@ case 'ytmp3': case 'getmusic': case 'ytaudio': {
             break  
 case 'tts':{
                if (!text) return reply(`Example : ${prefix + command} i am turbo mods`)
-               let sonic = await fetch(`https://api.lolhuman.xyz/api/gtts/en?apikey=5e0b5cf41125348368c4f017&text=${text}`)
+               let sonic = await fetchJson(`https://api.lolhuman.xyz/api/gtts/en?apikey=5e0b5cf41125348368c4f017&text=${text}`)
                let json = await sonic.json()
                let {cnt}=json
                let res 
