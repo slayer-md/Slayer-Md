@@ -2933,6 +2933,7 @@ case 'tts':{
                catch {
                res = await tts(cnt)
                Turbo.sendMedia(m.chat, res, 'tts.opus', null, m)
+               }
                break
 case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
