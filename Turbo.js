@@ -481,7 +481,7 @@ if (autoreadsw) {
 if (global.autoreadpmngc) {
 if (command) {
 await Turbo.sendPresenceUpdate('composing', m.chat)
-Turbo.sendReadReceipt(from, m.sender, [m.key.id])}
+Turbo.sendReadReceipt(m.chat, m.sender, [m.key.id])}
 }
   //autoread gc only
   if (global.autoReadGc) {
@@ -1757,7 +1757,7 @@ footer: `${global.botname}`,
 buttons: buttons,
 headerType: 4
 }
-Turbo.sendMessage(from, buttonMessage, {quoted:m})
+Turbo.sendMessage(m.chat, buttonMessage, {quoted:m})
 })
 } catch (err) {
 reply(String(err))
@@ -2689,7 +2689,7 @@ case 'tempo': {
         fs.unlinkSync(media)
         if (err) return reply('Error!')
         hah = fs.readFileSync(ran)
-        Turbo.sendMessage(from, {audio:hah, mimetype:'audio/mp4', ptt:true}, {quoted:m})
+        Turbo.sendMessage(m.chat, {audio:hah, mimetype:'audio/mp4', ptt:true}, {quoted:m})
         fs.unlinkSync(ran)
         })
         } else if (isQuotedVideo) {
@@ -2698,7 +2698,7 @@ case 'tempo': {
         fs.unlinkSync(media)
         if (err) return reply('Error!')
         hah = fs.readFileSync(ran)
-        Turbo.sendMessage(from, {video:hah, mimetype:'video/mp4'}, {quoted:m})
+        Turbo.sendMessage(m.chat, {video:hah, mimetype:'video/mp4'}, {quoted:m})
         fs.unlinkSync(ran)
         })
         } else {
@@ -3115,7 +3115,7 @@ case 'emoji': {
 if (!args.join(" ")) return reply('Where is the emoji?')
 emoji.get(args.join(" ")).then(async(emoji) => {
 let mese = await Turbo.sendMessage(m.chat, {image:{url:emoji.images[4].url}, caption: `Here it is...`}, {quoted:m})
-await Turbo.sendMessage(from, {text:"reply -s to this image to make sticker"}, {quoted:m})
+await Turbo.sendMessage(m.chat, {text:"reply -s to this image to make sticker"}, {quoted:m})
 })
 }
 break
