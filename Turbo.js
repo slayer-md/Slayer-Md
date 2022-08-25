@@ -234,74 +234,7 @@ const fcatalogue = {
                         }
                       } 
                       
-                      
-                      const ftoko = {
-                key: {
-                fromMe: false,
-                participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})
-                },
-                message: {
-                "productMessage": {
-                "product": {
-                "productImage":{
-                "mimetype": "image/jpeg",
-                "jpegThumbnail": `${global.thumb}`
-                },
-                "title": `${global.ownernma}`, 
-                "description": `${global.botnma}`, 
-                "currencyCode": "USD",
-                "priceAmount1000": "2000",
-                "retailerId": `${global.botnma}`,
-                "productImageCount": 1
-                },
-                "businessOwnerJid": `0@s.whatsapp.net`
-                }
-                }
-                }
-                
-                //FAKEREPLY LOCATION
-  const flokasi = {
-  key : {
-   participant : '0@s.whatsapp.net'
-  },
-  message: {
-  locationMessage: {
-  name: `${global.location}`,
-  jpegThumbnail: `${global.thumb}`
-  }
-  }
-  }
-  //FAKEREPLY DOCUMENT
-  const fdocs = {
-  key : {
-   participant : '0@s.whatsapp.net'
-  },
-  message: {
-  documentMessage: {
-  title: `${global.botnma}`, 
-  jpegThumbnail: `${global.thumb}`
-  }
-  }
-  }
-                     
-    
-    const fakegit =  {
-    key : { 
-     fromMe: false,
-participant : '0@s.whatsapp.net'
-},
-message: {
-contextInfo: {
-title: "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
-mediaType: 3,
-renderLargerThumbnail: false,
-detectLinks: true,
-body: "ғᴏʟʟᴏᴡ ᴍʏ ɢɪᴛʜᴜʙ ᴘʀᴏғɪʟ",
-thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
-sourceUrl: ("https://github.com/TURBOHYPER/Toxic-Alexa_V3")
-}
-}
-}
+                   
                                         
 const todlink =[
 'https://youtu.be/IiYRFELAC0s',
@@ -2348,6 +2281,13 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
             Turbo.sendMessage(m.chat, buttonMessageUpvote)
 	    }
              break
+case 'getcase':
+if (!isCreator) return reply(mess.owner)
+const getCase = (cases) => {
+return "case"+`'${cases}'`+fs.readFileSync("Turbo.js").toString().split('case \''+cases+'\'')[1].split("break")[0]+"break"
+}
+replay(`${getCase(q)}`)
+break
                 case 'devote': {
             if (!m.isGroup) throw mess.group
             if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*${prefix}startvote* - to start voting`
@@ -2672,6 +2612,33 @@ case 'attp': {
 		await wokwol.quoted.copyNForward(m.chat, true)
             }
 	    break
+case 'tempo': {
+        if (!args.join(" ")) return reply(`Example: ${prefix + command} 10`)
+        var req = args.join(' ')
+        media = await Turbo.downloadAndSaveMediaMessage(quoted, "tempo")
+        if (isQuotedAudio) {
+        ran = getRandom('.mp3')
+        exec(`ffmpeg -i ${media} -filter:a "atempo=1.0,asetrate=${req}" ${ran}`, (err, stderr, stdout) => {
+        fs.unlinkSync(media)
+        if (err) return reply('Error!')
+        hah = fs.readFileSync(ran)
+        Turbo.sendMessage(m.chat, {audio:hah, mimetype:'audio/mp4', ptt:true}, {quoted:m})
+        fs.unlinkSync(ran)
+        })
+        } else if (isQuotedVideo) {
+        ran = getRandom('.mp4')
+        exec(`ffmpeg -i ${media} -filter:a "atempo=1.0,asetrate=${req}" ${ran}`, (err, stderr, stdout) => {
+        fs.unlinkSync(media)
+        if (err) return reply('Error!')
+        hah = fs.readFileSync(ran)
+        Turbo.sendMessage(m.chat, {video:hah, mimetype:'video/mp4'}, {quoted:m})
+        fs.unlinkSync(ran)
+        })
+        } else {
+        reply("Please send video/audio file only!")
+        }
+        }
+        break
             case 'listpc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
                  let teks = `⬣ *PERSONAL CHAT LIST*\n\nTotal Chat : ${anu.length} Chat\n\n`
@@ -3077,6 +3044,14 @@ case 'rpp': case 'randomprofilephoto': {
                 Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
+case 'emoji': {
+if (!args.join(" ")) return reply('Where is the emoji?')
+emoji.get(args.join(" ")).then(async(emoji) => {
+let mese = await Turbo.sendMessage(m.chat, {image:{url:emoji.images[4].url}, caption: `Here it is...`}, {quoted:m})
+await Turbo.sendMessage(m.chat, {text:"reply -s to this image to make sticker"}, {quoted:m})
+})
+}
+break
             case 'wallpaper': {
                 if (!text) throw 'Enter Query Title'
 		let { wallpaper } = require('./lib/scraper')
