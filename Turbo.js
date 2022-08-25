@@ -2651,12 +2651,6 @@ case 'attp': {
                  Turbo.sendTextWithMentions(m.chat, teks, m)
              }
              break
-             case 'listonline': case 'onlinelist': case 'liston': {
-                    let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
-                    let online = [...Object.keys(store.presences[id]), botNumber]
-                    Turbo.sendText(m.chat, 'Online List:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
-             }
-             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) throw `Reply Video/Image With Caption ${prefix + command}`
             replay(mess.wait)
