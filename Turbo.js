@@ -2646,13 +2646,6 @@ case 'tempo': {
         }
         }
         break
-case 'ss': case 'ssweb': {
-            if (!text) throw `Example : ${prefix + command} Url`          
-            anu = await fetchJson(`https://shot.screenshotapi.net/screenshot?&url=${text}`)                 
-            buf = await getBuffer(anu.screenshot)   
-                Turbo.sendMessage(m.chat, { image: { url: anu.screenshot }, jpegThumbnail:buf, caption: `*Screenshot From ${text}*` }, { quoted: m }).catch((err) => m.reply(jsonformat('*error*')))
-            }
-            break
             case 'listpc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
                  let teks = `⬣ *PERSONAL CHAT LIST*\n\nTotal Chat : ${anu.length} Chat\n\n`
