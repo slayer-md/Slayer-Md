@@ -1306,7 +1306,7 @@ reply(binary)
 break
 case 'itune': case 'itunes': {
 if (!text) return reply('Give me a song name')
-const { name, artist, album, genre, price, url, release_date } = await fetchJson('https://api.popcat.xyz/itunes?q=${text}')
+const { name, artist, album, genre, price, url, release_date } = await fetchJson(`https://api.popcat.xyz/itunes?q=${text}`)
 anu = `╭══〘 ᏆͲႮΝᎬՏ ᎠᎬͲᎪᏆᏞՏ 〙══⊷❍
 ┃✩╭─────────────────
 ┃✩│𝐍𝐀𝐌𝐄: ${name}
@@ -1382,7 +1382,7 @@ reply(result)
 break
 case 'gender': case 'checkgender': { 
 if (!text) return reply('Give me a name')
-const { name, gender, probability, count } = await fetchJson('https://api.genderize.io/?name=${text}')
+const { name, gender, probability, count } = await fetchJson(`https://api.genderize.io/?name=${text}`)
 anu = `╭══〘 ᏀᎬΝᎠᎬᎡ ᏟᎻᎬᏟᏦ 〙══⊷❍
 ┃✩╭─────────────────
 ┃✩│𝐍𝐀𝐌𝐄: ${name}
@@ -1513,6 +1513,11 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                 }),{ userJid: m.chat })
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+break
+case 'trt': {
+const { translated } = await fetchJson(`https://api.popcat.xyz/translate?to=en&text=${text}`)
+anu = `${translated}`
+reply(anu)
 break
 case 'lyrics': {
 if (!text) return reply(`Use example ${prefix}lyrics stay`)
@@ -4139,7 +4144,7 @@ case 'grupmenu': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: grupmenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4242,13 +4247,14 @@ case 'downloadmenu': {
   ➙ ${prefix}decode [text]
   ➙ ${prefix}lyrics [song name]
   ➙ ${prefix}searchanime
+  ➙ ${prefix}pokedex
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: searchmenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4297,7 +4303,7 @@ case 'randommenu': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: randommenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4345,7 +4351,7 @@ case 'funmenu': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: funmenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4396,7 +4402,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: voicemenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4442,7 +4448,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: religionmenukdksoejdjj,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4512,7 +4518,7 @@ case 'horoscopemenukcodk': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: horoscopemenukcodk,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4559,13 +4565,14 @@ case 'convertmenu': {
   ➙ ${prefix}attp
   ➙ ${prefix}emoji
   ➙ ${prefix}tempo
+  ➙ ${prefix}trt
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: convertmenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4616,7 +4623,7 @@ case 'nocategorymenu': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: nocategorymenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4664,7 +4671,7 @@ case 'databasemenu': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: databasemenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4707,7 +4714,7 @@ case 'anonymouschatmenu': {
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: anonymouschatmenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4750,7 +4757,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: sistemmenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4805,7 +4812,7 @@ break
      templateMessage: {
          hydratedTemplate: {
            videoMessage: message.videoMessage,
-           hydratedContentText: ownermenu,
+           hydratedContentText: anu,
            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
            hydratedButtons: [{
                                 urlButton: {
@@ -4890,6 +4897,7 @@ break
   ➙ ${prefix}decode [text]
   ➙ ${prefix}lyrics [song name]
   ➙ ${prefix}searchanime
+  ➙ ${prefix}pokedex
   
   ꪶRandom Menuꫂ
   ➙ ${prefix}coffee
@@ -4940,6 +4948,7 @@ break
   ➙ ${prefix}attp
   ➙ ${prefix}emoji
   ➙ ${prefix}tempo
+  ➙ ${prefix}trt
   
   ꪶMain Menuꫂ
   ➙ ${prefix}ping
