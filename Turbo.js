@@ -1746,18 +1746,19 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 break
 case 'pokedex': {
 const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
-const { stats, family } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
+const { stats, family, sprites } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
 const { hp, attack, defense, speed, total } = stats
 const { evolutionStage, evolutionLine } = family
+const { normal } = sprites
 anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n total : ${total}\n evolutionStage : ${evolutionStage}\n evolutionLine : ${evolutionLine}\n description : ${description}`
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            hydratedContentText: anu,
-                            locationMessage: {
-                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
-                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
-                            hydratedButtons: [{
+  let message = await prepareWAMessageMedia({ image : { url: normal } }, { upload: conn.waUploadToServer })
+       const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+       templateMessage: {
+           hydratedTemplate: {
+             imageMessage: message.imageMessage,
+             hydratedContentText: text.trim(),
+             hydratedFooterText: anu,
+             hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator 💣',
                                     url: 'https://wa.me/916380260672'
