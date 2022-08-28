@@ -109,6 +109,12 @@ Turbo.ev.on('groups.update', async pea => {
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
+		    
+		    let nama = await Turbo.getName(num)
+memb = metadata.participants.length
+
+Kon = await getBuffer(`https://api.popcat.xyz/welcomecard?background=https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png&text1=${encodeURIComponent(nama)}&text2=Welcome+To+${encodeURIComponent(metadata.subject)}&text3=${encodeURIComponent(memb)}th&avatar=${encodeURIComponent(ppuser)}`)
+
                                                               
                 if (anu.action == 'add') {
                     const templateButtons = [
@@ -118,7 +124,7 @@ Turbo.ev.on('groups.update', async pea => {
                     ]
                     let welcome = `ʜɪ @${num.split("@")[0]} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ${metadata.subject}\n\n${description}`
                     const templateMessage = {
-                        image: { url: ppuser },
+                        image: { url: Kon },
                         jpegThumbnail: await (await fetch(ppuser)).buffer(),
                         caption:welcome,
                         footer: Turbo.user.name,
