@@ -2597,6 +2597,48 @@ case 'antilink':
                 reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
             }
             break
+case 'bcupdate': case 'bcgcupdate': {
+                if (!isCreator) throw mess.owner
+                if (!text) throw `Where is the text?\n\nExample : ${prefix + command} hello guys, new update`
+                let getGroups = await Turbo.groupFetchAllParticipating()
+                let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+                let anu = groups.map(v => v.id)
+                reply(`Send Broadcast To ${anu.length} Group Chat, Finish Time ${anu.length * 1.5} second`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    let btn = [{
+                                urlButton: {
+                                    displayText: '💣 Sc 💣',
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
+                                }
+                            }, {
+                                callButton: {
+                                    displayText: 'Owner Number👤',
+                                    phoneNumber: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: '📶Bot Status📶',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner👤',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Script',
+                                    id: 'sc'
+                                }
+                            }]
+                      fatihgans = fs.readFileSync('./TurboMedia/updata.jpg')
+                      let txt = `「 Slayer New Update 」\n\n${text}`
+                      Turbo.send5ButImg(i, txt, Turbo.user.name, fatihgans, btn)
+                    }
+                reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
+            }
+            break
 case 'bcimage': case 'bcvideo': case 'bcaudio': {
                 if (!isCreator) throw mess.owner
                 if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`
