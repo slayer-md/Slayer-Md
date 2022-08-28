@@ -1750,7 +1750,7 @@ const { stats, family, sprites } = await fetchJson(`https://some-random-api.ml/p
 const { hp, attack, defense, speed, total } = stats
 const { evolutionStage, evolutionLine } = family
 const { normal } = sprites
-turbowm = `${global.ownernma}`
+turbowm = `Information Of ${text}`
 anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══⊷❍
 ┃✩╭─────────────────
 ┃✩│𝐍𝐀𝐌𝐄: ${name}
