@@ -1750,14 +1750,15 @@ const { stats, family, sprites } = await fetchJson(`https://some-random-api.ml/p
 const { hp, attack, defense, speed, total } = stats
 const { evolutionStage, evolutionLine } = family
 const { normal } = sprites
+const turbowm = TurboMods
 anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n total : ${total}\n evolutionStage : ${evolutionStage}\n evolutionLine : ${evolutionLine}\n description : ${description}`
   let message = await prepareWAMessageMedia({ image : { url: normal } }, { upload: Turbo.waUploadToServer })
        const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
        templateMessage: {
            hydratedTemplate: {
              imageMessage: message.imageMessage,
-             hydratedContentText: text.trim(),
-             hydratedFooterText: anu,
+             hydratedContentText: anu,
+             hydratedFooterText: turbowm,
              hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator 💣',
