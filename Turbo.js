@@ -1744,6 +1744,53 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'pokedex': {
+const { name, id, type, species, abilities, height, weight, hp, attack, defense, speed, evolutionLine, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
+anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n evolutionLine : ${evolutionLine}\n description : ${description}`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')},
+                            hydratedFooterText: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Creator 💣',
+                                    url: 'https://wa.me/916380260672'
+                                }
+                            }, {
+                            	urlButton: {
+                                displayText: 'Script 🌊',
+                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'I Can Get All Pokemon Information 😯',
+                                    id: `${prefix}icangetallpokemoninformation`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'Wow 😲',
+                                    id: `${prefix}oaaosj`
+                                }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '👤Owner',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }),{ userJid: m.chat })
+                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
+case 'icangetallpokemoninformation': {
+anu = `Yes Just Type ${prefix}pokedex And The Pokemon Name Example: ${prefix}pokedex pikachu \n This Feature Is Made By TurboMods`
+reply(anu)
+}
+break
 case 'github':{
 if (!text) return reply('*Give me a github username*')
 const {avatar_url,name,login,id,html_url,type,company,location,email,bio,twitter_username,public_repos,public_gists,following,followers,created_at,updated_at} = await fetchJson(`https://api.github.com/users/${text}`)
