@@ -1751,7 +1751,7 @@ const { hp, attack, defense, speed, total } = stats
 const { evolutionStage, evolutionLine } = family
 const { normal } = sprites
 anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n total : ${total}\n evolutionStage : ${evolutionStage}\n evolutionLine : ${evolutionLine}\n description : ${description}`
-  let message = await prepareWAMessageMedia({ image : { url: normal } }, { upload: conn.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image : { url: normal } }, { upload: Turbo.waUploadToServer })
        const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
        templateMessage: {
            hydratedTemplate: {
