@@ -1775,8 +1775,8 @@ anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══�
        templateMessage: {
            hydratedTemplate: {
              imageMessage: message.imageMessage,
-             hydratedContentText: anu,
-             hydratedFooterText: turbowm,
+             hydratedContentText: turbowm,
+             hydratedFooterText: anu,
              hydratedButtons: [{
                                 urlButton: {
                                     displayText: 'Creator 💣',
