@@ -1518,6 +1518,7 @@ case 'trt': {
 const { translated } = await fetchJson(`https://api.popcat.xyz/translate?to=en&text=${text}`)
 anu = `${translated}`
 reply(anu)
+}
 break
 case 'lyrics': {
 if (!text) return reply(`Use example ${prefix}lyrics stay`)
