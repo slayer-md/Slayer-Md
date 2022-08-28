@@ -1745,8 +1745,11 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             }
 break
 case 'pokedex': {
-const { name, id, type, species, abilities, height, weight, hp, attack, defense, speed, evolutionLine, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
-anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n evolutionLine : ${evolutionLine}\n description : ${description}`
+const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
+const { stats, family } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
+const { hp, attack, defense, speed, total } = stats
+const { evolutionStage, evolutionLine } = family
+anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n evolutionStage : ${evolutionStage}\n evolutionLine : ${evolutionLine}\n description : ${description}`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
