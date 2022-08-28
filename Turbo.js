@@ -1749,7 +1749,7 @@ const { name, id, type, species, abilities, height, weight, description } = awai
 const { stats, family } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
 const { hp, attack, defense, speed, total } = stats
 const { evolutionStage, evolutionLine } = family
-anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n evolutionStage : ${evolutionStage}\n evolutionLine : ${evolutionLine}\n description : ${description}`
+anu = `name : ${name}\n id : ${id}\n type :  ${type}\n species : ${species}\n abilities : ${abilities}\n height : ${height}\n weight : ${weight}\n hp : ${hp}\n attack : ${attack}\n defense : ${defense} speed : ${speed}\n total : ${total}\n evolutionStage : ${evolutionStage}\n evolutionLine : ${evolutionLine}\n description : ${description}`
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
