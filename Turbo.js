@@ -2251,7 +2251,7 @@ const fkonn = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.cha
           fs.unlinkSync(rano)
           })
           })
-          }
+          }}
   break
 case 'checknumber':
   reply(mess.wait)
