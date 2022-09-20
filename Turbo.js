@@ -2235,7 +2235,7 @@ Turbo.sendMessage(text, {audio: audio, mimetype: 'audio/mpeg', ptt:true, context
 break
 case 'checknumber':
   reply(mess.wait)
-  const dripska = {
+  const turboska = {
     method: 'GET',
     url: 'https://phonenumbervalidatefree.p.rapidapi.com/ts_PhoneNumberValidateTest.jsp',
     qs: {number: `${text}`},
@@ -2246,12 +2246,50 @@ case 'checknumber':
     }
   };
   let dhidhi = require('request')
-  dhidhi(dripska, function (error, response, body) {
+  dhidhi(turboska, function (error, response, body) {
     if (error) throw new Error(error);
     reply(body);
     console.log(body);
   });
 break
+case 'ipdomain':
+    reply(mess.wait)
+    const turbohacker = {
+      method: 'GET',
+      url: 'https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation',
+      qs: {ip: `${text}`, apikey: '873dbe322aea47f89dcf729dcc8f60e8'},
+      headers: {
+        'X-RapidAPI-Key': '837661b454msh274b6753ca80823p11c653jsn973bb2a55a34',
+        'X-RapidAPI-Host': 'find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com',
+        useQueryString: true
+      }
+    };
+    let mhamha = require('request')
+    mhamha(turbohacker, function (error, response, body) {
+      if (error) throw new Error(error);
+       reply(body);
+      console.log(body);
+    });
+    break
+case 'veriphone':
+  reply(mess.wait)
+  const turbodrop = {
+    method: 'GET',
+    url: 'https://veriphone.p.rapidapi.com/verify',
+    qs: {phone: `${text}`},
+    headers: {
+      'X-RapidAPI-Key': '837661b454msh274b6753ca80823p11c653jsn973bb2a55a34',
+      'X-RapidAPI-Host': 'veriphone.p.rapidapi.com',
+      useQueryString: true
+    }
+  };
+  let mhati = require('request')
+  mhati(turbodrop, function (error, response, body) {
+    if (error) throw new Error(error);
+    reply(body);
+    console.log(body);
+  });
+  break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
@@ -4709,6 +4747,7 @@ case 'convertmenu': {
   ➙ ${prefix}translate
   ➙ ${prefix}wame
   ➙ ${prefix}tiny
+  ➙ ${prefix}tts
   `
   let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -4895,6 +4934,8 @@ case 'toolsmenu': {
   ➙ ${prefix}encode [text]
   ➙ ${prefix}decode [text]
   ➙ ${prefix}log
+  ➙ ${prefix}ipdomain
+  ➙ ${prefix}veriphone
 	`
 	  let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia/menuvideo.mp4'), gifPlayback: true }, { upload: Turbo.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -5113,6 +5154,8 @@ break
   ➙ ${prefix}encode [text]
   ➙ ${prefix}decode [text]
   ➙ ${prefix}log
+  ➙ ${prefix}ipdomain
+  ➙ ${prefix}veriphone
 
   
   ꪶVoice Changer Menuꫂ
@@ -5143,6 +5186,7 @@ break
   ➙ ${prefix}emoji
   ➙ ${prefix}tempo
   ➙ ${prefix}trt
+  ➙ ${prefix}tts
   
   ꪶMain Menuꫂ
   ➙ ${prefix}ping
