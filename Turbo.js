@@ -2230,48 +2230,6 @@ Turbo.sendMessage(text, {audio: media, contextInfo: {externalAdReply : {title : 
     	} else throw 'Reply audio/video!'
        }
        break
-case 'tts': {
-const name = m.sender
-const fkonn = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '2347014889291@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${Turbo.getName(name)}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
-  const gtts = require('./lib/gtts.js')(args[0])
-  if (args.length < 1) return Turbo.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
-  if (args.length < 2) return Turbo.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
- var dtt = body.slice(20)
-  reply(mess.wait)
-  var ranm = getRandom('.mp3')
-		var	rano = getRandom('.ogg')
-				dtt.length > 300
-         gtts.save(ranm, dtt, function() {
-          exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
-          fs.unlinkSync(ranm)
-          buffer = fs.readFileSync(rano)
-          if (err) return reply('error')
-          Turbo.sendMessage(m.chat,  audio, {quoted: fkonn, ptt:true})
-          Turbo.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mp4', ptt: true, quoted: fkonn})
-          fs.unlinkSync(rano)
-          })
-          })
-          }}
-  break
-case 'checknumber':
-  reply(mess.wait)
-  const dripska = {
-    method: 'GET',
-    url: 'https://phonenumbervalidatefree.p.rapidapi.com/ts_PhoneNumberValidateTest.jsp',
-    qs: {number: `${text}`},
-    headers: {
-      'X-RapidAPI-Key': '837661b454msh274b6753ca80823p11c653jsn973bb2a55a34',
-      'X-RapidAPI-Host': 'phonenumbervalidatefree.p.rapidapi.com',
-      useQueryString: true
-    }
-  };
-  let dhidhi = require('request')
-  dhidhi(dripska, function (error, response, body) {
-    if (error) throw new Error(error);
-    reply(body);
-    console.log(body);
-  });
-break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
