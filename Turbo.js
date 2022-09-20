@@ -4049,7 +4049,7 @@ Turbo.sendMessage(m.chat,{
       mediaUrl: `https://instagram.com/toxic_turbo777`, 
     sourceUrl: `https://wa.me/916380260672`
     }}}, {quoted:m})
-    }
+    }}
     break
 case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
                            	timestampe = speed();
