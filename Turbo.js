@@ -2221,7 +2221,8 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./TurboMedia
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'mforward' : {         
+case 'mforward' : {      
+if (!isCreator) throw mess.owner   
 let q = m.quoted ? m.quoted : m
 if (/audio|video/.test(mime)) { 
 let media = await q.download()
@@ -2231,6 +2232,25 @@ let audio = await toAudio(media, 'mp4')
 Turbo.sendMessage(text, {audio: audio, mimetype: 'audio/mpeg', ptt:true, contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, renderLargerThumbnail:false, showAdAttribution: true, body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg') }}}) 
 } else throw 'Reply audio/video!'
 }
+break
+case 'checknumber':
+  reply(mess.wait)
+  const dripska = {
+    method: 'GET',
+    url: 'https://phonenumbervalidatefree.p.rapidapi.com/ts_PhoneNumberValidateTest.jsp',
+    qs: {number: `${text}`},
+    headers: {
+      'X-RapidAPI-Key': '837661b454msh274b6753ca80823p11c653jsn973bb2a55a34',
+      'X-RapidAPI-Host': 'phonenumbervalidatefree.p.rapidapi.com',
+      useQueryString: true
+    }
+  };
+  let dhidhi = require('request')
+  dhidhi(dripska, function (error, response, body) {
+    if (error) throw new Error(error);
+    reply(body);
+    console.log(body);
+  });
 break
             case 'leave': {
                 if (!isCreator) throw mess.owner
