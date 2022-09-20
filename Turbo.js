@@ -2226,7 +2226,7 @@ let q = m.quoted ? m.quoted : m
 if (/audio|video/.test(mime)) { 
 let media = await q.download()
 if (!text) throw 'Jid?' 
-let { toAudio } = require('./lib/converter')
+let { toAudio } = require('./lib/converter.js')
 let audio = await toAudio(media, 'mp4')
 Turbo.sendMessage(text, {audio: audio, contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, renderLargerThumbnail:false, showAdAttribution: true, body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg') }}}) 
 } else throw 'Reply audio/video!'
@@ -3691,7 +3691,7 @@ View list of message with ${prefix}listmsg`)
 				this.anonymous = this.anonymous ? this.anonymous : {}
 				let buttons = [{
                                 urlButton: {
-                                    displayText: 'Report Bug🐛',
+                                    displayText: 'Report Bug??',
                                     url: 'https://wa.me/916380260672?text=hello+bro+i+found+a+bug+in+your+bot'
                                 }
                             }, {
