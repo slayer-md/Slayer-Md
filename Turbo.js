@@ -2222,14 +2222,16 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./TurboMedia
             }
 break
 case 'mforward' : {         
-        let q = m.quoted ? m.quoted : m
-        if (/audio|video/.test(mime)) { 
-		let media = await q.download()
-   if (!text) throw 'Jid?' 
-Turbo.sendMessage(text, {audio: media, contextInfo: {externalAdReply : {title : `Slayer-Md`, renderLargerThumbnail:false, showAdAttribution: true, body: `TurboMods`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg') }}}) 
-    	} else throw 'Reply audio/video!'
-       }
-       break
+let q = m.quoted ? m.quoted : m
+if (/audio|video/.test(mime)) { 
+let media = await q.download()
+if (!text) throw 'Jid?' 
+let { toAudio } = require('./lib/converter')
+let audio = await toAudio(media, 'mp4')
+Turbo.sendMessage(text, {audio: audio, contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, renderLargerThumbnail:false, showAdAttribution: true, body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg') }}}) 
+} else throw 'Reply audio/video!'
+}
+break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await Turbo.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
