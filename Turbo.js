@@ -2225,8 +2225,8 @@ case 'tts': {
 const name = m.sender
 const fkonn = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '2347014889291@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${Turbo.getName(name)}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
   const gtts = require('./lib/gtts.js')(args[0])
-  if (args.length < 1) return Turbo.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
-  if (args.length < 2) return Turbo.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
+  if (args.length < 1) return Turbo.sendMessage(m.chat, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
+  if (args.length < 2) return Turbo.sendMessage(m.chat, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
  var dtt = body.slice(20)
   reply(mess.wait)
   var ranm = getRandom('.mp3')
@@ -3207,6 +3207,41 @@ case 'ytmp4': case 'ytvideo': {
                 Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resololution : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
+case 'play': {
+  reply(mess.wait)
+  if (!text) throw `Example : ${prefix + command} xxxtension songs`
+  let yts = require("yt-search")
+  let search = await yts(text)                   
+let sections = []   
+let listmenu = [`ytmp4 ${search.all[0].url}`,`ytmp3 ${search.all[1].url}`,`ytmp4 ${search.all[2].url}`,`ytmp3 ${search.all[3].url}`,`ytmp4 ${search.all[4].url}`,`ytmp3 ${search.all[5].url}`,`ytmp4 ${search.all[6].url}`,`ytmp3 ${search.all[7].url}`,`ytmp4 ${search.all[8].url}`,`ytmp3 ${search.all[9].url}`,`ytmp4 ${search.all[10].url}`,`ytmp3 ${search.all[11].url}`,`ytmp4 ${search.all[12].url}`,`ytmp3 ${search.all[13].url}`,`ytmp4 ${search.all[14].url}`,`ytmp3 ${search.all[15].url}`,`ytmp4 ${search.all[16].url}`,`ytmp3 ${search.all[17].url}`,`ytmp4 ${search.all[18].url}`,`ytmp3 ${search.all[19].url}`]
+      let listmenuu = [`VIDEO MP4∆: ${search.all[0].title}`,`SONG MP3∆: ${search.all[1].title}`,`VIDEO MP4∆: ${search.all[2].title}`,`SONG MP3∆: ${search.all[3].title}`,`VIDEO MP4∆: ${search.all[4].title}`,`SONG MP3∆: ${search.all[5].title}`,`VIDEO MP4∆: ${search.all[6].title}`,`SONG MP3∆: ${search.all[7].title}`,`VIDEO MP4∆: ${search.all[8].title}`,`SONG MP3∆: ${search.all[9].title}`,`VIDEO MP4∆: ${search.all[10].title}`,`SONG MP3∆: ${search.all[11].title}`,`VIDEO MP4∆: ${search.all[12].title}`,`SONG MP3∆: ${search.all[13].title}`,`VIDEO MP4∆: ${search.all[14].title}`,`SONG MP3∆: ${search.all[15].title}`,`VIDEO MP4∆: ${search.all[16].title}`,`SONG MP3∆: ${search.all[17].title}`,`VIDEO MP4∆: ${search.all[18].title}`,`SONG MP3∆: ${search.all[19].title}`]
+      let listmenuuu = [`\n${search.all[0].description}`,`\n${search.all[1].description}`,`\n${search.all[2].description}`,`\n${search.all[3].description}`,`\n${search.all[4].description}`,`\n${search.all[5].description}`,`\n${search.all[6].description}`,`\n${search.all[7].description}`,`\n${search.all[8].description}`,`\n${search.all[9].description}`,`\n${search.all[10].description}`,`\n${search.all[11].description}`,`\n${search.all[12].description}`,`\n${search.all[13].description}`,`\n${search.all[14].description}`,`\n${search.all[15].description}`,`\n${search.all[16].description}`,`\n${search.all[17].description}`,`\n${search.all[18].description}`,`\n${search.all[19].description}`]
+      let nombor = 1
+      let startnum = 0
+      let startnumm = 0
+      for (let x of listmenu) {
+      const list = {title: 'RESULT NUMBER ' + nombor++,
+      rows: [
+         {
+          title: `${listmenuu[startnum++]}`,
+          description: `${listmenuuu[startnumm++]}`,
+          rowId: `song ${listmenuu[startnum++]}`
+}, 
+]
+}
+sections.push(list)   
+}
+const sendm =  Turbo.sendMessage(
+m.chat, 
+{
+text: "\n\n*_DONE SCRAPING DATA_*",
+footer: `${botnma}`,
+title: `HERE IS YOUR RESULTS CHOMIE FROM *${text}* _select song or video below_`,
+buttonText: "CLICK HERE",
+sections
+}, { quoted : m })
+}
+break
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} 1`
@@ -3231,7 +3266,14 @@ case 'ytmp4': case 'ytvideo': {
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(urls[text - 1], quality)
                 if (media.filesize >= 100000) return reply('File Over Limit '+util.format(media))
-                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '360p'}` }, { quoted: m })
+                Turbo.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolution : ${args[1] || '360p'}`,
+contextInfo: { externalAdReply:{
+title:media.title,
+                body:"ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩",
+                mediaType:2,
+                thumbnail:buf,
+                mediaUrl:`${text}`, 
+                sourceUrl: `https://youtu.be/n2bvbnfd3Fg` }}}, {quoted: m})
             }
             break
             case 'pinterest': {
