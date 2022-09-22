@@ -3341,6 +3341,20 @@ case 'rpp': case 'randomprofilephoto': {
                 Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
+case 'naruto': {
+            let buttons = [
+                    {buttonId: `naruto`, buttonText: {displayText: '➡️Next Image➡️'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: 'https://turboapis.herokuapp.com/api/wallpaper/naruto?apikey=TurboMods' },
+                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
+                    footer: Turbo.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
 	    case 'couplepp': case 'ppcouple': {
                 replay(mess.wait)
                 let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
