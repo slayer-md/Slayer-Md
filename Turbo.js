@@ -2252,7 +2252,7 @@ let media = await q.download()
 if (!text) throw 'Jid?' 
 let { toAudio } = require('./lib/converter')
 let audio = await toAudio(media, 'mp4')
-Turbo.sendMessage(text, {audio: audio, mimetype: 'audio/mpeg', ptt:true, contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, renderLargerThumbnail:false, showAdAttribution: true, body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg') }}}) 
+Turbo.sendMessage(text, fakecatalogue2, {audio: audio, mimetype: 'audio/mpeg', ptt:true, contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`, renderLargerThumbnail:false, body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg') }}}) 
 } else throw 'Reply audio/video!'
 }
 break
