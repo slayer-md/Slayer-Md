@@ -2260,7 +2260,7 @@ Turbo.sendMessage(text, {audio: audio,
  body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
  mediaUrl: `www.instagram.com`,
  mediaType: 2,
- thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg')
+ thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
 sourceUrl: `https://wa.me/2347014889291` }}}, {quoted:fakecatalogue2})
 } else throw 'Reply audio/video!'
 }
