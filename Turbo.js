@@ -2290,7 +2290,7 @@ sourceUrl: `https://wa.me/2347014889291` }}}, {quoted:fakecatalogue2})
 } else throw 'Reply audio/video!'
 }
 break
-case 'fakepay'
+case 'fakepay': {
 if (!isCreator) throw mess.owner   
 let q = m.quoted ? m.quoted : m
 if (/audio|video/.test(mime)) { 
