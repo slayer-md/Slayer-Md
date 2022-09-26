@@ -2283,29 +2283,12 @@ Turbo.sendMessage(text, {audio: audio,
  contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
  renderLargerThumbnail:false,
  body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
- mediaUrl: `www.instagram.com`,
  mediaType: 2,
  thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
-sourceUrl: `https://wa.me/2347014889291` }}}, {quoted:fakecatalogue2})
+ mediaUrl: `www.instagram.com`,
+ sourceUrl: `https://wa.me/2347014889291` }}}, {quoted:fakecatalogue2})
 } else throw 'Reply audio/video!'
 }
-break
-case 'fakepay': {
-if (!isCreator) throw mess.owner   
-let q = m.quoted ? m.quoted : m
-if (/audio|video/.test(mime)) { 
-let media = await q.download()
-if (!text) throw 'Jid?' 
-let { toAudio } = require('./lib/converter')
-let audio = await toAudio(media, 'mp4')
-Turbo.sendMessage(text, {audio: audio,
- mimetype: 'audio/mpeg',
- ptt:true,
- fakepay,
-quoted:fakecatalogue2})
-} else throw 'Reply audio/video!'
-}
-break
 case 'checknumber':
   reply(mess.wait)
   const turboska = {
