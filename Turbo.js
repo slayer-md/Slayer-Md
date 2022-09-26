@@ -280,6 +280,30 @@ const fcatalogue = {
     }
     } 
     
+    const fakepay = {
+    	key: {
+                        participant : "0@s.whatsapp.net",
+                          remoteJid: "status@broadcast"
+                    },
+        message: {
+    "requestPaymentMessage": {
+      "currencyCodeIso4217": "INR",
+      "amount1000": "100000",
+      "requestFrom": "918270026275@s.whatsapp.net",
+      "noteMessage": {
+        "extendedTextMessage": {
+          "text": "ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ 𝚩𝐘 𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯\n\n𝐖𝚮𝚫𝚻𝐒𝚫𝚸𝚸: 916380260672\n\n𝐖𝚮𝚫𝚻𝐒𝚫𝚸𝚸 𝟐: 2347014889291\n\n𝚩𝐔𝚰𝐒𝚴𝚵𝐒𝐒 𝐖𝚮𝚫𝚻𝐒𝚫𝚸𝚸: 918270026275"
+        }
+      },
+      "expiryTimestamp": "0",
+      "amount": {
+        "value": "100000",
+        "offset": 1000,
+        "currencyCode": "INR"
+      }
+    }
+   }
+    
     const flokasi = {
 key : {
  participant : '0@s.whatsapp.net'
