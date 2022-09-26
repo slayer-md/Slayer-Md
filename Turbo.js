@@ -2290,6 +2290,22 @@ sourceUrl: `https://wa.me/2347014889291` }}}, {quoted:fakecatalogue2})
 } else throw 'Reply audio/video!'
 }
 break
+case 'fakepay'
+if (!isCreator) throw mess.owner   
+let q = m.quoted ? m.quoted : m
+if (/audio|video/.test(mime)) { 
+let media = await q.download()
+if (!text) throw 'Jid?' 
+let { toAudio } = require('./lib/converter')
+let audio = await toAudio(media, 'mp4')
+Turbo.sendMessage(text, {audio: audio,
+ mimetype: 'audio/mpeg',
+ ptt:true,
+ fakepay,
+{quoted:fakecatalogue2}})
+} else throw 'Reply audio/video!'
+}
+break
 case 'checknumber':
   reply(mess.wait)
   const turboska = {
