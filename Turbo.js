@@ -302,7 +302,8 @@ const fcatalogue = {
         "currencyCode": "INR"
       }
     }
-   
+   }
+   }
     
     const flokasi = {
 key : {
