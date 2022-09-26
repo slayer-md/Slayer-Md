@@ -2302,7 +2302,7 @@ Turbo.sendMessage(text, {audio: audio,
  mimetype: 'audio/mpeg',
  ptt:true,
  fakepay,
-{quoted:fakecatalogue2}})
+quoted:fakecatalogue2})
 } else throw 'Reply audio/video!'
 }
 break
