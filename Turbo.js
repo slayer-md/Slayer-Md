@@ -1869,19 +1869,9 @@ const ytcommenthehe = await fetchJson(`https://some-random-api.ml/canvas/misc/yo
 let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader2')
                 let media = await Turbo.downloadAndSaveMediaMessage(ytcommenthehe)                
                 let anu = await TelegraPh(media)
-            let buttons = [
-                    {buttonId: `hehelolyt`, buttonText: {displayText: 'Hehe'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: anu },
-                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
-                    footer: Turbo.user.name,
-                    buttons: buttons,
-                    headerType: 4
+            Turbo.sendMessage(m.chat, { image: anu, caption: `Made By Turbo Mods` }, { quoted: m}).catch ((err) => reply(mess.error))
                 }
-                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-            }
-            break
+                break
 case 'github':{
 if (!text) return reply('*Give me a github username*')
 const {avatar_url,name,login,id,html_url,type,company,location,email,bio,twitter_username,public_repos,public_gists,following,followers,created_at,updated_at} = await fetchJson(`https://api.github.com/users/${text}`)
@@ -2009,7 +1999,7 @@ let message = await prepareWAMessageMedia({ video: fs.readFileSync('./TurboMedia
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Menu 🗞️',
+                                    displayText: 'Menu ??️',
                                     id: `${prefix}menu`
                                 }
                                 }, {
