@@ -1876,8 +1876,7 @@ case 'ytcomment': {
 if (!text) throw `Example : ${prefix + command} TurboMods,https://i.imgur.com/cqpUhQl.jpeg,Hi`
 let [text1, text2, text3] = text.split`,`
 let yt = await fetchJson(`https://some-random-api.ml/canvas/misc/youtube-comment?username=${encodeURIComponent(text1)}&avatar=${encodeURIComponent(text2)}&comment=${encodeURIComponent(text3)}`)
-let media = await yt.download()
-Turbo.sendMedia = async (m.chat, media, 'file.jpg', '', m)
+Turbo.sendMedia = async (m.chat, yt, 'file.jpg', '', m)
 }
 break
 case 'github':{
