@@ -1865,6 +1865,7 @@ break
 case 'pokedex': {
 if (!text) return reply('*Give Me A Pokemon Name*')
 const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
+const { normal } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
 turbowm = `Information Of ${text}`
 anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══⊷❍
 ┃✩╭─────────────────
