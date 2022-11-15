@@ -1865,8 +1865,7 @@ break
 case 'pokedex': {
 if (!text) return reply('*Give Me A Pokemon Name*')
 const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
-const { stats, family, sprites } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
-const { attack, defense, speed, total } = stats
+const { family, sprites } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
 const { evolutionStage, evolutionLine } = family
 const { normal } = sprites
 turbowm = `Information Of ${text}`
@@ -1879,10 +1878,6 @@ anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══�
 ┃✩│𝐀𝐁𝐈𝐋𝐈𝐓𝐈𝐄𝐒: ${abilities}
 ┃✩│𝐇𝐄𝐈𝐆𝐇𝐓: ${height}
 ┃✩│𝐖𝐄𝐈𝐆𝐇𝐓: ${weight}
-┃✩│𝐀𝐓𝐓𝐀𝐂𝐊: ${attack}
-┃✩│𝐃𝐄𝐅𝐄𝐍𝐒𝐄: ${defense}
-┃✩│𝐒𝐏𝐄𝐄𝐃: ${speed}
-┃✩│𝐓𝐎𝐓𝐀𝐋: ${total}
 ┃✩│𝐄𝐕𝐎𝐋𝐔𝐓𝐈𝐎𝐍𝐒𝐓𝐀𝐆𝐄: ${evolutionStage}
 ┃✩│𝐄𝐕𝐎𝐋𝐔𝐓𝐈𝐎𝐍𝐋𝐈𝐍𝐄: ${evolutionLine}
 ┃✩│𝐃𝐄𝐒𝐂𝐑𝐈𝐏𝐓𝐈𝐎𝐍: ${description}
