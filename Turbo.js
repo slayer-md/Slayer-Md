@@ -1862,64 +1862,22 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./TurboMedia
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'pokedex': {
-if (!text) return reply('*Give Me A Pokemon Name*')
-const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
-const { normal } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
-turbowm = `Information Of ${text}`
-anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══⊷❍
-┃✩╭─────────────────
-┃✩│𝐍𝐀𝐌𝐄: ${name}
-┃✩│𝐈𝐃: ${id}
-┃✩│𝐓𝐘𝐏𝐄: ${type}
-┃✩│𝐒𝐏𝐄𝐂𝐈𝐄𝐒: ${species}
-┃✩│𝐀𝐁𝐈𝐋𝐈𝐓𝐈𝐄𝐒: ${abilities}
-┃✩│𝐇𝐄𝐈𝐆𝐇𝐓: ${height}
-┃✩│𝐖𝐄𝐈𝐆𝐇𝐓: ${weight}
-┃✩╰─────────────────
-╰══════════════════⊷❍`
-  let message = await prepareWAMessageMedia({ image : { url: normal } }, { upload: Turbo.waUploadToServer })
-       const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-       templateMessage: {
-           hydratedTemplate: {
-             imageMessage: message.imageMessage,
-             hydratedContentText: turbowm,
-             hydratedFooterText: anu,
-             hydratedButtons: [{
-                                urlButton: {
-                                    displayText: 'Creator 💣',
-                                    url: 'https://wa.me/916380260672'
-                                }
-                            }, {
-                            	urlButton: {
-                                displayText: 'Script 🌊',
-                                    url: 'https://github.com/TURBOHYPER/Toxic-Alexa_V3'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'I Can Get All Pokemon Information 😯',
-                                    id: `${prefix}icangetallpokemoninformation`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'Wow 😲',
-                                    id: `${prefix}oaaosj`
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: '👤Owner',
-                                    id: `${prefix}owner`
-                                }
-                            }]
-                        }
-                    }
-                }),{ userJid: m.chat })
-                Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
-break
-case 'icangetallpokemoninformation': {
-anu = `Yes Just Type ${prefix}pokedex And The Pokemon Name Example: ${prefix}pokedex pikachu \n This Feature Is Made By TurboMods`
-reply(anu)
+case 'emojimix': {
+	        if (!text) throw `Example : ${prefix + command} 😅+🤔`
+		let [emoji1, emoji2] = text.split`+`
+		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
+		for (let res of anu.results) {
+		    let encmedia = await Turbo.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
+		    await fs.unlinkSync(encmedia)
+		}
+	    }
+	    break
+case 'ytcomment': {
+if (!text) throw `Example : ${prefix + command} TurboMods,https://i.imgur.com/cqpUhQl.jpeg,Hi`
+let [text1, text2, text3] = text.split`,`
+let yt = await fetchJson(`https://some-random-api.ml/canvas/misc/youtube-comment?username=${encodeURIComponent(text1)}&avatar=${encodeURIComponent(text2)}&comment=${encodeURIComponent(text3)}`)
+let media = await yt.download()
+Turbo.sendMedia = async (m.chat, media, 'file.jpg', '', m)
 }
 break
 case 'github':{
