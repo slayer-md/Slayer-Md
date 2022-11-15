@@ -1864,10 +1864,7 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./TurboMedia
 break
 case 'pokedex': {
 if (!text) return reply('*Give Me A Pokemon Name*')
-const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
-const { family, sprites } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
-const { evolutionStage, evolutionLine } = family
-const { normal } = sprites
+const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
 turbowm = `Information Of ${text}`
 anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══⊷❍
 ┃✩╭─────────────────
@@ -1878,9 +1875,6 @@ anu = `╭══〘 ᴘᴏᴋᴇᴍᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 〙══�
 ┃✩│𝐀𝐁𝐈𝐋𝐈𝐓𝐈𝐄𝐒: ${abilities}
 ┃✩│𝐇𝐄𝐈𝐆𝐇𝐓: ${height}
 ┃✩│𝐖𝐄𝐈𝐆𝐇𝐓: ${weight}
-┃✩│𝐄𝐕𝐎𝐋𝐔𝐓𝐈𝐎𝐍𝐒𝐓𝐀𝐆𝐄: ${evolutionStage}
-┃✩│𝐄𝐕𝐎𝐋𝐔𝐓𝐈𝐎𝐍𝐋𝐈𝐍𝐄: ${evolutionLine}
-┃✩│𝐃𝐄𝐒𝐂𝐑𝐈𝐏𝐓𝐈𝐎𝐍: ${description}
 ┃✩╰─────────────────
 ╰══════════════════⊷❍`
   let message = await prepareWAMessageMedia({ image : { url: normal } }, { upload: Turbo.waUploadToServer })
