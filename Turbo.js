@@ -1862,25 +1862,14 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./TurboMedia
                 Turbo.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
-case 'emojimix': {
-	        if (!text) throw `Example : ${prefix + command} 😅+🤔`
-		let [emoji1, emoji2] = text.split`+`
-		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
-		for (let res of anu.results) {
-		    let encmedia = await Turbo.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
-		    await fs.unlinkSync(encmedia)
-		}
-	    }
-	    break
 case 'ytcomment': {
 if (!text) throw `Example : ${prefix + command} TurboMods,https://i.imgur.com/cqpUhQl.jpeg,Hi`
 let [text1, text2, text3] = text.split`,`
-const yt = await fetchJson(`https://some-random-api.ml/canvas/misc/youtube-comment?username=${encodeURIComponent(text1)}&avatar=${encodeURIComponent(text2)}&comment=${encodeURIComponent(text3)}`)
             let buttons = [
                     {buttonId: `hehelolyt`, buttonText: {displayText: 'Hehe'}, type: 1}
                 ]
                 let buttonMessage = {
-                    image: { url: yt },
+                    image: { url: `https://some-random-api.ml/canvas/misc/youtube-comment?username=${encodeURIComponent(text1)}&avatar=${encodeURIComponent(text2)}&comment=${encodeURIComponent(text3)}` },
                     caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
                     footer: Turbo.user.name,
                     buttons: buttons,
