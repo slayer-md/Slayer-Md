@@ -1875,10 +1875,20 @@ case 'emojimix': {
 case 'ytcomment': {
 if (!text) throw `Example : ${prefix + command} TurboMods,https://i.imgur.com/cqpUhQl.jpeg,Hi`
 let [text1, text2, text3] = text.split`,`
-let yt = await fetchJson(`https://some-random-api.ml/canvas/misc/youtube-comment?username=${encodeURIComponent(text1)}&avatar=${encodeURIComponent(text2)}&comment=${encodeURIComponent(text3)}`)
-Turbo.sendMedia = async (m.chat, yt, 'file.jpg', '', m)
-}
-break
+const yt = await fetchJson(`https://some-random-api.ml/canvas/misc/youtube-comment?username=${encodeURIComponent(text1)}&avatar=${encodeURIComponent(text2)}&comment=${encodeURIComponent(text3)}`)
+            let buttons = [
+                    {buttonId: `hehelolyt`, buttonText: {displayText: 'Hehe'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: yt },
+                    caption: `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ`,
+                    footer: Turbo.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
 case 'github':{
 if (!text) return reply('*Give me a github username*')
 const {avatar_url,name,login,id,html_url,type,company,location,email,bio,twitter_username,public_repos,public_gists,following,followers,created_at,updated_at} = await fetchJson(`https://api.github.com/users/${text}`)
