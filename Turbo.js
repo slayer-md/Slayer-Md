@@ -1866,7 +1866,7 @@ case 'pokedex': {
 if (!text) return reply('*Give Me A Pokemon Name*')
 const { name, id, type, species, abilities, height, weight, description } = await fetchJson(`https://some-random-api.ml/pokedex?pokemon=${text}`)
 const { stats, family, sprites } = await fetchJson(`https://some-random-api.ml/pokemon/pokedex?pokemon=${text}`)
-const { hp, attack, defense, speed, total } = stats
+const { attack, defense, speed, total } = stats
 const { evolutionStage, evolutionLine } = family
 const { normal } = sprites
 turbowm = `Information Of ${text}`
