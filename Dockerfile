@@ -7,24 +7,14 @@ RUN apt-get update && \
   webp && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
+  
+  RUN npm install
+  
+git clone https://github.com/slayer-md/Slayer-Md
+
+cd Slayer-Md
 
 COPY package.json .
-
-RUN npm install
-
-pkg install bash
-
-pkg install libwebp
-
-pkg install git -y
-
-pkg install nodejs -y 
-
-pkg install ffmpeg -y 
-
-pkg install wget
-
-pkg install imagemagick -y
 
 COPY . .
 
