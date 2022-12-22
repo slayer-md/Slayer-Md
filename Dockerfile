@@ -12,6 +12,20 @@ COPY package.json .
 
 RUN npm install
 
+pkg install bash
+
+pkg install libwebp
+
+pkg install git -y
+
+pkg install nodejs -y 
+
+pkg install ffmpeg -y 
+
+pkg install wget
+
+pkg install imagemagick -y
+
 COPY . .
 
 CMD ["node", "."]
