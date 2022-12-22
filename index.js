@@ -17,6 +17,9 @@ const chalk = require('chalk')
 const fetch = require('node-fetch')
 const FileType = require('file-type')
 const path = require('path')
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 8000;
 const  { Boom } = require('@hapi/boom')
 const moment = require('moment-timezone')
 const PhoneNumber = require('awesome-phonenumber')
@@ -695,6 +698,11 @@ Turbo.ev.on('groups.update', async pea => {
 
     return Turbo
 }
+
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+app.listen(port, () => console.log(`app listening on port http://localhost:${port}`));
 
 startTurbo()
 
