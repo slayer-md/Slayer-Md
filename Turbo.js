@@ -1012,6 +1012,8 @@ Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
 case 'sc2': case 'script2': case 'donate2': case 'donate2': case 'git2': case 'botgit2': case 'botlink2': case 'sourcecode2': {
+timestampe = speed();
+latensie = speed() - timestampe
 let alivelog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
 alivemessage = `╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
 │   
@@ -2352,7 +2354,7 @@ Turbo.sendMessage(text, {audio: audio,
  ptt:true,
  contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
  renderLargerThumbnail:false,
- body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
+ body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧??𝗥𝗕𝚯`,
  mediaType: 2,
  thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
  mediaUrl: `www.instagram.com`,
