@@ -4171,7 +4171,7 @@ buttons: [
 {buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
 {buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
-]
+],
 contextInfo:{externalAdReply:{
 title:"I Deserve Something For My Hardwork",
 body: "So Follow My github Account", 
