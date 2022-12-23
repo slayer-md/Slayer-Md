@@ -4143,8 +4143,8 @@ const alivebuttons = [
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
 ]
 let buttonMessage = {
-image: `fs.readFileSync('./TurboMedia/slayer.jpg')`,
-jpegThumbnail: `fs.readFileSync('./TurboMedia/slayer.jpg')`,
+image: fs.readFileSync("TurboMedia/slayer.jpg"),
+jpegThumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
 caption: ``,
 footer: `
 ╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
