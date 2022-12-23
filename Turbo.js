@@ -1015,7 +1015,16 @@ case 'sc2': case 'script2': case 'donate2': case 'donate2': case 'git2': case 'b
 timestampe = speed();
 latensie = speed() - timestampe
 let alivelog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
-alivemessage = `╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
+alivemessage = ``
+let alivebuttons = [
+{buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1}
+]
+let buttonMessage = {
+image: alivelog0,
+jpegThumbnail: alivelog0,
+caption: alivemessage,
+footer: `
+╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
 │   
 │𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
 │𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
@@ -1034,15 +1043,7 @@ alivemessage = `╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pu
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
-╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`
-let alivebuttons = [
-{buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1}
-]
-let buttonMessage = {
-image: alivelog0,
-jpegThumbnail: alivelog0,
-caption: alivemessage,
-footer: `Turbo Mods`,
+╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
 buttons: alivebuttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
@@ -2354,7 +2355,7 @@ Turbo.sendMessage(text, {audio: audio,
  ptt:true,
  contextInfo: {externalAdReply : {title : `ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩`,
  renderLargerThumbnail:false,
- body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧??𝗥𝗕𝚯`,
+ body: `𝗧𝚯𝗫𝗜𝗖 ₪ 𝗧𝗨𝗥𝗕𝚯`,
  mediaType: 2,
  thumbnail: fs.readFileSync('./TurboMedia/slayer.jpg'),
  mediaUrl: `www.instagram.com`,
