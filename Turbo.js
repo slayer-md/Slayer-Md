@@ -4140,8 +4140,28 @@ latensie = speed() - timestampe
 let buttonMessage = {
 image: `fs.readFileSync('./TurboMedia/slayer.jpg')`,
 jpegThumbnail: `fs.readFileSync('./TurboMedia/slayer.jpg')`,
-caption: anu2,
-footer: anu,
+caption: ``,
+footer: `
+╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
+│   
+│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
+│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
+│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
+│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
+│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
+╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
 buttons: alivebuttons,
 headerType: 4
 }
@@ -4150,7 +4170,6 @@ let alivebuttons = [
 {buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
 ]
-let anu2 = ``
 let anu = `
 ╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
 │   
