@@ -1071,7 +1071,7 @@ footer: Turbo.user.name,
 buttons: findbuttons,
 }
 Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
+}}
 break
             case 'chat': {
                 if (!isCreator) throw mess.owner
