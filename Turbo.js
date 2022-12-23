@@ -1011,6 +1011,50 @@ let anu = `
 Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
+case 'sc2': case 'script2': case 'donate2': case 'donate2': case 'git2': case 'botgit2': case 'botlink2': case 'sourcecode2': {
+let alivelog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
+alivemessage = `╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
+│   
+│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
+│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
+│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
+│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
+│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
+│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
+╰─⬡───⬡────────⬡───⬡──⬡
+                                      │
+╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
+│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
+╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`
+let alivebuttons = [
+{buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1}
+]
+let buttonMessage = {
+image: alivelog0,
+jpegThumbnail: alivelog0,
+caption: alivemessage,
+footer: `Turbo Mods`,
+buttons: alivebuttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title:"I Deserve Something For My Hardwork",
+body: "So Follow My Instagram Account", 
+thumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
+mediaType:1,
+mediaUrl: 'https://Instagram.com/toxic_turbo777',
+sourceUrl: "https://Instagram.com/toxic_turbo777"
+}}
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
+break
             case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
 let sclog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
 scte3t = `*「 ${global.botnma} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Toxic-Alexa_V3\n\nDont forgot to follow 🫂`
