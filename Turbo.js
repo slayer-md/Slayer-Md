@@ -1029,6 +1029,7 @@ How Are You? 😊
 ╰─⬣
 Please Select Button Below`
 let alivebuttons = [
+{buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1},
 {buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1}
 ]
 let buttonMessage = {
