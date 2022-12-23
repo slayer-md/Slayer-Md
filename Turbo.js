@@ -4137,6 +4137,11 @@ break
 case 'alive2': case 'bot2': case 'robot2': case 'slayer2': case 'alexa2':{
                            	timestampe = speed();
 latensie = speed() - timestampe
+const alivebuttons = [
+{buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
+{buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
+]
 let buttonMessage = {
 image: `fs.readFileSync('./TurboMedia/slayer.jpg')`,
 jpegThumbnail: `fs.readFileSync('./TurboMedia/slayer.jpg')`,
@@ -4162,14 +4167,17 @@ footer: `
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
 ╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
-buttons: `${alivebuttons}`,
-headerType: 4
+buttons: alivebuttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title:"I Deserve Something For My Hardwork",
+body: "So Follow My github Account", 
+thumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
+mediaType:1,
+mediaUrl: 'https://instagram.com/',
+sourceUrl: "https://github.com/TURBOHYPER"
+}}
 }
-const alivebuttons = [
-{buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
-{buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
-{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
-]
 let anu = `
 ╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
 │   
@@ -4191,7 +4199,6 @@ let anu = `
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
 ╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`
-
 Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
