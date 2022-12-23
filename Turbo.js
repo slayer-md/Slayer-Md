@@ -4150,8 +4150,8 @@ let alivebuttons = [
 {buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
 ]
-anu2 = ``
- anu = `
+let anu2 = ``
+let anu = `
 ╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
 │   
 │𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
