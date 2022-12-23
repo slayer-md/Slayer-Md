@@ -1031,48 +1031,6 @@ let acr = new acrcloud({
     m.reply(`${e}`)
   }}
        break
-case 'find3': {
-let acrcloud = require('acrcloud')
-let acr = new acrcloud({
-	host: 'identify-eu-west-1.acrcloud.com',
-	access_key: 'c816ad50a2bd6282e07b90447d93c38c',
-	access_secret: 'ZpYSwmCFpRovcSQBCFCe1KArX7xt8DTkYx2XKiIP'
-})
-	try{
-	let q = m.quoted ? m.quoted : m
-	let mime = (q.msg || q).mimetype || ''
-	if (/audio|video/.test(mime)) {
-		let media = await q.download()
-		let ext = mime.split('/')[1]
-		fs.writeFileSync(`./${m.sender}.${ext}`, media)
-		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
-		let { code, msg } = res.status
-		if (code !== 0) throw msg
-		let { title, artists, album, genres, release_date } = res.metadata.music[0]
-let findbuttons = [
-{buttonId: `song ${title}`, buttonText: {displayText: '𝐏𝐥𝐚𝐲 𝐈𝐭 𝐇𝐞𝐫𝐞'}, type: 1}
-]
-let txt = `╭────⬡ ꪶ𝐒𝐎𝐍𝐆 𝐅𝐎𝐔𝐍𝐃ꫂ⁩⁩⁩ ────⬡
-│   
-│𒆜 𝐒𝐎𝐍𝐆 𝐓𝐈𝐓𝐋𝐄 :- ${title}
-│   
-│𒆜 𝐌𝐔𝐒𝐈𝐂 𝐀𝐑𝐓𝐈𝐒𝐓 :- ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
-│
-│𒆜 𝐀𝐋𝐁𝐔𝐌 :- ${album.name || ''}
-│
-│𒆜 𝐆𝐄𝐍𝐑𝐄𝐒 :- ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
-│
-│𒆜 𝐒𝐎𝐍𝐆 𝐑𝐄𝐋𝐄𝐀𝐒𝐄 𝐃𝐀𝐓𝐄 :- ${release_date}
-╰────⬡ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ────⬡`
-		fs.unlinkSync(`./${m.sender}.${ext}`)
-let buttonMessage = {
-caption: findmessage,
-footer: Turbo.user.name,
-buttons: findbuttons,
-}
-Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-}}
-break
             case 'chat': {
                 if (!isCreator) throw mess.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
@@ -3165,6 +3123,61 @@ case 'tempo': {
         })
         }
         break
+case 'video2': case 'song2': {
+                if (!text) throw `Example : ${prefix + command} look at me`
+                let yts = require("yt-search")
+                let search = await yts(text)
+                message = await prepareWAMessageMedia({ image : { url: search.videos[0].thumbnail } })
+                    ytmessage = `
+⭔ Title : ${search.videos[0].title}
+⭔ Ext : Search
+⭔ ID : ${search.videos[0].videoId}
+⭔ Duration : ${search.videos[0].timestamp}
+⭔ Viewers : ${search.videos[0].views}
+⭔ Uploaded : ${search.videos[0].ago}
+⭔ Author : ${search.videos[0].author.name}
+⭔ Channel : ${search.videos[0].author.url}
+⭔ Description : ${search.videos[0].description}
+` 
+let ytbuttons = [{
+                                urlButton: {
+                                    displayText: '🌊Video Source Link🌊',
+                                    url: `${search.videos[0].url}`
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: '🎵Audio🎵',
+                                    id: `ytmp3 ${search.videos[0].url} 128kbps`
+                                    }
+                                },{quickReplyButton: {
+                                    displayText: '🎥Video🎥',
+                                    id: `ytmp4 ${search.videos[0].url} 360p`
+                                     }
+                                }, {
+                                quickReplyButton: {
+                                    displayText: '🔍Youtube Search',
+                                    id: `ytsearch ${search.videos[0].url}`
+                                    }
+                            }]
+let buttonMessage = {
+image: message.imageMessage,
+jpegThumbnail: message.imageMessage,
+caption: ytmessage,
+footer: ``,
+buttons: ytbuttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title:"I Deserve Something For My Hardwork",
+body: "So Follow My Github Account", 
+thumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
+mediaType:1,
+mediaUrl: 'https://instagram.com/',
+sourceUrl: "https://github.com/TURBOHYPER"
+}}
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
+break
 	    case 'video': case 'song': {
                 if (!text) throw `Example : ${prefix + command} look at me`
                 let yts = require("yt-search")
