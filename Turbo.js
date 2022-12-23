@@ -4162,13 +4162,10 @@ footer: `
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
 │𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
 ╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
-buttons: `{buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
-{buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
-{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
-`,
+buttons: `${alivebuttons}`,
 headerType: 4
 }
-let alivebuttons = [
+const alivebuttons = [
 {buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
 {buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
 {buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
