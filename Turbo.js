@@ -1031,6 +1031,48 @@ let acr = new acrcloud({
     m.reply(`${e}`)
   }}
        break
+case 'find3': {
+let acrcloud = require('acrcloud')
+let acr = new acrcloud({
+	host: 'identify-eu-west-1.acrcloud.com',
+	access_key: 'c816ad50a2bd6282e07b90447d93c38c',
+	access_secret: 'ZpYSwmCFpRovcSQBCFCe1KArX7xt8DTkYx2XKiIP'
+})
+	try{
+	let q = m.quoted ? m.quoted : m
+	let mime = (q.msg || q).mimetype || ''
+	if (/audio|video/.test(mime)) {
+		let media = await q.download()
+		let ext = mime.split('/')[1]
+		fs.writeFileSync(`./${m.sender}.${ext}`, media)
+		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
+		let { code, msg } = res.status
+		if (code !== 0) throw msg
+		let { title, artists, album, genres, release_date } = res.metadata.music[0]
+let findbuttons = [
+{buttonId: `song ${title}`, buttonText: {displayText: '𝐏𝐥𝐚𝐲 𝐈𝐭 𝐇𝐞𝐫𝐞'}, type: 1}
+]
+let txt = `╭────⬡ ꪶ𝐒𝐎𝐍𝐆 𝐅𝐎𝐔𝐍𝐃ꫂ⁩⁩⁩ ────⬡
+│   
+│𒆜 𝐒𝐎𝐍𝐆 𝐓𝐈𝐓𝐋𝐄 :- ${title}
+│   
+│𒆜 𝐌𝐔𝐒𝐈𝐂 𝐀𝐑𝐓𝐈𝐒𝐓 :- ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
+│
+│𒆜 𝐀𝐋𝐁𝐔𝐌 :- ${album.name || ''}
+│
+│𒆜 𝐆𝐄𝐍𝐑𝐄𝐒 :- ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
+│
+│𒆜 𝐒𝐎𝐍𝐆 𝐑𝐄𝐋𝐄𝐀𝐒𝐄 𝐃𝐀𝐓𝐄 :- ${release_date}
+╰────⬡ ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩ ────⬡`
+		fs.unlinkSync(`./${m.sender}.${ext}`)
+let buttonMessage = {
+caption: findmessage,
+footer: Turbo.user.name,
+buttons: findbuttons,
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
+break
             case 'chat': {
                 if (!isCreator) throw mess.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
