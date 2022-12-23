@@ -942,115 +942,6 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
             }
             }
             break
-case 'alive2': case 'bot2': case 'robot2': case 'slayer2': case 'alexa2':{
-                           	timestampe = speed();
-latensie = speed() - timestampe
-const alivebuttons = [
-{buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
-{buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
-{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
-]
-let buttonMessage = {
-image: fs.readFileSync("TurboMedia/slayer.jpg"),
-jpegThumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
-caption: ``,
-footer: `
-╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
-│   
-│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
-╰─⬡───⬡────────⬡───⬡──⬡
-                                      │
-╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
-│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
-│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
-│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
-│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
-╰─⬡───⬡────────⬡───⬡──⬡
-                                      │
-╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
-╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`,
-buttons: [
-{buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1}
-],
-contextInfo:{externalAdReply:{
-title:"I Deserve Something For My Hardwork",
-body: "So Follow My github Account", 
-thumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
-mediaType:1,
-mediaUrl: 'https://instagram.com/',
-sourceUrl: "https://github.com/TURBOHYPER"
-}}
-}
-let anu = `
-╭────⬡ 𝐀𝐋𝐈𝐕𝐄 𝐔𝐒𝐄𝐑 :- ${pushname} ────⬡
-│   
-│𒆜 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 :- ${global.botnma}    
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐀𝐌𝐄 :- ${global.ownernma}
-│𒆜 𝐎𝐖𝐍𝐄𝐑 𝐍𝐔𝐌𝐁𝐄𝐑 :- ${global.owner}
-╰─⬡───⬡────────⬡───⬡──⬡
-                                      │
-╭─⬡───⬡ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎 ⬡───⬡──⬡
-│𒆜 ??𝐎𝐓 𝐑𝐔𝐍𝐍𝐈𝐍𝐆 : ${runtime(process.uptime())}
-│𒆜 𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌 : ${os.platform()}
-│𒆜 𝐒𝐏𝐄𝐄𝐃 : ${latensie.toFixed(4)} miliseconds
-│𒆜 𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄 : ${os.hostname()}
-╰─⬡───⬡────────⬡───⬡──⬡
-                                      │
-╭─⬡───⬡ 𝐆𝐑𝐎𝐔𝐏 𝐈𝐍𝐅𝐎 ⬡─⬡──⬡
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄 :- ${groupName}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐈𝐃 :- ${m.chat}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 :- ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}
-│𒆜 𝐆𝐑𝐎𝐔𝐏 𝐀𝐃𝐌𝐈𝐍𝐒 :- ${groupAdmins.length}
-╰─⬡───⬡ ${pushname}  ⬡─⬡──⬡`
-Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
-break
-case 'sc2': case 'script2': case 'donate2': case 'donate2': case 'git2': case 'botgit2': case 'botlink2': case 'sourcecode2': {
-timestampe = speed();
-latensie = speed() - timestampe
-let alivelog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
-alivemessage = `Hi 🤚 ${pushname}
-How Are You? 😊
-╭─⬣「 INFO BOT 」⬣
-│
-│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
-│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
-│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
-│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
-│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
-│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
-│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
-╰─⬣
-Please Select Button Below`
-let alivebuttons = [
-{buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1},
-{buttonId: `owner`, buttonText: {displayText: 'Owner 🌹'}, type: 1}
-]
-let buttonMessage = {
-image: alivelog0,
-jpegThumbnail: alivelog0,
-caption: alivemessage,
-footer: ``,
-buttons: alivebuttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title:"I Deserve Something For My Hardwork",
-body: "So Follow My Github Account", 
-thumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
-mediaType:1,
-mediaUrl: 'https://instagram.com/',
-sourceUrl: "https://github.com/TURBOHYPER"
-}}
-}
-Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
-break
             case 'sc': case 'script': case 'donate': case 'donate': case 'git': case 'botgit': case 'botlink': case 'sourcecode': {
 let sclog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
 scte3t = `*「 ${global.botnma} Script 」*\n\nYouTube: https://youtube.com/c/TurboMods\nGitHub: https://github.com/TURBOHYPER/Toxic-Alexa_V3\n\nDont forgot to follow 🫂`
@@ -4180,7 +4071,48 @@ Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
                     break
-case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa':{
+case 'alive': case 'bot': case 'robot': case 'slayer': case 'alexa': case 'kakashi': case 'start': case 'run': {
+timestampe = speed();
+latensie = speed() - timestampe
+let alivelog0 = fs.readFileSync("TurboMedia/slayer.jpg"),
+alivemessage = `Hi 🤚 ${pushname}
+How Are You? 😊
+╭─⬣「 INFO BOT 」⬣
+│
+│ Sᴘᴇᴇᴅ : ${latensie.toFixed(4)} miliseconds
+│ Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}
+│ Bᴏᴛ Nᴀᴍᴇ : ${global.botnma}
+│ Oᴡɴᴇʀ Nᴀᴍᴇ : ${global.ownernma}
+│ Oᴡɴᴇʀ Nᴜᴍʙᴇʀ : ${global.owner}
+│ Hᴏꜱᴛ Nᴀᴍᴇ : ${os.hostname()}
+│ Pʟᴀᴛꜰᴏʀᴍ : ${os.platform()}
+╰─⬣
+Please Select Button Below`
+let alivebuttons = [
+{buttonId: `menu`, buttonText: {displayText: 'Menu 🗞️'}, type: 1},
+{buttonId: `ping`, buttonText: {displayText: 'Speed Test 🐌'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: '👤Owner'}, type: 1}
+]
+let buttonMessage = {
+image: alivelog0,
+jpegThumbnail: alivelog0,
+caption: alivemessage,
+footer: ``,
+buttons: alivebuttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title:"I Deserve Something For My Hardwork",
+body: "So Follow My Github Account", 
+thumbnail: fs.readFileSync("TurboMedia/slayer.jpg"),
+mediaType:1,
+mediaUrl: 'https://instagram.com/',
+sourceUrl: "https://github.com/TURBOHYPER"
+}}
+}
+Turbo.sendMessage(m.chat, buttonMessage, { quoted: m })
+}
+break
+case 'testalive': case 'testbot': case 'testrobot': case 'testslayer': case 'testalexa':{
                            	timestampe = speed();
 latensie = speed() - timestampe
  anu = ``
