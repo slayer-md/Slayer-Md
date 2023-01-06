@@ -38,9 +38,9 @@ global.doc5 = 'application/pdf'
 global.doc6 = 'application/vnd.android.package-archive'
 
 //═══════[modification]════════\\
-global.owner = ['916380260672','2347014889291','2347086086722'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
-global.pemilik = ['916380260672','2347014889291','2347086086722'] //another owner number
-global.premium = ['916380260672','2347014889291','2347086086722'] //premium number
+global.owner = ['916380260672','2347014889291'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
+global.pemilik = ['916380260672','2347014889291'] //another owner number
+global.premium = ['916380260672','2347014889291'] //premium number
 global.pengguna = 'Turbo' //username
 global.reactmoji = "🌹"
 global.botnma = 'ꪶ𝗦𝗟𝚫𝗬𝚵𝗥-𝗠𝗗ꫂ⁩⁩⁩' //bot name
